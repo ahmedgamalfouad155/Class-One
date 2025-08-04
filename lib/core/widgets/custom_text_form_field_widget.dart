@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 
-class CustomTextFieldWidget extends StatelessWidget {
-  const CustomTextFieldWidget({
+class CustomTextFormFieldWidget extends StatelessWidget {
+  const CustomTextFormFieldWidget({
     super.key,
     required this.hintText,
     this.controller,
@@ -17,23 +17,30 @@ class CustomTextFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: true,
       keyboardType: keyboardType,
       controller: controller,
       cursorColor: context.appColors.blue,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          // return '${S.of(context).pleaseEnterYour} $hintText';
+          return 'pleaseEnterYour $hintText';
         }
         return null;
       },
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: AppStyles.textStyle16(context),
+        hintStyle: AppStyles.textStyle12(context),
         fillColor: context.appColors.offWhite,
         filled: true,
+        suffixIcon: IconButton(
+          icon: Icon(Icons.visibility_off, color: context.appColors.blue),
+          onPressed: () {
+            // context.read<PasswordVisibilityCubit>().toggleVisibility();
+          },
+        ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5),
-          borderSide: BorderSide(color: context.appColors.blue),
+          borderSide: BorderSide(color: context.appColors.grey),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5),
