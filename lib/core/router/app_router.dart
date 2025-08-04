@@ -4,6 +4,7 @@ import 'package:sinna/features/auth/presentation/view/signup_view.dart';
 import 'package:sinna/features/auth/presentation/view/widgets/finishing_signup.dart';
 import 'package:sinna/features/landing/presentation/views/landing_view.dart';
 import 'package:sinna/features/landing/presentation/views/language_and_mode_view.dart';
+import 'package:sinna/features/nav_bar/presentation/view/nav_bar_view.dart';
 import 'package:sinna/features/splash/splash._view.dart';
 
 abstract class AppRouter {
@@ -25,7 +26,7 @@ abstract class AppRouter {
       GoRoute(path: kLogInView, builder: (context, state) => LoginView()),
       GoRoute(path: kSignUpView, builder: (context, state) => SignupView()),
       GoRoute(path: kfinishingSignUpView, builder: (context, state) => FinishingSignup()),
-      // GoRoute(path: kNavBarView, builder: (context, state) => NavBarView()), 
+      GoRoute(path: kNavBarView, builder: (context, state) => NavBarView()), 
     ],
   );
 }
