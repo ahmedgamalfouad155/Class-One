@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
+import 'package:sinna/features/auth/presentation/view/manager/password_visibility_cubit.dart';
 
 class CustomTextFormFieldWidget extends StatelessWidget {
   const CustomTextFormFieldWidget({
@@ -16,37 +18,44 @@ class CustomTextFormFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      obscureText: true,
-      keyboardType: keyboardType,
-      controller: controller,
-      cursorColor: context.appColors.blue,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'pleaseEnterYour $hintText';
-        }
-        return null;
-      },
-      decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: AppStyles.textStyle12(context),
-        fillColor: context.appColors.offWhite,
-        filled: true,
-        suffixIcon: IconButton(
-          icon: Icon(Icons.visibility_off, color: context.appColors.blue),
-          onPressed: () {
-            // context.read<PasswordVisibilityCubit>().toggleVisibility();
+    return BlocBuilder<PasswordVisibilityCubit, bool>(
+      builder: (context, state) {
+        return TextFormField(
+          obscureText: state,
+          keyboardType: keyboardType,
+          controller: controller,
+          cursorColor: context.appColors.blue,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'pleaseEnterYour $hintText';
+            }
+            return null;
           },
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(5),
-          borderSide: BorderSide(color: context.appColors.grey),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(5),
-          borderSide: BorderSide(color: context.appColors.blue),
-        ),
-      ),
+          decoration: InputDecoration(
+            hintText: hintText,
+            hintStyle: AppStyles.textStyle12(context),
+            fillColor: context.appColors.offWhite,
+            filled: true,
+            suffixIcon: IconButton(
+              icon: Icon(
+                state ? Icons.visibility : Icons.visibility_off,
+                color: context.appColors.blue,
+              ),
+              onPressed: () {
+                context.read<PasswordVisibilityCubit>().toggleVisibility();
+              },
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(5),
+              borderSide: BorderSide(color: context.appColors.grey),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(5),
+              borderSide: BorderSide(color: context.appColors.blue),
+            ),
+          ),
+        );
+      },
     );
   }
 }

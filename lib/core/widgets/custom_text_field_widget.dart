@@ -22,7 +22,7 @@ class CustomTextFieldWidget extends StatelessWidget {
       cursorColor: context.appColors.blue,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          // return '${S.of(context).pleaseEnterYour} $hintText';
+          return 'pleaseEnterYour $hintText';
         }
         return null;
       },

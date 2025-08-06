@@ -2,7 +2,7 @@ class FirestorePath {
   static String planets() => "planets/";
   static String products() => "products/";
   static String categories() => "categories/";
-  static String user(String uid) => "users/$uid";
+  static String users(String uid) => "users/$uid";
 
   static String carts(String uid, String cartId) => "users/$uid/cards/$cartId";
   static String myProductsCart(String uid) => "users/$uid/cards/";
@@ -21,7 +21,7 @@ class FirestorePath {
       "users/$uid/garden/$planetId";
   static String myGarden(String uid) => "users/$uid/garden/";
 
-  static String planetAlarm(String uid, String planetId,String alarmId) =>
+  static String planetAlarm(String uid, String planetId, String alarmId) =>
       "users/$uid/garden/$planetId/alarms/$alarmId";
   static String myPlanetAlarm(String uid, String productId) =>
       "users/$uid/garden/$productId/alarms/";
@@ -29,10 +29,4 @@ class FirestorePath {
   static String addresses(String uid, String addressId) =>
       "users/$uid/addresses/$addressId";
   static String myAddresses(String uid) => "users/$uid/addresses/";
-
-
 }
-
-
-
-
