@@ -5,8 +5,8 @@ import 'package:sinna/core/router/app_router.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/core/widgets/custom_snak_bar.dart';
-import 'package:sinna/features/auth/presentation/view/manager/signup_cubit/signup_cubit.dart';
-import 'package:sinna/features/auth/presentation/view/manager/signup_cubit/signup_state.dart';
+import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
+import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_state.dart';
 
 class SignupButtonWidget extends StatelessWidget {
   const SignupButtonWidget({

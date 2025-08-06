@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sinna/core/router/app_router.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
-import 'package:sinna/features/auth/presentation/view/manager/login_cubit/login_cubit.dart';
-import 'package:sinna/features/auth/presentation/view/manager/login_cubit/login_state.dart';
+import 'package:sinna/features/auth/presentation/manager/login_cubit/login_cubit.dart';
+import 'package:sinna/features/auth/presentation/manager/login_cubit/login_state.dart';
 
 class LoginButtonWidget extends StatelessWidget {
   const LoginButtonWidget({

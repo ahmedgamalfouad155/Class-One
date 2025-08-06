@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/features/auth/data/services/login_service/login_services.dart';
-import 'package:sinna/features/auth/presentation/view/manager/login_cubit/login_state.dart';
+import 'package:sinna/features/auth/presentation/manager/login_cubit/login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());

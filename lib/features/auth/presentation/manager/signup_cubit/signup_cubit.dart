@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/features/auth/data/models/user_model.dart';
 import 'package:sinna/features/auth/data/services/signup_service/signup_service.dart';
-import 'package:sinna/features/auth/presentation/view/manager/signup_cubit/signup_state.dart';
+import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
   SignUpCubit() : super(SignUpState());

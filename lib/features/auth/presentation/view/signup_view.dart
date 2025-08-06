@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sinna/features/auth/presentation/view/manager/signup_cubit/signup_cubit.dart';
-import 'package:sinna/features/auth/presentation/view/manager/signup_cubit/signup_state.dart';
+import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
+import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_state.dart';
 import 'package:sinna/features/auth/presentation/view/widgets/personal_info_step.dart';
 import 'package:sinna/features/auth/presentation/view/widgets/university_info_step.dart';
 

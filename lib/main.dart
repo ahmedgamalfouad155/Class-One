@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sinna/core/router/app_router.dart';
 import 'package:sinna/core/theme/thems.dart';
-import 'package:sinna/features/auth/presentation/view/manager/auth_cubit/auth_cubit.dart';
+import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:sinna/firebase_options.dart';
 
 void main() async {

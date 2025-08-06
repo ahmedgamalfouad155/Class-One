@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:sinna/features/auth/presentation/view/manager/auth_cubit/auth_cubit.dart';
+import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 
 class AuthState {
   final AuthStatus status;

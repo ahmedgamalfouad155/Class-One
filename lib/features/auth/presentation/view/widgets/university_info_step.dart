@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
-import 'package:sinna/features/auth/presentation/view/manager/signup_cubit/signup_cubit.dart';
+import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:sinna/features/auth/presentation/view/widgets/signup_country_and_university_and_system_and_levels_section.dart';
 import 'package:sinna/features/auth/presentation/view/widgets/signup_image_and_header_widget.dart';
 

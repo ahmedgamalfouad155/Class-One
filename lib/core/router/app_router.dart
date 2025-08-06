@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sinna/features/auth/presentation/view/login_view.dart';
-import 'package:sinna/features/auth/presentation/view/manager/auth_cubit/auth_cubit.dart';
+import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:sinna/features/auth/presentation/view/signup_view.dart';
 import 'package:sinna/features/landing/presentation/views/landing_view.dart';
 import 'package:sinna/features/landing/presentation/views/language_and_mode_view.dart';

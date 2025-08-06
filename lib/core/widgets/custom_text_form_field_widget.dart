@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
-import 'package:sinna/features/auth/presentation/view/manager/password_visibility_cubit.dart';
+import 'package:sinna/features/auth/presentation/manager/password_visibility_cubit.dart';
 
 class CustomTextFormFieldWidget extends StatelessWidget {
   const CustomTextFormFieldWidget({
