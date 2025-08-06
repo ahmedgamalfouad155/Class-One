@@ -5,8 +5,15 @@ import 'package:sinna/core/widgets/custom_text_field_widget.dart';
 import 'package:sinna/core/widgets/custom_text_form_field_widget.dart';
 import 'package:sinna/features/auth/presentation/view/manager/password_visibility_cubit.dart';
 
-class PhoneAndPasswordFieldsLoginWidget extends StatelessWidget {
-  const PhoneAndPasswordFieldsLoginWidget({super.key});
+class EmailAndPasswordFieldsLoginWidget extends StatelessWidget {
+  const EmailAndPasswordFieldsLoginWidget({
+    super.key,
+    required this.emailController,
+    required this.passwordController,
+  });
+
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +27,10 @@ class PhoneAndPasswordFieldsLoginWidget extends StatelessWidget {
           ).copyWith(fontWeight: FontWeight.w500),
         ),
         const SizedBox(height: 5),
-        CustomTextFieldWidget(hintText: "Enter your phone number"),
+        CustomTextFieldWidget(
+          hintText: "Enter your email",
+          controller: emailController,
+        ),
         const SizedBox(height: 15),
         Text(
           "Password",
@@ -31,7 +41,10 @@ class PhoneAndPasswordFieldsLoginWidget extends StatelessWidget {
         const SizedBox(height: 5),
         BlocProvider(
           create: (context) => PasswordVisibilityCubit(),
-          child: CustomTextFormFieldWidget(hintText: "Enter your password"),
+          child: CustomTextFormFieldWidget(
+            hintText: "Enter your password",
+            controller: passwordController,
+          ),
         ),
       ],
     );

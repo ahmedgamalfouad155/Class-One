@@ -42,7 +42,7 @@ class SignupButtonWidget extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
           // ignore: unnecessary_type_check
         } else if (state is SignupSuccessState || state is SignUpState) {
-          return CustomButon(
+          return CustomButton(
             text: "Sign Up",
             onPressed: () async {
               final updatedUser = user.copyWith(
@@ -60,7 +60,7 @@ class SignupButtonWidget extends StatelessWidget {
           );
         } else if (state is SignupFailedState) {
           return Text(state.error);
-        } else { 
+        } else {
           return const Text('Error');
         }
       },

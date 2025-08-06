@@ -4,8 +4,8 @@ import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 
 // ignore: must_be_immutable
-class CustomButon extends StatelessWidget {
-  CustomButon({
+class CustomButton extends StatelessWidget {
+  CustomButton({
     super.key,
     this.bacgrouncColor,
     this.textColor,

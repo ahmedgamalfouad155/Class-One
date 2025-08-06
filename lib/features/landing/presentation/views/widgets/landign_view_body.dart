@@ -17,14 +17,14 @@ class LandignViewBody extends StatelessWidget {
         children: [
           Image.asset(AppImages.logo),
           const SizedBox(height: 20),
-          CustomButon(
+          CustomButton(
             text: "Login",
             onPressed: () {
               GoRouter.of(context).push(AppRouter.kLogInView);
             },
           ),
           const SizedBox(height: 20),
-          CustomButon(
+          CustomButton(
             text: "Sign up",
             onPressed: () {
               GoRouter.of(context).push(AppRouter.kSignUpView);

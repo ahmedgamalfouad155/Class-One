@@ -48,7 +48,7 @@ class _UniversityInfoStepState extends State<UniversityInfoStep> {
                 systemController: systemController,
                 levelsController: levelsController,
               ),
-              CustomButon(
+              CustomButton(
                 text: "Next",
                 onPressed: () {
                   final updatedUser = user.copyWith(
@@ -58,7 +58,7 @@ class _UniversityInfoStepState extends State<UniversityInfoStep> {
                     level: levelsController.text,
                   );
                   cubit.updateUser(updatedUser);
-                  if (formKey.currentState!.validate()) { 
+                  if (formKey.currentState!.validate()) {
                     cubit.nextPage();
                   }
                 },

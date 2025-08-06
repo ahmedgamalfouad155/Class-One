@@ -5,7 +5,7 @@ import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/features/auth/presentation/view/manager/signup_cubit/signup_cubit.dart';
 import 'package:sinna/features/auth/presentation/view/widgets/signup_image_and_header_widget.dart';
 import 'package:sinna/features/auth/presentation/view/widgets/signup_name_and_email_and_password_fields_section_widget.dart';
-import 'package:sinna/features/auth/presentation/view/widgets/signup_page_view/signup_button_widget.dart';
+import 'package:sinna/features/auth/presentation/view/widgets/signup_button_widget.dart';
 
 class PersonalInfoStep extends StatefulWidget {
   const PersonalInfoStep({super.key});
@@ -53,7 +53,7 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  CustomButon(
+                  CustomButton(
                     text: "Back",
                     onPressed: () {
                       cubit.previousPage();
