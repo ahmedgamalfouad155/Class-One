@@ -49,3 +49,10 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+/*
+develop
+feature/Auth
+feature/Navbar
+feature/categories
+*/

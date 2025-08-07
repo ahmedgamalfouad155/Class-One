@@ -1,5 +1,13 @@
-class FirestorePath {
-  static String planets() => "planets/";
+class FirestorePath { 
+  static String data(
+    String country,
+    String university,
+    String system,
+    String level,
+    String subject,
+    String term,
+    String doctor,
+  ) => "$country/$university/$system/$level/$subject/$term/$doctor";
   static String products() => "products/";
   static String categories() => "categories/";
   static String users(String uid) => "users/$uid";
