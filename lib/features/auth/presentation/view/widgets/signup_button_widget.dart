@@ -50,6 +50,7 @@ class SignupButtonWidget extends StatelessWidget {
                 email: emailController.text,
               );
               cubit.updateUser(updatedUser);
+
               if (formKey.currentState!.validate()) {
                 if (confirmPasswordController.text == passwordController.text) {
                   await cubit.signUp(passwordController.text, updatedUser);
@@ -67,3 +68,10 @@ class SignupButtonWidget extends StatelessWidget {
     );
   }
 }
+
+/*
+egypt
+mansoura
+Bachelors
+level one
+ */

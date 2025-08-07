@@ -30,6 +30,16 @@ class _UniversityInfoStepState extends State<UniversityInfoStep> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    final user = context.read<SignUpCubit>().state.user;
+    countryController.text = user.country;
+    universityController.text = user.university;
+    systemController.text = user.system;
+    levelsController.text = user.level;
+  }
+
+  @override
   Widget build(BuildContext context) {
     final cubit = context.read<SignUpCubit>();
     final user = context.watch<SignUpCubit>().state.user;

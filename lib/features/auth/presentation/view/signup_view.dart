@@ -19,7 +19,7 @@ class SignUpView extends StatelessWidget {
             body: PageView(
               controller: cubit.pageController,
               physics: const NeverScrollableScrollPhysics(),
-              children: const [UniversityInfoStep(), PersonalInfoStep()],
+              children: [UniversityInfoStep(), const PersonalInfoStep()],
             ),
           );
         },
