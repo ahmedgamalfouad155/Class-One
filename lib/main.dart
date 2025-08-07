@@ -55,4 +55,5 @@ develop
 feature/Auth
 feature/Navbar
 feature/categories
+feature/profile
 */
