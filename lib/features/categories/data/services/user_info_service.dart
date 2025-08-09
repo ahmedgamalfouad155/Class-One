@@ -1,7 +1,7 @@
 import 'package:sinna/core/services/firebase_path.dart';
 import 'package:sinna/core/services/firestore_services.dart';
 import 'package:sinna/features/auth/data/models/user_model.dart';
-import 'package:sinna/features/auth/data/services/auth_services_impl.dart';
+import 'package:sinna/features/auth/data/services/auth_service/auth_services.dart';
 
 abstract class UserInfoService {
   Future<UserModel> getUserInfo();

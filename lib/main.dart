@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,17 +9,13 @@ import 'package:sinna/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  runApp( MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-   MyApp({super.key});
-    final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,17 +25,16 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return BlocProvider(
-          create: (_) => AuthCubit(_firebaseAuth),
+          create: (_) => AuthCubit()..authStatus(),
           child: Builder(
-            builder: (context) {
-              final router = AppRouter.router(context); // يتم استدعاؤه بعد توفير AuthCubit
+            builder: (context) { 
               return MaterialApp.router(
                 title: 'Sinna',
                 theme: lightTheme,
                 darkTheme: darkTheme,
                 themeMode: ThemeMode.system,
                 debugShowCheckedModeBanner: false,
-                routerConfig: router,
+                routerConfig: AppRouter.router,
               );
             },
           ),

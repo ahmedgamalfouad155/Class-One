@@ -1,9 +1,18 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
+class AuthState {}
 
-class AuthState {
-  final AuthStatus status;
-  final User? user;
+final class AuthInitial extends AuthState {}
 
-  AuthState({required this.status, this.user});
+final class LoginLoadingState extends AuthState {}
+
+final class LoginSuccessState extends AuthState {}
+
+final class LoginFailedState extends AuthState {
+  final String error;
+  LoginFailedState(this.error);
+} 
+
+final class LogoutLoadingState extends AuthState{}
+final class LogoutFailedState extends AuthState {
+  final String error; 
+  LogoutFailedState(this.error);
 }
