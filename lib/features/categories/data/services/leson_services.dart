@@ -3,7 +3,7 @@ import 'package:sinna/core/services/firestore_services.dart';
 import 'package:sinna/features/categories/data/models/leson_model.dart';
 
 abstract class LesonServices {
-  Future<List<LesonModel>> getLesons({
+  Future<List<LessonModel>> getLesons({
     required String country,
     required String university,
     required String system,
@@ -17,7 +17,7 @@ abstract class LesonServices {
 class LesonServicesImpl implements LesonServices {
   final firestor = FirestoreServices.instance;
   @override
-  Future<List<LesonModel>> getLesons({
+  Future<List<LessonModel>> getLesons({
     required String country,
     required String university,
     required String system,
@@ -26,7 +26,7 @@ class LesonServicesImpl implements LesonServices {
     required String term,
     required String doctor,
   }) async => await firestor.getCollection(
-    path: FirestorePath.data(
+    path: FirestorePath.lessonPath(
       country,
       university,
       system,
@@ -35,6 +35,6 @@ class LesonServicesImpl implements LesonServices {
       term,
       doctor,
     ),
-    builder: (data, documentId) => LesonModel.fromMap(data, documentId),
+    builder: (data, documentId) => LessonModel.fromMap(data, documentId),
   );
 }

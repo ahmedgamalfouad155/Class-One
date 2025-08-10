@@ -8,6 +8,15 @@ class FirestorePath {
     String term,
     String doctor,
   ) => "$country/$university/$system/$level/$subject/$term/$doctor";
+  static String lessonPath(
+    String country,
+    String university,
+    String system,
+    String level,
+    String subject,
+    String term,
+    String doctor,
+  ) => "$country/$university/degree/$system/level/$level/subjects/$subject/term/$term/doctors/$doctor/lessons";
   static String products() => "products/";
   static String categories() => "categories/";
   static String users(String uid) => "users/$uid";

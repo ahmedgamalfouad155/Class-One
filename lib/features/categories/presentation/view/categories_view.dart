@@ -9,6 +9,7 @@ class CategoriesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("Categories Page")),
       body: BlocProvider(
         create: (context) => UserInfoCubit(),
         child: CategoriesViewBody(),
