@@ -4,9 +4,11 @@ import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.d
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_state.dart';
 import 'package:sinna/features/auth/presentation/view/login_view.dart';
 import 'package:sinna/features/auth/presentation/view/signup_view.dart';
-import 'package:sinna/features/categories/data/models/lesson_path_model.dart';
+import 'package:sinna/features/categories/data/models/course_path_model.dart';
+import 'package:sinna/features/categories/data/models/leson_model.dart';
+import 'package:sinna/features/categories/presentation/view/course_video_view.dart';
 import 'package:sinna/features/categories/presentation/view/instractor_view.dart';
-import 'package:sinna/features/categories/presentation/view/lessons_view.dart';
+import 'package:sinna/features/categories/presentation/view/courses_view.dart';
 import 'package:sinna/features/categories/presentation/view/term_view.dart';
 import 'package:sinna/features/landing/presentation/views/landing_view.dart';
 import 'package:sinna/features/landing/presentation/views/language_and_mode_view.dart';
@@ -21,7 +23,8 @@ abstract class AppRouter {
   static const String kNavBarView = '/navBarView';
   static const String kTermView = '/termView';
   static const String kInstructorView = '/instructorView';
-  static const String kLessonsView = '/lessonsView';
+  static const String kCoursesView = '/lessonsView';
+  static const String kCourseVideoView = '/courseVideoView';
 
   static final router = GoRouter(
     routes: [
@@ -46,15 +49,18 @@ abstract class AppRouter {
         path: kNavBarView,
         builder: (context, state) => const NavBarView(),
       ),
-      GoRoute(path: kTermView, builder: (context, state) {
-        final lessonPathModel = state.extra as LessonPathModel;
-        return  TermView(lessonPathModel: lessonPathModel ,);
-      }),
+      GoRoute(
+        path: kTermView,
+        builder: (context, state) {
+          final coursePathModel = state.extra as CoursePathModel;
+          return TermView(coursePathModel: coursePathModel);
+        },
+      ),
       GoRoute(
         path: kInstructorView,
         builder: (context, state) {
-          final lessonPathModel = state.extra as LessonPathModel;
-          return InstractorView(lessonPathModel:lessonPathModel );
+          final coursePathModel = state.extra as CoursePathModel;
+          return InstractorView(coursePathModel: coursePathModel);
         },
       ),
       GoRoute(
@@ -66,10 +72,17 @@ abstract class AppRouter {
         builder: (context, state) => const LanguageAndModeView(),
       ),
       GoRoute(
-        path: kLessonsView,
+        path: kCoursesView,
         builder: (context, state) {
-          final lessonPathModel = state.extra as LessonPathModel;
-          return  LessonsView( lessonPathModel: lessonPathModel,);
+          final coursePathModel = state.extra as CoursePathModel;
+          return CoursesView(coursePathModel: coursePathModel);
+        },
+      ),
+      GoRoute(
+        path: kCourseVideoView,
+        builder: (context, state) {
+          final coursePathModel = state.extra as CourseModel;
+          return CourseVideoView(course: coursePathModel);
         },
       ),
     ],

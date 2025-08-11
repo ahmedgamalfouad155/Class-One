@@ -1,4 +1,4 @@
-class LessonPathModel {
+class CoursePathModel {
   String? country;
   String? university;
   String? system;
@@ -7,7 +7,7 @@ class LessonPathModel {
   String? term;
   String? doctor;
 
-  LessonPathModel({
+  CoursePathModel({
     this.country,
     this.university,
     this.system,
@@ -17,7 +17,6 @@ class LessonPathModel {
     this.doctor,
   });
 
-  // تعديل القيم على نفس الكائن
   void update({
     String? country,
     String? university,
@@ -48,8 +47,8 @@ class LessonPathModel {
     };
   }
 
-  factory LessonPathModel.fromMap(Map<String, dynamic> map) {
-    return LessonPathModel(
+  factory CoursePathModel.fromMap(Map<String, dynamic> map) {
+    return CoursePathModel(
       country: map['country'],
       university: map['university'],
       system: map['system'],

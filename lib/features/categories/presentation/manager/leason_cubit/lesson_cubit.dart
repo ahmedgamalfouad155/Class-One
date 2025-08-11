@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sinna/features/categories/data/models/lesson_path_model.dart';
+import 'package:sinna/features/categories/data/models/course_path_model.dart';
 import 'package:sinna/features/categories/data/services/leson_services.dart';
 import 'package:sinna/features/categories/presentation/manager/leason_cubit/lesson_state.dart';
 
@@ -8,7 +8,7 @@ class LessonCubit extends Cubit<LessonState> {
 
   final LesonServices lesonServices = LesonServicesImpl();
 
-  Future<void> getLeson({required LessonPathModel lessonPathModel}) async {
+  Future<void> getLeson({required CoursePathModel lessonPathModel}) async {
     emit(LessonLoadingState());
     try {
       final leson = await lesonServices.getLesons(

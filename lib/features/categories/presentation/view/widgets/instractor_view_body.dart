@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sinna/core/constants/images.dart';
 import 'package:sinna/core/router/app_router.dart';
-import 'package:sinna/features/categories/data/models/lesson_path_model.dart';
+import 'package:sinna/core/theme/customs_box_decoratino.dart';
+import 'package:sinna/core/theme/styles.dart';
+import 'package:sinna/features/categories/data/models/course_path_model.dart';
 import 'package:sinna/features/categories/data/services/firebase_lesson_pathes_services.dart';
 
 class InstractorViewBody extends StatelessWidget {
   const InstractorViewBody({super.key, required this.lessonPathModel});
-  final LessonPathModel lessonPathModel;
+  final CoursePathModel lessonPathModel;
   @override
   Widget build(BuildContext context) {
     final doctorpath = FirebaseLessonService.instance;
@@ -19,32 +22,43 @@ class InstractorViewBody extends StatelessWidget {
           return const Center(child: Text('Error'));
         }
         final doctors = snapshot.data ?? [];
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.7,
-              child: ListView.separated(
-                itemBuilder: (context, index) => InkWell(
-                  onTap: () {
-                    lessonPathModel.update(doctor: doctors[index]);
-                    GoRouter.of(
-                      context,
-                    ).push(AppRouter.kLessonsView, extra: lessonPathModel);
-                  },
-                  child: Container(
-                    width: 100,
-                    height: 100,
-                    color: Colors.blue,
-                    child: Center(child: Text(doctors[index])),
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 15),
+          child: GridView.builder(
+            scrollDirection: Axis.horizontal,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 20,
+              childAspectRatio: .9,
+            ),
+            itemBuilder: (context, index) => Column(
+              children: [
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      lessonPathModel.update(doctor: doctors[index]);
+                      GoRouter.of(
+                        context,
+                      ).push(AppRouter.kCoursesView, extra: lessonPathModel);
+                    },
+                    child: Container(
+                      decoration: CustomsBoxDecoration().defaultBoxDecoration(
+                        context,
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Image.asset(AppImages.fav, fit: BoxFit.cover),
+                      ),
+                    ),
                   ),
                 ),
-                separatorBuilder: (context, index) =>
-                    const SizedBox(height: 10),
-                itemCount: doctors.length,
-              ),
+                const SizedBox(height: 10),
+                Text(doctors[index], style: AppStyles.textStyle16(context)),
+              ],
             ),
-          ],
+            itemCount: doctors.length,
+          ),
         );
       },
     );

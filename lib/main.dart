@@ -1,3 +1,6 @@
+// ignore_for_file: depend_on_referenced_packages
+
+import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,10 +9,20 @@ import 'package:sinna/core/router/app_router.dart';
 import 'package:sinna/core/theme/thems.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:sinna/firebase_options.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+import 'package:webview_flutter_android/webview_flutter_android.dart';
+import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  WidgetsFlutterBinding.ensureInitialized();
+
+  if (Platform.isAndroid) {
+    WebViewPlatform.instance = AndroidWebViewPlatform();
+  } else if (Platform.isIOS) {
+    WebViewPlatform.instance = WebKitWebViewPlatform();
+  }
 
   runApp(MyApp());
 }
@@ -27,12 +40,12 @@ class MyApp extends StatelessWidget {
         return BlocProvider(
           create: (_) => AuthCubit()..authStatus(),
           child: Builder(
-            builder: (context) { 
+            builder: (context) {
               return MaterialApp.router(
                 title: 'Sinna',
                 theme: lightTheme,
                 darkTheme: darkTheme,
-                themeMode: ThemeMode.system,
+                themeMode: ThemeMode.light,
                 debugShowCheckedModeBanner: false,
                 routerConfig: AppRouter.router,
               );

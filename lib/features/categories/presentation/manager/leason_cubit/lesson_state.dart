@@ -7,7 +7,7 @@ final class LessonInitial extends LessonState {}
 final class LessonLoadingState extends LessonState {}
 
 final class LessonSuccessState extends LessonState {
-  final List<LessonModel> lesson;
+  final List<CourseModel> lesson;
   LessonSuccessState(this.lesson);
 }
 

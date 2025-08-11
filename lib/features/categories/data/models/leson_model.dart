@@ -1,9 +1,9 @@
-class LessonModel {
+class CourseModel {
   String id;
   String name;
   int number;
   String videoUrl;
-  LessonModel({
+  CourseModel({
     required this.id,
     required this.name,
     required this.number,
@@ -19,8 +19,8 @@ class LessonModel {
     };
   }
 
-  factory LessonModel.fromMap(Map<String, dynamic> map, String documentId) {
-    return LessonModel(
+  factory CourseModel.fromMap(Map<String, dynamic> map, String documentId) {
+    return CourseModel(
       id: documentId,
       name: map['name'] as String,
       number: map['number'] as int,

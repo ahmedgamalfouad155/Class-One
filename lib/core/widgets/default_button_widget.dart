@@ -15,7 +15,7 @@ class DefaultButtonWidget extends StatelessWidget {
     required this.text,
     required this.onPressed,
     this.icon,
-    this.style,
+    this.textStyle,
   });
   final void Function()? onPressed;
   Color? bacgrouncColor;
@@ -24,21 +24,19 @@ class DefaultButtonWidget extends StatelessWidget {
   final String text;
   final double? width, height;
   final Widget? icon;
-  final TextStyle? style;
+  final TextStyle? textStyle;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: height ?? 40.h,
-      width: width ?? MediaQuery.of(context).size.width.w,
-      child: TextButton(
-        onPressed: onPressed,
-        style: TextButton.styleFrom(
-          backgroundColor: bacgrouncColor ?? context.appColors.blue,
-          side: BorderSide(color: context.appColors.blue),
-          shape: RoundedRectangleBorder(
-            borderRadius: borderRadius ?? BorderRadius.circular(20),
-          ),
+    return InkWell(
+      onTap: onPressed,
+      child: Container(
+        height: height ?? 40.h,
+        width: width ?? MediaQuery.of(context).size.width.w,
+        decoration: BoxDecoration(
+          color: bacgrouncColor ?? context.appColors.blue,
+          borderRadius: borderRadius ?? BorderRadius.circular(10.r),
+          border: Border.all(color: context.appColors.blue, width: 1.w),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -48,7 +46,7 @@ class DefaultButtonWidget extends StatelessWidget {
             Text(
               text,
               style:
-                  style ??
+                  textStyle ??
                   AppStyles.textStyle16(context).copyWith(
                     fontWeight: FontWeight.w700,
                     color: textColor ?? context.appColors.white,

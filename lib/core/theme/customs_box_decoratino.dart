@@ -8,14 +8,14 @@ class CustomsBoxDecoration {
     Color? color,
   }) {
     return BoxDecoration(
-      color: color ?? context.appColors.offWhite,
+      color: color ?? context.appColors.white,
       borderRadius: BorderRadius.all(Radius.circular(16)),
       border: border
           ? Border.all(color: context.appColors.blue, width: 1)
           : null,
       boxShadow: [
         BoxShadow(
-          color: context.appColors.grey.withAlpha((0.4 * 255).toInt()),
+          color: context.appColors.primaryBlue.withAlpha((0.4 * 255).toInt()),
           offset: const Offset(-2, 4),
           blurRadius: 6,
           spreadRadius: 1,

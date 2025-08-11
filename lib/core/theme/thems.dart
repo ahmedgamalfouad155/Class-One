@@ -2,14 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/colors.dart';
 
 final lightTheme = ThemeData(
-  scaffoldBackgroundColor: Colors.white,
-  appBarTheme: AppBarTheme(backgroundColor: Colors.white),
+  fontFamily: 'cairo',
+  scaffoldBackgroundColor: Color(0xffF3F3F3),
+  appBarTheme: AppBarTheme(
+    backgroundColor: const Color.fromARGB(255, 23, 32, 66),
+    centerTitle: true,
+    foregroundColor: Colors.white,
+    titleTextStyle: TextStyle(
+      color: Colors.white,
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+    ),
+  ),
   brightness: Brightness.light,
   useMaterial3: true,
   extensions: const [
     AppColors(
-      browen: Color.fromARGB(255, 80, 115, 192),
-      blue: Color.fromARGB(255, 0, 110, 255),
+      primaryBlue: Color.fromARGB(255, 23, 32, 66),
+      blue: Color.fromARGB(255, 6, 52, 112),
       white: Color(0xffFFFFFF),
       offWhite: Color(0xffF3F3F3),
       grey: Color(0xff929292),
@@ -19,11 +29,12 @@ final lightTheme = ThemeData(
 );
 
 final darkTheme = ThemeData(
+  fontFamily: 'cairo',
   brightness: Brightness.dark,
   useMaterial3: true,
   extensions: const [
     AppColors(
-      browen: Color.fromARGB(255, 234, 175, 27),
+      primaryBlue: Color.fromARGB(255, 234, 175, 27),
       blue: Color(0xffFF7A33),
       white: Color.fromARGB(255, 36, 36, 36),
       offWhite: Color(0xff1E1E1E),

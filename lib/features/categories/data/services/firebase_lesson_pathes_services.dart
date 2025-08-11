@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:sinna/features/categories/data/models/lesson_path_model.dart';
+import 'package:sinna/features/categories/data/models/course_path_model.dart';
 
 class FirebaseLessonService {
   // 1️⃣ عمل instance ثابتة من نفس الكلاس
@@ -14,7 +14,7 @@ class FirebaseLessonService {
 
   final FirebaseFirestore _firestore;
 
-  Future<List<String>> getSubjects(LessonPathModel path) async {
+  Future<List<String>> getSubjects(CoursePathModel path) async {
     final snapshot = await _firestore
         .collection(path.country.toString())
         .doc(path.university)
@@ -28,7 +28,7 @@ class FirebaseLessonService {
     return snapshot.docs.map((doc) => doc.id).toList();
   }
 
-  Future<List<String>> getTerms(LessonPathModel path) async {
+  Future<List<String>> getTerms(CoursePathModel path) async {
     final snapshot = await _firestore
         .collection(path.country.toString())
         .doc(path.university)
@@ -44,7 +44,7 @@ class FirebaseLessonService {
     return snapshot.docs.map((doc) => doc.id).toList();
   }
 
-  Future<List<String>> getDoctors(LessonPathModel path) async {
+  Future<List<String>> getDoctors(CoursePathModel path) async {
     final snapshot = await _firestore
         .collection(path.country.toString())
         .doc(path.university)

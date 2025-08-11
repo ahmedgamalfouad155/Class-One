@@ -12,19 +12,19 @@ abstract class AppStyles {
   static TextStyle textStyle20(BuildContext context) => TextStyle(
     fontSize: 20.sp,
     fontWeight: FontWeight.w400,
-    color: context.appColors.black,
+    color: context.appColors.primaryBlue,
   );
 
   static TextStyle textStyle14(BuildContext context) => TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
-    color: context.appColors.black,
+    color: context.appColors.primaryBlue,
   );
 
   static TextStyle textStyle16(BuildContext context) => TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeight.w400,
-    color: context.appColors.black,
+    color: context.appColors.primaryBlue,
   );
 
   static TextStyle textStyle24(BuildContext context) => TextStyle(
