@@ -1,4 +1,4 @@
-class FirestorePath { 
+class FirestorePath {
   static String data(
     String country,
     String university,
@@ -8,7 +8,7 @@ class FirestorePath {
     String term,
     String doctor,
   ) => "$country/$university/$system/$level/$subject/$term/$doctor";
-  static String lessonPath(
+  static String coursePath(
     String country,
     String university,
     String system,
@@ -16,14 +16,16 @@ class FirestorePath {
     String subject,
     String term,
     String doctor,
-  ) => "$country/$university/degree/$system/level/$level/subjects/$subject/term/$term/doctors/$doctor/lessons";
+  ) =>
+      "$country/$university/degree/$system/level/$level/subjects/$subject/term/$term/doctors/$doctor/lessons";
+
+  static String courses(String uid, String cartId) =>
+      "users/$uid/myCourses/$cartId";
+  static String myCourses(String uid) => "users/$uid/myCourses/";
+
   static String products() => "products/";
   static String categories() => "categories/";
   static String users(String uid) => "users/$uid";
-
-  static String carts(String uid, String cartId) => "users/$uid/cards/$cartId";
-  static String myProductsCart(String uid) => "users/$uid/cards/";
-
   static String favoriteProduct(String uid, String productId) =>
       "users/$uid/favorite/$uid/products/$productId";
   static String myFavoriteProduct(String uid) =>

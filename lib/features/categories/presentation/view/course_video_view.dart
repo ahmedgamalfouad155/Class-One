@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sinna/features/categories/data/models/leson_model.dart';
+import 'package:sinna/features/categories/data/models/course_model.dart';
 import 'package:sinna/features/categories/presentation/view/widgets/course_video_view_body.dart';
 
 class CourseVideoView extends StatelessWidget {

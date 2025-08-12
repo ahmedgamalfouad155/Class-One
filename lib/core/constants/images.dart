@@ -3,6 +3,8 @@ class AppAinmation {
   static final String two = 'assets/animations/two.json';
   static final String lock = 'assets/animations/lock.json';
   static final String ok = 'assets/animations/checkmark.json';
+  static final String addTo = 'assets/animations/add_to.json';
+  static final String done = 'assets/animations/done.json';
 }
 
 class AppImages {

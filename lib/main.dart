@@ -1,10 +1,10 @@
 // ignore_for_file: depend_on_referenced_packages
-
 import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:screen_protector/screen_protector.dart';
 import 'package:sinna/core/router/app_router.dart';
 import 'package:sinna/core/theme/thems.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
@@ -17,6 +17,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   WidgetsFlutterBinding.ensureInitialized();
+  await ScreenProtector.preventScreenshotOn();
+  await ScreenProtector.preventScreenshotOn();
 
   if (Platform.isAndroid) {
     WebViewPlatform.instance = AndroidWebViewPlatform();
@@ -63,4 +65,18 @@ feature/Auth
 feature/Navbar
 feature/categories
 feature/profile
+*/
+
+/* 
+admin email = ahmedgamal@gmail.com
+
+user email = mohamedgamal@gmail.com
+
+
+egypt
+mansoura
+Bachelors/Masters
+level one
+
+
 */

@@ -4,8 +4,10 @@ import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_state.d
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
-  final authService = AuthServicesImpl(); 
+  final authService = AuthServicesImpl();
 
+  final bool emailAdmin =
+      AuthServicesImpl().currentUser!.email == "ahmedgamal@gmail.com";
   void authStatus() {
     final user = authService.currentUser;
     if (user != null) {

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sinna/core/constants/images.dart';
 import 'package:sinna/core/router/app_router.dart';
+import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
-import 'package:sinna/features/categories/data/models/leson_model.dart';
+import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
+import 'package:sinna/features/categories/data/models/course_model.dart';
 
 class CourseItemWidget extends StatelessWidget {
   const CourseItemWidget({
@@ -19,30 +22,45 @@ class CourseItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isAdmin = context.read<AuthCubit>().emailAdmin;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
-          numberOfCourse == 1
-              ? GoRouter.of(
-                  context,
-                ).push(AppRouter.kCourseVideoView, extra: course)
-              : null;
+          if (isAdmin) {
+            GoRouter.of(
+              context,
+            ).push(AppRouter.kCourseVideoView, extra: course);
+          } else {
+            numberOfCourse == 1
+                ? GoRouter.of(
+                    context,
+                  ).push(AppRouter.kCourseVideoView, extra: course)
+                : null;
+          }
         },
-        child: Row(
-          children: [
-            Text(
-              numberOfCourse.toDouble().toString(),
-              style: AppStyles.textStyle18(context),
-            ),
-            const SizedBox(width: 10),
-            Text(nameOfCourse, style: AppStyles.textStyle18(context)),
-            const Spacer(),
-            Lottie.asset(
-              numberOfCourse == 1 ? AppAinmation.ok : AppAinmation.lock,
-              height: 30,
-            ),
-          ],
+        child: Card(
+          color: context.appColors.white,
+          elevation: 0,
+          child: Row(
+            children: [
+              Text(
+                numberOfCourse.toDouble().toString(),
+                style: AppStyles.textStyle18(context),
+              ),
+              const SizedBox(width: 10),
+              Text(nameOfCourse, style: AppStyles.textStyle18(context)),
+              const Spacer(),
+              Lottie.asset(
+                isAdmin
+                    ? AppAinmation.ok
+                    : numberOfCourse == 1
+                    ? AppAinmation.ok
+                    : AppAinmation.lock,
+                height: 30,
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -5,7 +5,7 @@ import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_state.d
 import 'package:sinna/features/auth/presentation/view/login_view.dart';
 import 'package:sinna/features/auth/presentation/view/signup_view.dart';
 import 'package:sinna/features/categories/data/models/course_path_model.dart';
-import 'package:sinna/features/categories/data/models/leson_model.dart';
+import 'package:sinna/features/categories/data/models/course_model.dart';
 import 'package:sinna/features/categories/presentation/view/course_video_view.dart';
 import 'package:sinna/features/categories/presentation/view/instractor_view.dart';
 import 'package:sinna/features/categories/presentation/view/courses_view.dart';

@@ -1,4 +1,5 @@
 class CoursePathModel {
+  String? id;
   String? country;
   String? university;
   String? system;
@@ -6,8 +7,10 @@ class CoursePathModel {
   String? subject;
   String? term;
   String? doctor;
+  bool? isPaid;
 
   CoursePathModel({
+    this.id,
     this.country,
     this.university,
     this.system,
@@ -15,9 +18,11 @@ class CoursePathModel {
     this.subject,
     this.term,
     this.doctor,
+    this.isPaid ,
   });
 
   void update({
+    String? id,
     String? country,
     String? university,
     String? system,
@@ -26,6 +31,7 @@ class CoursePathModel {
     String? term,
     String? doctor,
   }) {
+    if (id != null) this.id = id;
     if (country != null) this.country = country;
     if (university != null) this.university = university;
     if (system != null) this.system = system;
@@ -37,6 +43,7 @@ class CoursePathModel {
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'country': country,
       'university': university,
       'system': system,
@@ -44,11 +51,13 @@ class CoursePathModel {
       'subject': subject,
       'term': term,
       'doctor': doctor,
+      'isPaid': isPaid ?? false,
     };
   }
 
-  factory CoursePathModel.fromMap(Map<String, dynamic> map) {
+  factory CoursePathModel.fromMap(Map<String, dynamic> map, String documentId) {
     return CoursePathModel(
+      id: documentId,
       country: map['country'],
       university: map['university'],
       system: map['system'],
@@ -56,6 +65,7 @@ class CoursePathModel {
       subject: map['subject'],
       term: map['term'],
       doctor: map['doctor'],
+      isPaid: map['isPaid'] ?? false,
     );
   }
 }
