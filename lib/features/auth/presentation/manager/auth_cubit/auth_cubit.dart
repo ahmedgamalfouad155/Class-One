@@ -6,8 +6,9 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
   final authService = AuthServicesImpl();
 
-  final bool emailAdmin =
-      AuthServicesImpl().currentUser!.email == "ahmedgamal@gmail.com";
+  bool get emailAdmin =>
+      authService.currentUser?.email == "ahmedgamal@gmail.com";
+
   void authStatus() {
     final user = authService.currentUser;
     if (user != null) {
