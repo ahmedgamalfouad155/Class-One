@@ -17,7 +17,7 @@ class StepsState {
 
   StepsState copyWith({
     String? selectedCountry,
-    String? selectedUniversity,
+    String? selectedUniversity, 
     String? selectedCollege,
     String? selectedDegree,
     String? selectedLevel,

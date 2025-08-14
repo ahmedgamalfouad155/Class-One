@@ -47,7 +47,7 @@ class StepsSectionWidget extends StatelessWidget {
               title: Text("Country", style: AppStyles.textStyle16(context)),
 
               content: CustomDropdownWidget(
-                items: ["Egypt", "Saudi Arabia", "UAE"],
+                items: ["egypt", "Saudi Arabia", "UAE"],
                 selectedValue: state.selectedCountry,
                 hintText: "Select Country",
                 onChanged: (value) {
@@ -64,7 +64,7 @@ class StepsSectionWidget extends StatelessWidget {
             Step(
               title: Text("University", style: AppStyles.textStyle16(context)),
               content: CustomDropdownWidget(
-                items: ["Mansoura", "Cairo", "Riyadh"],
+                items: ["mansoura", "Cairo", "Riyadh"],
                 selectedValue: state.selectedUniversity,
                 hintText: "Select University",
                 onChanged: (value) {
@@ -86,7 +86,7 @@ class StepsSectionWidget extends StatelessWidget {
                 hintText: "Select College",
                 onChanged: (value) {
                   stepsCubit.changeCollege;
-                  signUpCubit.updateUser(user.copyWith(university: value));
+                  signUpCubit.updateUser(user.copyWith(college: value));
                 },
                 enabled: state.currentStep == 2,
               ),
@@ -115,7 +115,7 @@ class StepsSectionWidget extends StatelessWidget {
             Step(
               title: Text("Level", style: AppStyles.textStyle16(context)),
               content: CustomDropdownWidget(
-                items: ["Level One", "Level Two", "Level Three"],
+                items: ["level one", "level two", "Level Three"],
                 selectedValue: state.selectedLevel,
                 hintText: "Select Level",
                 onChanged: (value) {

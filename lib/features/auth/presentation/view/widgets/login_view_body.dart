@@ -53,7 +53,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 HavingAccountAndForgetPasswordLoginTextWidget(),
                 const SizedBox(height: 40),
                 BlocProvider(
-                  create: (context) => LoginCubit(  ),
+                  create: (context) => LoginCubit( ),
                   child: LoginButtonWidget(
                     formKey: formKey,
                     passwordController: passwordController,

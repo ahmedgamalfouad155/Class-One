@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sinna/core/router/app_router.dart';
+import 'package:sinna/core/widgets/custom_animated_dialod.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/features/auth/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:sinna/features/auth/presentation/manager/login_cubit/login_state.dart';
@@ -27,11 +28,20 @@ class LoginButtonWidget extends StatelessWidget {
         if (state is LoginSuccessState) {
           (context).go(AppRouter.kNavBarView);
         }
+        if (state is LoginFailedState) {
+          return CustomAnimatedDialog.show(
+            context: context,
+            message: state.error,
+            animationType: DialogAnimationType.error,
+          );
+        }
       },
       builder: (context, state) {
         if (state is LoginLoadingState) {
           return CircularProgressIndicator();
-        } else if (state is LoginInitial || state is LoginSuccessState) {
+        } else if (state is LoginInitial ||
+            state is LoginSuccessState ||
+            state is LoginFailedState) {
           return CustomButton(
             text: "Login",
             onPressed: () {
@@ -40,8 +50,6 @@ class LoginButtonWidget extends StatelessWidget {
               }
             },
           );
-        } else if (state is LoginFailedState) {
-          return Text(state.error);
         } else {
           return Text("error");
         }

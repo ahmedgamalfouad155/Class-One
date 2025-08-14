@@ -49,8 +49,8 @@ class SignupButtonWidget extends StatelessWidget {
                 name: nameController.text,
                 email: emailController.text,
               );
-              cubit.updateUser(updatedUser);
-
+              cubit.updateUser(updatedUser); 
+              
               if (formKey.currentState!.validate()) {
                 if (confirmPasswordController.text == passwordController.text) {
                   await cubit.signUp(passwordController.text, updatedUser);
