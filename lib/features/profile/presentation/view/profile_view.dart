@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:sinna/features/profile/presentation/view/widgets/profile_view_body.dart';
 
 class ProfileView extends StatelessWidget {
@@ -9,10 +7,8 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocProvider(
-        create: (context) => AuthCubit(),
-        child: ProfileViewBody(),
-      ),
+      appBar: AppBar(title: Text('Profile')),
+      body: ProfileViewBody(),
     );
   }
 }
