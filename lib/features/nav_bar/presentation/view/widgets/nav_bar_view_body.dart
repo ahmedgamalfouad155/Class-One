@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/features/categories/presentation/view/categories_view.dart';
@@ -48,7 +49,7 @@ class _NavBarViewBodyState extends State<NavBarViewBody> {
               backgroundColor: context.appColors.offWhite,
               elevation: 0,
               selectedItemColor: context.appColors.blue,
-              unselectedItemColor: context.appColors.black,
+              unselectedItemColor: context.appColors.primaryBlue,
               selectedLabelStyle: AppStyles.textStyle12(
                 context,
               ).copyWith(fontWeight: FontWeight.bold),
@@ -57,19 +58,35 @@ class _NavBarViewBodyState extends State<NavBarViewBody> {
               ).copyWith(fontWeight: FontWeight.bold),
               items: [
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.insert_chart_outlined_sharp),
+                  icon: Icon(
+                    navBarCubit.currentIndex == 0
+                        ? Ionicons.book
+                        : Ionicons.book_outline,
+                  ),
                   label: "My Corse",
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.category_outlined),
+                  icon: Icon(
+                    navBarCubit.currentIndex == 1
+                        ? MaterialIcons.category
+                        : Icons.category_outlined,
+                  ),
                   label: "Category",
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.notifications_outlined),
+                  icon: Icon(
+                    navBarCubit.currentIndex == 2
+                        ? Ionicons.notifications
+                        : Ionicons.notifications_outline,
+                  ),
                   label: "Notification",
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.person_outlined),
+                  icon: Icon(
+                    navBarCubit.currentIndex == 3
+                        ? Icons.person
+                        : Icons.person_outlined,
+                  ),
                   label: "Profile",
                 ),
               ],

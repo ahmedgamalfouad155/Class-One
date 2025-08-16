@@ -18,11 +18,11 @@ final lightTheme = ThemeData(
   useMaterial3: true,
   extensions: const [
     AppColors(
-      primaryBlue: Color.fromARGB(255, 23, 32, 66),
-      blue: Color.fromARGB(255, 6, 52, 112),
+      primaryBlue: Color.fromARGB(255, 38, 54, 110),
+      blue: Color.fromARGB(255, 2, 35, 76),
       white: Color(0xffFFFFFF),
       offWhite: Color(0xffF3F3F3),
-      grey: Color(0xff929292),
+      grey: Color.fromARGB(255, 125, 128, 131),
       black: Color.fromARGB(255, 0, 0, 0),
     ),
   ],
