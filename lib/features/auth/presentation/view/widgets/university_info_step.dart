@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
-import 'package:sinna/features/auth/presentation/view/widgets/signup_image_and_header_widget.dart';
 import 'package:sinna/features/auth/presentation/view/widgets/steps_section_widget.dart';
 
 class UniversityInfoStep extends StatelessWidget {
@@ -18,8 +17,7 @@ class UniversityInfoStep extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: SingleChildScrollView(
         child: Column(
-          children: [
-            SignupImageAndHeaderWidget(),
+          children: [ 
             StepsSectionWidget(signUpCubit: signUpCubit, user: user),
             CustomButton(
               text: "Next",

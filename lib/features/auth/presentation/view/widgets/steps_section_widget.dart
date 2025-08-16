@@ -5,7 +5,7 @@ import 'package:sinna/features/auth/data/models/user_model.dart';
 import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:sinna/features/auth/presentation/manager/steps_cubit/steps_cubit.dart';
 import 'package:sinna/features/auth/presentation/manager/steps_cubit/steps_state.dart';
-import 'package:sinna/features/auth/presentation/view/custom_drop_down_widget.dart';
+import 'package:sinna/features/auth/presentation/view/widgets/custom_drop_down_widget.dart';
 
 class StepsSectionWidget extends StatelessWidget {
   const StepsSectionWidget({

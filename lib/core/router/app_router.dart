@@ -11,8 +11,10 @@ import 'package:sinna/features/categories/presentation/view/instractor_view.dart
 import 'package:sinna/features/categories/presentation/view/courses_view.dart';
 import 'package:sinna/features/categories/presentation/view/term_view.dart';
 import 'package:sinna/features/landing/presentation/views/landing_view.dart';
-import 'package:sinna/features/landing/presentation/views/language_and_mode_view.dart';
 import 'package:sinna/features/nav_bar/presentation/view/nav_bar_view.dart';
+import 'package:sinna/features/profile/presentation/view/account_view.dart';
+import 'package:sinna/features/profile/presentation/view/language_view.dart';
+import 'package:sinna/features/profile/presentation/view/mode_view.dart';
 import 'package:sinna/features/splash/splash._view.dart';
 
 abstract class AppRouter {
@@ -25,6 +27,9 @@ abstract class AppRouter {
   static const String kInstructorView = '/instructorView';
   static const String kCoursesView = '/lessonsView';
   static const String kCourseVideoView = '/courseVideoView';
+  static const String kLanguageView = '/languageView';
+  static const String kModeView = '/modeView';
+  static const String kAccountView = '/accountView';
 
   static final router = GoRouter(
     routes: [
@@ -68,10 +73,6 @@ abstract class AppRouter {
         builder: (context, state) => const LandingView(),
       ),
       GoRoute(
-        path: klangageAndModeView,
-        builder: (context, state) => const LanguageAndModeView(),
-      ),
-      GoRoute(
         path: kCoursesView,
         builder: (context, state) {
           final coursePathModel = state.extra as CoursePathModel;
@@ -84,6 +85,15 @@ abstract class AppRouter {
           final coursePathModel = state.extra as CourseModel;
           return CourseVideoView(course: coursePathModel);
         },
+      ),
+      GoRoute(
+        path: kLanguageView,
+        builder: (context, state) => const LanguageView(),
+      ),
+      GoRoute(path: kModeView, builder: (context, state) => const ModeView()),
+      GoRoute(
+        path: kAccountView,
+        builder: (context, state) => const AccountView(),
       ),
     ],
   );
