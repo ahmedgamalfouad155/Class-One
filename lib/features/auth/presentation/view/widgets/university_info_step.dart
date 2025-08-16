@@ -15,25 +15,25 @@ class UniversityInfoStep extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.all(16),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [ 
-            StepsSectionWidget(signUpCubit: signUpCubit, user: user),
-            CustomButton(
-              text: "Next",
-              onPressed: () {
-                signUpCubit.updateUser(user);
-                if (user.country.isNotEmpty &&
-                    user.university.isNotEmpty &&
-                    user.system.isNotEmpty &&
-                    user.level.isNotEmpty) {
-                  signUpCubit.nextPage();
-                }
-              },
-              width: AppMedia.width(context) / 2,
-            ),
-          ],
-        ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          StepsSectionWidget(signUpCubit: signUpCubit, user: user),
+          CustomButton(
+            text: "Next",
+            onPressed: () {
+              signUpCubit.updateUser(user); 
+
+              if (user.country.isNotEmpty &&
+                  user.university.isNotEmpty &&
+                  user.system.isNotEmpty &&
+                  user.level.isNotEmpty) {
+                signUpCubit.nextPage();
+              }
+            },
+            width: AppMedia.width(context) / 2,
+          ),
+        ],
       ),
     );
   }

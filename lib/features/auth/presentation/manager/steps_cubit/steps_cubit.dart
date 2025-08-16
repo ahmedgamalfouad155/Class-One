@@ -1,30 +1,53 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sinna/features/auth/presentation/manager/steps_cubit/steps_state.dart';
+import 'steps_state.dart';
 
 class StepsCubit extends Cubit<StepsState> {
   StepsCubit() : super(StepsState());
-
-  void changeCountry(String value) {
-    emit(state.copyWith(selectedCountry: value, currentStep: 1));
+  void selectCountry(String country) {
+    emit(
+      state.copyWith(
+        country: country,
+        university: null,
+        faculty: null,
+        program: null,
+        level: null,
+        specialization: null,
+      ),
+    );
   }
 
-  void changeUniversity(String value) {
-    emit(state.copyWith(selectedUniversity: value, currentStep: 2));
+  void selectUniversity(String university) {
+    emit(
+      state.copyWith(
+        university: university,
+        faculty: null,
+        program: null,
+        level: null,
+        specialization: null,
+      ),
+    );
   }
 
-  void changeCollege(String value) {
-    emit(state.copyWith(selectedCollege: value, currentStep: 3));
+  void selectFaculty(String faculty) {
+    emit(
+      state.copyWith(
+        faculty: faculty,
+        program: null,
+        level: null,
+        specialization: null,
+      ),
+    );
   }
 
-  void changeDegree(String value) {
-    emit(state.copyWith(selectedDegree: value, currentStep: 4));
+  void selectProgram(String program) {
+    emit(state.copyWith(program: program, level: null, specialization: null));
   }
 
-  void changeLevel(String value) {
-    emit(state.copyWith(selectedLevel: value));
+  void selectLevel(String level) {
+    emit(state.copyWith(level: level, specialization: null));
   }
 
-  void changeStep(int step) {
-    emit(state.copyWith(currentStep: step));
+  void selectSpecialization(String value) {
+    emit(state.copyWith(specialization: value));
   }
 }

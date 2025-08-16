@@ -45,6 +45,10 @@ abstract class AppRouter {
           );
         },
       ),
+      GoRoute(
+        path: klangageAndModeView,
+        builder: (context, state) => const LandingView(),
+      ),
       GoRoute(path: kLogInView, builder: (context, state) => const LoginView()),
       GoRoute(
         path: kSignUpView,

@@ -1,49 +1,48 @@
 import 'package:flutter/material.dart';
-import 'package:sinna/core/theme/colors.dart';
-import 'package:sinna/core/theme/styles.dart';
 
 class CustomDropdownWidget extends StatelessWidget {
-  final List<String> items;
   final String? selectedValue;
+  final List<String> items;
   final String hintText;
-  final ValueChanged<String> onChanged;
-  final bool enabled;
+  final Function(String?) onChanged;
+  final bool isEnabled;
 
   const CustomDropdownWidget({
     super.key,
-    required this.items,
     required this.selectedValue,
+    required this.items,
     required this.hintText,
     required this.onChanged,
-    this.enabled = true,
+    this.isEnabled = true,
   });
 
   @override
   Widget build(BuildContext context) {
+    // حذف أي تكرار
+    final uniqueItems = items.toSet().toList();
+
+    // لو selectedValue مش موجودة في الليست → null
+    final safeValue = (selectedValue != null &&
+            uniqueItems.contains(selectedValue))
+        ? selectedValue
+        : null;
+
     return DropdownButtonFormField<String>(
-      value: selectedValue,
-      focusColor: context.appColors.blue,
-      iconEnabledColor: context.appColors.blue,
+      value: safeValue,
+      hint: Text(hintText),
       decoration: InputDecoration(
-        hintText: hintText,
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: context.appColors.blue, width: 1.5),
+        border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: context.appColors.blue, width: 2),
-          borderRadius: BorderRadius.circular(12),
-        ),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       ),
-      onChanged: enabled ? (v) => onChanged(v!) : null,
-      items: items
-          .map(
-            (e) => DropdownMenuItem<String>(
-              value: e,
-              child: Text(e, style: AppStyles.textStyle18(context)),
-            ),
-          )
-          .toList(),
+      items: uniqueItems.map((item) {
+        return DropdownMenuItem(
+          value: item,
+          child: Text(item),
+        );
+      }).toList(),
+      onChanged: isEnabled ? onChanged : null,
     );
   }
 }

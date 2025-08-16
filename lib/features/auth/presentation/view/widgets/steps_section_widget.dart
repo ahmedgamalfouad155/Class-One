@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/features/auth/data/models/user_model.dart';
 import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:sinna/features/auth/presentation/manager/steps_cubit/steps_cubit.dart';
 import 'package:sinna/features/auth/presentation/manager/steps_cubit/steps_state.dart';
 import 'package:sinna/features/auth/presentation/view/widgets/custom_drop_down_widget.dart';
+import 'package:timelines_plus/timelines_plus.dart';
 
 class StepsSectionWidget extends StatelessWidget {
   const StepsSectionWidget({
@@ -19,119 +19,99 @@ class StepsSectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<StepsCubit, StepsState>(
-      builder: (context, state) {
-        final stepsCubit = context.read<StepsCubit>();
-        return Stepper(
-          type: StepperType.vertical,
-          physics: const NeverScrollableScrollPhysics(),
-          currentStep: state.currentStep,
+    return BlocProvider(
+      create: (_) => StepsCubit(),
+      child: BlocBuilder<StepsCubit, StepsState>(
+        builder: (context, state) {
+          final cubit = context.read<StepsCubit>();
 
-          onStepTapped: (step) {
-            if (step <= state.currentStep) {
-              stepsCubit.changeStep(step);
-            }
-          },
-          onStepContinue: () {
-            if (state.currentStep < 4) {
-              stepsCubit.changeStep(state.currentStep + 1);
-            }
-          },
-          onStepCancel: () {
-            if (state.currentStep > 0) {
-              stepsCubit.changeStep(state.currentStep - 1);
-            }
-          },
-          steps: [
-            Step(
-              title: Text("Country", style: AppStyles.textStyle16(context)),
-
-              content: CustomDropdownWidget(
-                items: ["egypt", "Saudi Arabia", "UAE"],
-                selectedValue: state.selectedCountry,
-                hintText: "Select Country",
-                onChanged: (value) {
-                  stepsCubit.changeCountry(value);
-                  signUpCubit.updateUser(user.copyWith(country: value));
-                },
-                enabled: state.currentStep == 0,
-              ),
-              isActive: state.currentStep >= 0,
-              state: state.selectedCountry != null
-                  ? StepState.complete
-                  : StepState.indexed,
+          final steps = <Widget>[
+            CustomDropdownWidget(
+              items: StepsData.universities.keys.toList(),
+              selectedValue: state.country,
+              hintText: "Select Country",
+              onChanged: (val) {
+                cubit.selectCountry(val!);
+                signUpCubit.updateUser(user.copyWith(country: val));
+              },
             ),
-            Step(
-              title: Text("University", style: AppStyles.textStyle16(context)),
-              content: CustomDropdownWidget(
-                items: ["mansoura", "Cairo", "Riyadh"],
-                selectedValue: state.selectedUniversity,
+
+            if (state.country != null)
+              CustomDropdownWidget(
+                items: StepsData.universities[state.country] ?? [],
+                selectedValue: state.university,
                 hintText: "Select University",
-                onChanged: (value) {
-                  stepsCubit.changeCountry;
-                  signUpCubit.updateUser(user.copyWith(university: value));
+                onChanged: (val) {
+                  cubit.selectUniversity(val!);
+                  signUpCubit.updateUser(user.copyWith(university: val));
                 },
-                enabled: state.currentStep == 1,
               ),
-              isActive: state.currentStep >= 1,
-              state: state.selectedUniversity != null
-                  ? StepState.complete
-                  : StepState.indexed,
-            ),
-            Step(
-              title: Text("College", style: AppStyles.textStyle16(context)),
-              content: CustomDropdownWidget(
-                items: ["Dentistry", "Nursing", " Medicine"],
-                selectedValue: state.selectedUniversity,
-                hintText: "Select College",
-                onChanged: (value) {
-                  stepsCubit.changeCollege;
-                  signUpCubit.updateUser(user.copyWith(college: value));
+            if (state.university != null)
+              CustomDropdownWidget(
+                items: StepsData.faculties[state.university] ?? [],
+                selectedValue: state.faculty,
+                hintText: "Select Faculty",
+                onChanged: (val) {
+                  cubit.selectFaculty(val!);
+                  signUpCubit.updateUser(user.copyWith(college: val));
                 },
-                enabled: state.currentStep == 2,
               ),
-              isActive: state.currentStep >= 2,
-              state: state.selectedUniversity != null
-                  ? StepState.complete
-                  : StepState.indexed,
-            ),
-            Step(
-              title: Text("Degree", style: AppStyles.textStyle16(context)),
-              content: CustomDropdownWidget(
-                items: ["Bachelors", "Masters", "Prometric"],
-                selectedValue: state.selectedDegree,
-                hintText: "Select Degree",
-                onChanged: (value) {
-                  stepsCubit.changeCountry;
-                  signUpCubit.updateUser(user.copyWith(system: value));
+
+            if (state.faculty != null)
+              CustomDropdownWidget(
+                items: StepsData.programs[state.faculty] ?? [],
+                selectedValue: state.program,
+                hintText: "Select Program",
+                onChanged: (val) {
+                  cubit.selectProgram(val!);
+                  signUpCubit.updateUser(user.copyWith(system: val));
                 },
-                enabled: state.currentStep == 3,
               ),
-              isActive: state.currentStep >= 3,
-              state: state.selectedDegree != null
-                  ? StepState.complete
-                  : StepState.indexed,
-            ),
-            Step(
-              title: Text("Level", style: AppStyles.textStyle16(context)),
-              content: CustomDropdownWidget(
-                items: ["level one", "level two", "Level Three"],
-                selectedValue: state.selectedLevel,
+
+            if (state.program != null &&
+                StepsData.levels.containsKey(state.program))
+              CustomDropdownWidget(
+                items: StepsData.levels[state.program] ?? [],
+                selectedValue: state.level,
                 hintText: "Select Level",
-                onChanged: (value) {
-                  stepsCubit.changeCountry;
-                  signUpCubit.updateUser(user.copyWith(level: value));
+                onChanged: (val) {
+                  cubit.selectLevel(val!);
+                  signUpCubit.updateUser(user.copyWith(level: val));
                 },
-                enabled: state.currentStep == 4,
               ),
-              isActive: state.currentStep >= 4,
-              state: state.selectedLevel != null
-                  ? StepState.complete
-                  : StepState.indexed,
+
+            if (state.level == "Second")
+              CustomDropdownWidget(
+                items: StepsData.specializations["Second"] ?? [],
+                selectedValue: state.specialization,
+                hintText: "Select Specialization",
+                onChanged: (val) {
+                  cubit.selectSpecialization(val!);
+
+                  signUpCubit.updateUser(user.copyWith(specialization: val));
+                },
+              ),
+          ];
+
+          return FixedTimeline.tileBuilder(
+            theme: TimelineThemeData(nodePosition: 0),
+            builder: TimelineTileBuilder.connected(
+              itemCount: steps.length,
+              contentsBuilder: (_, index) => Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 15.0,
+                  horizontal: 10,
+                ),
+                child: steps[index],
+              ),
+              indicatorBuilder: (_, index) {
+                return DotIndicator(color: Colors.blue);
+              },
+              connectorBuilder: (_, index, ___) => const SolidLineConnector(),
             ),
-          ],
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

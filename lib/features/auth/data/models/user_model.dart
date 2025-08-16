@@ -7,6 +7,7 @@ class UserModel {
   final String system;
   final String level;
   final String college;
+  final String specialization;
 
   UserModel({
     required this.name,
@@ -17,6 +18,7 @@ class UserModel {
     required this.system,
     required this.level,
     required this.college,
+    required this.specialization,
   });
 
   factory UserModel.empty() {
@@ -29,6 +31,7 @@ class UserModel {
       system: '',
       level: '',
       college: '',
+      specialization: '',
     );
   }
 
@@ -41,6 +44,7 @@ class UserModel {
     String? system,
     String? level,
     String? college,
+    String? specialization,
   }) {
     return UserModel(
       name: name ?? this.name,
@@ -51,6 +55,7 @@ class UserModel {
       system: system ?? this.system,
       level: level ?? this.level,
       college: college ?? this.college,
+      specialization: specialization ?? this.specialization,
     );
   }
 
@@ -64,6 +69,7 @@ class UserModel {
       'system': system,
       'level': level,
       'college': college,
+      'specialization': specialization,
     };
   }
 
@@ -77,6 +83,7 @@ class UserModel {
       system: map['system'] ?? '',
       level: map['level'] ?? '',
       college: map['college'] ?? '',
+      specialization: map['specialization'] ?? '',
     );
   }
 }
