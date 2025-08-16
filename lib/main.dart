@@ -65,6 +65,9 @@ feature/Auth
 feature/Navbar
 feature/categories
 feature/profile
+feature/my_courses
+
+
 */
 
 /* 
