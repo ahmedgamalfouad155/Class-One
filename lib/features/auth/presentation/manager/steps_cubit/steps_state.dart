@@ -34,6 +34,32 @@ class StepsState {
   }
 }
 
+Map<String, String> convert = {
+  "Egypt": "egypt",
+  "Saudi Arabia": "saudi-arabia",
+  "Mansoura University": "saudi_arabia",
+  "King Khalid University": "king_khalid_university",
+  "Dentistry": "dentistry",
+  "Nursing": "nursing",
+  "Bachelor": "bachelors",
+  "Master": "masters",
+  "Piometry": "prometric",
+  "Level 1": "level_1",
+  "Level 2": "level_2",
+  "Level 3": "level_3",
+  "Level 4": "level_4",
+  "Level 5 ": "level_5",
+  "First": "first",
+  "Second": "second",
+  "Periodontology": "prothodontics",
+  "Oral surgery": "oral_surgery",
+  "Pedodontics": "periodontology",
+  "Endodontics": "endodontics",
+  "Operative": "operative",
+  "Prothodontics": "pedodontics",
+  "Orthodontics": "orthodontics",
+};
+
 class StepsData {
   static final universities = {
     "Egypt": ["Mansoura University"],
@@ -56,6 +82,14 @@ class StepsData {
   };
 
   static final specializations = {
-    "Second": ["Orthodontics", "Endodontics", "Prosthodontics"],
+    "Second": [
+      "Periodontology",
+      "Oral surgery",
+      "Pedodontics",
+      "Endodontics",
+      "Operative",
+      "Prothodontics",
+      "Orthodontics",
+    ],
   };
 }

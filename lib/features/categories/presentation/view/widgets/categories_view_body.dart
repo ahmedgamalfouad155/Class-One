@@ -19,8 +19,8 @@ class CategoriesViewBody extends StatelessWidget {
           final path = CoursePathModel(
             country: state.userModel.country,
             university: state.userModel.university,
-            system: state.userModel.system,
-            level: state.userModel.level,
+            system: state.userModel.program,
+            level: state.userModel.stage,
           );
           final subjectPath = FirebaseLessonService.instance;
           return FutureBuilder<List<String>>(

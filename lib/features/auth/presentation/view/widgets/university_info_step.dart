@@ -22,14 +22,16 @@ class UniversityInfoStep extends StatelessWidget {
           CustomButton(
             text: "Next",
             onPressed: () {
-              signUpCubit.updateUser(user); 
-
-              if (user.country.isNotEmpty &&
-                  user.university.isNotEmpty &&
-                  user.system.isNotEmpty &&
-                  user.level.isNotEmpty) {
-                signUpCubit.nextPage();
-              }
+              signUpCubit.updateUser(user);
+              signUpCubit.nextPage();
+              // print(user.specialization.isEmpty);
+              // if (user.country.isNotEmpty &&
+              //     user.university.isNotEmpty &&
+              //     user.faculty.isNotEmpty &&
+              //     user.program.isNotEmpty &&
+              //     user.stage.isNotEmpty) {
+              //   signUpCubit.nextPage();
+              // }
             },
             width: AppMedia.width(context) / 2,
           ),

@@ -4,20 +4,20 @@ class UserModel {
   final String email;
   final String country;
   final String university;
-  final String system;
-  final String level;
-  final String college;
+  final String faculty;
+  final String program;
+  final String stage; 
   final String specialization;
-
+  
   UserModel({
     required this.name,
     required this.uid,
     required this.email,
     required this.country,
     required this.university,
-    required this.system,
-    required this.level,
-    required this.college,
+    required this.faculty,
+    required this.program,
+    required this.stage, 
     required this.specialization,
   });
 
@@ -28,9 +28,9 @@ class UserModel {
       email: '',
       country: '',
       university: '',
-      system: '',
-      level: '',
-      college: '',
+      faculty: '',
+      program: '',
+      stage: '', 
       specialization: '',
     );
   }
@@ -41,9 +41,9 @@ class UserModel {
     String? email,
     String? country,
     String? university,
-    String? system,
-    String? level,
-    String? college,
+    String? faculty,
+    String? program,
+    String? stage,
     String? specialization,
   }) {
     return UserModel(
@@ -52,9 +52,9 @@ class UserModel {
       email: email ?? this.email,
       country: country ?? this.country,
       university: university ?? this.university,
-      system: system ?? this.system,
-      level: level ?? this.level,
-      college: college ?? this.college,
+      faculty: faculty ?? this.faculty,
+      program: program ?? this.program,
+      stage: stage ?? this.stage,
       specialization: specialization ?? this.specialization,
     );
   }
@@ -66,9 +66,9 @@ class UserModel {
       'email': email,
       'country': country,
       'university': university,
-      'system': system,
-      'level': level,
-      'college': college,
+      'faculty': faculty,
+      'program': program,
+      'stage': stage,
       'specialization': specialization,
     };
   }
@@ -80,9 +80,9 @@ class UserModel {
       email: map['email'] ?? '',
       country: map['country'] ?? '',
       university: map['university'] ?? '',
-      system: map['system'] ?? '',
-      level: map['level'] ?? '',
-      college: map['college'] ?? '',
+      faculty: map['college'] ?? '',
+      program: map['system'] ?? '',
+      stage: map['level'] ?? '',
       specialization: map['specialization'] ?? '',
     );
   }

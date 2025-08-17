@@ -53,7 +53,7 @@ class StepsSectionWidget extends StatelessWidget {
                 hintText: "Select Faculty",
                 onChanged: (val) {
                   cubit.selectFaculty(val!);
-                  signUpCubit.updateUser(user.copyWith(college: val));
+                  signUpCubit.updateUser(user.copyWith(faculty: val));
                 },
               ),
 
@@ -64,7 +64,7 @@ class StepsSectionWidget extends StatelessWidget {
                 hintText: "Select Program",
                 onChanged: (val) {
                   cubit.selectProgram(val!);
-                  signUpCubit.updateUser(user.copyWith(system: val));
+                  signUpCubit.updateUser(user.copyWith(program: val));
                 },
               ),
 
@@ -76,7 +76,7 @@ class StepsSectionWidget extends StatelessWidget {
                 hintText: "Select Level",
                 onChanged: (val) {
                   cubit.selectLevel(val!);
-                  signUpCubit.updateUser(user.copyWith(level: val));
+                  signUpCubit.updateUser(user.copyWith(stage: val));
                 },
               ),
 
@@ -115,3 +115,4 @@ class StepsSectionWidget extends StatelessWidget {
     );
   }
 }
+
