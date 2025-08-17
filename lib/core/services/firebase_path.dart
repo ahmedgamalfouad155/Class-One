@@ -11,13 +11,13 @@ class FirestorePath {
   static String coursePath(
     String country,
     String university,
-    String system,
-    String level,
+    String program,
+    String stage,
     String subject,
     String term,
     String doctor,
   ) =>
-      "$country/$university/degree/$system/level/$level/subjects/$subject/term/$term/doctors/$doctor/lessons";
+      "countries/$country/universities/$university/faculties/dentistry/programs/$program/stages/$stage/subjects/$subject/terms/$term/lessons";
 
   static String courses(String uid, String cartId) =>
       "users/$uid/myCourses/$cartId";

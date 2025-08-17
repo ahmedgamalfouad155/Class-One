@@ -28,6 +28,7 @@ class NameOfSubjectItemWidget extends StatelessWidget {
         decoration: CustomsBoxDecoration().defaultBoxDecoration(context),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
+
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
@@ -38,6 +39,13 @@ class NameOfSubjectItemWidget extends StatelessWidget {
               style: AppStyles.textStyle16(
                 context,
               ).copyWith(fontWeight: FontWeight.bold),
+            ),
+            Text(
+              "Dr Ezaat Shoman",
+              style: AppStyles.textStyle12(context).copyWith(
+                fontWeight: FontWeight.bold,
+                color: context.appColors.blue,
+              ),
             ),
             DefaultButtonWidget(
               text: "Start Now",

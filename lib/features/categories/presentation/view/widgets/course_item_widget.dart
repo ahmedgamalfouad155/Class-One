@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lottie/lottie.dart';
-import 'package:sinna/core/constants/images.dart';
 import 'package:sinna/core/router/app_router.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
@@ -51,13 +49,13 @@ class CourseItemWidget extends StatelessWidget {
               const SizedBox(width: 10),
               Text(nameOfCourse, style: AppStyles.textStyle18(context)),
               const Spacer(),
-              Lottie.asset(
+              Icon(
                 isAdmin
-                    ? AppAinmation.ok
+                    ? Icons.lock_open_rounded
                     : numberOfCourse == 1
-                    ? AppAinmation.ok
-                    : AppAinmation.lock,
-                height: 30,
+                    ? Icons.lock_open_rounded
+                    : Icons.lock_rounded, 
+                color: context.appColors.blue,
               ),
             ],
           ),

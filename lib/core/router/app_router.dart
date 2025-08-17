@@ -7,7 +7,6 @@ import 'package:sinna/features/auth/presentation/view/signup_view.dart';
 import 'package:sinna/features/categories/data/models/course_path_model.dart';
 import 'package:sinna/features/categories/data/models/course_model.dart';
 import 'package:sinna/features/categories/presentation/view/course_video_view.dart';
-import 'package:sinna/features/categories/presentation/view/instractor_view.dart';
 import 'package:sinna/features/categories/presentation/view/courses_view.dart';
 import 'package:sinna/features/categories/presentation/view/term_view.dart';
 import 'package:sinna/features/landing/presentation/views/landing_view.dart';
@@ -65,13 +64,13 @@ abstract class AppRouter {
           return TermView(coursePathModel: coursePathModel);
         },
       ),
-      GoRoute(
-        path: kInstructorView,
-        builder: (context, state) {
-          final coursePathModel = state.extra as CoursePathModel;
-          return InstractorView(coursePathModel: coursePathModel);
-        },
-      ),
+      // GoRoute(
+      //   path: kInstructorView,
+      //   builder: (context, state) {
+      //     final coursePathModel = state.extra as CoursePathModel;
+      //     return InstractorView(coursePathModel: coursePathModel);
+      //   },
+      // ),
       GoRoute(
         path: klandingView,
         builder: (context, state) => const LandingView(),

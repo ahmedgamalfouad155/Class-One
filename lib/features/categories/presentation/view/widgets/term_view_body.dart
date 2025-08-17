@@ -35,10 +35,13 @@ class TermViewBody extends StatelessWidget {
 
               itemBuilder: (context, index) => InkWell(
                 onTap: () {
-                  lessonPathModel.update(term: terms[index]);
+                  lessonPathModel.update(
+                    term: terms[index],
+                    doctor: 'Dr Ezzat',
+                  );
                   GoRouter.of(
                     context,
-                  ).push(AppRouter.kInstructorView, extra: lessonPathModel);
+                  ).push(AppRouter.kCoursesView, extra: lessonPathModel);
                 },
                 child: TermItemWidget(
                   image: images[index],

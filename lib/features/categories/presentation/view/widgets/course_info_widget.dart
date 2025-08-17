@@ -31,7 +31,7 @@ class CourseInfoWidget extends StatelessWidget {
                   children: [
                     Text(
                       coursePathModel.doctor.toString(),
-                      style: AppStyles.textStyle16(
+                      style: AppStyles.textStyle14(
                         context,
                       ).copyWith(fontWeight: FontWeight.bold),
                     ),
