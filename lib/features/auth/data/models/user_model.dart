@@ -6,9 +6,9 @@ class UserModel {
   final String university;
   final String faculty;
   final String program;
-  final String stage; 
+  final String stage;
   final String specialization;
-  
+
   UserModel({
     required this.name,
     required this.uid,
@@ -17,7 +17,7 @@ class UserModel {
     required this.university,
     required this.faculty,
     required this.program,
-    required this.stage, 
+    required this.stage,
     required this.specialization,
   });
 
@@ -30,7 +30,7 @@ class UserModel {
       university: '',
       faculty: '',
       program: '',
-      stage: '', 
+      stage: '',
       specialization: '',
     );
   }
@@ -80,9 +80,9 @@ class UserModel {
       email: map['email'] ?? '',
       country: map['country'] ?? '',
       university: map['university'] ?? '',
-      faculty: map['college'] ?? '',
-      program: map['system'] ?? '',
-      stage: map['level'] ?? '',
+      faculty: map['faculty'] ?? '',
+      program: map['program'] ?? '',
+      stage: map['stage'] ?? '',
       specialization: map['specialization'] ?? '',
     );
   }

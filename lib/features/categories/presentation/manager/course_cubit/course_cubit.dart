@@ -13,12 +13,10 @@ class CourseCubit extends Cubit<CourseState> {
     try {
       final leson = await courseServices.getCourses(
         coursePathModel: coursePathModel,
-      );
+      ); 
       emit(CourseSuccessState(leson));
     } catch (e) {
       emit(CourseFailureState(e.toString()));
     }
   }
-
-
 }

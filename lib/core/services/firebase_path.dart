@@ -1,23 +1,23 @@
 class FirestorePath {
-  static String data(
-    String country,
-    String university,
-    String system,
-    String level,
-    String subject,
-    String term,
-    String doctor,
-  ) => "$country/$university/$system/$level/$subject/$term/$doctor";
   static String coursePath(
     String country,
     String university,
+    String faculty,
     String program,
     String stage,
     String subject,
     String term,
-    String doctor,
   ) =>
-      "countries/$country/universities/$university/faculties/dentistry/programs/$program/stages/$stage/subjects/$subject/terms/$term/lessons";
+      "countries/$country/universities/$university/faculties/$faculty/programs/$program/stages/$stage/subjects/$subject/terms/$term/lessons/";
+
+  static String subjectsPath({
+    required String country,
+    required String university,
+    required String faculty,
+    required String program,
+    required String stage,
+  }) =>
+      "countries/$country/universities/$university/faculties/$faculty/programs/$program/stages/$stage/subjects/";
 
   static String courses(String uid, String cartId) =>
       "users/$uid/myCourses/$cartId";

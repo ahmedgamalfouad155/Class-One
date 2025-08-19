@@ -12,7 +12,7 @@ class CoursesViewBody extends StatelessWidget {
   final CoursePathModel coursePathModel;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     final isAdmin = context.read<AuthCubit>().emailAdmin;
     return Padding(
       padding: const EdgeInsets.all(8.0),

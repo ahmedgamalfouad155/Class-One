@@ -57,8 +57,8 @@ class _CourseVideoViewBodyState extends State<CourseVideoViewBody> {
     super.dispose();
   }
 
-  @override 
-    Widget build(BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -88,7 +88,7 @@ class _CourseVideoViewBodyState extends State<CourseVideoViewBody> {
               ),
             ),
           const SizedBox(height: 20),
-          Text(widget.course.name, style: AppStyles.textStyle18(context)),
+          Text(widget.course.tittle, style: AppStyles.textStyle18(context)),
         ],
       ),
     );

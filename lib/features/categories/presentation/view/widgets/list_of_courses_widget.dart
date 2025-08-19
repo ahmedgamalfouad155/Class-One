@@ -24,7 +24,7 @@ class ListOfCoursesWidget extends StatelessWidget {
               return ListView.builder(
                 itemBuilder: (context, index) => CourseItemWidget(
                   numberOfCourse: sortedLessons[index].number,
-                  nameOfCourse: sortedLessons[index].name,
+                  nameOfCourse: sortedLessons[index].tittle,
                   course: sortedLessons[index],
                 ),
                 itemCount: sortedLessons.length,

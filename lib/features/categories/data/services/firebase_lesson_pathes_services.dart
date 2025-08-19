@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sinna/core/constants/constants.dart';
 import 'package:sinna/features/categories/data/models/course_path_model.dart';
 
 class FirebaseLessonService {
@@ -16,13 +17,17 @@ class FirebaseLessonService {
 
   Future<List<String>> getSubjects(CoursePathModel path) async {
     final snapshot = await _firestore
-        .collection(path.country.toString())
+        .collection(FireStoreCollectionsName.countries)
+        .doc(path.country)
+        .collection(FireStoreCollectionsName.universities)
         .doc(path.university)
-        .collection('degree')
-        .doc(path.system)
-        .collection('level')
-        .doc(path.level)
-        .collection('subjects')
+        .collection(FireStoreCollectionsName.faculties)
+        .doc(path.faculty)
+        .collection(FireStoreCollectionsName.programs)
+        .doc(path.program)
+        .collection(FireStoreCollectionsName.stages)
+        .doc(path.stage)
+        .collection(FireStoreCollectionsName.subjects)
         .get();
 
     return snapshot.docs.map((doc) => doc.id).toList();
@@ -33,9 +38,9 @@ class FirebaseLessonService {
         .collection(path.country.toString())
         .doc(path.university)
         .collection('degree')
-        .doc(path.system)
+        .doc(path.program)
         .collection('level')
-        .doc(path.level)
+        .doc(path.stage)
         .collection('subjects')
         .doc(path.subject)
         .collection("term")
@@ -49,9 +54,9 @@ class FirebaseLessonService {
         .collection(path.country.toString())
         .doc(path.university)
         .collection('degree')
-        .doc(path.system)
+        .doc(path.program)
         .collection('level')
-        .doc(path.level)
+        .doc(path.stage)
         .collection('subjects')
         .doc(path.subject)
         .collection("term")

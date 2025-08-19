@@ -5,18 +5,16 @@ import 'package:sinna/core/theme/customs_box_decoratino.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/default_button_widget.dart';
-import 'package:sinna/features/categories/data/models/course_path_model.dart';
+import 'package:sinna/features/categories/data/models/subject_info_model.dart';
 
 class NameOfSubjectItemWidget extends StatelessWidget {
   const NameOfSubjectItemWidget({
     super.key,
-    required this.path,
-    required this.subjects,
+    required this.subjectInfo,
     required this.onTap,
   });
 
-  final CoursePathModel path;
-  final String subjects;
+  final SubjectInfoModel subjectInfo;
   final void Function() onTap;
 
   @override
@@ -27,21 +25,20 @@ class NameOfSubjectItemWidget extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
         decoration: CustomsBoxDecoration().defaultBoxDecoration(context),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-
+          mainAxisAlignment: MainAxisAlignment.spaceAround, 
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
               child: Image.asset(AppImages.logo),
             ),
             Text(
-              subjects,
+              subjectInfo.subjectName,
               style: AppStyles.textStyle16(
                 context,
               ).copyWith(fontWeight: FontWeight.bold),
             ),
             Text(
-              "Dr Ezaat Shoman",
+              subjectInfo.subjectDoctor,
               style: AppStyles.textStyle12(context).copyWith(
                 fontWeight: FontWeight.bold,
                 color: context.appColors.blue,

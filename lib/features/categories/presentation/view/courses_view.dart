@@ -16,6 +16,7 @@ class CoursesView extends StatelessWidget {
       appBar: AppBar(title: Text('Course details')),
       body: BlocProvider(
         create: (context) {
+          // print(coursePathModel.id);
           return CourseCubit()..getLeson(coursePathModel: coursePathModel);
         },
         child: CoursesViewBody(coursePathModel: coursePathModel),

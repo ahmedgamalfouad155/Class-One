@@ -2,8 +2,9 @@ class CoursePathModel {
   String? id;
   String? country;
   String? university;
-  String? system;
-  String? level;
+  String? faculty;
+  String? program;
+  String? stage;
   String? subject;
   String? term;
   String? doctor;
@@ -13,32 +14,33 @@ class CoursePathModel {
     this.id,
     this.country,
     this.university,
-    this.system,
-    this.level,
+      this.faculty,
+    this.program,
+    this.stage,
     this.subject,
     this.term,
     this.doctor,
-    this.isPaid ,
+    this.isPaid,
   });
 
   void update({
     String? id,
     String? country,
     String? university,
-    String? system,
-    String? level,
+    String? faculty,
+    String? program,
+    String? stage,
     String? subject,
     String? term,
-    String? doctor,
   }) {
     if (id != null) this.id = id;
     if (country != null) this.country = country;
     if (university != null) this.university = university;
-    if (system != null) this.system = system;
-    if (level != null) this.level = level;
+    if (faculty != null) this.faculty = faculty;
+    if (program != null) this.program = program;
+    if (stage != null) this.stage = stage;
     if (subject != null) this.subject = subject;
     if (term != null) this.term = term;
-    if (doctor != null) this.doctor = doctor;
   }
 
   Map<String, dynamic> toMap() {
@@ -46,11 +48,11 @@ class CoursePathModel {
       'id': id,
       'country': country,
       'university': university,
-      'system': system,
-      'level': level,
+      'faculty': faculty,
+      'program': program,
+      'stage': stage,
       'subject': subject,
       'term': term,
-      'doctor': doctor,
       'isPaid': isPaid ?? false,
     };
   }
@@ -60,11 +62,10 @@ class CoursePathModel {
       id: documentId,
       country: map['country'],
       university: map['university'],
-      system: map['system'],
-      level: map['level'],
+      program: map['system'],
+      stage: map['level'],
       subject: map['subject'],
       term: map['term'],
-      doctor: map['doctor'],
       isPaid: map['isPaid'] ?? false,
     );
   }
