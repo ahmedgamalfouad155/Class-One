@@ -19,6 +19,7 @@ class ListOfCoursesWidget extends StatelessWidget {
             if (state is CourseLoadingState) {
               return const Center(child: CircularProgressIndicator());
             } else if (state is CourseSuccessState) {
+              print(state.courses.length);
               final sortedLessons = List<CourseModel>.from(state.courses)
                 ..sort((a, b) => a.number.compareTo(b.number));
               return ListView.builder(
