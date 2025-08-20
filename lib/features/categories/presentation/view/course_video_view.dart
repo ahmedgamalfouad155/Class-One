@@ -10,7 +10,7 @@ class CourseVideoView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Watching Course")),
+      // appBar: AppBar(title: Text("Watching Course")),
       body: CourseVideoViewBody(course: course),
     );
   }

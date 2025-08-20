@@ -37,6 +37,13 @@ class AddToMyCoursesButtonWidget extends StatelessWidget {
             bacgrouncColor: context.appColors.white,
             textColor: context.appColors.blue,
             onPressed: () {
+              // print(coursePathModel.country);
+              // print(coursePathModel.university);
+              // print(coursePathModel.faculty);
+              // print(coursePathModel.stage);
+              // print(coursePathModel.subject);
+              // print(coursePathModel.term);
+
               context.read<AddToMyCoursesCubit>().addCouseToMyCourse(
                 coursePathModel: coursePathModel,
               );
@@ -50,3 +57,5 @@ class AddToMyCoursesButtonWidget extends StatelessWidget {
     );
   }
 }
+
+

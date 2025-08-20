@@ -35,3 +35,6 @@ class CoursesViewBody extends StatelessWidget {
     );
   }
 }
+
+
+

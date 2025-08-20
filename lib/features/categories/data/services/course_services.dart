@@ -15,14 +15,7 @@ class CourseServicesImpl implements CourseServices {
   @override
   Future<List<CourseModel>> getCourses({
     required CoursePathModel coursePathModel,
-  }) async {
-    print(coursePathModel.country.toString());
-    print(coursePathModel.university.toString());
-    print(coursePathModel.faculty.toString());
-    print(coursePathModel.program.toString());
-    print(coursePathModel.stage.toString());
-    print(coursePathModel.subject.toString());
-    print(coursePathModel.term.toString());
+  }) async { 
     return await firestor.getCollection(
       path: FirestorePath.coursePath(
         coursePathModel.country.toString(),

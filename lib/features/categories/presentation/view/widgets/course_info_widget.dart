@@ -30,7 +30,7 @@ class CourseInfoWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      coursePathModel.doctor.toString(),
+                      "Ahmed gamal",
                       style: AppStyles.textStyle14(
                         context,
                       ).copyWith(fontWeight: FontWeight.bold),

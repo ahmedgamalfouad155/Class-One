@@ -15,7 +15,7 @@ class TermItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: AppMedia.width(context) / 2.5,
-      height: AppMedia.height(context) / 4,
+      height: AppMedia.height(context) / 2,
       decoration: CustomsBoxDecoration().defaultBoxDecoration(context),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
