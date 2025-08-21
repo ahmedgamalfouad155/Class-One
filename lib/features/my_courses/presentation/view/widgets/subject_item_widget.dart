@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:sinna/core/constants/images.dart';
 import 'package:sinna/core/theme/colors.dart';
@@ -5,20 +6,21 @@ import 'package:sinna/core/theme/customs_box_decoratino.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/default_button_widget.dart';
-import 'package:sinna/features/categories/data/models/subject_info_model.dart';
 
-class NameOfSubjectItemWidget extends StatelessWidget {
-  const NameOfSubjectItemWidget({
+class SubjectItemWidget extends StatelessWidget {
+  const SubjectItemWidget({
     super.key,
-    required this.subjectInfo,
-    required this.onTap,
+    required this.onTap, 
+    required this.subjectDoctor,
+    required this.subjectName,
   });
 
-  final SubjectInfoModel subjectInfo;
   final void Function() onTap;
+  final String subjectDoctor;
+  final String subjectName;
 
   @override
-  Widget build(BuildContext context) { 
+  Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -32,13 +34,13 @@ class NameOfSubjectItemWidget extends StatelessWidget {
               child: Image.asset(AppImages.logo),
             ),
             Text(
-              subjectInfo.subjectName,
+              subjectName,
               style: AppStyles.textStyle16(
                 context,
               ).copyWith(fontWeight: FontWeight.bold),
             ),
             Text(
-              subjectInfo.subjectDoctor,
+              subjectDoctor,
               style: AppStyles.textStyle12(context).copyWith(
                 fontWeight: FontWeight.bold,
                 color: context.appColors.blue,

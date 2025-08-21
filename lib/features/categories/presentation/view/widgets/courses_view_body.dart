@@ -10,9 +10,8 @@ import 'package:sinna/features/categories/presentation/view/widgets/list_of_cour
 class CoursesViewBody extends StatelessWidget {
   const CoursesViewBody({super.key, required this.coursePathModel});
   final CoursePathModel coursePathModel;
-
   @override
-  Widget build(BuildContext context) { 
+  Widget build(BuildContext context) {
     final isAdmin = context.read<AuthCubit>().emailAdmin;
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -22,6 +21,7 @@ class CoursesViewBody extends StatelessWidget {
           const SizedBox(height: 20),
           ListOfCoursesWidget(),
           const SizedBox(height: 10),
+          
           isAdmin
               ? BlocProvider(
                   create: (context) => AddToMyCoursesCubit(),
@@ -35,6 +35,3 @@ class CoursesViewBody extends StatelessWidget {
     );
   }
 }
-
-
-

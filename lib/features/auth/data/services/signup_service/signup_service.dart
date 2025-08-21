@@ -37,9 +37,9 @@ class SignupServiceImpl extends SignupService {
   }
 
   @override
-  Future<void> setUserData(UserModel userData) async { 
+  Future<void> setUserData(UserModel userData) async {
     await firestor.setData(
-      path: FirestorePath.users(userData.uid),
+      path: FirestorePath.users(userData.email),
       data: userData.toMap(),
     );
   }

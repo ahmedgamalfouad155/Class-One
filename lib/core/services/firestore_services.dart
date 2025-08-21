@@ -102,4 +102,13 @@ class FirestoreServices {
       return result;
     });
   }
+
+
+   Future<bool> checkUserExists(String email) async {
+    final ref = _fireStore.collection("users").doc(email);
+    final snapshot = await ref.get();
+    return snapshot.exists;
+  }
+
+  
 }

@@ -43,7 +43,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       );
       if (user != null) {
         emit(SignupSuccessState());
-        userModel = userModel.copyWith(uid: user.uid); 
+        userModel = userModel.copyWith(uid: user.email); 
         await authServices.setUserData(userModel); 
       } else {
         emit(SignupFailedState('Signup failed'));

@@ -6,15 +6,25 @@ class CoursePathModel {
   String? stage;
   String? subject;
   String? term;
+  String? id;
+  bool? isPaid;
+  String? subjectName;
+  String? subjectDoctor;
+  String? subjectImage;
 
   CoursePathModel({
     this.country,
     this.university,
-      this.faculty,
+    this.faculty,
     this.program,
     this.stage,
     this.subject,
     this.term,
+    this.id,
+    this.isPaid,
+    this.subjectName,
+    this.subjectDoctor,
+    this.subjectImage,
   });
 
   void update({
@@ -25,6 +35,11 @@ class CoursePathModel {
     String? stage,
     String? subject,
     String? term,
+    String? id,
+    bool? isPaid,
+    String? subjectName,
+    String? subjectDoctor,
+    String? subjectImage,
   }) {
     if (country != null) this.country = country;
     if (university != null) this.university = university;
@@ -33,6 +48,11 @@ class CoursePathModel {
     if (stage != null) this.stage = stage;
     if (subject != null) this.subject = subject;
     if (term != null) this.term = term;
+    if (id != null) this.id = id;
+    if (isPaid != null) this.isPaid = isPaid;
+    if (subjectName != null) this.subjectName = subjectName;
+    if (subjectDoctor != null) this.subjectDoctor = subjectDoctor;
+    if (subjectImage != null) this.subjectImage = subjectImage;
   }
 
   Map<String, dynamic> toMap() {
@@ -44,6 +64,11 @@ class CoursePathModel {
       'stage': stage,
       'subject': subject,
       'term': term,
+      'id': id,
+      'isPaid': isPaid ?? false,
+      'subjectName': subjectName,
+      'subjectDoctor': subjectDoctor,
+      'subjectImage': subjectImage,
     };
   }
 
@@ -51,10 +76,16 @@ class CoursePathModel {
     return CoursePathModel(
       country: map['country'],
       university: map['university'],
-      program: map['system'],
-      stage: map['level'],
+      faculty: map['faculty'],
+      program: map['program'],
+      stage: map['stage'],
       subject: map['subject'],
       term: map['term'],
+      id: documentId,
+      isPaid: map['isPaid'] ?? true,
+      subjectName: map['subjectName'],
+      subjectDoctor: map['subjectDoctor'],
+      subjectImage: map['subjectImage'],
     );
   }
 }

@@ -22,13 +22,11 @@ class ListOfCoursesWidget extends StatelessWidget {
               final sortedLessons = List<CourseModel>.from(state.courses)
                 ..sort((a, b) => a.number.compareTo(b.number));
               return ListView.builder(
-                itemBuilder: (context, index) {
-                  return CourseItemWidget( 
+                itemBuilder: (context, index) => CourseItemWidget(
                   numberOfCourse: sortedLessons[index].number,
                   nameOfCourse: sortedLessons[index].tittle,
                   course: sortedLessons[index],
-                );
-                },
+                ),
                 itemCount: sortedLessons.length,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),

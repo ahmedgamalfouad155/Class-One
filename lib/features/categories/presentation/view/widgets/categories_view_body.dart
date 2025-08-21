@@ -46,8 +46,13 @@ class CategoriesViewBody extends StatelessWidget {
                     itemCount: state.subjects.length,
                     itemBuilder: (context, index) {
                       return NameOfSubjectItemWidget(
-                        onTap: () { 
-                          path.update(subject: state.subjects[index].id);
+                        onTap: () {
+                          path.update(
+                            subject: state.subjects[index].id,
+                            subjectName: state.subjects[index].subjectName,
+                            subjectDoctor: state.subjects[index].subjectDoctor,
+                            subjectImage: state.subjects[index].subjectImage,
+                          );
                           GoRouter.of(
                             context,
                           ).push(AppRouter.kTermView, extra: path);

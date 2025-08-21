@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
-import 'package:sinna/features/my_courses/presentation/widgets/my_courses_view_body.dart';
+import 'package:sinna/features/my_courses/presentation/manager/cubit/my_courses_cubit.dart';
+import 'package:sinna/features/my_courses/presentation/view/widgets/my_courses_view_body.dart';
 
 class MyCorsesView extends StatelessWidget {
   const MyCorsesView({super.key});
@@ -55,7 +57,10 @@ class MyCorsesView extends StatelessWidget {
           ),
         ),
       ),
-      body: MyCoursesViewBody(),
+      body: BlocProvider(
+        create: (context) => MyCoursesCubit()..getMyCourses(),
+        child: MyCoursesViewBody(),
+      ),
     );
   }
 }
