@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:sinna/core/services/firestore_services.dart';
+import 'package:sinna/core/services/firebase/firestore_services.dart';
 
 abstract class AuthServices {
   

@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -29,11 +30,14 @@ class SignupButtonWidget extends StatelessWidget {
     final cubit = context.read<SignUpCubit>();
     final user = context.watch<SignUpCubit>().state.user;
     return BlocConsumer<SignUpCubit, SignUpState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is SignupSuccessState) {
           (context).go(AppRouter.kNavBarView);
+          await FirebaseMessaging.instance.subscribeToTopic("allUsers");
+          print("=============subscribed===========");
         }
         if (state is SignupFailedState) {
+          // ignore: use_build_context_synchronously
           customSnakBar(context, message: state.error);
         }
       },
@@ -49,8 +53,8 @@ class SignupButtonWidget extends StatelessWidget {
                 name: nameController.text,
                 email: emailController.text,
               );
-              cubit.updateUser(updatedUser); 
-              
+              cubit.updateUser(updatedUser);
+
               if (formKey.currentState!.validate()) {
                 if (confirmPasswordController.text == passwordController.text) {
                   await cubit.signUp(passwordController.text, updatedUser);

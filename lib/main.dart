@@ -1,30 +1,53 @@
-// ignore_for_file: depend_on_referenced_packages
-import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:screen_protector/screen_protector.dart';
 import 'package:sinna/core/router/app_router.dart';
+import 'package:sinna/core/services/firebase/firebase_service.dart';
+import 'package:sinna/core/services/device/permission_service.dart';
+import 'package:sinna/core/services/device/screen_protector_service.dart';
+import 'package:sinna/core/services/device/webview_service.dart';
+import 'package:sinna/core/services/notifications/local_notification_service.dart';
+import 'package:sinna/core/services/notifications/push_notification_service.dart';
 import 'package:sinna/core/theme/thems.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:sinna/firebase_options.dart';
-import 'package:webview_flutter/webview_flutter.dart';
-import 'package:webview_flutter_android/webview_flutter_android.dart';
-import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  print("Handling a background message: ${message.messageId}");
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  WidgetsFlutterBinding.ensureInitialized();
-  await ScreenProtector.preventScreenshotOn();
-  await ScreenProtector.preventScreenshotOn();
 
-  if (Platform.isAndroid) {
-    WebViewPlatform.instance = AndroidWebViewPlatform();
-  } else if (Platform.isIOS) {
-    WebViewPlatform.instance = WebKitWebViewPlatform();
-  }
+  // 1. Firebase Init
+  await FirebaseService.initializeFirebase();
+
+  // 2. حماية السكرين
+  await ScreenProtectorService.preventScreenshots();
+
+  // 3. تهيئة WebView
+  WebViewService.setupWebView();
+
+  // 4. طلب صلاحيات الاشعارات
+  await PermissionService.requestNotificationPermission();
+
+  // 5. تهيئة FCM Background Handler
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+  // 6. تهيئة Notifications
+  await LocalNotificationService.initialize();
+  await PushNotificationService.initialize();
+
+  await FirebaseMessaging.instance.subscribeToTopic("allUsers");
+  print("subscribed");
 
   runApp(MyApp());
 }

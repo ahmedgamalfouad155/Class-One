@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sinna/features/notifications/presentation/view/widgets/notifications_view_body.dart';
 
 class NotificationsView extends StatelessWidget {
   const NotificationsView({super.key});
@@ -6,9 +7,8 @@ class NotificationsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('Notifications View'),
-      ),
+      appBar: AppBar(title: Text('Notifications')),
+      body: NotificationsViewBody(),
     );
   }
 }
