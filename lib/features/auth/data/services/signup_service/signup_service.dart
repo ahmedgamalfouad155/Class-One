@@ -1,11 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sinna/core/services/firebase/firebase_path.dart';
 import 'package:sinna/core/services/firebase/firestore_services.dart';
-import 'package:sinna/features/auth/data/models/user_model.dart';
+import 'package:sinna/features/auth/data/models/user_academic_model.dart';
+import 'package:sinna/features/auth/data/models/user_base_model.dart';
+
 
 abstract class SignupService {
   Future<User?> signUpWithEmailAndPassword(String email, String password);
-  Future<void> setUserData(UserModel userData);
+  Future<void> setUserData(UserBaseModel userData,UserAcademicModel userAcademicModel);
 }
 
 class SignupServiceImpl extends SignupService {
@@ -37,9 +39,9 @@ class SignupServiceImpl extends SignupService {
   }
 
   @override
-  Future<void> setUserData(UserModel userData) async {
+  Future<void> setUserData(UserBaseModel userData,UserAcademicModel userAcademicModel ) async {
     await firestor.setData(
-      path: FirestorePath.users(userData.email),
+      path: FirestorePath.users(userData.email!),
       data: userData.toMap(),
     );
   }

@@ -50,7 +50,6 @@ class AddingNotificationSections extends StatelessWidget {
               return CustomButton(
                 text: 'Add Notification',
                 onPressed: () async { 
-
                   notificationCubit.addNotification(
                     NotificationModel(
                       id: documentIdFromLocalData(),
@@ -58,10 +57,7 @@ class AddingNotificationSections extends StatelessWidget {
                       body: bodyController.text,
                     ),
                   );
-                  notificationCubit.sendMessageToUsers(
-                    titleController.text,
-                    bodyController.text,
-                  );
+                
                 },
               );
             } else if (state is AddingNotificationFailureState) {

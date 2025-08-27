@@ -1,11 +1,11 @@
-import 'package:sinna/features/auth/data/models/user_model.dart';
+import 'package:sinna/features/auth/data/models/user_academic_model.dart';
 
 class SignUpState {
-  final UserModel user;
+  final UserAcademicModel user;
 
-  SignUpState({UserModel? user}) : user = user ?? UserModel.empty();
+  SignUpState({UserAcademicModel? user}) : user = user ?? UserAcademicModel.empty();
 
-  SignUpState copyWith({UserModel? user}) {
+  SignUpState copyWith({UserAcademicModel? user}) {
     return SignUpState(user: user ?? this.user);
   }
 }

@@ -1,18 +1,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sinna/features/auth/data/models/user_model.dart';
+import 'package:sinna/features/auth/data/models/user_academic_model.dart';
+import 'package:sinna/features/auth/data/models/user_base_model.dart';
 import 'package:sinna/features/auth/data/services/signup_service/signup_service.dart';
 import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
   SignUpCubit() : super(SignUpState());
 
-  PageController pageController = PageController();
+  final PageController pageController = PageController();
   final SignupService authServices = SignupServiceImpl();
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
-  void updateUser(UserModel user) {
+  void updateUser(UserAcademicModel user) {
     emit(state.copyWith(user: user));
   }
 
@@ -34,22 +35,35 @@ class SignUpCubit extends Cubit<SignUpState> {
     }
   }
 
-  Future<void> signUp(String password, UserModel userModel) async {
+  Future<void> signUp(
+    String password,
+    UserBaseModel userBaseModel,
+    UserAcademicModel userAcademicModel,
+  ) async {
     emit(SignupLoadingState());
     try {
       final user = await authServices.signUpWithEmailAndPassword(
-        userModel.email,
+        userBaseModel.email ?? '',
         password,
       );
+
       if (user != null) {
+        userBaseModel = userBaseModel.copyWith(uid: user.email);
+
+        await authServices.setUserData(userBaseModel, userAcademicModel);
         emit(SignupSuccessState());
-        userModel = userModel.copyWith(uid: user.email);
-        await authServices.setUserData(userModel);
       } else {
         emit(SignupFailedState('Signup failed'));
       }
     } catch (e) {
       emit(SignupFailedState(e.toString()));
     }
-  } 
+  }
+
+  /// ✅ Dispose للـ PageController
+  @override
+  Future<void> close() {
+    pageController.dispose();
+    return super.close();
+  }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
-import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_state.dart';
 import 'package:sinna/features/auth/presentation/manager/steps_cubit/steps_cubit.dart';
 import 'package:sinna/features/auth/presentation/view/widgets/personal_info_step.dart';
 import 'package:sinna/features/auth/presentation/view/widgets/university_info_step.dart';
@@ -13,16 +12,16 @@ class SignUpView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => SignUpCubit(),
-      child: BlocBuilder<SignUpCubit, SignUpState>(
-        builder: (context, state) {
-          final cubit = context.read<SignUpCubit>();
+      child: Builder(
+        builder: (context) {
+          final cubit = context.read<SignUpCubit>(); 
           return Scaffold(
             body: PageView(
               controller: cubit.pageController,
               physics: const NeverScrollableScrollPhysics(),
               children: [
                 BlocProvider(
-                  create: (context) => StepsCubit(),
+                  create: (_) => StepsCubit(),
                   child: UniversityInfoStep(),
                 ),
                 const PersonalInfoStep(),

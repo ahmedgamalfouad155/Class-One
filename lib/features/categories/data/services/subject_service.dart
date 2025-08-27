@@ -15,14 +15,14 @@ class SubjectServiceImpl extends SubjectService {
     // print(path.university);
     return firestor.getCollection(
       path: FirestorePath.subjectsPath(
-        country: "egypt",
-        university: "mansoura_university",
-        faculty: "dentistry",
-        program: "bachelors",
-        stage: "level_1", 
+        country: path.country.toString(),
+        university: path.university.toString(),
+        faculty: path.faculty.toString(),
+        program: path.program.toString(),
+        stage: path.stage.toString(),
       ),
-      builder: (data, documentId) { 
-        return SubjectInfoModel.fromMap(data,documentId);
+      builder: (data, documentId) {
+        return SubjectInfoModel.fromMap(data, documentId);
       },
     );
   }

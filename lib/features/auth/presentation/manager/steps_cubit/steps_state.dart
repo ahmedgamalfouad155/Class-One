@@ -3,7 +3,7 @@ class StepsState {
   final String? university;
   final String? faculty;
   final String? program;
-  final String? level;
+  final String? stage;
   final String? specialization;
 
   StepsState({
@@ -11,16 +11,16 @@ class StepsState {
     this.university,
     this.faculty,
     this.program,
-    this.level,
+    this.stage,
     this.specialization,
   });
 
-  StepsState copyWith({
+  StepsState update({
     String? country,
     String? university,
     String? faculty,
     String? program,
-    String? level,
+    String? stage,
     String? specialization,
   }) {
     return StepsState(
@@ -28,13 +28,11 @@ class StepsState {
       university: university ?? this.university,
       faculty: faculty ?? this.faculty,
       program: program ?? this.program,
-      level: level ?? this.level,
+      stage: stage ?? this.stage,
       specialization: specialization ?? this.specialization,
     );
   }
 }
-
-
 
 class StepsData {
   static final universities = {

@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sinna/core/utils/app_media.dart';
-import 'package:sinna/core/widgets/custom_buton.dart';
-import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:sinna/features/auth/presentation/view/widgets/steps_section_widget.dart';
 
 class UniversityInfoStep extends StatelessWidget {
@@ -10,32 +6,11 @@ class UniversityInfoStep extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final signUpCubit = context.read<SignUpCubit>();
-    final user = context.watch<SignUpCubit>().state.user;
-
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          StepsSectionWidget(signUpCubit: signUpCubit, user: user),
-          CustomButton(
-            text: "Next",
-            onPressed: () {
-              signUpCubit.updateUser(user);
-              signUpCubit.nextPage();
-              // print(user.specialization.isEmpty);
-              // if (user.country.isNotEmpty &&
-              //     user.university.isNotEmpty &&
-              //     user.faculty.isNotEmpty &&
-              //     user.program.isNotEmpty &&
-              //     user.stage.isNotEmpty) {
-              //   signUpCubit.nextPage();
-              // }
-            },
-            width: AppMedia.width(context) / 2,
-          ),
-        ],
+        children: [StepsSectionWidget()],
       ),
     );
   }

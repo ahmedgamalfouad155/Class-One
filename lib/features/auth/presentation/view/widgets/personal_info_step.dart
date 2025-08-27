@@ -29,13 +29,13 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
     confirmPasswordController.dispose();
     super.dispose();
   }
-@override
-void initState() {
-  super.initState();
-  final user = context.read<SignUpCubit>().state.user;
-  nameController.text = user.name;
-  emailController.text = user.email;
-}
+// @override
+// void initState() {
+//   super.initState();
+//   final user = context.read<SignUpCubit>().state.user;
+//   nameController.text = user.name!;
+//   emailController.text = user.email!;
+// }
 
   @override
   Widget build(BuildContext context) {

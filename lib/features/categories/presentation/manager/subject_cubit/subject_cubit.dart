@@ -8,10 +8,10 @@ class SubjectCubit extends Cubit<SubjectState> {
 
   final SubjectService subjectService = SubjectServiceImpl();
 
-  Future<void> getSubjects(CoursePathModel path) async { 
+  Future<void> getSubjects(CoursePathModel path) async {
     emit(SubjectLoadingState());
-    try {
-      final subjects = await subjectService.getSubjects(path);
+    try { 
+      final subjects = await subjectService.getSubjects(path); 
       emit(SubjectSuccessState(subjects));
     } catch (e) {
       emit(SubjectFailureState(e.toString()));

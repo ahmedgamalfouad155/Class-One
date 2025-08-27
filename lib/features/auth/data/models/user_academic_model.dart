@@ -1,7 +1,5 @@
-class UserModel {
-  final String? name;
-  final String? uid;
-  final String? email;
+/// ✅ الموديل الأكاديمي - بيانات دراسية
+class UserAcademicModel {
   final String? country;
   final String? university;
   final String? faculty;
@@ -9,10 +7,7 @@ class UserModel {
   final String? stage;
   final String? specialization;
 
-  UserModel({
-    this.name,
-    this.uid,
-    this.email,
+  UserAcademicModel({
     this.country,
     this.university,
     this.faculty,
@@ -20,11 +15,9 @@ class UserModel {
     this.stage,
     this.specialization,
   });
-  factory UserModel.empty() {
-    return UserModel(
-      name: '',
-      uid: '',
-      email: '',
+
+  factory UserAcademicModel.empty() {
+    return UserAcademicModel(
       country: '',
       university: '',
       faculty: '',
@@ -34,10 +27,7 @@ class UserModel {
     );
   }
 
-  UserModel copyWith({
-    String? name,
-    String? uid,
-    String? email,
+  UserAcademicModel copyWith({
     String? country,
     String? university,
     String? faculty,
@@ -45,10 +35,7 @@ class UserModel {
     String? stage,
     String? specialization,
   }) {
-    return UserModel(
-      name: name ?? this.name,
-      uid: uid ?? this.uid,
-      email: email ?? this.email,
+    return UserAcademicModel(
       country: country ?? this.country,
       university: university ?? this.university,
       faculty: faculty ?? this.faculty,
@@ -58,32 +45,19 @@ class UserModel {
     );
   }
 
-  /// ✅ toMap ما بيرفعش null أو قيم فاضية
   Map<String, dynamic> toMap() {
     final data = <String, dynamic>{};
-
-    if (name != null && name!.isNotEmpty) data['name'] = name;
-    if (uid != null && uid!.isNotEmpty) data['uid'] = uid;
-    if (email != null && email!.isNotEmpty) data['email'] = email;
     if (country != null && country!.isNotEmpty) data['country'] = country;
-    if (university != null && university!.isNotEmpty) {
-      data['university'] = university;
-    }
+    if (university != null && university!.isNotEmpty) data['university'] = university;
     if (faculty != null && faculty!.isNotEmpty) data['faculty'] = faculty;
     if (program != null && program!.isNotEmpty) data['program'] = program;
     if (stage != null && stage!.isNotEmpty) data['stage'] = stage;
-    if (specialization != null && specialization!.isNotEmpty) {
-      data['specialization'] = specialization;
-    }
-
+    if (specialization != null && specialization!.isNotEmpty) data['specialization'] = specialization;
     return data;
   }
 
-  factory UserModel.fromMap(Map<String, dynamic> map, String documentId) {
-    return UserModel(
-      name: map['name'],
-      uid: documentId,
-      email: map['email'],
+  factory UserAcademicModel.fromMap(Map<String, dynamic> map) {
+    return UserAcademicModel(
       country: map['country'],
       university: map['university'],
       faculty: map['faculty'],
@@ -93,3 +67,4 @@ class UserModel {
     );
   }
 }
+

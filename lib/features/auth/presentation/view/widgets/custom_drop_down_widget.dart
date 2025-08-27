@@ -22,25 +22,20 @@ class CustomDropdownWidget extends StatelessWidget {
     final uniqueItems = items.toSet().toList();
 
     // لو selectedValue مش موجودة في الليست → null
-    final safeValue = (selectedValue != null &&
-            uniqueItems.contains(selectedValue))
+    final safeValue =
+        (selectedValue != null && uniqueItems.contains(selectedValue))
         ? selectedValue
         : null;
 
     return DropdownButtonFormField<String>(
-      value: safeValue,
+      value:  safeValue ,
       hint: Text(hintText),
       decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
         contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       ),
       items: uniqueItems.map((item) {
-        return DropdownMenuItem(
-          value: item,
-          child: Text(item),
-        );
+        return DropdownMenuItem(value: item, child: Text(item));
       }).toList(),
       onChanged: isEnabled ? onChanged : null,
     );

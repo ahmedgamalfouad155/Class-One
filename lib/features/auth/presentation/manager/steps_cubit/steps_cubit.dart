@@ -3,51 +3,52 @@ import 'steps_state.dart';
 
 class StepsCubit extends Cubit<StepsState> {
   StepsCubit() : super(StepsState());
+
   void selectCountry(String country) {
     emit(
-      state.copyWith(
+      StepsState(
         country: country,
-        university: null,
-        faculty: null,
-        program: null,
-        level: null,
-        specialization: null,
+        university: "null",
+        faculty: "null",
+        program: "null",
+        stage: "null",
+        specialization: "null",
       ),
     );
   }
 
   void selectUniversity(String university) {
     emit(
-      state.copyWith(
+      state.update(
         university: university,
-        faculty: null,
-        program: null,
-        level: null,
-        specialization: null,
+        faculty: "null",
+        program: "null",
+        stage: "null",
+        specialization: "null",
       ),
     );
   }
 
   void selectFaculty(String faculty) {
     emit(
-      state.copyWith(
+      state.update(
         faculty: faculty,
-        program: null,
-        level: null,
-        specialization: null,
+        program: "null",
+        stage: "null",
+        specialization: "null",
       ),
     );
   }
 
   void selectProgram(String program) {
-    emit(state.copyWith(program: program, level: null, specialization: null));
+    emit(state.update(program: program, stage: "null", specialization: "null"));
   }
 
-  void selectLevel(String level) {
-    emit(state.copyWith(level: level, specialization: null));
+  void selectStage(String stage) {
+    emit(state.update(stage: stage, specialization: "null"));
   }
 
-  void selectSpecialization(String value) {
-    emit(state.copyWith(specialization: value));
+  void selectSpecialization(String specialization) {
+    emit(state.update(specialization: specialization));
   }
 }

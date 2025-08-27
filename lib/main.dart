@@ -20,7 +20,6 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
-  print("Handling a background message: ${message.messageId}");
 }
 
 void main() async {
@@ -47,7 +46,6 @@ void main() async {
   await PushNotificationService.initialize();
 
   await FirebaseMessaging.instance.subscribeToTopic("allUsers");
-  print("subscribed");
 
   runApp(MyApp());
 }

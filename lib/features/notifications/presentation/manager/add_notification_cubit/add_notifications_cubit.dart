@@ -2,7 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/features/notifications/data/models/notification_model.dart';
 import 'package:sinna/features/notifications/data/service/add_notifications_service.dart';
 import 'package:sinna/features/notifications/presentation/manager/add_notification_cubit/add_notifications_state.dart'; 
-import 'package:cloud_functions/cloud_functions.dart';
 
 class AddNotificationsCubit extends Cubit<AddNotificationsState> {
   AddNotificationsCubit() : super(AddNotificationsInitial());
@@ -20,20 +19,20 @@ class AddNotificationsCubit extends Cubit<AddNotificationsState> {
   }
 
 
-Future<void> sendMessageToUsers(String title, String body) async {
-  try {
-    final HttpsCallable callable =
-        FirebaseFunctions.instance.httpsCallable('sendNotification');
+// Future<void> sendMessageToUsers(String title, String body) async {
+//   try {
+//     final HttpsCallable callable =
+//         FirebaseFunctions.instance.httpsCallable('sendNotification');
 
-    final result = await callable.call({
-      'title': title,
-      'body': body,
-    });
+//     final result = await callable.call({
+//       'title': title,
+//       'body': body,
+//     });
 
-    print("✅ تم إرسال الإشعار: ${result.data}");
-  } catch (e) {
-    print("❌ حصل خطأ: $e");
-  }
-}
+//     // print("✅ تم إرسال الإشعا/ر: ${result.data}");
+//   } catch (e) {
+//     // print("❌ حصل خطأ: $e");
+//   }
+// }
 
 }

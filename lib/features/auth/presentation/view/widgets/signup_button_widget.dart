@@ -27,14 +27,13 @@ class SignupButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<SignUpCubit>();
-    final user = context.watch<SignUpCubit>().state.user;
+    // final cubit = context.read<SignUpCubit>();
+    // final user = context.watch<SignUpCubit>().state.user;
     return BlocConsumer<SignUpCubit, SignUpState>(
       listener: (context, state) async {
         if (state is SignupSuccessState) {
           (context).go(AppRouter.kNavBarView);
           await FirebaseMessaging.instance.subscribeToTopic("allUsers");
-          print("=============subscribed===========");
         }
         if (state is SignupFailedState) {
           // ignore: use_build_context_synchronously
@@ -49,17 +48,12 @@ class SignupButtonWidget extends StatelessWidget {
           return CustomButton(
             text: "Sign Up",
             onPressed: () async {
-              final updatedUser = user.copyWith(
-                name: nameController.text,
-                email: emailController.text,
-              );
-              cubit.updateUser(updatedUser);
-
-              if (formKey.currentState!.validate()) {
-                if (confirmPasswordController.text == passwordController.text) {
-                  await cubit.signUp(passwordController.text, updatedUser);
-                }
-              }
+            //  cubit.signUp(password, user);
+              // if (formKey.currentState!.validate()) {
+              //   if (confirmPasswordController.text == passwordController.text) {
+              //     await cubit.signUp(passwordController.text, updatedUser);
+              //   }
+              // }
             },
             width: AppMedia.width(context) / 3,
           );
