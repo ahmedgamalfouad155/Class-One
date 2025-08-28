@@ -10,3 +10,8 @@ final class AddingNotificationFailureState extends AddNotificationsState {
   final String errMessage;
   AddingNotificationFailureState(this.errMessage);
 }
+
+final class DeletingNotificationFailureState extends AddNotificationsState {
+  final String errMessage;
+  DeletingNotificationFailureState(this.errMessage);
+}

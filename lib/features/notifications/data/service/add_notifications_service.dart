@@ -4,6 +4,7 @@ import 'package:sinna/features/notifications/data/models/notification_model.dart
 
 abstract class AddNotificationsService {
   Future<void> addNotification(NotificationModel notificationModel);
+  Future<void> deleteNotification(String id);
 }
 
 class AddNotificationsServiceImpl extends AddNotificationsService {
@@ -15,5 +16,10 @@ class AddNotificationsServiceImpl extends AddNotificationsService {
       path: FirestorePath.notifications(notificationModel.id),
       data: notificationModel.toMap(),
     );
+  }
+
+  @override
+  Future<void> deleteNotification(String id) async {
+    await firestor.deleteData(path: FirestorePath.notifications(id));
   }
 }

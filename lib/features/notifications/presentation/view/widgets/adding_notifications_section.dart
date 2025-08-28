@@ -71,17 +71,3 @@ class AddingNotificationSections extends StatelessWidget {
     );
   }
 }
-
-// Future<void> sendNotification(String title, String body) async {
-//   try {
-//     final HttpsCallable callable = FirebaseFunctions.instance.httpsCallable(
-//       'sendNotification',
-//     );
-
-//     final result = await callable.call({'title': title, 'body': body});
-
-//     print("Notification result: ${result.data}");
-//   } catch (e) {
-//     print("Error: $e");
-//   }
-// }
