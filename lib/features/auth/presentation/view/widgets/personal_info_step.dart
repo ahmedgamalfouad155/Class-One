@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
-import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:sinna/features/auth/presentation/view/widgets/signup_image_and_header_widget.dart';
 import 'package:sinna/features/auth/presentation/view/widgets/signup_name_and_email_and_password_fields_section_widget.dart';
 import 'package:sinna/features/auth/presentation/view/widgets/signup_button_widget.dart';
@@ -39,7 +37,7 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<SignUpCubit>();
+    // final cubit = context.read<SignUpCubit>();
 
     return Padding(
       padding: const EdgeInsets.all(16),
@@ -63,7 +61,7 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
                   CustomButton(
                     text: "Back",
                     onPressed: () {
-                      cubit.previousPage();
+                      // cubit.previousPage();
                     },
                     width: AppMedia.width(context) / 3,
                   ),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
-import 'package:sinna/features/auth/data/models/user_model.dart';
+import 'package:sinna/features/auth/data/models/user_academic_model.dart';
+import 'package:sinna/features/auth/data/steps_data.dart';
 import 'package:sinna/features/auth/presentation/manager/steps_cubit/steps_cubit.dart';
 import 'package:sinna/features/auth/presentation/manager/steps_cubit/steps_state.dart';
 import 'package:sinna/features/auth/presentation/view/widgets/custom_drop_down_widget.dart';
@@ -10,9 +11,7 @@ import 'package:timelines_plus/timelines_plus.dart';
 
 class AccountStepsSectionWidget extends StatelessWidget {
   const AccountStepsSectionWidget({
-    super.key,
-    // required this.accountCubit,
-    // required this.user,
+    super.key, 
   });
 
   @override
@@ -117,7 +116,7 @@ class AccountStepsSectionWidget extends StatelessWidget {
             CustomButton(
               text: "Save",
               onPressed: () {
-                final updatedUser = UserModel(
+                final updatedUser = UserAcademicModel(
                   country: state.country,
                   university: state.university,
                   faculty: state.faculty,

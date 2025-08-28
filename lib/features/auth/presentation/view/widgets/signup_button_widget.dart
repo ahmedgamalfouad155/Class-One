@@ -6,6 +6,7 @@ import 'package:sinna/core/router/app_router.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/core/widgets/custom_snak_bar.dart';
+import 'package:sinna/features/auth/data/models/user_base_model.dart';
 import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_state.dart';
 
@@ -27,12 +28,11 @@ class SignupButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final cubit = context.read<SignUpCubit>();
-    // final user = context.watch<SignUpCubit>().state.user;
+    final cubit = context.read<SignUpCubit>();
     return BlocConsumer<SignUpCubit, SignUpState>(
       listener: (context, state) async {
         if (state is SignupSuccessState) {
-          (context).go(AppRouter.kNavBarView);
+          (context).go(AppRouter.kStepsAcademicView);
           await FirebaseMessaging.instance.subscribeToTopic("allUsers");
         }
         if (state is SignupFailedState) {
@@ -43,19 +43,25 @@ class SignupButtonWidget extends StatelessWidget {
       builder: (context, state) {
         if (state is SignupLoadingState) {
           return const Center(child: CircularProgressIndicator());
+
           // ignore: unnecessary_type_check
         } else if (state is SignupSuccessState || state is SignUpState) {
           return CustomButton(
+            width: AppMedia.width(context),
             text: "Sign Up",
             onPressed: () async {
-            //  cubit.signUp(password, user);
-              // if (formKey.currentState!.validate()) {
-              //   if (confirmPasswordController.text == passwordController.text) {
-              //     await cubit.signUp(passwordController.text, updatedUser);
-              //   }
-              // }
+              if (formKey.currentState!.validate()) {
+                if (confirmPasswordController.text == passwordController.text) {
+                  await cubit.signUp(
+                    password: passwordController.text,
+                    userBaseModel: UserBaseModel(
+                      name: nameController.text,
+                      email: emailController.text,
+                    ),
+                  );
+                }
+              }
             },
-            width: AppMedia.width(context) / 3,
           );
         } else if (state is SignupFailedState) {
           return Text(state.error);
@@ -65,11 +71,4 @@ class SignupButtonWidget extends StatelessWidget {
       },
     );
   }
-}
-
-/*
-egypt
-mansoura
-Bachelors
-level one
- */
+} 

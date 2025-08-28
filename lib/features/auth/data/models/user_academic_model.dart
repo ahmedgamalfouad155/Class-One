@@ -16,17 +16,6 @@ class UserAcademicModel {
     this.specialization,
   });
 
-  factory UserAcademicModel.empty() {
-    return UserAcademicModel(
-      country: '',
-      university: '',
-      faculty: '',
-      program: '',
-      stage: '',
-      specialization: '',
-    );
-  }
-
   UserAcademicModel copyWith({
     String? country,
     String? university,
@@ -48,11 +37,15 @@ class UserAcademicModel {
   Map<String, dynamic> toMap() {
     final data = <String, dynamic>{};
     if (country != null && country!.isNotEmpty) data['country'] = country;
-    if (university != null && university!.isNotEmpty) data['university'] = university;
+    if (university != null && university!.isNotEmpty) {
+      data['university'] = university;
+    }
     if (faculty != null && faculty!.isNotEmpty) data['faculty'] = faculty;
     if (program != null && program!.isNotEmpty) data['program'] = program;
     if (stage != null && stage!.isNotEmpty) data['stage'] = stage;
-    if (specialization != null && specialization!.isNotEmpty) data['specialization'] = specialization;
+    if (specialization != null && specialization!.isNotEmpty) {
+      data['specialization'] = specialization;
+    }
     return data;
   }
 
@@ -67,4 +60,3 @@ class UserAcademicModel {
     );
   }
 }
-

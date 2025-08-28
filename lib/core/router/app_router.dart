@@ -4,6 +4,7 @@ import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.d
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_state.dart';
 import 'package:sinna/features/auth/presentation/view/login_view.dart';
 import 'package:sinna/features/auth/presentation/view/signup_view.dart';
+import 'package:sinna/features/auth/presentation/view/steps_academic_view.dart';
 import 'package:sinna/features/categories/data/models/course_path_model.dart';
 import 'package:sinna/features/categories/data/models/course_model.dart';
 import 'package:sinna/features/categories/presentation/view/course_video_view.dart';
@@ -20,6 +21,7 @@ abstract class AppRouter {
   static const String klangageAndModeView = '/langaugeAndModeView';
   static const String klandingView = '/landingView';
   static const String kSignUpView = '/signUpView';
+  static const String kStepsAcademicView = '/stepsAcademicView';
   static const String kLogInView = '/logInView';
   static const String kNavBarView = '/navBarView';
   static const String kTermView = '/termView';
@@ -52,6 +54,10 @@ abstract class AppRouter {
       GoRoute(
         path: kSignUpView,
         builder: (context, state) => const SignUpView(),
+      ),
+      GoRoute(
+        path: kStepsAcademicView,
+        builder: (context, state) => const StepsAcademicView(),
       ),
       GoRoute(
         path: kNavBarView,

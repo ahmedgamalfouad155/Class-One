@@ -35,31 +35,38 @@ class CategoriesViewBody extends StatelessWidget {
                 } else if (state is SubjectFailureState) {
                   return Text(state.errMessage);
                 } else if (state is SubjectSuccessState) {
-                  return GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          mainAxisSpacing: 20,
-                          crossAxisSpacing: 20,
-                          childAspectRatio: .9,
-                        ),
-                    itemCount: state.subjects.length,
-                    itemBuilder: (context, index) {
-                      return NameOfSubjectItemWidget(
-                        onTap: () {
-                          path.update(
-                            subject: state.subjects[index].id,
-                            subjectName: state.subjects[index].subjectName,
-                            subjectDoctor: state.subjects[index].subjectDoctor,
-                            subjectImage: state.subjects[index].subjectImage,
-                          );
-                          GoRouter.of(
-                            context,
-                          ).push(AppRouter.kTermView, extra: path);
-                        },
-                        subjectInfo: state.subjects[index],
-                      );
+                  return RefreshIndicator(
+                    onRefresh: () async {
+                      context.read<UserInfoCubit>().getUserInfo();
+                      context.read<SubjectCubit>().getSubjects(path);
                     },
+                    child: GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 20,
+                            crossAxisSpacing: 20,
+                            childAspectRatio: .9,
+                          ),
+                      itemCount: state.subjects.length,
+                      itemBuilder: (context, index) {
+                        return NameOfSubjectItemWidget(
+                          onTap: () {
+                            path.update(
+                              subject: state.subjects[index].id,
+                              subjectName: state.subjects[index].subjectName,
+                              subjectDoctor:
+                                  state.subjects[index].subjectDoctor,
+                              subjectImage: state.subjects[index].subjectImage,
+                            );
+                            GoRouter.of(
+                              context,
+                            ).push(AppRouter.kTermView, extra: path);
+                          },
+                          subjectInfo: state.subjects[index],
+                        );
+                      },
+                    ),
                   );
                 } else {
                   return const Text("error");
@@ -73,18 +80,4 @@ class CategoriesViewBody extends StatelessWidget {
       },
     );
   }
-}
-
-/*
- final lesonCubit = BlocProvider.of<LeasonCubit>(context);
-    lesonCubit.getLeson(
-      country: 'egypt',
-      university: "mansoura",
-      system: "Bachelors",
-      level: "level one",
-      subject: "science",
-      term: "first term",
-      doctor: "Dr Ezzat",
-    );
-
-*/
+} 
