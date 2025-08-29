@@ -14,6 +14,7 @@ import 'package:sinna/features/landing/presentation/views/landing_view.dart';
 import 'package:sinna/features/my_courses/presentation/view/user_ccourse_details_view.dart';
 import 'package:sinna/features/nav_bar/presentation/view/nav_bar_view.dart';
 import 'package:sinna/features/profile/presentation/view/account_view.dart';
+import 'package:sinna/features/profile/presentation/view/control_panal_view.dart';
 import 'package:sinna/features/profile/presentation/view/language_view.dart';
 import 'package:sinna/features/profile/presentation/view/mode_view.dart';
 import 'package:sinna/features/splash/splash._view.dart';
@@ -31,8 +32,9 @@ abstract class AppRouter {
   static const String kCourseVideoView = '/courseVideoView';
   static const String kLanguageView = '/languageView';
   static const String kModeView = '/modeView';
-  static const String kAccountView = '/accountView'; 
-  static const String kUserCcourseDetailsView = '/userCcourseDetailsView'; 
+  static const String kAccountView = '/accountView';
+  static const String kUserCcourseDetailsView = '/userCcourseDetailsView';
+  static const String kControlPanal = '/controlPanal';
 
   static final router = GoRouter(
     routes: [
@@ -72,13 +74,6 @@ abstract class AppRouter {
           return TermView(coursePathModel: coursePathModel);
         },
       ),
-      // GoRoute(
-      //   path: kInstructorView,
-      //   builder: (context, state) {
-      //     final coursePathModel = state.extra as CoursePathModel;
-      //     return InstractorView(coursePathModel: coursePathModel);
-      //   },
-      // ),
       GoRoute(
         path: klandingView,
         builder: (context, state) => const LandingView(),
@@ -113,6 +108,10 @@ abstract class AppRouter {
           final coursePathModel = state.extra as CoursePathModel;
           return UserCcourseDetailsView(coursePathModel: coursePathModel);
         },
+      ),
+      GoRoute(
+        path: kControlPanal,
+        builder: (context, state) => const ControlPanalView(),
       ),
     ],
   );

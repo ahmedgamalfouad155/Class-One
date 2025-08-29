@@ -13,12 +13,23 @@ class ProfileViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isAdmin = context.read<AuthCubit>().emailAdmin;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
+          isAdmin
+              ? ProfileOptionWidget(
+                  title: 'Admin Control Users Courses',
+                  icon: MaterialCommunityIcons.controller_classic_outline,
+                  onTap: () {
+                    GoRouter.of(context).push(AppRouter.kControlPanal);
+                  },
+                )
+              : SizedBox(),
+          isAdmin ? CustomDividerWidget() : SizedBox(),
           ProfileOptionWidget(
             title: 'Account',
             icon: MaterialCommunityIcons.account_alert_outline,
