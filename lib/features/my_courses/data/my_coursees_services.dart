@@ -4,19 +4,19 @@ import 'package:sinna/features/auth/data/services/auth_service/auth_services.dar
 import 'package:sinna/features/categories/data/models/course_path_model.dart';
 
 abstract class MyCourseesServices {
-  Future<List<CoursePathModel>> getMyCourses();
+  Stream<List<CoursePathModel>> getMyCourses();
 }
 
 class MyCourseesServicesImp extends MyCourseesServices {
   final firestor = FirestoreServices.instance;
-  final uid = AuthServicesImpl().currentUser!.uid;
+  final uid = AuthServicesImpl().currentUser!.email;
 
   @override
-  Future<List<CoursePathModel>> getMyCourses() async {
-    return await firestor.getCollection(
-      path: FirestorePath.myCourses(uid),
-      builder: (data, documentId) { 
-        return CoursePathModel.fromMap(data, documentId);
+  Stream<List<CoursePathModel>> getMyCourses() {
+    return firestor.collectionsStram(
+      path: FirestorePath.myCourses(uid!),
+      builder: (data, documentId) {
+        return CoursePathModel.fromMap(data!, documentId);
       },
     );
   }

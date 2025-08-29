@@ -11,6 +11,7 @@ import 'package:sinna/features/categories/presentation/view/course_video_view.da
 import 'package:sinna/features/categories/presentation/view/courses_view.dart';
 import 'package:sinna/features/categories/presentation/view/term_view.dart';
 import 'package:sinna/features/landing/presentation/views/landing_view.dart';
+import 'package:sinna/features/my_courses/presentation/view/user_ccourse_details_view.dart';
 import 'package:sinna/features/nav_bar/presentation/view/nav_bar_view.dart';
 import 'package:sinna/features/profile/presentation/view/account_view.dart';
 import 'package:sinna/features/profile/presentation/view/language_view.dart';
@@ -30,7 +31,8 @@ abstract class AppRouter {
   static const String kCourseVideoView = '/courseVideoView';
   static const String kLanguageView = '/languageView';
   static const String kModeView = '/modeView';
-  static const String kAccountView = '/accountView';
+  static const String kAccountView = '/accountView'; 
+  static const String kUserCcourseDetailsView = '/userCcourseDetailsView'; 
 
   static final router = GoRouter(
     routes: [
@@ -103,6 +105,14 @@ abstract class AppRouter {
       GoRoute(
         path: kAccountView,
         builder: (context, state) => const AccountView(),
+      ),
+
+      GoRoute(
+        path: kUserCcourseDetailsView,
+        builder: (context, state) {
+          final coursePathModel = state.extra as CoursePathModel;
+          return UserCcourseDetailsView(coursePathModel: coursePathModel);
+        },
       ),
     ],
   );

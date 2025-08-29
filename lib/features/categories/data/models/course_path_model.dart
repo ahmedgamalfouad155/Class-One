@@ -65,7 +65,7 @@ class CoursePathModel {
       'subject': subject,
       'term': term,
       'id': id,
-      'isPaid': isPaid ?? false,
+      'isPaid': isPaid ?? true,
       'subjectName': subjectName,
       'subjectDoctor': subjectDoctor,
       'subjectImage': subjectImage,
