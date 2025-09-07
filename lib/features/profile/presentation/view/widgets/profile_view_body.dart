@@ -7,6 +7,7 @@ import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:sinna/features/profile/presentation/view/widgets/delete_account_option_widget.dart';
 import 'package:sinna/features/profile/presentation/view/widgets/profile_option_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({super.key});
@@ -57,7 +58,7 @@ class ProfileViewBody extends StatelessWidget {
           ProfileOptionWidget(
             title: 'Contact with support',
             icon: MaterialCommunityIcons.whatsapp,
-            onTap: () {},
+            onTap: _openWhatsApp,
             color: Colors.green,
           ),
           CustomDividerWidget(),
@@ -75,5 +76,17 @@ class ProfileViewBody extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+Future<void> _openWhatsApp() async {
+  final url = Uri.parse(
+    "https://wa.me/${201552569256}?text=${Uri.encodeComponent("test")}",
+  );
+
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url, mode: LaunchMode.externalApplication);
+  } else {
+    throw "Could not launch $url";
   }
 }

@@ -31,8 +31,7 @@ class ControlPanalCubit extends Cubit<ControlPanalState> {
     required String id,
   }) async {
     try {
-      await service.editUserPaid(email, isPaid, id);
-      print("tmam = $isPaid");
+      await service.editUserPaid(email, isPaid, id); 
     } catch (e) {
       emit(DisplanyingUserCoursesFailureState(e.toString()));
     }
