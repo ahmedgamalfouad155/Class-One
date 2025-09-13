@@ -40,6 +40,14 @@ class ProfileViewBody extends StatelessWidget {
           ),
           CustomDividerWidget(),
           ProfileOptionWidget(
+            title: 'final ui',
+            icon: FontAwesome.language,
+            onTap: () {
+              GoRouter.of(context).push(AppRouter.kFinalSignin);
+            },
+          ),
+          CustomDividerWidget(),
+          ProfileOptionWidget(
             title: 'Language',
             icon: FontAwesome.language,
             onTap: () {

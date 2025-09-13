@@ -3,7 +3,7 @@ import 'package:sinna/core/theme/colors.dart';
 
 final lightTheme = ThemeData(
   fontFamily: 'cairo',
-  scaffoldBackgroundColor: Color(0xffF3F3F3),
+  scaffoldBackgroundColor: Colors.white,
   appBarTheme: AppBarTheme(
     backgroundColor: const Color.fromARGB(255, 23, 32, 66),
     centerTitle: true,
@@ -19,10 +19,10 @@ final lightTheme = ThemeData(
   extensions: const [
     AppColors(
       primaryBlue: Color.fromARGB(255, 38, 54, 110),
-      blue: Color.fromARGB(255, 2, 35, 76),
+      blue: Color(0xff0088FF),
       white: Color(0xffFFFFFF),
-      offWhite: Color(0xffF3F3F3),
-      grey: Color.fromARGB(255, 125, 128, 131),
+      offWhite: Color(0xffD1D1D1),
+      grey: Color(0xff808080),
       black: Color.fromARGB(255, 0, 0, 0),
     ),
   ],

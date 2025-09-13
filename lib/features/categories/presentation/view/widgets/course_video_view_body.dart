@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sinna/core/widgets/custom_buton.dart';
+import 'package:sinna/features/categories/presentation/view/pdf_viewer.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/features/categories/data/models/course_model.dart';
@@ -95,6 +97,20 @@ class _CourseVideoViewBodyState extends State<CourseVideoViewBody> {
               ),
               const SizedBox(height: 20),
               Text(widget.course.tittle, style: AppStyles.textStyle18(context)),
+              const SizedBox(height: 20),
+
+              CustomButton(
+                text: "PDF",
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          PdfViewerPage(pdfUrl: widget.course.pdfUrl),
+                    ),
+                  );
+                },
+              ),
             ],
           ),
         );

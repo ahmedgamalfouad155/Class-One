@@ -3,6 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sinna/core/theme/colors.dart';
 
 abstract class AppStyles {
+  static TextStyle textStyle32(BuildContext context) => TextStyle(
+    fontSize: 32.sp,
+    fontWeight: FontWeight.bold, 
+  );
+
   static TextStyle textStyle18(BuildContext context) => TextStyle(
     fontSize: 18.sp,
     fontWeight: FontWeight.bold,
@@ -25,6 +30,11 @@ abstract class AppStyles {
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
     color: context.appColors.blue,
+  );
+  static TextStyle textStyle16w400(BuildContext context) => TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w400,
+    color: context.appColors.grey,
   );
 
   static TextStyle textStyle24(BuildContext context) => TextStyle(

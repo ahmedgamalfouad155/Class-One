@@ -7,6 +7,10 @@ import 'package:sinna/features/auth/presentation/view/signup_view.dart';
 import 'package:sinna/features/auth/presentation/view/steps_academic_view.dart';
 import 'package:sinna/features/categories/data/models/course_path_model.dart';
 import 'package:sinna/features/categories/data/models/course_model.dart';
+import 'package:sinna/features/categories/presentation/final/view/register_view.dart';
+import 'package:sinna/features/categories/presentation/final/view/final_signin_view.dart';
+import 'package:sinna/features/categories/presentation/final/view/otp_view.dart';
+import 'package:sinna/features/categories/presentation/final/view/study_location_view.dart';
 import 'package:sinna/features/categories/presentation/view/course_video_view.dart';
 import 'package:sinna/features/categories/presentation/view/courses_view.dart';
 import 'package:sinna/features/categories/presentation/view/term_view.dart';
@@ -35,6 +39,10 @@ abstract class AppRouter {
   static const String kAccountView = '/accountView';
   static const String kUserCcourseDetailsView = '/userCcourseDetailsView';
   static const String kControlPanal = '/controlPanal';
+  static const String kFinalRegister = '/registerfinal';
+  static const String kFinalSignin = '/finalSignin';
+  static const String kFinalOtpView = '/finalOtpView';
+  static const String kStudyLocationView = '/studyLocationView';
 
   static final router = GoRouter(
     routes: [
@@ -112,6 +120,26 @@ abstract class AppRouter {
       GoRoute(
         path: kControlPanal,
         builder: (context, state) => const ControlPanalView(),
+      ),
+      GoRoute(
+        path: kFinalRegister,
+        builder: (context, state) => const RegisterView(),
+      ),
+      GoRoute(
+        path: kFinalRegister,
+        builder: (context, state) => const RegisterView(),
+      ),
+      GoRoute(
+        path: kFinalSignin,
+        builder: (context, state) => const FinalSigninView(),
+      ),
+      GoRoute(
+        path: kFinalOtpView,
+        builder: (context, state) => const OtpView(),
+      ),
+      GoRoute(
+        path: kStudyLocationView,
+        builder: (context, state) => const StudyLocationView(),
       ),
     ],
   );

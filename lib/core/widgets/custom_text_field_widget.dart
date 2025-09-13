@@ -29,14 +29,14 @@ class CustomTextFieldWidget extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: AppStyles.textStyle12(context),
-        fillColor: context.appColors.offWhite,
+        fillColor: context.appColors.white,
         filled: true,
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(5),
-          borderSide: BorderSide(color: context.appColors.grey),
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(color: context.appColors.offWhite),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(5),
+          borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide(color: context.appColors.blue),
         ),
       ),

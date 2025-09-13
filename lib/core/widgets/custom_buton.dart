@@ -12,12 +12,14 @@ class CustomButton extends StatelessWidget {
     this.borderRadius,
     this.width,
     this.height,
+    this.borderSideColor,
     required this.text,
     required this.onPressed,
   });
   final void Function()? onPressed;
   Color? bacgrouncColor;
   Color? textColor;
+  Color? borderSideColor;
   final BorderRadius? borderRadius;
   final String text;
   final double? width, height;
@@ -31,15 +33,15 @@ class CustomButton extends StatelessWidget {
         onPressed: onPressed,
         style: TextButton.styleFrom(
           backgroundColor: bacgrouncColor ?? context.appColors.blue,
-          side: BorderSide(color: context.appColors.blue),
+          side: BorderSide(color: borderSideColor ?? context.appColors.blue),
           shape: RoundedRectangleBorder(
-            borderRadius: borderRadius ?? BorderRadius.circular(10),
+            borderRadius: borderRadius ?? BorderRadius.circular(16),
           ),
         ),
         child: Text(
           text,
           style: AppStyles.textStyle18(context).copyWith(
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w600,
             color: textColor ?? context.appColors.white,
           ),
         ),
