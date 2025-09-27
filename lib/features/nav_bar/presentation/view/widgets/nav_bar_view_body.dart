@@ -85,8 +85,8 @@ class _NavBarViewBodyState extends State<NavBarViewBody> {
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
                     navBarCubit.currentIndex == 3
-                        ? AppImages.you
-                        : AppImages.you,
+                        ? AppImages.you1
+                        : AppImages.you1,
                   ),
                   label: "Profile",
                 ),

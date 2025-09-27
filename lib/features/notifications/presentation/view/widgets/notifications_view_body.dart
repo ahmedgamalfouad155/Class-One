@@ -11,13 +11,13 @@ class NotificationsViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final isAdmin = context.read<AuthCubit>().emailAdmin;
     return Padding(
-      padding: const EdgeInsets.all(18.0),
+      padding: const EdgeInsets.all(16.0),
       child: SingleChildScrollView(
         child: Column(
           children: [
             isAdmin ? AddingNotificationSections() : SizedBox(),
             const SizedBox(height: 20),
-            ListOfNotificationsSection(isAdmin: isAdmin),
+            ListOfNotificationsSection(),
           ],
         ),
       ),
