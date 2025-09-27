@@ -7,20 +7,19 @@ import 'package:sinna/features/auth/presentation/view/signup_view.dart';
 import 'package:sinna/features/auth/presentation/view/steps_academic_view.dart';
 import 'package:sinna/features/categories/data/models/course_path_model.dart';
 import 'package:sinna/features/categories/data/models/course_model.dart';
-import 'package:sinna/features/categories/presentation/final/view/register_view.dart';
-import 'package:sinna/features/categories/presentation/final/view/final_signin_view.dart';
-import 'package:sinna/features/categories/presentation/final/view/otp_view.dart';
-import 'package:sinna/features/categories/presentation/final/view/study_location_view.dart';
+import 'package:sinna/features/final_ui/view/register_view.dart';
+import 'package:sinna/features/final_ui/view/final_signin_view.dart';
+import 'package:sinna/features/final_ui/view/otp_view.dart';
+import 'package:sinna/features/final_ui/view/study_location_view.dart';
 import 'package:sinna/features/categories/presentation/view/course_video_view.dart';
 import 'package:sinna/features/categories/presentation/view/courses_view.dart';
 import 'package:sinna/features/categories/presentation/view/term_view.dart';
 import 'package:sinna/features/landing/presentation/views/landing_view.dart';
 import 'package:sinna/features/my_courses/presentation/view/user_ccourse_details_view.dart';
 import 'package:sinna/features/nav_bar/presentation/view/nav_bar_view.dart';
-import 'package:sinna/features/profile/presentation/view/account_view.dart';
-import 'package:sinna/features/profile/presentation/view/control_panal_view.dart';
-import 'package:sinna/features/profile/presentation/view/language_view.dart';
-import 'package:sinna/features/profile/presentation/view/mode_view.dart';
+import 'package:sinna/features/addmin/presentation/view/account_view.dart';
+import 'package:sinna/features/addmin/presentation/view/control_panal_view.dart';
+import 'package:sinna/features/profile/presentation/view/account_setting_view.dart';
 import 'package:sinna/features/splash/splash._view.dart';
 
 abstract class AppRouter {
@@ -43,6 +42,7 @@ abstract class AppRouter {
   static const String kFinalSignin = '/finalSignin';
   static const String kFinalOtpView = '/finalOtpView';
   static const String kStudyLocationView = '/studyLocationView';
+  static const String kAccountSettingView = '/accountSettingView';
 
   static final router = GoRouter(
     routes: [
@@ -100,11 +100,7 @@ abstract class AppRouter {
           return CourseVideoView(course: coursePathModel);
         },
       ),
-      GoRoute(
-        path: kLanguageView,
-        builder: (context, state) => const LanguageView(),
-      ),
-      GoRoute(path: kModeView, builder: (context, state) => const ModeView()),
+      
       GoRoute(
         path: kAccountView,
         builder: (context, state) => const AccountView(),
@@ -140,6 +136,10 @@ abstract class AppRouter {
       GoRoute(
         path: kStudyLocationView,
         builder: (context, state) => const StudyLocationView(),
+      ),
+      GoRoute(
+        path: kAccountSettingView,
+        builder: (context, state) => const AccountSettingView(),
       ),
     ],
   );

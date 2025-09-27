@@ -12,4 +12,11 @@ class AppImages {
   static final String egypt = 'assets/images/egy.jpg';
   static final String usa = 'assets/images/usa.jpg';
   static final String fav = 'assets/images/fave.jpg';
+  static final String dashBoard1 = 'assets/images/dashboard1.svg';
+  static final String explore1 = 'assets/images/explore1.svg';
+  static final String inBox1 = 'assets/images/inpox1.svg';
+  static final String you = 'assets/images/you1.svg';
+  static final String avatar = 'assets/images/Avatar.png';
+
+
 }

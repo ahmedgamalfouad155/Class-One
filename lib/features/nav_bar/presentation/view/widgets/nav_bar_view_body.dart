@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:sinna/core/constants/images.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/features/categories/presentation/view/categories_view.dart';
@@ -46,10 +47,10 @@ class _NavBarViewBodyState extends State<NavBarViewBody> {
               onTap: (index) => navBarCubit.changeIndex(index),
               currentIndex: navBarCubit.currentIndex,
               type: BottomNavigationBarType.fixed,
-              backgroundColor: context.appColors.offWhite,
+              backgroundColor: context.appColors.white,
               elevation: 0,
               selectedItemColor: context.appColors.blue,
-              unselectedItemColor: context.appColors.primaryBlue,
+              unselectedItemColor: context.appColors.grey,
               selectedLabelStyle: AppStyles.textStyle12(
                 context,
               ).copyWith(fontWeight: FontWeight.bold),
@@ -58,34 +59,34 @@ class _NavBarViewBodyState extends State<NavBarViewBody> {
               ).copyWith(fontWeight: FontWeight.bold),
               items: [
                 BottomNavigationBarItem(
-                  icon: Icon(
+                  icon: SvgPicture.asset(
                     navBarCubit.currentIndex == 0
-                        ? Ionicons.book
-                        : Ionicons.book_outline,
+                        ? AppImages.dashBoard1
+                        : AppImages.dashBoard1,
                   ),
-                  label: "My Corse",
+                  label: "Dashboard",
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(
+                  icon: SvgPicture.asset(
                     navBarCubit.currentIndex == 1
-                        ? MaterialIcons.category
-                        : Icons.category_outlined,
+                        ? AppImages.explore1
+                        : AppImages.explore1,
                   ),
-                  label: "Category",
+                  label: "Explore",
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(
+                  icon: SvgPicture.asset(
                     navBarCubit.currentIndex == 2
-                        ? Ionicons.notifications
-                        : Ionicons.notifications_outline,
+                        ? AppImages.inBox1
+                        : AppImages.inBox1,
                   ),
-                  label: "Notification",
+                  label: "Inbox",
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(
+                  icon: SvgPicture.asset(
                     navBarCubit.currentIndex == 3
-                        ? Icons.person
-                        : Icons.person_outlined,
+                        ? AppImages.you
+                        : AppImages.you,
                   ),
                   label: "Profile",
                 ),

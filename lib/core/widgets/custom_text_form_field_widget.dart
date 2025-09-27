@@ -34,7 +34,7 @@ class CustomTextFormFieldWidget extends StatelessWidget {
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: AppStyles.textStyle12(context),
-            fillColor: context.appColors.offWhite,
+            fillColor: context.appColors.grayBackgroundTextFiled,
             filled: true,
             suffixIcon: IconButton(
               icon: Icon(
@@ -46,12 +46,12 @@ class CustomTextFormFieldWidget extends StatelessWidget {
               },
             ),
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(5),
-              borderSide: BorderSide(color: context.appColors.grey),
+              borderRadius: BorderRadius.circular(14),
+              borderSide: BorderSide.none,
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(5),
-              borderSide: BorderSide(color: context.appColors.blue),
+              borderRadius: BorderRadius.circular(14),
+              borderSide: BorderSide.none,
             ),
           ),
         );

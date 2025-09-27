@@ -37,6 +37,13 @@ class CustomsBoxDecoration {
     );
   }
 
+  BoxDecoration profileDecoration(BuildContext context) {
+    return BoxDecoration(
+      color: context.appColors.grayBackground,
+      borderRadius: BorderRadius.circular(8),
+    );
+  }
+
   BoxDecoration alarmBoxDecoration(BuildContext context) {
     return BoxDecoration(
       shape: BoxShape.rectangle,

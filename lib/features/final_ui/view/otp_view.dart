@@ -1,0 +1,18 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sinna/features/final_ui/manager/phone_auth_cubit.dart';
+import 'package:sinna/features/final_ui/widgets/otp_view_body.dart';
+
+class OtpView extends StatelessWidget {
+  const OtpView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: BlocProvider(
+        create: (context) => PhoneAuthCubit(),
+        child: OtpViewBody(),
+      ),
+    );
+  }
+}

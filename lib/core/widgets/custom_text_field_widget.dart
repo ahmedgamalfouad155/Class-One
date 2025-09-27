@@ -28,16 +28,18 @@ class CustomTextFieldWidget extends StatelessWidget {
       },
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: AppStyles.textStyle12(context),
-        fillColor: context.appColors.white,
+        hintStyle: AppStyles.textStyle16w400Grey(
+          context,
+        ).copyWith(fontWeight: FontWeight.w600),
+        fillColor: context.appColors.grayBackgroundTextFiled,
         filled: true,
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: context.appColors.offWhite),
+          borderRadius: BorderRadius.circular(14),
+          borderSide: BorderSide.none,
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: context.appColors.blue),
+          borderRadius: BorderRadius.circular(14),
+          borderSide: BorderSide.none,
         ),
       ),
     );
