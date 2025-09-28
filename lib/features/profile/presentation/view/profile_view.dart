@@ -13,11 +13,11 @@ class ProfileView extends StatelessWidget {
       appBar: AppBar(
         title: Row(
           children: [
-            CircleAvatar(backgroundImage: AssetImage(AppImages.avatar)), 
+            CircleAvatar(backgroundImage: AssetImage(AppImages.avatar)),
             const SizedBox(width: 10),
             Text(
               "Ahmed gamal",
-              style: AppStyles.textStyle16(
+              style: AppStyles.textStyle16W600(
                 context,
               ).copyWith(color: context.appColors.black),
             ),

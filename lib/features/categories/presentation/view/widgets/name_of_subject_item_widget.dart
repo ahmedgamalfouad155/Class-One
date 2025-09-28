@@ -38,12 +38,12 @@ class NameOfSubjectItemWidget extends StatelessWidget {
             children: [
               Text(
                 subjectInfo.subjectName,
-                style: AppStyles.textStyle14(context),
+                style: AppStyles.textStyle14W600(context),
               ),
               const SizedBox(height: 5),
               Text(
                 subjectInfo.subjectDoctor,
-                style: AppStyles.textStyle12(
+                style: AppStyles.textStyle12GreyW400(
                   context,
                 ).copyWith(color: context.appColors.grey),
               ),

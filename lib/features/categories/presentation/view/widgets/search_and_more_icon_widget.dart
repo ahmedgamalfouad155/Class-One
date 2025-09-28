@@ -1,12 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/widgets/custom_text_field_widget.dart';
+import 'package:sinna/features/categories/presentation/view/widgets/filter_content_bottom_sheet.dart';
 
 class SearchAndMoreIconWidget extends StatelessWidget {
-  const SearchAndMoreIconWidget({
-    super.key,
-  });
+  const SearchAndMoreIconWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +22,9 @@ class SearchAndMoreIconWidget extends StatelessWidget {
           CircleAvatar(
             backgroundColor: context.appColors.greyBackgroundTextFiled,
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                filterContentBottomSheet(context);
+              },
               icon: Icon(Icons.more_horiz, color: context.appColors.blue),
             ),
           ),
@@ -33,3 +33,4 @@ class SearchAndMoreIconWidget extends StatelessWidget {
     );
   }
 }
+

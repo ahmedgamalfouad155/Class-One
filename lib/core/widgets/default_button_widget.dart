@@ -25,7 +25,6 @@ class DefaultButtonWidget extends StatelessWidget {
   final double? width, height;
   final Widget? icon;
   final TextStyle? textStyle;
-  
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +47,7 @@ class DefaultButtonWidget extends StatelessWidget {
               text,
               style:
                   textStyle ??
-                  AppStyles.textStyle16(context).copyWith(
+                  AppStyles.textStyle16W600(context).copyWith(
                     fontWeight: FontWeight.w700,
                     color: textColor ?? context.appColors.white,
                   ),

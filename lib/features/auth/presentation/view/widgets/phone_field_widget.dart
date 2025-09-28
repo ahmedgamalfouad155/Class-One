@@ -3,6 +3,7 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl_phone_field/countries.dart'; // مهم!
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
+
 class PhoneFieldWidget extends StatelessWidget {
   const PhoneFieldWidget({
     super.key,
@@ -33,9 +34,24 @@ class PhoneFieldWidget extends StatelessWidget {
       initialCountryCode: initialCountryCode,
       countries: countries.where((country) {
         const arabCountries = [
-          'EG', 'SA', 'AE', 'QA', 'KW', 'OM', 'BH',
-          'JO', 'IQ', 'LY', 'SY', 'YE', 'SD', 'DZ',
-          'MA', 'TN', 'LB', 'PS',
+          'EG',
+          'SA',
+          'AE',
+          'QA',
+          'KW',
+          'OM',
+          'BH',
+          'JO',
+          'IQ',
+          'LY',
+          'SY',
+          'YE',
+          'SD',
+          'DZ',
+          'MA',
+          'TN',
+          'LB',
+          'PS',
         ];
         return arabCountries.contains(country.code);
       }).toList(),
@@ -45,7 +61,7 @@ class PhoneFieldWidget extends StatelessWidget {
       cursorColor: context.appColors.blue,
       decoration: InputDecoration(
         hintText: "000 000 0000",
-        hintStyle: AppStyles.textStyle12(context),
+        hintStyle: AppStyles.textStyle12GreyW400(context),
         fillColor: context.appColors.white,
         filled: true,
         enabledBorder: OutlineInputBorder(

@@ -24,7 +24,7 @@ class TermItemWidget extends StatelessWidget {
           const SizedBox(height: 10),
           Text(
             terms,
-            style: AppStyles.textStyle18(
+            style: AppStyles.textStyle18Bold(
               context,
             ).copyWith(color: context.appColors.primaryBlue),
           ),

@@ -22,7 +22,7 @@ class EmailAndPasswordFieldsLoginWidget extends StatelessWidget {
       children: [
         Text(
           "Email",
-          style: AppStyles.textStyle14(
+          style: AppStyles.textStyle14W600(
             context,
           ).copyWith(fontWeight: FontWeight.w500),
         ),
@@ -34,7 +34,7 @@ class EmailAndPasswordFieldsLoginWidget extends StatelessWidget {
         const SizedBox(height: 15),
         Text(
           "Password",
-          style: AppStyles.textStyle14(
+          style: AppStyles.textStyle14W600(
             context,
           ).copyWith(fontWeight: FontWeight.w500),
         ),

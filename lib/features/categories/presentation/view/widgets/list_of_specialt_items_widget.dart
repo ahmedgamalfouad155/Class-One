@@ -3,37 +3,64 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/features/categories/presentation/manager/special_cubit/special_cubit.dart';
 import 'package:sinna/features/categories/presentation/view/widgets/special_item_widget.dart';
 
-class ListOfSpecialtItemsWidget extends StatelessWidget {
-  const ListOfSpecialtItemsWidget({super.key});
+enum SpecialLayoutType { wrap, equal }
 
-  final List<String> filters = const [
-    "None",
-    'Orthodontics',
-    'Prosthodontics',
-    'Radiology',
-  ];
+class ListOfSpecialtItemsWidget extends StatelessWidget {
+  const ListOfSpecialtItemsWidget({
+    super.key,
+    required this.filters,
+    this.padding = EdgeInsets.zero,
+    this.layoutType = SpecialLayoutType.wrap,
+  });
+
+  final EdgeInsetsGeometry padding;
+  final List<String> filters;
+  final SpecialLayoutType layoutType;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 25.0, top: 20),
+      padding: padding,
       child: BlocBuilder<SpecialCubit, int>(
         builder: (context, selectedIndex) {
-          return SizedBox(
-            height: 35,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return SpecialItemWidget(
-                  title: filters[index],
-                  isSelected: selectedIndex == index,
-                  onTap: () => context.read<SpecialCubit>().selectFilter(index),
+          if (layoutType == SpecialLayoutType.wrap) {
+            // ✅ العناصر تاخد حجمها الطبيعي
+            return SizedBox(
+              height: 35,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return SpecialItemWidget(
+                    title: filters[index],
+                    isSelected: selectedIndex == index,
+                    onTap: () =>
+                        context.read<SpecialCubit>().selectFilter(index),
+                    layoutType: layoutType,
+                  );
+                },
+                separatorBuilder: (context, index) => const SizedBox(width: 10),
+                itemCount: filters.length,
+              ),
+            );
+          } else {
+            // ✅ العناصر تتقسم بالتساوي
+            return Row(
+              children: List.generate(filters.length, (index) {
+                return Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    child: SpecialItemWidget(
+                      title: filters[index],
+                      isSelected: selectedIndex == index,
+                      onTap: () =>
+                          context.read<SpecialCubit>().selectFilter(index),
+                      layoutType: layoutType,
+                    ),
+                  ),
                 );
-              },
-              separatorBuilder: (context, index) => const SizedBox(width: 10),
-              itemCount: filters.length,
-            ),
-          );
+              }),
+            );
+          }
         },
       ),
     );

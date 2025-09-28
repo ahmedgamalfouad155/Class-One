@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:sinna/core/constants/images.dart';
 import 'package:sinna/core/theme/colors.dart';
@@ -10,7 +9,7 @@ import 'package:sinna/core/widgets/default_button_widget.dart';
 class SubjectItemWidget extends StatelessWidget {
   const SubjectItemWidget({
     super.key,
-    required this.onTap, 
+    required this.onTap,
     required this.subjectDoctor,
     required this.subjectName,
   });
@@ -35,13 +34,13 @@ class SubjectItemWidget extends StatelessWidget {
             ),
             Text(
               subjectName,
-              style: AppStyles.textStyle16(
+              style: AppStyles.textStyle16W600(
                 context,
               ).copyWith(fontWeight: FontWeight.bold),
             ),
             Text(
               subjectDoctor,
-              style: AppStyles.textStyle12(context).copyWith(
+              style: AppStyles.textStyle12GreyW400(context).copyWith(
                 fontWeight: FontWeight.bold,
                 color: context.appColors.blue,
               ),
@@ -51,7 +50,7 @@ class SubjectItemWidget extends StatelessWidget {
               onPressed: () {},
               width: AppMedia.width(context) / 4,
               height: 30,
-              textStyle: AppStyles.textStyle14(context).copyWith(
+              textStyle: AppStyles.textStyle14W600(context).copyWith(
                 color: context.appColors.white,
                 fontWeight: FontWeight.bold,
               ),

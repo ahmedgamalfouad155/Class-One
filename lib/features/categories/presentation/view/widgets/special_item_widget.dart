@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
+import 'package:sinna/features/categories/presentation/view/widgets/list_of_specialt_items_widget.dart';
 
 class SpecialItemWidget extends StatelessWidget {
   const SpecialItemWidget({
@@ -8,11 +9,13 @@ class SpecialItemWidget extends StatelessWidget {
     required this.title,
     required this.isSelected,
     required this.onTap,
+    this.layoutType = SpecialLayoutType.wrap,
   });
 
   final String title;
   final bool isSelected;
   final VoidCallback onTap;
+  final SpecialLayoutType layoutType;
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +26,23 @@ class SpecialItemWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color: isSelected
               ? context.appColors.blue
-              : context.appColors.greyBackgroundTextFiled,
-          borderRadius: BorderRadius.circular(18),
+              : layoutType == SpecialLayoutType.wrap
+              ? context.appColors.greyBackgroundTextFiled
+              : context.appColors.white,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(
+            color: isSelected
+                ? context.appColors.blue
+                : layoutType == SpecialLayoutType.wrap
+                ? context.appColors.greyBackgroundTextFiled
+                : context.appColors.greyNavBar,
+            width: 1,
+          ),
         ),
         child: Text(
           title,
-          style: AppStyles.textStyle14(context).copyWith(
+          textAlign: TextAlign.center,
+          style: AppStyles.textStyle14W600(context).copyWith(
             fontWeight: FontWeight.bold,
             color: isSelected ? Colors.white : context.appColors.black,
           ),

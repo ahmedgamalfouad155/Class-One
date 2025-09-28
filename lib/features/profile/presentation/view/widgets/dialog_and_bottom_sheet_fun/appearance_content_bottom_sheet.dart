@@ -20,7 +20,7 @@ void appearanceContentBottomSheet(BuildContext context) {
           ),
         ),
         const SizedBox(height: 10),
-        Text("Appearance", style: AppStyles.textStyle16(context)),
+        Text("Appearance", style: AppStyles.textStyle16W600(context)),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

@@ -11,7 +11,10 @@ class AccountSettingView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        title: Text("Account Setting", style: AppStyles.textStyle16(context)),
+        title: Text(
+          "Account Setting",
+          style: AppStyles.textStyle16W600(context),
+        ),
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);

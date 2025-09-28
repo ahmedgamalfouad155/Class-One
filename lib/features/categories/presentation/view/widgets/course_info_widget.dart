@@ -24,20 +24,20 @@ class CourseInfoWidget extends StatelessWidget {
               children: [
                 Text(
                   coursePathModel.subject.toString(),
-                  style: AppStyles.textStyle18(context),
+                  style: AppStyles.textStyle18Bold(context),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       "Ahmed gamal",
-                      style: AppStyles.textStyle14(
+                      style: AppStyles.textStyle14W600(
                         context,
                       ).copyWith(fontWeight: FontWeight.bold),
                     ),
                     Text(
                       coursePathModel.term.toString(),
-                      style: AppStyles.textStyle14(
+                      style: AppStyles.textStyle14W600(
                         context,
                       ).copyWith(fontWeight: FontWeight.bold),
                     ),

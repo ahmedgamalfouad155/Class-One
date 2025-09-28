@@ -36,7 +36,7 @@ class FinalSigninBody extends StatelessWidget {
             children: [
               Text(
                 "Forgotten Password?",
-                style: AppStyles.textStyle14(context),
+                style: AppStyles.textStyle14W600(context),
               ),
             ],
           ),
@@ -56,7 +56,7 @@ class FinalSigninBody extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Get Support", style: AppStyles.textStyle14(context)),
+              Text("Get Support", style: AppStyles.textStyle14W600(context)),
             ],
           ),
         ],

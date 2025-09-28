@@ -39,7 +39,7 @@ class CustomAnimatedDialog {
                 Text(
                   message,
                   textAlign: TextAlign.center,
-                  style: AppStyles.textStyle18(context),
+                  style: AppStyles.textStyle18Bold(context),
                 ),
               ],
             ),

@@ -41,7 +41,7 @@ class NotificationItemWidget extends StatelessWidget {
                         Expanded(
                           child: Text(
                             notification.title,
-                            style: AppStyles.textStyle14(
+                            style: AppStyles.textStyle14W600(
                               context,
                             ).copyWith(fontWeight: FontWeight.w600),
                           ),
@@ -49,7 +49,7 @@ class NotificationItemWidget extends StatelessWidget {
                         const SizedBox(width: 5),
                         Text(
                           "Sep 20, 2025",
-                          style: AppStyles.textStyle16(
+                          style: AppStyles.textStyle16W600(
                             context,
                           ).copyWith(fontWeight: FontWeight.w600),
                         ),
@@ -57,7 +57,7 @@ class NotificationItemWidget extends StatelessWidget {
                     ),
                     Text(
                       notification.body,
-                      style: AppStyles.textStyle14(
+                      style: AppStyles.textStyle14W600(
                         context,
                       ).copyWith(color: context.appColors.grey),
                     ),
@@ -65,7 +65,7 @@ class NotificationItemWidget extends StatelessWidget {
                 ),
               ),
             ],
-          ), 
+          ),
           CustomDividerWidget(),
         ],
       ),

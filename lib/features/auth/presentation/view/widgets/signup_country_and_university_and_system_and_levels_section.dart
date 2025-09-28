@@ -24,7 +24,7 @@ class SignupCountryAndUniversityAndSystemAndLevelsFieldsSection
       children: [
         Text(
           "Country",
-          style: AppStyles.textStyle14(
+          style: AppStyles.textStyle14W600(
             context,
           ).copyWith(fontWeight: FontWeight.w500),
         ),
@@ -36,7 +36,7 @@ class SignupCountryAndUniversityAndSystemAndLevelsFieldsSection
         const SizedBox(height: 10),
         Text(
           "University",
-          style: AppStyles.textStyle14(
+          style: AppStyles.textStyle14W600(
             context,
           ).copyWith(fontWeight: FontWeight.w500),
         ),
@@ -48,7 +48,7 @@ class SignupCountryAndUniversityAndSystemAndLevelsFieldsSection
         const SizedBox(height: 10),
         Text(
           "System",
-          style: AppStyles.textStyle14(
+          style: AppStyles.textStyle14W600(
             context,
           ).copyWith(fontWeight: FontWeight.w500),
         ),
@@ -60,7 +60,7 @@ class SignupCountryAndUniversityAndSystemAndLevelsFieldsSection
         const SizedBox(height: 10),
         Text(
           "Levels",
-          style: AppStyles.textStyle14(
+          style: AppStyles.textStyle14W600(
             context,
           ).copyWith(fontWeight: FontWeight.w500),
         ),

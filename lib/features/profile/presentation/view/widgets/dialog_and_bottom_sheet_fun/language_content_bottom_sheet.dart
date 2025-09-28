@@ -19,7 +19,7 @@ void languageContentBottomSheet(BuildContext context) {
             color: context.appColors.grey,
           ),
         ),
-        Text("Language", style: AppStyles.textStyle16(context)),
+        Text("Language", style: AppStyles.textStyle16W600(context)),
         const SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -96,7 +96,10 @@ class _CourseVideoViewBodyState extends State<CourseVideoViewBody> {
                 ),
               ),
               const SizedBox(height: 20),
-              Text(widget.course.tittle, style: AppStyles.textStyle18(context)),
+              Text(
+                widget.course.tittle,
+                style: AppStyles.textStyle18Bold(context),
+              ),
               const SizedBox(height: 20),
 
               CustomButton(

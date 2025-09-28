@@ -38,3 +38,22 @@ Map<String, String> convert = {
   "Prothodontics": "pedodontics",
   "Orthodontics": "orthodontics",
 };
+
+final List<String> specializationExpolreFilters = const [
+  "None",
+  'Orthodontics',
+  'Prosthodontics',
+  'Radiology',
+];
+
+final List<String> specializationBottomSheetFilters = const [
+  "Dentistry",
+  'Nursing',
+  'Other',
+  
+];
+
+final List<String> programBottomSheetFilters = const [
+  "Academic",
+  'Professional', 
+];

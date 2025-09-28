@@ -44,17 +44,17 @@ class CourseItemWidget extends StatelessWidget {
             children: [
               Text(
                 numberOfCourse.toDouble().toString(),
-                style: AppStyles.textStyle18(context),
+                style: AppStyles.textStyle18Bold(context),
               ),
               const SizedBox(width: 10),
-              Text(nameOfCourse, style: AppStyles.textStyle18(context)),
+              Text(nameOfCourse, style: AppStyles.textStyle18Bold(context)),
               const Spacer(),
               Icon(
                 isAdmin
                     ? Icons.lock_open_rounded
                     : numberOfCourse == 1
                     ? Icons.lock_open_rounded
-                    : Icons.lock_rounded, 
+                    : Icons.lock_rounded,
                 color: context.appColors.blue,
               ),
             ],

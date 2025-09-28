@@ -63,7 +63,7 @@ class ProfileOptionWidget extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: verticalPading ?? 10),
         child: Row(
           children: [
-            Text(title, style: AppStyles.textStyle14(context)),
+            Text(title, style: AppStyles.textStyle14W600(context)),
             Spacer(),
             widget ??
                 Icon(

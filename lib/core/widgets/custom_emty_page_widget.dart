@@ -22,13 +22,13 @@ class CustomEmptyPage extends StatelessWidget {
         const SizedBox(height: 15),
         Text(
           title,
-          style: AppStyles.textStyle20(context).copyWith(
+          style: AppStyles.textStyle20W600(context).copyWith(
             fontWeight: FontWeight.bold,
             color: context.appColors.blue,
           ),
         ),
         const SizedBox(height: 5),
-        Text(subTitle, style: AppStyles.textStyle16(context)),
+        Text(subTitle, style: AppStyles.textStyle16W600(context)),
       ],
     );
   }

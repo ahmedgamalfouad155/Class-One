@@ -39,10 +39,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               children: [
                 Image.asset(AppImages.logo, height: 100),
                 const SizedBox(height: 20),
-                Text("Welcom Back", style: AppStyles.textStyle18(context)),
+                Text("Welcom Back", style: AppStyles.textStyle18Bold(context)),
                 Text(
                   "Please enter your details.",
-                  style: AppStyles.textStyle14(context),
+                  style: AppStyles.textStyle14W600(context),
                 ),
                 const SizedBox(height: 20),
                 EmailAndPasswordFieldsLoginWidget(
@@ -53,7 +53,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 HavingAccountAndForgetPasswordLoginTextWidget(),
                 const SizedBox(height: 40),
                 BlocProvider(
-                  create: (context) => LoginCubit( ),
+                  create: (context) => LoginCubit(),
                   child: LoginButtonWidget(
                     formKey: formKey,
                     passwordController: passwordController,

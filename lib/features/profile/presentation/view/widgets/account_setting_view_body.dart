@@ -22,13 +22,13 @@ class AccountSettingViewBody extends StatelessWidget {
           const SizedBox(height: 5),
           Text(
             "Ahmed Gamal",
-            style: AppStyles.textStyle18(
+            style: AppStyles.textStyle18Bold(
               context,
             ).copyWith(fontWeight: FontWeight.w600),
           ),
           Text(
             "ahmedgamal@gmail.com",
-            style: AppStyles.textStyle14(context).copyWith(
+            style: AppStyles.textStyle14W600(context).copyWith(
               fontWeight: FontWeight.w600,
               color: context.appColors.grey,
             ),
@@ -39,7 +39,7 @@ class AccountSettingViewBody extends StatelessWidget {
             children: [
               Text(
                 "Name",
-                style: AppStyles.textStyle16(
+                style: AppStyles.textStyle16W600(
                   context,
                 ).copyWith(color: context.appColors.grey),
               ),
@@ -47,7 +47,7 @@ class AccountSettingViewBody extends StatelessWidget {
               const SizedBox(height: 16),
               Text(
                 "Password",
-                style: AppStyles.textStyle16(
+                style: AppStyles.textStyle16W600(
                   context,
                 ).copyWith(color: context.appColors.grey),
               ),

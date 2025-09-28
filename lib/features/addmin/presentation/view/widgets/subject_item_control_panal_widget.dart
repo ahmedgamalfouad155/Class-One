@@ -36,7 +36,7 @@ class SubjectItemControlPanalWidget extends StatelessWidget {
             ),
             Text(
               coursePath.subjectName.toString(),
-              style: AppStyles.textStyle16(
+              style: AppStyles.textStyle16W600(
                 context,
               ).copyWith(fontWeight: FontWeight.bold),
             ),
@@ -46,14 +46,14 @@ class SubjectItemControlPanalWidget extends StatelessWidget {
               children: [
                 Text(
                   coursePath.stage.toString(),
-                  style: AppStyles.textStyle12(context).copyWith(
+                  style: AppStyles.textStyle12GreyW400(context).copyWith(
                     fontWeight: FontWeight.bold,
                     color: context.appColors.blue,
                   ),
                 ),
                 Text(
                   coursePath.term.toString(),
-                  style: AppStyles.textStyle12(context).copyWith(
+                  style: AppStyles.textStyle12GreyW400(context).copyWith(
                     fontWeight: FontWeight.bold,
                     color: context.appColors.blue,
                   ),
@@ -62,7 +62,7 @@ class SubjectItemControlPanalWidget extends StatelessWidget {
             ),
             Text(
               coursePath.subjectDoctor.toString(),
-              style: AppStyles.textStyle12(context).copyWith(
+              style: AppStyles.textStyle12GreyW400(context).copyWith(
                 fontWeight: FontWeight.bold,
                 color: context.appColors.blue,
               ),
@@ -72,7 +72,7 @@ class SubjectItemControlPanalWidget extends StatelessWidget {
               children: [
                 Text(
                   "Active",
-                  style: AppStyles.textStyle14(
+                  style: AppStyles.textStyle14W600(
                     context,
                   ).copyWith(fontWeight: FontWeight.bold),
                 ),
@@ -122,7 +122,7 @@ class _SwitchWidgetState extends State<SwitchWidget> {
               isPaid: value,
               id: widget.id,
             );
-          }); 
+          });
         },
       ),
     );

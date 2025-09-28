@@ -51,10 +51,10 @@ class _NavBarViewBodyState extends State<NavBarViewBody> {
               elevation: 0,
               selectedItemColor: context.appColors.blue,
               unselectedItemColor: context.appColors.greyNavBar,
-              selectedLabelStyle: AppStyles.textStyle12(
+              selectedLabelStyle: AppStyles.textStyle12GreyW400(
                 context,
               ).copyWith(fontWeight: FontWeight.bold),
-              unselectedLabelStyle: AppStyles.textStyle12(
+              unselectedLabelStyle: AppStyles.textStyle12GreyW400(
                 context,
               ).copyWith(fontWeight: FontWeight.bold),
               items: [

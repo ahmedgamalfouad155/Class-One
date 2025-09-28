@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
@@ -12,7 +11,10 @@ void showChangePasswordDialog(BuildContext context) {
         insetPadding: const EdgeInsets.symmetric(horizontal: 12),
         backgroundColor: context.appColors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: Text("Password Required", style: AppStyles.textStyle20(context)),
+        title: Text(
+          "Password Required",
+          style: AppStyles.textStyle20W600(context),
+        ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -31,7 +33,7 @@ void showChangePasswordDialog(BuildContext context) {
             },
             child: Text(
               "Cancel",
-              style: AppStyles.textStyle16(
+              style: AppStyles.textStyle16W600(
                 context,
               ).copyWith(color: context.appColors.blue),
             ),
@@ -42,7 +44,7 @@ void showChangePasswordDialog(BuildContext context) {
             },
             child: Text(
               "Confirm",
-              style: AppStyles.textStyle16(
+              style: AppStyles.textStyle16W600(
                 context,
               ).copyWith(color: context.appColors.blue),
             ),

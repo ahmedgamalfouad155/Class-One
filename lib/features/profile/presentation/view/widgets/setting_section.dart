@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/customs_box_decoratino.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/widgets/custom_divider_widget.dart';
+import 'package:sinna/features/categories/presentation/view/widgets/filter_content_bottom_sheet.dart';
 import 'package:sinna/features/profile/presentation/view/widgets/dialog_and_bottom_sheet_fun/appearance_content_bottom_sheet.dart';
 import 'package:sinna/features/profile/presentation/view/widgets/dialog_and_bottom_sheet_fun/language_content_bottom_sheet.dart';
 import 'package:sinna/features/profile/presentation/view/widgets/profile_option_widget.dart';
