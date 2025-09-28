@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sinna/features/categories/data/models/course_path_model.dart';
-import 'package:sinna/features/categories/presentation/view/widgets/course_info_widget.dart';
+import 'package:sinna/features/explore/data/models/course_path_model.dart';
+import 'package:sinna/features/course_details/presentation/widget/course_info_widget.dart';
 import 'package:sinna/features/my_courses/presentation/view/widgets/list_of_user_course_widget.dart';
 
 class UserCourseDetailsViewBody extends StatelessWidget {

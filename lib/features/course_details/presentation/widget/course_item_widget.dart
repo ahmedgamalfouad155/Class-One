@@ -1,33 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sinna/core/router/app_router.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
+import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:sinna/features/explore/data/models/course_model.dart';
 
-class UserCoursItemWidget extends StatelessWidget {
-  const UserCoursItemWidget({
+class CourseItemWidget extends StatelessWidget {
+  const CourseItemWidget({
     super.key,
     required this.numberOfCourse,
     required this.nameOfCourse,
     required this.course,
-    required this.isPaied,
   });
   final CourseModel course;
   final int numberOfCourse;
   final String nameOfCourse;
-  final bool isPaied;
 
   @override
   Widget build(BuildContext context) {
+    final isAdmin = context.read<AuthCubit>().emailAdmin;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
-          if (isPaied) {
+          if (isAdmin) {
             GoRouter.of(
               context,
             ).push(AppRouter.kCourseVideoView, extra: course);
+          } else {
+            numberOfCourse == 1
+                ? GoRouter.of(
+                    context,
+                  ).push(AppRouter.kCourseVideoView, extra: course)
+                : null;
           }
         },
         child: Card(
@@ -43,7 +50,11 @@ class UserCoursItemWidget extends StatelessWidget {
               Text(nameOfCourse, style: AppStyles.textStyle18Bold(context)),
               const Spacer(),
               Icon(
-                isPaied ? Icons.lock_open_rounded : Icons.lock_rounded,
+                isAdmin
+                    ? Icons.lock_open_rounded
+                    : numberOfCourse == 1
+                    ? Icons.lock_open_rounded
+                    : Icons.lock_rounded,
                 color: context.appColors.blue,
               ),
             ],

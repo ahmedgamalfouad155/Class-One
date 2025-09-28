@@ -4,7 +4,7 @@ import 'package:sinna/core/constants/images.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/customs_box_decoratino.dart';
 import 'package:sinna/core/theme/styles.dart';
-import 'package:sinna/features/categories/data/models/course_path_model.dart';
+import 'package:sinna/features/explore/data/models/course_path_model.dart';
 import 'package:sinna/features/addmin/presentation/manager/control_panal_cubit/control_panal_cubit.dart';
 
 class SubjectItemControlPanalWidget extends StatelessWidget {

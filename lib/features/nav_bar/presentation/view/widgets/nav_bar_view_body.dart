@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:sinna/core/constants/images.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
-import 'package:sinna/features/categories/presentation/view/explore_view.dart';
+import 'package:sinna/features/explore/presentation/view/explore_view.dart';
 import 'package:sinna/features/my_courses/presentation/view/my_corses_view.dart';
 import 'package:sinna/features/nav_bar/presentation/manager/nav_bar_cubit/navbar_cubit.dart';
 import 'package:sinna/features/nav_bar/presentation/manager/nav_bar_cubit/navbar_state.dart';

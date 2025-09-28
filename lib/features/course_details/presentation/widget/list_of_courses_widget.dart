@@ -4,11 +4,10 @@ import 'package:sinna/core/theme/customs_box_decoratino.dart';
 import 'package:sinna/features/explore/data/models/course_model.dart';
 import 'package:sinna/features/course_details/presentation/manager/course_cubit/course_cubit.dart';
 import 'package:sinna/features/course_details/presentation/manager/course_cubit/course_state.dart';
-import 'package:sinna/features/my_courses/presentation/view/widgets/user_cours_item_widget.dart';
+import 'package:sinna/features/course_details/presentation/widget/course_item_widget.dart';
 
-class ListOfUserCourseWidget extends StatelessWidget {
-  const ListOfUserCourseWidget({super.key, required this.isPaied});
-  final bool isPaied;
+class ListOfCoursesWidget extends StatelessWidget {
+  const ListOfCoursesWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +22,10 @@ class ListOfUserCourseWidget extends StatelessWidget {
               final sortedLessons = List<CourseModel>.from(state.courses)
                 ..sort((a, b) => a.number.compareTo(b.number));
               return ListView.builder(
-                itemBuilder: (context, index) => UserCoursItemWidget(
+                itemBuilder: (context, index) => CourseItemWidget(
                   numberOfCourse: sortedLessons[index].number,
                   nameOfCourse: sortedLessons[index].tittle,
                   course: sortedLessons[index],
-                  isPaied: isPaied,
                 ),
                 itemCount: sortedLessons.length,
                 shrinkWrap: true,

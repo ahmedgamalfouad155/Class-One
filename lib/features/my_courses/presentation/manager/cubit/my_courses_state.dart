@@ -1,4 +1,4 @@
-import 'package:sinna/features/categories/data/models/course_path_model.dart';
+import 'package:sinna/features/explore/data/models/course_path_model.dart';
 
 sealed class MyCoursesState {}
 

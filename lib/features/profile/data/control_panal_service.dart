@@ -1,6 +1,6 @@
 import 'package:sinna/core/services/firebase/firebase_path.dart';
 import 'package:sinna/core/services/firebase/firestore_services.dart';
-import 'package:sinna/features/categories/data/models/course_path_model.dart';
+import 'package:sinna/features/explore/data/models/course_path_model.dart';
 
 abstract class ControlPanalService {
   Future<List<CoursePathModel>> getUserCourses(String email);
