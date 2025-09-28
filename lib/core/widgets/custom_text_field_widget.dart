@@ -31,7 +31,7 @@ class CustomTextFieldWidget extends StatelessWidget {
         hintStyle: AppStyles.textStyle16w400Grey(
           context,
         ).copyWith(fontWeight: FontWeight.w600),
-        fillColor: context.appColors.grayBackgroundTextFiled,
+        fillColor: context.appColors.greyBackgroundTextFiled,
         filled: true,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(14),

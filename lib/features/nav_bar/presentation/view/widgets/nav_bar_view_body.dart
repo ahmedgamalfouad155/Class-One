@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:sinna/core/constants/images.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
-import 'package:sinna/features/categories/presentation/view/categories_view.dart';
+import 'package:sinna/features/categories/presentation/view/explore_view.dart';
 import 'package:sinna/features/my_courses/presentation/view/my_corses_view.dart';
 import 'package:sinna/features/nav_bar/presentation/manager/nav_bar_cubit/navbar_cubit.dart';
 import 'package:sinna/features/nav_bar/presentation/manager/nav_bar_cubit/navbar_state.dart';
@@ -22,7 +22,7 @@ class NavBarViewBody extends StatefulWidget {
 class _NavBarViewBodyState extends State<NavBarViewBody> {
   final List<Widget> screen = [
     MyCorsesView(),
-    CategoriesView(),
+    ExploreView(),
     NotificationsView(),
     ProfileView(),
   ];
@@ -50,7 +50,7 @@ class _NavBarViewBodyState extends State<NavBarViewBody> {
               backgroundColor: context.appColors.white,
               elevation: 0,
               selectedItemColor: context.appColors.blue,
-              unselectedItemColor: context.appColors.grayNavBar,
+              unselectedItemColor: context.appColors.greyNavBar,
               selectedLabelStyle: AppStyles.textStyle12(
                 context,
               ).copyWith(fontWeight: FontWeight.bold),

@@ -10,8 +10,8 @@ import 'package:sinna/features/categories/presentation/manager/user_info_cubit/u
 import 'package:sinna/features/categories/presentation/manager/user_info_cubit/user_info_state.dart';
 import 'package:sinna/features/categories/presentation/view/widgets/name_of_subject_item_widget.dart';
 
-class CategoriesViewBody extends StatelessWidget {
-  const CategoriesViewBody({super.key});
+class ListOfSubjectsWidget extends StatelessWidget {
+  const ListOfSubjectsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class CategoriesViewBody extends StatelessWidget {
             stage: convert[state.userModel.stage],
           );
           return Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.symmetric(horizontal: 25),
             child: BlocBuilder<SubjectCubit, SubjectState>(
               bloc: context.read<SubjectCubit>()..getSubjects(path),
               builder: (context, state) {
@@ -40,14 +40,9 @@ class CategoriesViewBody extends StatelessWidget {
                       context.read<UserInfoCubit>().getUserInfo();
                       context.read<SubjectCubit>().getSubjects(path);
                     },
-                    child: GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 20,
-                            crossAxisSpacing: 20,
-                            childAspectRatio: .9,
-                          ),
+                    child: ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
                       itemCount: state.subjects.length,
                       itemBuilder: (context, index) {
                         return NameOfSubjectItemWidget(
@@ -80,4 +75,4 @@ class CategoriesViewBody extends StatelessWidget {
       },
     );
   }
-} 
+}

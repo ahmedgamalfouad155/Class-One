@@ -39,7 +39,7 @@ class CustomsBoxDecoration {
 
   BoxDecoration profileDecoration(BuildContext context) {
     return BoxDecoration(
-      color: context.appColors.grayBackground,
+      color: context.appColors.greyBackground,
       borderRadius: BorderRadius.circular(8),
     );
   }

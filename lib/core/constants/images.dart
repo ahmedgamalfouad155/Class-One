@@ -22,4 +22,5 @@ class AppImages {
   static final String you2 = 'assets/images/you2.svg';
   static final String avatar = 'assets/images/Avatar.png';
   static final String done = 'assets/images/succes.svg';
+  static final String anatomy = 'assets/images/anatomy.jpg';
 }

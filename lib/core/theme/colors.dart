@@ -11,9 +11,9 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color white;
   final Color offWhite;
   final Color grey;
-  final Color grayBackground;
-  final Color grayBackgroundTextFiled;
-  final Color grayNavBar;
+  final Color greyBackground;
+  final Color greyBackgroundTextFiled;
+  final Color greyNavBar;
   final Color black;
 
   const AppColors({
@@ -22,9 +22,9 @@ class AppColors extends ThemeExtension<AppColors> {
     required this.white,
     required this.offWhite,
     required this.grey,
-    required this.grayBackground,
-    required this.grayBackgroundTextFiled,
-    required this.grayNavBar,
+    required this.greyBackground,
+    required this.greyBackgroundTextFiled,
+    required this.greyNavBar,
     required this.black,
   });
 
@@ -35,9 +35,9 @@ class AppColors extends ThemeExtension<AppColors> {
     Color? white,
     Color? offWhite,
     Color? grey,
-    Color? grayBackground,
-    Color? grayBackgroundTextFiled,
-    Color? grayNavBar,
+    Color? greyBackground,
+    Color? greyBackgroundTextFiled,
+    Color? greyNavBar,
     Color? black,
   }) {
     return AppColors(
@@ -46,10 +46,10 @@ class AppColors extends ThemeExtension<AppColors> {
       white: white ?? this.white,
       offWhite: offWhite ?? this.offWhite,
       grey: grey ?? this.grey,
-      grayBackground: grayBackground ?? this.grayBackground,
-      grayBackgroundTextFiled:
-          grayBackgroundTextFiled ?? this.grayBackgroundTextFiled,
-          grayNavBar: grayNavBar ?? this.grayNavBar,
+      greyBackground: greyBackground ?? this.greyBackground,
+      greyBackgroundTextFiled:
+          greyBackgroundTextFiled ?? this.greyBackgroundTextFiled,
+      greyNavBar: greyNavBar ?? this.greyNavBar,
       black: black ?? this.black,
     );
   }
@@ -63,13 +63,13 @@ class AppColors extends ThemeExtension<AppColors> {
       white: Color.lerp(white, other.white, t)!,
       offWhite: Color.lerp(offWhite, other.offWhite, t)!,
       grey: Color.lerp(grey, other.grey, t)!,
-      grayBackground: Color.lerp(grayBackground, other.grayBackground, t)!,
-      grayBackgroundTextFiled: Color.lerp(
-        grayBackgroundTextFiled,
-        other.grayBackgroundTextFiled,
+      greyBackground: Color.lerp(greyBackground, other.greyBackground, t)!,
+      greyBackgroundTextFiled: Color.lerp(
+        greyBackgroundTextFiled,
+        other.greyBackgroundTextFiled,
         t,
       )!,
-      grayNavBar: Color.lerp(grayNavBar, other.grayNavBar, t)!,
+      greyNavBar: Color.lerp(greyNavBar, other.greyNavBar, t)!,
       black: Color.lerp(black, other.black, t)!,
     );
   }

@@ -20,7 +20,7 @@ abstract class AppStyles {
 
   static TextStyle textStyle14(BuildContext context) => TextStyle(
     fontSize: 14.sp,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w600,
     color: context.appColors.black,
   );
 
