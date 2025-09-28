@@ -1,0 +1,31 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sinna/core/router/app_router.dart';
+import 'package:sinna/core/theme/customs_box_decoratino.dart';
+import 'package:sinna/core/theme/styles.dart';
+import 'package:sinna/features/profile/presentation/screen/widgets/profile_option_widget.dart';
+
+class ProfileSection extends StatelessWidget {
+  const ProfileSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text("Profile", style: AppStyles.textStyle16w400Grey(context)),
+        const SizedBox(height: 10),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          decoration: CustomsBoxDecoration().profileDecoration(context),
+          child: ProfileOptionWidget(
+            title: "Account Setting",
+            onTap: () {
+              GoRouter.of(context).push(AppRouter.kAccountSettingScreen);
+            },
+          ),
+        ),
+      ],
+    );
+  }
+}

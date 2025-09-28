@@ -5,7 +5,7 @@ import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
-import 'package:sinna/features/auth/presentation/view/widgets/phone_field_widget.dart';
+import 'package:sinna/features/auth/presentation/screens/widgets/phone_field_widget.dart';
 
 class FinalSigninBody extends StatelessWidget {
   const FinalSigninBody({super.key});

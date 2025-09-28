@@ -2,47 +2,46 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_state.dart';
-import 'package:sinna/features/auth/presentation/view/login_view.dart';
-import 'package:sinna/features/auth/presentation/view/signup_view.dart';
-import 'package:sinna/features/auth/presentation/view/steps_academic_view.dart';
+import 'package:sinna/features/auth/presentation/screens/login_screen.dart';
+import 'package:sinna/features/auth/presentation/screens/signup_screen.dart';
+import 'package:sinna/features/auth/presentation/screens/steps_academic_screen.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
 import 'package:sinna/features/explore/data/models/course_model.dart';
-import 'package:sinna/features/final_ui/view/register_view.dart';
-import 'package:sinna/features/final_ui/view/final_signin_view.dart';
-import 'package:sinna/features/final_ui/view/otp_view.dart';
-import 'package:sinna/features/final_ui/view/study_location_view.dart';
-import 'package:sinna/features/course_details/presentation/screens/course_video_view.dart';
-import 'package:sinna/features/course_details/presentation/screens/courses_view.dart';
-import 'package:sinna/features/course_details/presentation/screens/term_view.dart';
-import 'package:sinna/features/landing/presentation/views/landing_view.dart';
-import 'package:sinna/features/my_courses/presentation/view/user_ccourse_details_view.dart';
-import 'package:sinna/features/nav_bar/presentation/view/nav_bar_view.dart';
-import 'package:sinna/features/addmin/presentation/view/account_view.dart';
-import 'package:sinna/features/addmin/presentation/view/control_panal_view.dart';
-import 'package:sinna/features/profile/presentation/view/account_setting_view.dart';
-import 'package:sinna/features/splash/splash._view.dart';
+import 'package:sinna/features/final_ui/screens/register_screen.dart';
+import 'package:sinna/features/final_ui/screens/final_signin_screen.dart';
+import 'package:sinna/features/final_ui/screens/otp_screen.dart';
+import 'package:sinna/features/final_ui/screens/study_location_screen.dart';
+import 'package:sinna/features/course_details/presentation/screens/course_video_screen.dart';
+import 'package:sinna/features/course_details/presentation/screens/courses_screen.dart';
+import 'package:sinna/features/course_details/presentation/screens/term_screen.dart';
+import 'package:sinna/features/my_courses/presentation/screens/user_ccourse_details_screen.dart';
+import 'package:sinna/features/nav_bar/presentation/screens/nav_bar_screen.dart';
+import 'package:sinna/features/addmin/presentation/screens/account_screen.dart';
+import 'package:sinna/features/addmin/presentation/screens/control_panal_screen.dart';
+import 'package:sinna/features/profile/presentation/screen/account_setting_screen.dart';
+import 'package:sinna/features/splash/splash._screen.dart';
 
 abstract class AppRouter {
-  static const String klangageAndModeView = '/langaugeAndModeView';
-  static const String klandingView = '/landingView';
-  static const String kSignUpView = '/signUpView';
-  static const String kStepsAcademicView = '/stepsAcademicView';
-  static const String kLogInView = '/logInView';
-  static const String kNavBarView = '/navBarView';
-  static const String kTermView = '/termView';
-  static const String kInstructorView = '/instructorView';
-  static const String kCoursesView = '/lessonsView';
-  static const String kCourseVideoView = '/courseVideoView';
-  static const String kLanguageView = '/languageView';
-  static const String kModeView = '/modeView';
-  static const String kAccountView = '/accountView';
-  static const String kUserCcourseDetailsView = '/userCcourseDetailsView';
+  static const String klangageAndModeScreen = '/langaugeAndModeScreen';
+  static const String klandingScreen = '/landingScreen';
+  static const String kSignUpScreen = '/signUpView';
+  static const String kStepsAcademicScreen = '/stepsAcademicScreen';
+  static const String kLogInScreen = '/logInScreen';
+  static const String kNavBarScreen = '/navBarScreen';
+  static const String kTermScreen = '/termScreen';
+  static const String kInstructorScreen = '/instructorScreen';
+  static const String kCoursesScreen = '/lessonsScreen';
+  static const String kCourseVideoScreen = '/courseVideoScreen';
+  static const String kLanguageScreen = '/languageScreen';
+  static const String kModeScreen = '/modeScreen';
+  static const String kAccountScreen = '/accountScreen';
+  static const String kUserCcourseDetailsScreen = '/userCcourseDetailsScreen';
   static const String kControlPanal = '/controlPanal';
   static const String kFinalRegister = '/registerfinal';
   static const String kFinalSignin = '/finalSignin';
-  static const String kFinalOtpView = '/finalOtpView';
-  static const String kStudyLocationView = '/studyLocationView';
-  static const String kAccountSettingView = '/accountSettingView';
+  static const String kFinalOtpScreen = '/finalOtpScreen';
+  static const String kStudyLocationScreen = '/studyLocationScreen';
+  static const String kAccountSettingScreen = '/accountSettingScreen';
 
   static final router = GoRouter(
     routes: [
@@ -52,94 +51,91 @@ abstract class AppRouter {
           return BlocBuilder<AuthCubit, AuthState>(
             builder: (context, state) {
               return state is LoginSuccessState
-                  ? const NavBarView()
-                  : const SplashView();
+                  ? const NavBarScreen()
+                  : const SplashScreen();
             },
           );
         },
       ),
+
       GoRoute(
-        path: klangageAndModeView,
-        builder: (context, state) => const LandingView(),
-      ),
-      GoRoute(path: kLogInView, builder: (context, state) => const LoginView()),
-      GoRoute(
-        path: kSignUpView,
-        builder: (context, state) => const SignUpView(),
+        path: kLogInScreen,
+        builder: (context, state) => const LoginScreen(),
       ),
       GoRoute(
-        path: kStepsAcademicView,
-        builder: (context, state) => const StepsAcademicView(),
+        path: kSignUpScreen,
+        builder: (context, state) => const SignUpScreen(),
       ),
       GoRoute(
-        path: kNavBarView,
-        builder: (context, state) => const NavBarView(),
+        path: kStepsAcademicScreen,
+        builder: (context, state) => const StepsAcademicScreen(),
       ),
       GoRoute(
-        path: kTermView,
+        path: kNavBarScreen,
+        builder: (context, state) => const NavBarScreen(),
+      ),
+      GoRoute(
+        path: kTermScreen,
         builder: (context, state) {
           final coursePathModel = state.extra as CoursePathModel;
-          return TermView(coursePathModel: coursePathModel);
+          return TermScreen(coursePathModel: coursePathModel);
         },
-      ),
-      GoRoute(
-        path: klandingView,
-        builder: (context, state) => const LandingView(),
-      ),
-      GoRoute(
-        path: kCoursesView,
-        builder: (context, state) {
-          final coursePathModel = state.extra as CoursePathModel;
-          return CoursesView(coursePathModel: coursePathModel);
-        },
-      ),
-      GoRoute(
-        path: kCourseVideoView,
-        builder: (context, state) {
-          final coursePathModel = state.extra as CourseModel;
-          return CourseVideoView(course: coursePathModel);
-        },
-      ),
-      
-      GoRoute(
-        path: kAccountView,
-        builder: (context, state) => const AccountView(),
       ),
 
       GoRoute(
-        path: kUserCcourseDetailsView,
+        path: kCoursesScreen,
         builder: (context, state) {
           final coursePathModel = state.extra as CoursePathModel;
-          return UserCcourseDetailsView(coursePathModel: coursePathModel);
+          return CoursesScreen(coursePathModel: coursePathModel);
+        },
+      ),
+      GoRoute(
+        path: kCourseVideoScreen,
+        builder: (context, state) {
+          final coursePathModel = state.extra as CourseModel;
+          return CourseVideoScreen(course: coursePathModel);
+        },
+      ),
+
+      GoRoute(
+        path: kAccountScreen,
+        builder: (context, state) => const AccountScreen(),
+      ),
+
+      GoRoute(
+        path: kUserCcourseDetailsScreen,
+        builder: (context, state) {
+          final coursePathModel = state.extra as CoursePathModel;
+          return UserCcourseDetailsScreen(coursePathModel: coursePathModel);
         },
       ),
       GoRoute(
         path: kControlPanal,
-        builder: (context, state) => const ControlPanalView(),
+        builder: (context, state) => const ControlPanalScreen(),
       ),
       GoRoute(
         path: kFinalRegister,
-        builder: (context, state) => const RegisterView(),
+        builder: (context, state) => const RegisterScreen(),
       ),
       GoRoute(
         path: kFinalRegister,
-        builder: (context, state) => const RegisterView(),
+        builder: (context, state) => const RegisterScreen(),
       ),
       GoRoute(
         path: kFinalSignin,
-        builder: (context, state) => const FinalSigninView(),
+        builder: (context, state) => const FinalSigninScreen(),
       ),
       GoRoute(
-        path: kFinalOtpView,
-        builder: (context, state) => const OtpView(),
+        path: kFinalOtpScreen,
+        builder: (context, state) => const OtpScreen(),
       ),
       GoRoute(
-        path: kStudyLocationView,
-        builder: (context, state) => const StudyLocationView(),
+        path: kStudyLocationScreen,
+        builder: (context, state) => const StudyLocationScreen(),
       ),
       GoRoute(
-        path: kAccountSettingView,
-        builder: (context, state) => const AccountSettingView(),
+        path: kAccountSettingScreen,
+        builder: (context, state) => const AccountSettingScreen(),
       ),
     ],
   );
