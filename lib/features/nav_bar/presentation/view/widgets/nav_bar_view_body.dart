@@ -50,7 +50,7 @@ class _NavBarViewBodyState extends State<NavBarViewBody> {
               backgroundColor: context.appColors.white,
               elevation: 0,
               selectedItemColor: context.appColors.blue,
-              unselectedItemColor: context.appColors.grey,
+              unselectedItemColor: context.appColors.grayNavBar,
               selectedLabelStyle: AppStyles.textStyle12(
                 context,
               ).copyWith(fontWeight: FontWeight.bold),
@@ -61,7 +61,7 @@ class _NavBarViewBodyState extends State<NavBarViewBody> {
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
                     navBarCubit.currentIndex == 0
-                        ? AppImages.dashBoard1
+                        ? AppImages.dashBoard2
                         : AppImages.dashBoard1,
                   ),
                   label: "Dashboard",
@@ -69,7 +69,7 @@ class _NavBarViewBodyState extends State<NavBarViewBody> {
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
                     navBarCubit.currentIndex == 1
-                        ? AppImages.explore1
+                        ? AppImages.explore2
                         : AppImages.explore1,
                   ),
                   label: "Explore",
@@ -77,7 +77,7 @@ class _NavBarViewBodyState extends State<NavBarViewBody> {
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
                     navBarCubit.currentIndex == 2
-                        ? AppImages.inBox1
+                        ? AppImages.inBox2
                         : AppImages.inBox1,
                   ),
                   label: "Inbox",
@@ -85,7 +85,7 @@ class _NavBarViewBodyState extends State<NavBarViewBody> {
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
                     navBarCubit.currentIndex == 3
-                        ? AppImages.you1
+                        ? AppImages.you2
                         : AppImages.you1,
                   ),
                   label: "Profile",

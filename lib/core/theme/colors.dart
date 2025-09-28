@@ -13,6 +13,7 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color grey;
   final Color grayBackground;
   final Color grayBackgroundTextFiled;
+  final Color grayNavBar;
   final Color black;
 
   const AppColors({
@@ -23,6 +24,7 @@ class AppColors extends ThemeExtension<AppColors> {
     required this.grey,
     required this.grayBackground,
     required this.grayBackgroundTextFiled,
+    required this.grayNavBar,
     required this.black,
   });
 
@@ -35,6 +37,7 @@ class AppColors extends ThemeExtension<AppColors> {
     Color? grey,
     Color? grayBackground,
     Color? grayBackgroundTextFiled,
+    Color? grayNavBar,
     Color? black,
   }) {
     return AppColors(
@@ -46,6 +49,7 @@ class AppColors extends ThemeExtension<AppColors> {
       grayBackground: grayBackground ?? this.grayBackground,
       grayBackgroundTextFiled:
           grayBackgroundTextFiled ?? this.grayBackgroundTextFiled,
+          grayNavBar: grayNavBar ?? this.grayNavBar,
       black: black ?? this.black,
     );
   }
@@ -65,6 +69,7 @@ class AppColors extends ThemeExtension<AppColors> {
         other.grayBackgroundTextFiled,
         t,
       )!,
+      grayNavBar: Color.lerp(grayNavBar, other.grayNavBar, t)!,
       black: Color.lerp(black, other.black, t)!,
     );
   }
