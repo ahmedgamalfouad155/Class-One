@@ -36,7 +36,6 @@ class DefaultButtonWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color: bacgrouncColor ?? context.appColors.blue,
           borderRadius: borderRadius ?? BorderRadius.circular(10.r),
-          border: Border.all(color: context.appColors.blue, width: 1.w),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

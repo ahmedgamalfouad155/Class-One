@@ -4,7 +4,6 @@ import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.d
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
 import 'package:sinna/features/course_details/presentation/manager/add_to_my_courses_cubit/add_to_my_courses_cubit.dart';
 import 'package:sinna/features/course_details/presentation/screens/widget/add_to_my_courses_button_widget.dart';
-import 'package:sinna/features/course_details/presentation/screens/widget/course_info_widget.dart';
 import 'package:sinna/features/course_details/presentation/screens/widget/list_of_courses_widget.dart';
 
 class CoursesScreenBody extends StatelessWidget {
@@ -17,7 +16,6 @@ class CoursesScreenBody extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-          CourseInfoWidget(coursePathModel: coursePathModel),
           const SizedBox(height: 20),
           ListOfCoursesWidget(),
           const SizedBox(height: 10),

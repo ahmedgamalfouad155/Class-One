@@ -12,8 +12,14 @@ class UserCcourseDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.appColors.primaryBlue,
-      appBar: AppBar(title: Text('My Course')),
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back, color: context.appColors.black),
+        ),
+      ),
       body: BlocProvider(
         create: (context) {
           return CourseCubit()..getLeson(coursePathModel: coursePathModel);
