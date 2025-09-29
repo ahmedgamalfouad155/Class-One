@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/cubit/special_cubit/special_cubit.dart';
-import 'package:sinna/features/explore/presentation/screens/widgets/special_item_widget.dart';
+import 'package:sinna/core/widgets/custom_filter_item_widget.dart';
 
 enum SpecialLayoutType { wrap, equal }
 
-class ListOfSpecialtItemsWidget extends StatelessWidget {
-  const ListOfSpecialtItemsWidget({
+class CustomFiltersWidget extends StatelessWidget {
+  const CustomFiltersWidget({
     super.key,
     required this.filters,
     this.padding = EdgeInsets.zero,
@@ -21,7 +21,7 @@ class ListOfSpecialtItemsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: padding,
-      child: BlocBuilder<SpecialCubit, int>(
+      child: BlocBuilder<FilterCubit, int>(
         builder: (context, selectedIndex) {
           if (layoutType == SpecialLayoutType.wrap) {
             // ✅ العناصر تاخد حجمها الطبيعي
@@ -30,11 +30,11 @@ class ListOfSpecialtItemsWidget extends StatelessWidget {
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return SpecialItemWidget(
+                  return CustomFilterItemWidget(
                     title: filters[index],
                     isSelected: selectedIndex == index,
                     onTap: () =>
-                        context.read<SpecialCubit>().selectFilter(index),
+                        context.read<FilterCubit>().selectFilter(index),
                     layoutType: layoutType,
                   );
                 },
@@ -49,11 +49,11 @@ class ListOfSpecialtItemsWidget extends StatelessWidget {
                 return Expanded(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: SpecialItemWidget(
+                    child: CustomFilterItemWidget(
                       title: filters[index],
                       isSelected: selectedIndex == index,
                       onTap: () =>
-                          context.read<SpecialCubit>().selectFilter(index),
+                          context.read<FilterCubit>().selectFilter(index),
                       layoutType: layoutType,
                     ),
                   ),

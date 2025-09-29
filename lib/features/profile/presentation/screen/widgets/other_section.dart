@@ -26,6 +26,7 @@ class OtherSection extends StatelessWidget {
             children: [
               ProfileOptionWidget(
                 title: "delete account",
+                color: Colors.red,
                 onTap: () {
                   showDialog(
                     context: context,
@@ -36,6 +37,7 @@ class OtherSection extends StatelessWidget {
               CustomDividerWidget(isHeight: false),
               ProfileOptionWidget(
                 title: "Logout",
+                color: Colors.red,
                 onTap: () {
                   BlocProvider.of<AuthCubit>(context).logout();
                   (context).go(AppRouter.kLogInScreen);

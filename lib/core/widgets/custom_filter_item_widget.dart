@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
-import 'package:sinna/features/explore/presentation/screens/widgets/list_of_specialt_items_widget.dart';
+import 'package:sinna/core/widgets/custom_filters_widget.dart';
 
-class SpecialItemWidget extends StatelessWidget {
-  const SpecialItemWidget({
+class CustomFilterItemWidget extends StatelessWidget {
+  const CustomFilterItemWidget({
     super.key,
     required this.title,
     required this.isSelected,

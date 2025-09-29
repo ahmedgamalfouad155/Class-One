@@ -50,10 +50,15 @@ final List<String> specializationBottomSheetFilters = const [
   "Dentistry",
   'Nursing',
   'Other',
-  
 ];
 
 final List<String> programBottomSheetFilters = const [
   "Academic",
-  'Professional', 
+  'Professional',
+];
+
+final List<String> dashboardFilters = const [
+  "All",
+  "Recently Saved",
+  'Recently Played',
 ];
