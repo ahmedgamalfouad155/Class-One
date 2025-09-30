@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sinna/core/constants/images.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
@@ -18,7 +18,10 @@ class AccountSettingScreenBody extends StatelessWidget {
       padding: const EdgeInsets.all(32.0),
       child: Column(
         children: [
-          Image.asset(AppImages.avatar),
+          CircleAvatar(
+            radius: 40.r,
+            child: Icon(Icons.person, color: context.appColors.black, size: 50),
+          ),
           const SizedBox(height: 5),
           Text(
             "Ahmed Gamal",
