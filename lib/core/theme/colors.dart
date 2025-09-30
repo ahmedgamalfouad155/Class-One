@@ -14,6 +14,7 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color greyBackground;
   final Color greyBackgroundTextFiled;
   final Color greyNavBar;
+  final Color greyMoonlight;
   final Color black;
 
   const AppColors({
@@ -25,6 +26,7 @@ class AppColors extends ThemeExtension<AppColors> {
     required this.greyBackground,
     required this.greyBackgroundTextFiled,
     required this.greyNavBar,
+    required this.greyMoonlight,
     required this.black,
   });
 
@@ -38,6 +40,7 @@ class AppColors extends ThemeExtension<AppColors> {
     Color? greyBackground,
     Color? greyBackgroundTextFiled,
     Color? greyNavBar,
+    Color? greyMoonlight,
     Color? black,
   }) {
     return AppColors(
@@ -50,6 +53,7 @@ class AppColors extends ThemeExtension<AppColors> {
       greyBackgroundTextFiled:
           greyBackgroundTextFiled ?? this.greyBackgroundTextFiled,
       greyNavBar: greyNavBar ?? this.greyNavBar,
+      greyMoonlight: greyMoonlight ?? this.greyMoonlight,
       black: black ?? this.black,
     );
   }
@@ -70,6 +74,7 @@ class AppColors extends ThemeExtension<AppColors> {
         t,
       )!,
       greyNavBar: Color.lerp(greyNavBar, other.greyNavBar, t)!,
+      greyMoonlight: Color.lerp(greyMoonlight, other.greyMoonlight, t)!,
       black: Color.lerp(black, other.black, t)!,
     );
   }

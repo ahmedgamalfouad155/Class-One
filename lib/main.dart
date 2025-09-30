@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,6 +32,8 @@ void main() async {
 
   // 2. حماية السكرين
   await ScreenProtectorService.preventScreenshots();
+  // منع الفون من وضح الانقلاب
+  await ScreenProtectorService.setPreferredOrientations();
 
   // 3. تهيئة WebView
   WebViewService.setupWebView();
@@ -46,6 +49,8 @@ void main() async {
   await PushNotificationService.initialize();
 
   await FirebaseMessaging.instance.subscribeToTopic("allUsers");
+
+  
 
   runApp(MyApp());
 }

@@ -10,7 +10,7 @@ class CourseVideoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CourseVideoScreenBody(course: course),
+      body: SafeArea(child: CourseVideoScreenBody(course: course)),
     );
   }
 }
