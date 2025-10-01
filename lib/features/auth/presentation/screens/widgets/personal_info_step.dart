@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
-import 'package:sinna/features/auth/presentation/screens/widgets/signup_image_and_header_widget.dart';
+import 'package:sinna/features/auth/presentation/screens/widgets/signup_header_text_widget.dart';
 import 'package:sinna/features/auth/presentation/screens/widgets/signup_name_and_email_and_password_fields_section_widget.dart';
 import 'package:sinna/features/auth/presentation/screens/widgets/signup_button_widget.dart';
 
@@ -27,13 +27,13 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
     confirmPasswordController.dispose();
     super.dispose();
   }
-// @override
-// void initState() {
-//   super.initState();
-//   final user = context.read<SignUpCubit>().state.user;
-//   nameController.text = user.name!;
-//   emailController.text = user.email!;
-// }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   final user = context.read<SignUpCubit>().state.user;
+  //   nameController.text = user.name!;
+  //   emailController.text = user.email!;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
           key: formKey,
           child: Column(
             children: [
-              SignupImageAndHeaderWidget(),
+              SignupHeaderTextWidget(),
               SignupNameAndEmailAndPaswordFieldsSectionWidget(
                 nameController: nameController,
                 emailController: emailController,

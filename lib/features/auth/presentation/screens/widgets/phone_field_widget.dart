@@ -60,17 +60,22 @@ class PhoneFieldWidget extends StatelessWidget {
       },
       cursorColor: context.appColors.blue,
       decoration: InputDecoration(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 14),
         hintText: "000 000 0000",
         hintStyle: AppStyles.textStyle12GreyW400(context),
-        fillColor: context.appColors.white,
+        fillColor: context.appColors.greyBackgroundTextFiled,
         filled: true,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: context.appColors.offWhite),
+          borderSide: BorderSide(
+            color: context.appColors.greyBackgroundTextFiled,
+          ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: context.appColors.blue),
+          borderSide: BorderSide(
+            color: context.appColors.greyBackgroundTextFiled,
+          ),
         ),
       ),
     );

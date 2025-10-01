@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/features/profile/presentation/screen/widgets/account_setting_screen_body.dart';
 
@@ -14,12 +13,6 @@ class AccountSettingScreen extends StatelessWidget {
         title: Text(
           "Account Setting",
           style: AppStyles.textStyle16W600(context),
-        ),
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back, color: context.appColors.black),
         ),
       ),
       body: AccountSettingScreenBody(),

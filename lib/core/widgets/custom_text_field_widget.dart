@@ -27,10 +27,11 @@ class CustomTextFieldWidget extends StatelessWidget {
         return null;
       },
       decoration: InputDecoration(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 14),
         hintText: hintText,
-        hintStyle: AppStyles.textStyle16w400Grey(
+        hintStyle: AppStyles.textStyle16W600Grey(
           context,
-        ).copyWith(fontWeight: FontWeight.w600),
+        ).copyWith(color: context.appColors.greyNavBar),
         fillColor: context.appColors.greyBackgroundTextFiled,
         filled: true,
         enabledBorder: OutlineInputBorder(

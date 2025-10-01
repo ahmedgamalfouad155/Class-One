@@ -5,6 +5,7 @@ final lightTheme = ThemeData(
   fontFamily: 'cairo',
   scaffoldBackgroundColor: Colors.white,
   appBarTheme: AppBarTheme(
+    iconTheme: IconThemeData(color: Colors.black),
     backgroundColor: Colors.white,
     centerTitle: true,
     foregroundColor: Colors.white,
@@ -46,7 +47,7 @@ final darkTheme = ThemeData(
       greyBackground: Color(0xfff2f2f7),
       greyBackgroundTextFiled: Color(0xfff4f4f5),
       greyNavBar: Color(0xffcccccc),
-      greyMoonlight: Color(0xffeeeeef), 
+      greyMoonlight: Color(0xffeeeeef),
       black: Color(0xff4CAF50),
     ),
   ],

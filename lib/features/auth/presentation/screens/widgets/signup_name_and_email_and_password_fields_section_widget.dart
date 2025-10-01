@@ -24,52 +24,32 @@ class SignupNameAndEmailAndPaswordFieldsSectionWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "Name",
-          style: AppStyles.textStyle14W600(
-            context,
-          ).copyWith(fontWeight: FontWeight.w500),
-        ),
+        Text("Name", style: AppStyles.textStyle16W600Grey(context)),
         const SizedBox(height: 5),
         CustomTextFieldWidget(
-          hintText: "Enter your Name",
+          hintText: "Full Name",
           controller: nameController,
         ),
         const SizedBox(height: 15),
-        Text(
-          "Email",
-          style: AppStyles.textStyle14W600(
-            context,
-          ).copyWith(fontWeight: FontWeight.w500),
-        ),
+        Text("Email", style: AppStyles.textStyle16W600Grey(context)),
         const SizedBox(height: 5),
         CustomTextFieldWidget(
-          hintText: "Enter your email",
+          hintText: "email@domain.com",
           controller: emailController,
         ),
 
         const SizedBox(height: 15),
-        Text(
-          "Password",
-          style: AppStyles.textStyle14W600(
-            context,
-          ).copyWith(fontWeight: FontWeight.w500),
-        ),
+        Text("Password", style: AppStyles.textStyle16W600Grey(context)),
         const SizedBox(height: 5),
         BlocProvider(
           create: (context) => PasswordVisibilityCubit(),
           child: CustomTextFormFieldWidget(
-            hintText: "Enter your password",
+            hintText: "password",
             controller: passwordController,
           ),
         ),
         const SizedBox(height: 15),
-        Text(
-          "confirm Password",
-          style: AppStyles.textStyle14W600(
-            context,
-          ).copyWith(fontWeight: FontWeight.w500),
-        ),
+        Text("confirm Password", style: AppStyles.textStyle16W600Grey(context)),
         const SizedBox(height: 5),
         BlocProvider(
           create: (context) => PasswordVisibilityCubit(),

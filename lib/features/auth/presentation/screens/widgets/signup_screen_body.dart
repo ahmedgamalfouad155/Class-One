@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:sinna/features/auth/presentation/screens/widgets/signup_button_widget.dart';
-import 'package:sinna/features/auth/presentation/screens/widgets/signup_image_and_header_widget.dart';
+import 'package:sinna/features/auth/presentation/screens/widgets/signup_header_text_widget.dart';
 import 'package:sinna/features/auth/presentation/screens/widgets/signup_name_and_email_and_password_fields_section_widget.dart';
 
 class SignupScreenBody extends StatefulWidget {
@@ -29,13 +29,13 @@ class _SignupScreenBodyState extends State<SignupScreenBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: SingleChildScrollView(
         child: Form(
           key: formKey,
           child: Column(
             children: [
-              SignupImageAndHeaderWidget(),
+              SignupHeaderTextWidget(),
               SignupNameAndEmailAndPaswordFieldsSectionWidget(
                 nameController: nameController,
                 emailController: emailController,

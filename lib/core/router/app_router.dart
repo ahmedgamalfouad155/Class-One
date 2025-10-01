@@ -8,7 +8,7 @@ import 'package:sinna/features/auth/presentation/screens/steps_academic_screen.d
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
 import 'package:sinna/features/explore/data/models/course_model.dart';
 import 'package:sinna/features/final_ui/screens/register_screen.dart';
-import 'package:sinna/features/final_ui/screens/final_signin_screen.dart';
+import 'package:sinna/features/auth/presentation/screens/adding_phone_screen.dart';
 import 'package:sinna/features/final_ui/screens/otp_screen.dart';
 import 'package:sinna/features/final_ui/screens/study_location_screen.dart';
 import 'package:sinna/features/course_details/presentation/screens/course_video_screen.dart';
@@ -22,9 +22,9 @@ import 'package:sinna/features/profile/presentation/screen/account_setting_scree
 import 'package:sinna/features/splash/splash._screen.dart';
 
 abstract class AppRouter {
-  static const String klangageAndModeScreen = '/langaugeAndModeScreen';
   static const String klandingScreen = '/landingScreen';
   static const String kSignUpScreen = '/signUpView';
+  static const String kAddingPhoneScreen = '/addingPhoneScreen';
   static const String kStepsAcademicScreen = '/stepsAcademicScreen';
   static const String kLogInScreen = '/logInScreen';
   static const String kNavBarScreen = '/navBarScreen';
@@ -65,6 +65,10 @@ abstract class AppRouter {
       GoRoute(
         path: kSignUpScreen,
         builder: (context, state) => const SignUpScreen(),
+      ),
+      GoRoute(
+        path: kAddingPhoneScreen,
+        builder: (context, state) => const AddingPhoneScreen(),
       ),
       GoRoute(
         path: kStepsAcademicScreen,
@@ -123,7 +127,7 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kFinalSignin,
-        builder: (context, state) => const FinalSigninScreen(),
+        builder: (context, state) => const AddingPhoneScreen(),
       ),
       GoRoute(
         path: kFinalOtpScreen,

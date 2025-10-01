@@ -32,8 +32,12 @@ class CustomTextFormFieldWidget extends StatelessWidget {
             return null;
           },
           decoration: InputDecoration(
+            contentPadding: const EdgeInsets.symmetric(horizontal: 14),
+
             hintText: hintText,
-            hintStyle: AppStyles.textStyle12GreyW400(context),
+            hintStyle: AppStyles.textStyle16W600Grey(
+              context,
+            ).copyWith(color: context.appColors.greyNavBar),
             fillColor: context.appColors.greyBackgroundTextFiled,
             filled: true,
             suffixIcon: IconButton(
