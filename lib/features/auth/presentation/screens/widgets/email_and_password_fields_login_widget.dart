@@ -20,24 +20,14 @@ class EmailAndPasswordFieldsLoginWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "Email",
-          style: AppStyles.textStyle14W600(
-            context,
-          ).copyWith(fontWeight: FontWeight.w500),
-        ),
+        Text("Email", style: AppStyles.textStyle16W600Grey(context)),
         const SizedBox(height: 5),
         CustomTextFieldWidget(
           hintText: "Enter your email",
           controller: emailController,
         ),
-        const SizedBox(height: 15),
-        Text(
-          "Password",
-          style: AppStyles.textStyle14W600(
-            context,
-          ).copyWith(fontWeight: FontWeight.w500),
-        ),
+        const SizedBox(height: 16),
+        Text("Password", style: AppStyles.textStyle16W600Grey(context)),
         const SizedBox(height: 5),
         BlocProvider(
           create: (context) => PasswordVisibilityCubit(),

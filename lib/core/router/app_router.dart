@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_state.dart';
+import 'package:sinna/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:sinna/features/auth/presentation/screens/login_screen.dart';
 import 'package:sinna/features/auth/presentation/screens/signup_screen.dart';
 import 'package:sinna/features/auth/presentation/screens/steps_academic_screen.dart';
@@ -14,6 +15,7 @@ import 'package:sinna/features/final_ui/screens/study_location_screen.dart';
 import 'package:sinna/features/course_details/presentation/screens/course_video_screen.dart';
 import 'package:sinna/features/course_details/presentation/screens/courses_screen.dart';
 import 'package:sinna/features/course_details/presentation/screens/term_screen.dart';
+import 'package:sinna/features/landing/presentation/screen/landing_screen.dart';
 import 'package:sinna/features/my_courses/presentation/screens/user_ccourse_details_screen.dart';
 import 'package:sinna/features/nav_bar/presentation/screens/nav_bar_screen.dart';
 import 'package:sinna/features/addmin/presentation/screens/account_screen.dart';
@@ -24,6 +26,7 @@ import 'package:sinna/features/splash/splash._screen.dart';
 abstract class AppRouter {
   static const String klandingScreen = '/landingScreen';
   static const String kSignUpScreen = '/signUpView';
+  static const String kForgetPasswordScreen = '/forgetPasswordScreen';
   static const String kAddingPhoneScreen = '/addingPhoneScreen';
   static const String kStepsAcademicScreen = '/stepsAcademicScreen';
   static const String kLogInScreen = '/logInScreen';
@@ -59,8 +62,16 @@ abstract class AppRouter {
       ),
 
       GoRoute(
+        path: klandingScreen,
+        builder: (context, state) => const LandingScreen(),
+      ),
+      GoRoute(
         path: kLogInScreen,
         builder: (context, state) => const LoginScreen(),
+      ),
+      GoRoute(
+        path: kForgetPasswordScreen,
+        builder: (context, state) => const ForgetPasswordScreen(),
       ),
       GoRoute(
         path: kSignUpScreen,

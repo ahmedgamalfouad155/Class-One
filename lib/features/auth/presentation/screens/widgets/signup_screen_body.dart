@@ -29,7 +29,7 @@ class _SignupScreenBodyState extends State<SignupScreenBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
       child: SingleChildScrollView(
         child: Form(
           key: formKey,
@@ -41,8 +41,7 @@ class _SignupScreenBodyState extends State<SignupScreenBody> {
                 emailController: emailController,
                 passwordController: passwordController,
                 confirmPasswordController: confirmPasswordController,
-              ),
-
+              ), 
               const SizedBox(height: 20),
               SignupButtonWidget(
                 nameController: nameController,

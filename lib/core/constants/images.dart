@@ -9,9 +9,7 @@ class AppAinmation {
 
 class AppImages {
   static final String logo = 'assets/images/logo.png';
-  static final String egypt = 'assets/images/egy.jpg';
-  static final String usa = 'assets/images/usa.jpg';
-  static final String fav = 'assets/images/fave.jpg';
+  static final String google = 'assets/images/Google.svg'; 
   static final String dashBoard1 = 'assets/images/dashboard1.svg';
   static final String dashBoard2 = 'assets/images/dashboard2.svg';
   static final String explore1 = 'assets/images/explore1.svg';
@@ -24,4 +22,5 @@ class AppImages {
   static final String done = 'assets/images/succes.svg';
   static final String anatomy = 'assets/images/anatomy.jpg';
   static final String cours = 'assets/images/course.png';
+  
 }

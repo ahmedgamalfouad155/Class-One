@@ -35,15 +35,14 @@ class CustomButton extends StatelessWidget {
           backgroundColor: bacgrouncColor ?? context.appColors.blue,
           side: BorderSide(color: borderSideColor ?? context.appColors.blue),
           shape: RoundedRectangleBorder(
-            borderRadius: borderRadius ?? BorderRadius.circular(12),
+            borderRadius: borderRadius ?? BorderRadius.circular(14.r),
           ),
         ),
         child: Text(
           text,
-          style: AppStyles.textStyle18Bold(context).copyWith(
-            fontWeight: FontWeight.w600,
-            color: textColor ?? context.appColors.white,
-          ),
+          style: AppStyles.textStyle16W600(
+            context,
+          ).copyWith(color: textColor ?? context.appColors.white),
         ),
       ),
     );

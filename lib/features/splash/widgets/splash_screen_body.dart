@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sinna/core/constants/images.dart';
 import 'package:sinna/core/router/app_router.dart';
@@ -33,7 +34,7 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
     return Center(
       child: FadeTransition(
         opacity: fadeAnimation,
-        child: Image.asset(AppImages.logo, height: 200, width: 200),
+        child: SvgPicture.asset(AppImages.google, height: 200, width: 200),
       ),
     );
   }
@@ -54,7 +55,7 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
   void navigateToHome() {
     Future.delayed(const Duration(seconds: 3), () {
       if (!mounted) return;
-      GoRouter.of(context).push(AppRouter.kLogInScreen);
+      GoRouter.of(context).push(AppRouter.klandingScreen);
     });
   }
 }

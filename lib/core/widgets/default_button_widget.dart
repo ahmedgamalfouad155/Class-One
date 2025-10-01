@@ -9,6 +9,7 @@ class DefaultButtonWidget extends StatelessWidget {
     super.key,
     this.bacgrouncColor,
     this.textColor,
+    this.borderSideColor,
     this.borderRadius,
     this.width,
     this.height,
@@ -20,6 +21,7 @@ class DefaultButtonWidget extends StatelessWidget {
   final void Function()? onPressed;
   Color? bacgrouncColor;
   Color? textColor;
+  Color? borderSideColor;
   final BorderRadius? borderRadius;
   final String text;
   final double? width, height;
@@ -36,6 +38,10 @@ class DefaultButtonWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color: bacgrouncColor ?? context.appColors.blue,
           borderRadius: borderRadius ?? BorderRadius.circular(10.r),
+          border: Border.all(
+            color: borderSideColor ?? context.appColors.blue,
+            width: 1,
+          ),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -46,10 +52,9 @@ class DefaultButtonWidget extends StatelessWidget {
               text,
               style:
                   textStyle ??
-                  AppStyles.textStyle16W600(context).copyWith(
-                    fontWeight: FontWeight.w700,
-                    color: textColor ?? context.appColors.white,
-                  ),
+                  AppStyles.textStyle16W600(
+                    context,
+                  ).copyWith(color: textColor ?? context.appColors.white),
             ),
           ],
         ),
