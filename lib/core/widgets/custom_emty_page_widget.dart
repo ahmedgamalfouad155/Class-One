@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sinna/core/theme/colors.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:sinna/core/theme/styles.dart';
 
 class CustomEmptyPage extends StatelessWidget {
@@ -17,16 +17,10 @@ class CustomEmptyPage extends StatelessWidget {
       children: [
         SizedBox(
           height: MediaQuery.of(context).size.height / 3,
-          child: Image.asset(image),
+          child: SvgPicture.asset(image),
         ),
         const SizedBox(height: 15),
-        Text(
-          title,
-          style: AppStyles.textStyle20W600(context).copyWith(
-            fontWeight: FontWeight.bold,
-            color: context.appColors.blue,
-          ),
-        ),
+        Text(title, style: AppStyles.textStyle24Bold(context).copyWith()),
         const SizedBox(height: 5),
         Text(subTitle, style: AppStyles.textStyle16W600(context)),
       ],

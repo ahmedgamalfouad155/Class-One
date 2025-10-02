@@ -7,12 +7,12 @@ import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/core/widgets/custom_radio_widget.dart';
 
-void showAcademicInfoDialog(BuildContext context) {
+void showAcademicInfoDialog(BuildContext context, RadioCubit radioCubit) {
   showDialog(
     context: context,
-    builder: (context) {
-      return BlocProvider(
-        create: (context) => RadioCubit(),
+    builder: (_) {
+      return BlocProvider.value(
+        value: radioCubit,
         child: AlertDialog(
           insetPadding: const EdgeInsets.symmetric(horizontal: 0),
           backgroundColor: context.appColors.white,
@@ -50,6 +50,7 @@ void showAcademicInfoDialog(BuildContext context) {
           actions: [
             TextButton(
               onPressed: () {
+                context.read<RadioCubit>().cancelSelection();
                 Navigator.of(context).pop(false); // Cancel
               },
               child: Text(
@@ -59,16 +60,21 @@ void showAcademicInfoDialog(BuildContext context) {
                 ).copyWith(color: context.appColors.blue),
               ),
             ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(false); // Cancel
+            BlocBuilder<RadioCubit, String?>(
+              builder: (context, state) {
+                return TextButton(
+                  onPressed: () {
+                    context.read<RadioCubit>().confirmSelection();
+                    Navigator.of(context).pop(false);
+                  },
+                  child: Text(
+                    "Confirm",
+                    style: AppStyles.textStyle16W600(
+                      context,
+                    ).copyWith(color: context.appColors.blue),
+                  ),
+                );
               },
-              child: Text(
-                "Confirm",
-                style: AppStyles.textStyle16W600(
-                  context,
-                ).copyWith(color: context.appColors.blue),
-              ),
             ),
           ],
         ),

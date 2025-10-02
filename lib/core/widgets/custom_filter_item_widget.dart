@@ -43,7 +43,6 @@ class CustomFilterItemWidget extends StatelessWidget {
           title,
           textAlign: TextAlign.center,
           style: AppStyles.textStyle14W600(context).copyWith(
-            fontWeight: FontWeight.bold,
             color: isSelected ? Colors.white : context.appColors.black,
           ),
         ),

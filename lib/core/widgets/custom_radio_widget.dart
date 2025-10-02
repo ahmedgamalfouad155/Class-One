@@ -21,7 +21,7 @@ class CustomRadioWidget extends StatelessWidget {
               groupValue: selected,
               onChanged: (value) {
                 if (value != null) {
-                  context.read<RadioCubit>().selectTitle(value);
+                  context.read<RadioCubit>().selectTemp(value);
                 }
               },
               activeColor: context.appColors.blue,

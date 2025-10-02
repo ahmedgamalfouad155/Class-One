@@ -13,6 +13,7 @@ class FireStoreCollectionsName {
   static const String specializations = "specializations";
 }
 
+String selectedUniversity = "Select University";
 Map<String, String> convert = {
   "Egypt": "egypt",
   "Saudi Arabia": "saudi-arabia",

@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sinna/core/cubit/radio_cubit/radio_cubit.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/features/explore/presentation/screens/widgets/academic_info_dialog.dart';
@@ -19,7 +21,8 @@ class AcadimicInfoWidget extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         InkWell(
-          onTap: () => showAcademicInfoDialog(context),
+          onTap: () =>
+              showAcademicInfoDialog(context, context.read<RadioCubit>()),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -31,9 +34,14 @@ class AcadimicInfoWidget extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Text( 
-                    'Select University',
-                    style: AppStyles.textStyle14W600(context),
+                  BlocBuilder<RadioCubit, String?>(
+                    builder: (context, state) {
+                      return Text(
+                        state ??
+                            "Select University",
+                        style: AppStyles.textStyle14W600(context),
+                      );
+                    },
                   ),
                   const SizedBox(width: 5),
                   const Icon(Icons.arrow_drop_down_sharp),
