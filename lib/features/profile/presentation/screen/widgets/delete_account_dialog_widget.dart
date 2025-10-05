@@ -80,7 +80,7 @@ class _DeleteAccountDialogWidgetState extends State<DeleteAccountDialogWidget> {
                     setState(() => _loading = false);
 
                     if (success && context.mounted) {
-                      context.go(AppRouter.kLogInScreen);
+                      context.go(AppRouter.klandingScreen);
                     } else {
                       // ignore: use_build_context_synchronously
                       ScaffoldMessenger.of(context).showSnackBar(

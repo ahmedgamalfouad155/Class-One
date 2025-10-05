@@ -26,7 +26,7 @@ class ListOfSubjectsWidget extends StatelessWidget {
             stage: convert[state.userModel.stage],
           );
           return Padding(
-            padding: const EdgeInsets.only(right: 25, left: 25, top: 20),
+            padding: const EdgeInsets.only(right: 25, left: 25),
             child: BlocBuilder<SubjectCubit, SubjectState>(
               bloc: context.read<SubjectCubit>()..getSubjects(path),
               builder: (context, state) {

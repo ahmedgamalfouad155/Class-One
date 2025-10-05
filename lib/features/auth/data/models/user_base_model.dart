@@ -3,11 +3,13 @@ class UserBaseModel {
   final String? uid;
   final String? name;
   final String? email;
+  final String? deviceId;
 
   UserBaseModel({
     this.uid,
     this.name,
     this.email,
+    this.deviceId,
   });
 
   factory UserBaseModel.empty() {
@@ -15,6 +17,7 @@ class UserBaseModel {
       uid: '',
       name: '',
       email: '',
+      deviceId: '',
     );
   }
 
@@ -22,11 +25,13 @@ class UserBaseModel {
     String? uid,
     String? name,
     String? email,
+    String? deviceId,
   }) {
     return UserBaseModel(
       uid: uid ?? this.uid,
       name: name ?? this.name,
       email: email ?? this.email,
+        deviceId: deviceId ?? this.deviceId,
     );
   }
 
@@ -35,6 +40,7 @@ class UserBaseModel {
     if (uid != null && uid!.isNotEmpty) data['uid'] = uid;
     if (name != null && name!.isNotEmpty) data['name'] = name;
     if (email != null && email!.isNotEmpty) data['email'] = email;
+    if (deviceId != null && deviceId!.isNotEmpty) data['deviceId'] = deviceId;
     return data;
   }
 
@@ -43,6 +49,7 @@ class UserBaseModel {
       uid: documentId,
       name: map['name'],
       email: map['email'],
+      deviceId: map['deviceId'],
     );
   }
 }

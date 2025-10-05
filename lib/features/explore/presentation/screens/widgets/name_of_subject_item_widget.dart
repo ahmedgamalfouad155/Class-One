@@ -21,7 +21,7 @@ class NameOfSubjectItemWidget extends StatelessWidget {
       onTap: onTap,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             height: AppMedia.height(context) / 5,

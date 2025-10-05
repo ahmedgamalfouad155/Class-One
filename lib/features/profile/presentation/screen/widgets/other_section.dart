@@ -39,8 +39,8 @@ class OtherSection extends StatelessWidget {
                 title: "Logout",
                 color: Colors.red,
                 onTap: () {
-                  BlocProvider.of<AuthCubit>(context).logout();
-                  (context).go(AppRouter.kLogInScreen);
+                  BlocProvider.of<AuthCubit>(context).logout(); 
+                  (context).go(AppRouter.klandingScreen);
                 },
               ),
               CustomDividerWidget(isHeight: false),

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sinna/core/helper/get_device_id.dart';
 import 'package:sinna/features/auth/data/models/user_base_model.dart';
 import 'package:sinna/features/auth/data/services/signup_service/signup_service.dart';
 import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_state.dart';
@@ -7,43 +8,27 @@ import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_sta
 class SignUpCubit extends Cubit<SignUpState> {
   SignUpCubit() : super(SignUpState());
 
-  // final PageController pageController = PageController();
   final SignupService authServices = SignupServiceImpl();
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-
-  // void updateUser(UserAcademicModel user) {
-  //   emit(state.copyWith(user: user));
-  // } 
-  // void nextPage() {
-  //   if (pageController.hasClients) {
-  //     pageController.nextPage(
-  //       duration: const Duration(milliseconds: 300),
-  //       curve: Curves.ease,
-  //     );
-  //   }
-  // } 
-  // void previousPage() {
-  //   if (pageController.hasClients) {
-  //     pageController.previousPage(
-  //       duration: const Duration(milliseconds: 300),
-  //       curve: Curves.ease,
-  //     );
-  //   }
-  // }
+  String? deviceId;
 
   Future<void> signUp({
     required String password,
     required UserBaseModel userBaseModel,
   }) async {
     emit(SignupLoadingState());
+    deviceId = await getDeviceId();
     try {
       final user = await authServices.signUpWithEmailAndPassword(
         userBaseModel.email!,
         password,
-      );
+      ); 
 
       if (user != null) {
-        userBaseModel = userBaseModel.copyWith(uid: user.email);
+        userBaseModel = userBaseModel.copyWith(
+          uid: user.email,
+          deviceId: deviceId,
+        );
 
         await authServices.setUserData(userBaseModel);
         emit(SignupSuccessState());
@@ -55,10 +40,5 @@ class SignUpCubit extends Cubit<SignUpState> {
     }
   }
 
-  // /// ✅ Dispose للـ PageController
-  // @override
-  // Future<void> close() {
-  //   pageController.dispose();
-  //   return super.close();
-  // }
+ 
 }

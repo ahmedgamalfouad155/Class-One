@@ -1,4 +1,3 @@
-
 sealed class LoginState {}
 
 final class LoginInitial extends LoginState {}
@@ -11,3 +10,5 @@ final class LoginFailedState extends LoginState {
   final String error;
   LoginFailedState(this.error);
 }
+
+final class NotSameDeviceState extends LoginState {}

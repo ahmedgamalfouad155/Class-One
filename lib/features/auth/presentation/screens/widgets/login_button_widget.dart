@@ -27,6 +27,13 @@ class LoginButtonWidget extends StatelessWidget {
       listener: (context, state) {
         if (state is LoginSuccessState) {
           (context).go(AppRouter.kNavBarScreen);
+        } else if (state is NotSameDeviceState) {
+          return CustomAnimatedDialog.show(
+            context: context,
+            message:
+                "هذا الميل مسجل علي جهاز اخر بالغعل يجب تسجيل الخروج من الجهاز الاخر اولا ثم المحاوله مره اخري ",
+            animationType: DialogAnimationType.warning,
+          );
         }
         if (state is LoginFailedState) {
           return CustomAnimatedDialog.show(
@@ -41,7 +48,7 @@ class LoginButtonWidget extends StatelessWidget {
           return CircularProgressIndicator();
         } else if (state is LoginInitial ||
             state is LoginSuccessState ||
-            state is LoginFailedState) {
+            state is LoginFailedState|| state is NotSameDeviceState) {
           return CustomButton(
             text: "Login",
             onPressed: () {
