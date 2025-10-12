@@ -127,7 +127,7 @@ class StepsSectionWidget extends StatelessWidget {
                   );
                 }
               },
-              width: AppMedia.width(context) / 2,
+              width: context.width / 2,
             ),
           ],
         );

@@ -63,7 +63,7 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
                     onPressed: () {
                       // cubit.previousPage();
                     },
-                    width: AppMedia.width(context) / 3,
+                    width: context.width / 3,
                   ),
                   SignupButtonWidget(
                     nameController: nameController,

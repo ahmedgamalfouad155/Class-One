@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/features/auth/presentation/screens/widgets/phone_field_widget.dart';
@@ -12,7 +12,7 @@ class AddingPhoneScreenBody extends StatelessWidget {
       padding: EdgeInsets.only(
         right: 30.0,
         left: 30.0,
-        // top: AppMedia.height(context) / 5,
+        // top: context.height / 5,
         bottom: 32.0,
       ),
       child: Column(

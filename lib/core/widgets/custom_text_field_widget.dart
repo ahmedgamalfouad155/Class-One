@@ -8,11 +8,13 @@ class CustomTextFieldWidget extends StatelessWidget {
     required this.hintText,
     this.controller,
     this.keyboardType,
+    this.icon,
   });
 
   final String hintText;
   final TextEditingController? controller;
   final TextInputType? keyboardType;
+  final Widget? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,7 @@ class CustomTextFieldWidget extends StatelessWidget {
         return null;
       },
       decoration: InputDecoration(
+        prefixIcon: icon,
         contentPadding: const EdgeInsets.symmetric(horizontal: 14),
         hintText: hintText,
         hintStyle: AppStyles.textStyle16W600Grey(

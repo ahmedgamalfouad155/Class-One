@@ -14,7 +14,7 @@ class ForgetPasswordScreenBody extends StatelessWidget {
       padding: EdgeInsets.only(
         right: 20.0,
         left: 20.0,
-        top: AppMedia.height(context) / 7,
+        top: context.height / 7,
       ),
       child: SingleChildScrollView(
         child: Column(
@@ -38,7 +38,7 @@ class ForgetPasswordScreenBody extends StatelessWidget {
               child: CustomButton(
                 text: "Sent",
                 onPressed: () {},
-                width: AppMedia.width(context) / 4,
+                width: context.width / 4,
                 borderRadius: BorderRadius.circular(30),
               ),
             ),

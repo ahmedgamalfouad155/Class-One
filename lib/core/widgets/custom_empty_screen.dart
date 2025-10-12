@@ -15,7 +15,7 @@ class CustomEmptyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: AppMedia.height(context) / 1.3,
+      height: context.height / 1.3,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/widgets/custom_divider_widget.dart';
-import 'package:sinna/features/explore/presentation/manager/chekbox_cubit/check_box_cubit.dart';
+import 'package:sinna/features/profile/presentation/manager/chekbox_cubit/check_box_cubit.dart';
 import 'package:sinna/features/explore/presentation/screens/widgets/custom_check_box.dart';
 
 class UnderAndPostGraduateSection extends StatelessWidget {

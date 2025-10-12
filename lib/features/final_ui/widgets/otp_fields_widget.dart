@@ -69,7 +69,7 @@ class _OtpFieldWidgetState extends State<OtpFieldWidget> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: List.generate(widget.length, (index) {
         return SizedBox(
-          width: AppMedia.width(context) / 9,
+          width: context.width / 9,
           child: TextField(
             controller: _controllers[index],
             focusNode: _focusNodes[index],

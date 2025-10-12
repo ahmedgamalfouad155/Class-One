@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:sinna/core/router/app_router.dart';
 import 'package:sinna/core/theme/customs_box_decoratino.dart';
 import 'package:sinna/core/theme/styles.dart';
+import 'package:sinna/core/widgets/custom_divider_widget.dart';
+import 'package:sinna/features/profile/presentation/screen/widgets/dialog_and_bottom_sheet_fun/filter_content_bottom_sheet.dart';
 import 'package:sinna/features/profile/presentation/screen/widgets/profile_option_widget.dart';
 
 class ProfileSection extends StatelessWidget {
@@ -18,11 +20,22 @@ class ProfileSection extends StatelessWidget {
         Container(
           padding: EdgeInsets.symmetric(horizontal: 10),
           decoration: CustomsBoxDecoration().profileDecoration(context),
-          child: ProfileOptionWidget(
-            title: "Account Setting",
-            onTap: () {
-              GoRouter.of(context).push(AppRouter.kAccountSettingScreen);
-            },
+          child: Column(
+            children: [
+              ProfileOptionWidget(
+                title: "Account Setting",
+                onTap: () {
+                  GoRouter.of(context).push(AppRouter.kAccountSettingScreen);
+                },
+              ),
+              CustomDividerWidget(isHeight: false),
+              ProfileOptionWidget(
+                title: "Preferences",
+                onTap: () {
+                  filterContentBottomSheet(context);
+                },
+              ),
+            ],
           ),
         ),
       ],

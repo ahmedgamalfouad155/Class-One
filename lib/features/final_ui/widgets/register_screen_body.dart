@@ -64,7 +64,7 @@ class _RegisterScreenBodyState extends State<RegisterScreenBody> {
                     color: context.appColors.grey,
                   ),
                 ),
-                SizedBox(height: AppMedia.height(context) / 8),
+                SizedBox(height: context.height / 8),
                 Text("Register", style: AppStyles.textStyle32(context)),
                 const SizedBox(height: 8),
                 Text(
@@ -107,7 +107,7 @@ class _RegisterScreenBodyState extends State<RegisterScreenBody> {
                               //       ); // ✅ الرقم جاهز
                               // }
                             },
-                            width: AppMedia.width(context) / 5,
+                            width: context.width / 5,
                             borderRadius: BorderRadius.circular(25),
                           ),
                   ],

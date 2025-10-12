@@ -4,12 +4,12 @@ import 'package:sinna/core/cubit/radio_cubit/radio_cubit.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/core/widgets/custom_top_shape_in_bottom_sheet.dart';
-import 'package:sinna/features/explore/presentation/manager/chekbox_cubit/check_box_cubit.dart';
-import 'package:sinna/features/explore/presentation/screens/widgets/acadimic_info_widget.dart';
-import 'package:sinna/features/explore/presentation/screens/widgets/addvanced_settings_and_icon_widget.dart';
-import 'package:sinna/features/explore/presentation/screens/widgets/program_filter_bottom_sheet_widget.dart';
-import 'package:sinna/features/explore/presentation/screens/widgets/specilalization_filter_bottom_sheet_widget.dart';
-import 'package:sinna/features/explore/presentation/screens/widgets/under_and_post_gragduate_section.dart';
+import 'package:sinna/features/profile/presentation/manager/chekbox_cubit/check_box_cubit.dart';
+import 'package:sinna/features/profile/presentation/screen/widgets/acadimic_info_widget.dart';
+import 'package:sinna/features/profile/presentation/screen/widgets/addvanced_settings_and_icon_widget.dart';
+import 'package:sinna/features/profile/presentation/screen/widgets/program_filter_bottom_sheet_widget.dart';
+import 'package:sinna/features/profile/presentation/screen/widgets/specilalization_filter_bottom_sheet_widget.dart';
+import 'package:sinna/features/profile/presentation/screen/widgets/under_and_post_gragduate_section.dart';
 import 'package:sinna/features/profile/presentation/screen/widgets/custom_bottom_sheet.dart';
 
 void filterContentBottomSheet(BuildContext context) {
@@ -18,7 +18,7 @@ void filterContentBottomSheet(BuildContext context) {
     child: BlocProvider(
       create: (_) => CheckBoxCubit(),
       child: ConstrainedBox(
-        constraints: BoxConstraints(maxHeight: AppMedia.height(context) * .97),
+        constraints: BoxConstraints(maxHeight: context.height * .97),
         child: SingleChildScrollView(
           child: BlocProvider(
             create: (context) => RadioCubit(),

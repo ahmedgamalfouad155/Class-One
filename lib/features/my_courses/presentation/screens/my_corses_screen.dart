@@ -10,7 +10,7 @@ class MyCorsesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
-        create: (context) => MyCoursesCubit()..getMyCourses(),
+        create: (context) => MyCoursesCubit(),
         child: SafeArea(child: MyCoursesScreenBody()),
       ),
     );

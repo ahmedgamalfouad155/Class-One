@@ -11,7 +11,7 @@
 //   @override
 //   Widget build(BuildContext context) {
 //     return Container(
-//       width: AppMedia.width(context) / 1.2,
+//       width: context.width / 1.2,
 //       padding: const EdgeInsets.all(8.0),
 //       decoration: CustomsBoxDecoration().defaultBoxDecoration(context),
 //       child: Row(

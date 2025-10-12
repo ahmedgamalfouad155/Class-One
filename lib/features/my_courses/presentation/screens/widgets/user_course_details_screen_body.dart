@@ -18,7 +18,7 @@ class UserCourseDetailsScreenBody extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: AppMedia.height(context) / 3,
+            height: context.height / 3,
             child: Image.asset(AppImages.cours, fit: BoxFit.cover),
           ),
           const SizedBox(height: 20),
@@ -39,14 +39,14 @@ class UserCourseDetailsScreenBody extends StatelessWidget {
                 textColor: context.appColors.blue,
                 onPressed: () {},
                 icon: Icon(Icons.save, color: context.appColors.blue),
-                width: AppMedia.width(context) / 2.5,
+                width: context.width / 2.5,
                 bacgrouncColor: context.appColors.greyBackgroundTextFiled,
               ),
               DefaultButtonWidget(
                 text: 'Play',
                 onPressed: () {},
                 icon: Icon(Icons.play_arrow, color: context.appColors.white),
-                width: AppMedia.width(context) / 2.5,
+                width: context.width / 2.5,
               ),
             ],
           ),

@@ -3,6 +3,7 @@ import 'package:sinna/core/constants/images.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/utils/app_media.dart';
+import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/features/explore/data/models/subject_info_model.dart';
 
 class NameOfSubjectItemWidget extends StatelessWidget {
@@ -19,36 +20,39 @@ class NameOfSubjectItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        // crossAxisAlignment: CrossAxisAlignment.start,
+      child: Column(
         children: [
-          Container(
-            height: AppMedia.height(context) / 5,
-            width: AppMedia.width(context) / 4,
-            padding: EdgeInsets.only(bottom: 10),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: Image.asset(AppImages.anatomy, fit: BoxFit.cover),
-            ),
-          ),
-          const SizedBox(width: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text(
-                subjectInfo.subjectName,
-                style: AppStyles.textStyle14W600(context),
+              SizedBox(
+                height: context.height / 6,
+                width: context.width / 4,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: Image.asset(AppImages.anatomy, fit: BoxFit.cover),
+                ),
               ),
-              const SizedBox(height: 5),
-              Text(
-                subjectInfo.subjectDoctor,
-                style: AppStyles.textStyle12GreyW400(
-                  context,
-                ).copyWith(color: context.appColors.grey),
+              const SizedBox(width: 10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    subjectInfo.subjectName,
+                    style: AppStyles.textStyle14W600(context),
+                  ),
+                  const SizedBox(height: 5),
+                  Text(
+                    subjectInfo.subjectDoctor,
+                    style: AppStyles.textStyle12GreyW400(
+                      context,
+                    ).copyWith(color: context.appColors.grey),
+                  ),
+                ],
               ),
             ],
           ),
+          const CustomDividerWidget(isHeight: true, height: 13),
         ],
       ),
     );

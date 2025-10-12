@@ -28,7 +28,7 @@ class StudyLocationScreenBody extends StatelessWidget {
               color: context.appColors.grey,
             ),
           ),
-          SizedBox(height: AppMedia.height(context) / 9),
+          SizedBox(height: context.height / 9),
 
           Text(
             'Select Your Preferred Study Location',
@@ -50,7 +50,7 @@ class StudyLocationScreenBody extends StatelessWidget {
                 onPressed: () {
                   // GoRouter.of(context).push(AppRouter.kFinalOtpView);
                 },
-                width: AppMedia.width(context) / 5,
+                width: context.width / 5,
                 borderRadius: BorderRadius.circular(25),
               ),
             ],

@@ -21,7 +21,7 @@ void showAcademicInfoDialog(BuildContext context, RadioCubit radioCubit) {
           ),
           title: Text("University", style: AppStyles.textStyle20W600(context)),
           content: SizedBox(
-            width: AppMedia.width(context) / 1.3,
+            width: context.width / 1.3,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,

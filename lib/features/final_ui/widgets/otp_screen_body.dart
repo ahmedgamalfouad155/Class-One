@@ -46,7 +46,7 @@ class OtpScreenBody extends StatelessWidget {
                   color: context.appColors.grey,
                 ),
               ),
-              SizedBox(height: AppMedia.height(context) / 9),
+              SizedBox(height: context.height / 9),
               Text("Enter Code", style: AppStyles.textStyle32(context)),
               const SizedBox(height: 8),
               Text(

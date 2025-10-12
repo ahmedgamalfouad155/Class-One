@@ -8,7 +8,7 @@ import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/core/widgets/custom_snak_bar.dart';
 import 'package:sinna/features/auth/data/models/user_base_model.dart';
 import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
-import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_state.dart'; 
+import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_state.dart';
 
 class SignupButtonWidget extends StatelessWidget {
   const SignupButtonWidget({
@@ -47,9 +47,9 @@ class SignupButtonWidget extends StatelessWidget {
           // ignore: unnecessary_type_check
         } else if (state is SignupSuccessState || state is SignUpState) {
           return CustomButton(
-            width: AppMedia.width(context),
+            width: context.width,
             text: "Sign Up",
-            onPressed: () async { 
+            onPressed: () async {
               if (formKey.currentState!.validate()) {
                 if (confirmPasswordController.text == passwordController.text) {
                   await cubit.signUp(
