@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/styles.dart';
-import 'package:sinna/features/profile/presentation/screen/widgets/account_setting_screen_body.dart';
+import 'package:sinna/features/profile/presentation/widgets/account_setting_screen_body.dart';
 
 class AccountSettingScreen extends StatelessWidget {
   const AccountSettingScreen({super.key});

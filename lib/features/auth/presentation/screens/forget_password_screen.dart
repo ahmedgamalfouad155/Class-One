@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sinna/features/auth/presentation/screens/widgets/forget_password_screen_body.dart';
+import 'package:sinna/features/auth/presentation/widgets/forget_password_screen_body.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});

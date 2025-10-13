@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/features/explore/presentation/manager/subject_cubit/subject_cubit.dart';
 import 'package:sinna/features/explore/presentation/manager/user_info_cubit/user_info_cubit.dart';
-import 'package:sinna/features/explore/presentation/screens/widgets/explore_screen_body.dart';
+import 'package:sinna/features/explore/presentation/widgets/explore_screen_body.dart';
 
 class ExploreScreen extends StatelessWidget {
   const ExploreScreen({super.key});

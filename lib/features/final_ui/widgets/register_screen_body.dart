@@ -9,7 +9,7 @@ import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/core/widgets/custom_text_field_widget.dart';
-import 'package:sinna/features/auth/presentation/screens/widgets/phone_field_widget.dart';
+import 'package:sinna/features/auth/presentation/widgets/phone_field_widget.dart';
 import 'package:sinna/features/final_ui/manager/phone_auth_cubit.dart';
 import 'package:sinna/features/final_ui/manager/phone_auth_state.dart';
 

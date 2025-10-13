@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
 import 'package:sinna/features/course_details/presentation/manager/course_cubit/course_cubit.dart';
-import 'package:sinna/features/course_details/presentation/screens/widget/courses_screen_body.dart';
+import 'package:sinna/features/course_details/presentation/widget/courses_screen_body.dart';
 
 class CoursesScreen extends StatelessWidget {
   const CoursesScreen({super.key, required this.coursePathModel});

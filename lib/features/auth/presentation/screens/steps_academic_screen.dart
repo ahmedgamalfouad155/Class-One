@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sinna/features/auth/presentation/screens/widgets/steps_acadimic_screen_body.dart';
+import 'package:sinna/features/auth/presentation/widgets/steps_acadimic_screen_body.dart';
 
 class StepsAcademicScreen extends StatelessWidget {
   const StepsAcademicScreen({super.key});

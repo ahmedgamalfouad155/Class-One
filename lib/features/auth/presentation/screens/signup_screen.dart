@@ -39,7 +39,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sinna/core/router/app_router.dart';
 import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
-import 'package:sinna/features/auth/presentation/screens/widgets/signup_screen_body.dart';
+import 'package:sinna/features/auth/presentation/widgets/signup_screen_body.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sinna/features/auth/presentation/screens/widgets/login_screen_body.dart';
+import 'package:sinna/features/auth/presentation/widgets/login_screen_body.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

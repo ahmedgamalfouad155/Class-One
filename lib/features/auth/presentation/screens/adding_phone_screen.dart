@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart'; 
-import 'package:sinna/features/auth/presentation/screens/widgets/adding_phone_screen_body.dart';
+import 'package:sinna/features/auth/presentation/widgets/adding_phone_screen_body.dart';
 
 class AddingPhoneScreen extends StatelessWidget {
   const AddingPhoneScreen({super.key});
