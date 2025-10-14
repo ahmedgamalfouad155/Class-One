@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sinna/core/constants/images.dart';
 import 'package:sinna/core/router/app_router.dart';
 import 'package:sinna/core/theme/customs_box_decoratino.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/widgets/custom_divider_widget.dart';
-import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/filter_content_bottom_sheet.dart';
 import 'package:sinna/core/widgets/custom_option_widget.dart';
 
-class ProfileSection extends StatelessWidget {
-  const ProfileSection({super.key});
+class CourseManagmentSection extends StatelessWidget {
+  const CourseManagmentSection({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Profile", style: AppStyles.textStyle16w400Grey(context)),
+        Text("Teaching Info", style: AppStyles.textStyle16w400Grey(context)),
         const SizedBox(height: 10),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 10),
@@ -23,18 +24,14 @@ class ProfileSection extends StatelessWidget {
           child: Column(
             children: [
               CustomOptionWidget(
-                title: "Account Setting",
+                icon: SvgPicture.asset(AppImages.addIcon),
+                title: "Create Course",
                 onTap: () {
-                  GoRouter.of(context).push(AppRouter.kAccountSettingScreen);
+                  GoRouter.of(context).push(AppRouter.kCreateCourseScreen);
                 },
               ),
-              CustomDividerWidget(isHeight: false),
-              CustomOptionWidget(
-                title: "Preferences",
-                onTap: () {
-                  filterContentBottomSheet(context);
-                },
-              ),
+              CustomDividerWidget(),
+              CustomOptionWidget(title: "Instructors", onTap: () {}),
             ],
           ),
         ),

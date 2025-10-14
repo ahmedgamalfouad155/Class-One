@@ -48,8 +48,7 @@ final List<String> specializationExpolreFilters = const [
 ];
 
 final List<String> specializationBottomSheetFilters = const [
-  "Dentistry",
-  'Nursing',
+  "Dentistry", 
   'Other',
 ];
 

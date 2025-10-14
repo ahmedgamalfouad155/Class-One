@@ -21,7 +21,7 @@ class CustomEmptyScreen extends StatelessWidget {
         children: [
           SvgPicture.asset(image),
           const SizedBox(height: 20),
-          Text(title, style: AppStyles.textStyle24Bold(context)),
+          Text(title, style: AppStyles.textStyle24W600(context)),
           const SizedBox(height: 6),
           Text(subTitle, style: AppStyles.textStyle16w400Grey(context)),
         ],

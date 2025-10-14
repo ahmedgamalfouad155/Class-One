@@ -40,9 +40,9 @@ abstract class AppStyles {
     color: context.appColors.grey,
   );
 
-  static TextStyle textStyle24Bold(BuildContext context) => TextStyle(
+  static TextStyle textStyle24W600(BuildContext context) => TextStyle(
     fontSize: 24.sp,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w600,
     color: context.appColors.black,
   );
 

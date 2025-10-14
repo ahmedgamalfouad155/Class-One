@@ -26,18 +26,8 @@ class CustomFilterItemWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color: isSelected
               ? context.appColors.blue
-              : layoutType == SpecialLayoutType.wrap
-              ? context.appColors.greyBackgroundTextFiled
-              : context.appColors.white,
+              : context.appColors.greyMoonlight,
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(
-            color: isSelected
-                ? context.appColors.blue
-                : layoutType == SpecialLayoutType.wrap
-                ? context.appColors.greyBackgroundTextFiled
-                : context.appColors.greyNavBar,
-            width: 1,
-          ),
         ),
         child: Text(
           title,

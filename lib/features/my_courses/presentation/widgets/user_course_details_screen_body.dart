@@ -18,7 +18,7 @@ class UserCourseDetailsScreenBody extends StatelessWidget {
         children: [
           Text(
             coursePathModel.subjectName.toString(),
-            style: AppStyles.textStyle24Bold(context),
+            style: AppStyles.textStyle24W600(context),
           ),
           Text(
             coursePathModel.subjectDoctor.toString(),

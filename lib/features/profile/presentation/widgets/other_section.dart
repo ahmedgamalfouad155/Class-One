@@ -7,7 +7,7 @@ import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/delete_account_dialog_widget.dart';
-import 'package:sinna/features/profile/presentation/widgets/profile_option_widget.dart';
+import 'package:sinna/core/widgets/custom_option_widget.dart';
 
 class OtherSection extends StatelessWidget {
   const OtherSection({super.key});
@@ -24,7 +24,7 @@ class OtherSection extends StatelessWidget {
           decoration: CustomsBoxDecoration().profileDecoration(context),
           child: Column(
             children: [
-              ProfileOptionWidget(
+              CustomOptionWidget(
                 title: "delete account",
                 color: Colors.red,
                 onTap: () {
@@ -35,16 +35,16 @@ class OtherSection extends StatelessWidget {
                 },
               ),
               CustomDividerWidget(isHeight: false),
-              ProfileOptionWidget(
+              CustomOptionWidget(
                 title: "Logout",
                 color: Colors.red,
                 onTap: () {
-                  BlocProvider.of<AuthCubit>(context).logout(); 
+                  BlocProvider.of<AuthCubit>(context).logout();
                   (context).go(AppRouter.klandingScreen);
                 },
               ),
               CustomDividerWidget(isHeight: false),
-              ProfileOptionWidget(title: "Other", onTap: () {}),
+              CustomOptionWidget(title: "Other", onTap: () {}),
             ],
           ),
         ),

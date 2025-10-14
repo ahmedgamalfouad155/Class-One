@@ -19,7 +19,7 @@ class LandingScreenBody extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text("Ready When You Are", style: AppStyles.textStyle24Bold(context)),
+          Text("Ready When You Are", style: AppStyles.textStyle24W600(context)),
           const SizedBox(height: 5),
           Text(
             "Explore academic and professional courses designed for every stage of your career.",

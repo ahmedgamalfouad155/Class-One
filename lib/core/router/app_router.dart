@@ -1,5 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sinna/features/admin_tools/presentation/screens/control_panel_screen.dart';
+import 'package:sinna/features/admin_tools/presentation/screens/create_course_screen.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_state.dart';
 import 'package:sinna/features/auth/presentation/screens/forget_password_screen.dart';
@@ -18,8 +20,6 @@ import 'package:sinna/features/course_details/presentation/screens/term_screen.d
 import 'package:sinna/features/landing/presentation/screen/landing_screen.dart';
 import 'package:sinna/features/my_courses/presentation/screens/user_ccourse_details_screen.dart';
 import 'package:sinna/features/nav_bar/presentation/screens/nav_bar_screen.dart';
-import 'package:sinna/features/addmin/presentation/screens/account_screen.dart';
-import 'package:sinna/features/addmin/presentation/screens/control_panal_screen.dart';
 import 'package:sinna/features/profile/presentation/screen/account_setting_screen.dart';
 import 'package:sinna/features/splash/splash._screen.dart';
 
@@ -39,12 +39,14 @@ abstract class AppRouter {
   static const String kModeScreen = '/modeScreen';
   static const String kAccountScreen = '/accountScreen';
   static const String kUserCcourseDetailsScreen = '/userCcourseDetailsScreen';
-  static const String kControlPanal = '/controlPanal';
+  // static const String kControlPanal = '/controlPanal';
   static const String kFinalRegister = '/registerfinal';
   static const String kFinalSignin = '/finalSignin';
   static const String kFinalOtpScreen = '/finalOtpScreen';
   static const String kStudyLocationScreen = '/studyLocationScreen';
   static const String kAccountSettingScreen = '/accountSettingScreen';
+  static const String kCreateCourseScreen = '/createCourseScreen';
+  static const String kControlPanalScreen = '/controlPanalScreen';
 
   static final router = GoRouter(
     routes: [
@@ -112,11 +114,10 @@ abstract class AppRouter {
         },
       ),
 
-      GoRoute(
-        path: kAccountScreen,
-        builder: (context, state) => const AccountScreen(),
-      ),
-
+      // GoRoute(
+      //   path: kAccountScreen,
+      //   builder: (context, state) => const AccountScreen(),
+      // ),
       GoRoute(
         path: kUserCcourseDetailsScreen,
         builder: (context, state) {
@@ -124,10 +125,10 @@ abstract class AppRouter {
           return UserCcourseDetailsScreen(coursePathModel: coursePathModel);
         },
       ),
-      GoRoute(
-        path: kControlPanal,
-        builder: (context, state) => const ControlPanalScreen(),
-      ),
+      // GoRoute(
+      //   path: kControlPanal,
+      //   builder: (context, state) => const ControlPanalScreen(),
+      // ),
       GoRoute(
         path: kFinalRegister,
         builder: (context, state) => const RegisterScreen(),
@@ -151,6 +152,14 @@ abstract class AppRouter {
       GoRoute(
         path: kAccountSettingScreen,
         builder: (context, state) => const AccountSettingScreen(),
+      ),
+      GoRoute(
+        path: kCreateCourseScreen,
+        builder: (context, state) => const CreateCourseScreen(),
+      ),
+      GoRoute(
+        path: kControlPanalScreen,
+        builder: (context, state) => const ControlPanelScreen(),
       ),
     ],
   );

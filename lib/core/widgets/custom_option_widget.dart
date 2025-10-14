@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 
-class ProfileOptionWidget extends StatelessWidget {
-  const ProfileOptionWidget({
+class CustomOptionWidget extends StatelessWidget {
+  const CustomOptionWidget({
     super.key,
     required this.title,
-    this.widget,
     required this.onTap,
     this.verticalPading,
     this.color,
+    this.icon,
+    this.switchIcon,
   });
   final String title;
-  final Widget? widget;
   final VoidCallback? onTap;
   final double? verticalPading;
   final Color? color;
+  final Widget? icon, switchIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +26,8 @@ class ProfileOptionWidget extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: verticalPading ?? 10),
         child: Row(
           children: [
+            icon ?? const SizedBox(),
+            icon != null ? const SizedBox(width: 10) : const SizedBox(),
             Text(
               title,
               style: AppStyles.textStyle14W600(
@@ -32,7 +35,7 @@ class ProfileOptionWidget extends StatelessWidget {
               ).copyWith(color: color ?? context.appColors.black),
             ),
             Spacer(),
-            widget ??
+            switchIcon ??
                 Icon(
                   Icons.arrow_forward_ios,
                   color: context.appColors.black,

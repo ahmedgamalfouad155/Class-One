@@ -40,13 +40,13 @@ void filterContentBottomSheet(BuildContext context) {
                     return CustomButton(
                       text: "Apply",
                       onPressed: () {
+                        // ignore: unused_local_variable
                         final selected = context
                             .read<CheckBoxCubit>()
                             .getSelectedItems();
-                        print("Selected items: $selected");
 
+                        // ignore: unused_local_variable
                         final radioo = context.read<RadioCubit>().confirmed;
-                        print("Selected radio: $radioo");
                       },
                     );
                   },

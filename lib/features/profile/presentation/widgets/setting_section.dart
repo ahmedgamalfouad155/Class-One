@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/customs_box_decoratino.dart';
 import 'package:sinna/core/theme/styles.dart';
-import 'package:sinna/core/widgets/custom_divider_widget.dart'; 
+import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/appearance_content_bottom_sheet.dart';
 import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/language_content_bottom_sheet.dart';
-import 'package:sinna/features/profile/presentation/widgets/profile_option_widget.dart';
+import 'package:sinna/core/widgets/custom_option_widget.dart';
 
 class SettingSection extends StatelessWidget {
   const SettingSection({super.key});
@@ -21,32 +21,14 @@ class SettingSection extends StatelessWidget {
           decoration: CustomsBoxDecoration().profileDecoration(context),
           child: Column(
             children: [
-              ProfileOptionWidget(
+              CustomOptionWidget(
                 title: "Language",
                 onTap: () => languageContentBottomSheet(context),
               ),
               CustomDividerWidget(isHeight: false),
-              ProfileOptionWidget(
+              CustomOptionWidget(
                 title: "Appearance",
                 onTap: () => appearanceContentBottomSheet(context),
-              ),
-              CustomDividerWidget(isHeight: false),
-              ProfileOptionWidget(
-                title: "Notifications",
-                verticalPading: 0,
-                widget: Transform.scale(
-                  scale: .7,
-                  child: Switch(
-                    value: true,
-                    onChanged: (value) {},
-                    focusColor: Colors.white,
-                    activeColor: Colors.white,
-                    inactiveThumbColor: Colors.grey,
-                    inactiveTrackColor: Colors.red,
-                    activeTrackColor: Colors.green,
-                  ),
-                ),
-                onTap: () {},
               ),
             ],
           ),

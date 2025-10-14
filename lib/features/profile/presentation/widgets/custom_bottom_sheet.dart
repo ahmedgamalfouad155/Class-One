@@ -13,8 +13,8 @@ class CustomBottomSheet {
         return Container(
           padding: const EdgeInsets.only(
             top: 5,
-            right: 32,
-            left: 32,
+            right: 16,
+            left: 16,
             bottom: 10,
           ),
           decoration: BoxDecoration(

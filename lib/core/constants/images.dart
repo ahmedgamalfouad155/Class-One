@@ -23,5 +23,7 @@ class AppImages {
   static final String anatomy = 'assets/images/anatomy.jpg';
   static final String cours = 'assets/images/course.png';
   static final String emptyDashbord = 'assets/images/empty_dashbord.svg';
-  static final String emptyNotifications = 'assets/images/empty_notifications.svg';
+  static final String emptyNotifications =
+      'assets/images/empty_notifications.svg';
+  static final String addIcon = 'assets/images/add_circle.svg';
 }

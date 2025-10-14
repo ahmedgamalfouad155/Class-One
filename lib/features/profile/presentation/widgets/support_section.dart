@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/customs_box_decoratino.dart';
 import 'package:sinna/core/theme/styles.dart';
-import 'package:sinna/features/profile/presentation/widgets/profile_option_widget.dart';
+import 'package:sinna/core/widgets/custom_option_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SupportSection extends StatelessWidget {
@@ -17,7 +17,7 @@ class SupportSection extends StatelessWidget {
         Container(
           padding: EdgeInsets.symmetric(horizontal: 10),
           decoration: CustomsBoxDecoration().profileDecoration(context),
-          child: ProfileOptionWidget(title: "Support", onTap: _openWhatsApp),
+          child: CustomOptionWidget(title: "Support", onTap: _openWhatsApp),
         ),
       ],
     );
