@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/styles.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/admins_section.dart';
 import 'package:sinna/features/admin_tools/presentation/widgets/course_managment_section.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/institutions_scetion.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/academic_partners_scetion.dart';
 import 'package:sinna/features/admin_tools/presentation/widgets/user_management_section.dart';
 
 class ControlPanelScreenBody extends StatelessWidget {
@@ -19,11 +18,9 @@ class ControlPanelScreenBody extends StatelessWidget {
           const SizedBox(height: 16),
           CourseManagmentSection(),
           const SizedBox(height: 32),
-          InstitutionsScetion(),
+          AcademicPartnersScetion(),
           const SizedBox(height: 32),
           UserManagementSection(),
-          const SizedBox(height: 32),
-          AdminsSection(),
         ],
       ),
     );
