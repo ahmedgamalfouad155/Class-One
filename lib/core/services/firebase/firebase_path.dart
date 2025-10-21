@@ -26,8 +26,27 @@ class FirestorePath {
       "users/$uid/myCourses/$courseId";
   static String myCourses(String uid) => "users/$uid/myCourses/";
 
+  static String filter(String uid) => "users/$uid/filter/filter";
+
   static String notifications(String notificationsId) =>
       "notifications/$notificationsId";
+
   static String myNotifications() => "notifications/";
 
+  static String newCoursesPath({
+    required String specialization,
+    required String program,
+    required String university,
+    required String level,
+  }) =>
+      "courses/info/specialization/$specialization/program/$program/universities/$university/levels/$level/courses/";
+
+  static String newLessonsPath({
+    required String specialization,
+    required String program,
+    required String university,
+    required String level,
+    required String course,
+  }) =>
+      "courses/info/specialization/$specialization/program/$program/universities/$university/levels/$level/courses/$course/lessons/";
 }

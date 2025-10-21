@@ -19,11 +19,10 @@ class ListOfSubjectsWidget extends StatelessWidget {
       builder: (context, state) {
         if (state is UserInfoSuccessState) {
           final path = CoursePathModel(
-            country: convert[state.userModel.country],
+            specialization: convert[state.userModel.specialization],
             university: convert[state.userModel.university],
-            faculty: convert[state.userModel.faculty],
             program: convert[state.userModel.program],
-            stage: convert[state.userModel.stage],
+            level: convert[state.userModel.level],
           );
           return BlocBuilder<SubjectCubit, SubjectState>(
             bloc: context.read<SubjectCubit>()..getSubjects(path),
@@ -47,13 +46,13 @@ class ListOfSubjectsWidget extends StatelessWidget {
                         onTap: () {
                           path.update(
                             subject: state.subjects[index].id,
-                            subjectName: state.subjects[index].subjectName,
-                            subjectDoctor: state.subjects[index].subjectDoctor,
-                            subjectImage: state.subjects[index].subjectImage,
-                          );
+                            title: state.subjects[index].title,
+                            instructor: state.subjects[index].instructor,
+                            image: state.subjects[index].image,
+                          ); 
                           GoRouter.of(
                             context,
-                          ).push(AppRouter.kTermScreen, extra: path);
+                          ).push(AppRouter.kCoursesScreen, extra: path);
                         },
                         subjectInfo: state.subjects[index],
                       );

@@ -11,14 +11,13 @@ class CoursesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: context.appColors.primaryBlue,
-      // appBar: AppBar(title: Text('Course details')),
       body: BlocProvider(
         create: (context) {
-          // print(coursePathModel.id);
           return CourseCubit()..getLeson(coursePathModel: coursePathModel);
         },
-        child: CoursesScreenBody(coursePathModel: coursePathModel),
+        child: SafeArea(
+          child: CoursesScreenBody(coursePathModel: coursePathModel),
+        ),
       ),
     );
   }

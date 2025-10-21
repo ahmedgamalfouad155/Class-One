@@ -17,11 +17,11 @@ class UserCourseDetailsScreenBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            coursePathModel.subjectName.toString(),
+            coursePathModel.title.toString(),
             style: AppStyles.textStyle24W600(context),
           ),
           Text(
-            coursePathModel.subjectDoctor.toString(),
+            coursePathModel.instructor.toString(),
             style: AppStyles.textStyle16w400Grey(context),
           ),
           const SizedBox(height: 10),

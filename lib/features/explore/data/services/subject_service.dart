@@ -11,15 +11,12 @@ class SubjectServiceImpl extends SubjectService {
   final firestor = FirestoreServices.instance;
   @override
   Future<List<SubjectInfoModel>> getSubjects(CoursePathModel path) {
-    // print(path.country);
-    // print(path.university);
     return firestor.getCollection(
-      path: FirestorePath.subjectsPath(
-        country: path.country.toString(),
-        university: path.university.toString(),
-        faculty: path.faculty.toString(),
+      path: FirestorePath.newCoursesPath(
+        specialization: path.specialization.toString(),
         program: path.program.toString(),
-        stage: path.stage.toString(),
+        university: path.university.toString(),
+        level: path.level.toString(),
       ),
       builder: (data, documentId) {
         return SubjectInfoModel.fromMap(data, documentId);

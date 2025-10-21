@@ -14,16 +14,16 @@ class ListOfUserCourseWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: BlocBuilder<CourseCubit, CourseState>(
-        builder: (context, state) {
+        builder: (context, state) { 
           if (state is CourseLoadingState) {
             return const Center(child: CircularProgressIndicator());
-          } else if (state is CourseSuccessState) {
+          } else if (state is CourseSuccessState) { 
             final sortedLessons = List<CourseModel>.from(state.courses)
               ..sort((a, b) => a.number.compareTo(b.number));
             return ListView.builder(
               itemBuilder: (context, index) => Column(
                 children: [
-                  UserCoursItemWidget( 
+                  UserCoursItemWidget(
                     course: sortedLessons[index],
                     isPaied: isPaied,
                   ),

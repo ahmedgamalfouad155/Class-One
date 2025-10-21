@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/constants/constants.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/widgets/custom_divider_widget.dart';
-import 'package:sinna/core/cubit/special_cubit/special_cubit.dart';
+import 'package:sinna/core/cubit/special_cubit/filter_cubit.dart';
 import 'package:sinna/core/widgets/custom_filters_widget.dart';
 
 class ProgramFilterBottomSheetWidget extends StatelessWidget {

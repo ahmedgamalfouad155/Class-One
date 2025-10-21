@@ -22,15 +22,14 @@ class SignUpCubit extends Cubit<SignUpState> {
       final user = await authServices.signUpWithEmailAndPassword(
         userBaseModel.email!,
         password,
-      ); 
+      );
 
       if (user != null) {
         userBaseModel = userBaseModel.copyWith(
           uid: user.email,
           deviceId: deviceId,
         );
-
-        await authServices.setUserData(userBaseModel);
+        await authServices.setUserData(userBaseModel); 
         emit(SignupSuccessState());
       } else {
         emit(SignupFailedState('Signup failed'));
@@ -39,6 +38,4 @@ class SignUpCubit extends Cubit<SignUpState> {
       emit(SignupFailedState(e.toString()));
     }
   }
-
- 
 }

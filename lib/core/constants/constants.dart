@@ -15,22 +15,21 @@ class FireStoreCollectionsName {
 
 String selectedUniversity = "Select University";
 Map<String, String> convert = {
-  "Egypt": "egypt",
-  "Saudi Arabia": "saudi-arabia",
-  "Mansoura University": "mansoura_university",
+  "Mansoura University": "mansoura",
   "King Khalid University": "king_khalid_university",
+  "Academic": "academic",
   "Dentistry": "dentistry",
+  "Professional": "professional",
   "Nursing": "nursing",
   "Bachelor": "bachelors",
   "Master": "masters",
   "Piometry": "prometric",
-  "Level 1": "level_1",
-  "Level 2": "level_2",
-  "Level 3": "level_3",
-  "Level 4": "level_4",
-  "Level 5 ": "level_5",
-  "First": "first",
-  "Second": "second",
+  "Year 1": "year_1",
+  "Year 2": "year_2",
+  "Year 3": "year_3",
+  "Year 4": "year_4",
+  "Year 5 ": "year_5",
+
   "Periodontology": "prothodontics",
   "Oral surgery": "oral_surgery",
   "Pedodontics": "periodontology",
@@ -48,7 +47,7 @@ final List<String> specializationExpolreFilters = const [
 ];
 
 final List<String> specializationBottomSheetFilters = const [
-  "Dentistry", 
+  "Dentistry",
   'Other',
 ];
 
@@ -62,3 +61,5 @@ final List<String> dashboardFilters = const [
   "Recently Saved",
   'Recently Played',
 ];
+
+final List<String> terms = const ["First Term", "Second Term"];

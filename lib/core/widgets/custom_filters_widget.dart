@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sinna/core/cubit/special_cubit/special_cubit.dart';
+import 'package:sinna/core/cubit/special_cubit/filter_cubit.dart';
 import 'package:sinna/core/widgets/custom_filter_item_widget.dart';
 
 enum SpecialLayoutType { wrap, equal }

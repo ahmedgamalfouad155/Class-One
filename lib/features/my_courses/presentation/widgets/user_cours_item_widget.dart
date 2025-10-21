@@ -31,7 +31,7 @@ class UserCoursItemWidget extends StatelessWidget {
           Text(course.tittle, style: AppStyles.textStyle14W600(context)),
           CircleAvatar(
             radius: 15.r,
-            backgroundColor: context.appColors.greyNavBar,
+            backgroundColor: context.appColors.greyMoonlight,
             child: Icon(
               Icons.play_arrow,
               color: context.appColors.black,

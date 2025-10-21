@@ -105,12 +105,10 @@ class StepsSectionWidget extends StatelessWidget {
             CustomButton(
               text: "Next",
               onPressed: () {
-                final acadimicInfo = UserAcademicModel(
-                  country: state.country,
-                  university: state.university,
-                  faculty: state.faculty,
+                final acadimicInfo = UserAcademicModel( 
+                  university: state.university, 
                   program: state.program,
-                  stage: state.stage,
+                  level: state.stage,
                   specialization: state.specialization,
                 );
                 if ((state.country != "null" && state.country != null) &&

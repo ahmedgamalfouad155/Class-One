@@ -18,15 +18,15 @@ class FirebaseLessonService {
   Future<List<String>> getSubjects(CoursePathModel path) async {
     final snapshot = await _firestore
         .collection(FireStoreCollectionsName.countries)
-        .doc(path.country)
+        .doc(path.specialization)
         .collection(FireStoreCollectionsName.universities)
         .doc(path.university)
         .collection(FireStoreCollectionsName.faculties)
-        .doc(path.faculty)
+        .doc(path.level)
         .collection(FireStoreCollectionsName.programs)
         .doc(path.program)
         .collection(FireStoreCollectionsName.stages)
-        .doc(path.stage)
+        .doc(path.level)
         .collection(FireStoreCollectionsName.subjects)
         .get();
 
@@ -35,12 +35,12 @@ class FirebaseLessonService {
 
   Future<List<String>> getTerms(CoursePathModel path) async {
     final snapshot = await _firestore
-        .collection(path.country.toString())
+        .collection(path.specialization.toString())
         .doc(path.university)
         .collection('degree')
         .doc(path.program)
         .collection('level')
-        .doc(path.stage)
+        .doc(path.level)
         .collection('subjects')
         .doc(path.subject)
         .collection("term")
@@ -51,12 +51,12 @@ class FirebaseLessonService {
 
   Future<List<String>> getDoctors(CoursePathModel path) async {
     final snapshot = await _firestore
-        .collection(path.country.toString())
+        .collection(path.specialization.toString())
         .doc(path.university)
         .collection('degree')
         .doc(path.program)
         .collection('level')
-        .doc(path.stage)
+        .doc(path.level)
         .collection('subjects')
         .doc(path.subject)
         .collection("term")

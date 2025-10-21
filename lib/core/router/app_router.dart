@@ -17,9 +17,8 @@ import 'package:sinna/features/final_ui/screens/otp_screen.dart';
 import 'package:sinna/features/final_ui/screens/study_location_screen.dart';
 import 'package:sinna/features/course_details/presentation/screens/course_video_screen.dart';
 import 'package:sinna/features/course_details/presentation/screens/courses_screen.dart';
-import 'package:sinna/features/course_details/presentation/screens/term_screen.dart';
 import 'package:sinna/features/landing/presentation/screen/landing_screen.dart';
-import 'package:sinna/features/my_courses/presentation/screens/user_ccourse_details_screen.dart';
+import 'package:sinna/features/my_courses/presentation/screens/user_course_details_screen.dart';
 import 'package:sinna/features/nav_bar/presentation/screens/nav_bar_screen.dart';
 import 'package:sinna/features/profile/presentation/screen/account_setting_screen.dart';
 import 'package:sinna/features/splash/splash._screen.dart';
@@ -32,7 +31,6 @@ abstract class AppRouter {
   static const String kStepsAcademicScreen = '/stepsAcademicScreen';
   static const String kLogInScreen = '/logInScreen';
   static const String kNavBarScreen = '/navBarScreen';
-  static const String kTermScreen = '/termScreen';
   static const String kInstructorScreen = '/instructorScreen';
   static const String kCoursesScreen = '/lessonsScreen';
   static const String kCourseVideoScreen = '/courseVideoScreen';
@@ -93,13 +91,6 @@ abstract class AppRouter {
         path: kNavBarScreen,
         builder: (context, state) => const NavBarScreen(),
       ),
-      GoRoute(
-        path: kTermScreen,
-        builder: (context, state) {
-          final coursePathModel = state.extra as CoursePathModel;
-          return TermScreen(coursePathModel: coursePathModel);
-        },
-      ),
 
       GoRoute(
         path: kCoursesScreen,
@@ -124,7 +115,7 @@ abstract class AppRouter {
         path: kUserCcourseDetailsScreen,
         builder: (context, state) {
           final coursePathModel = state.extra as CoursePathModel;
-          return UserCcourseDetailsScreen(coursePathModel: coursePathModel);
+          return UserCourseDetailsScreen(coursePathModel: coursePathModel);
         },
       ),
       // GoRoute(

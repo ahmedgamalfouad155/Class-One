@@ -38,12 +38,12 @@ class NameOfSubjectItemWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    subjectInfo.subjectName,
+                    subjectInfo.title,
                     style: AppStyles.textStyle14W600(context),
                   ),
                   const SizedBox(height: 5),
                   Text(
-                    subjectInfo.subjectDoctor,
+                    subjectInfo.instructor,
                     style: AppStyles.textStyle12GreyW400(
                       context,
                     ).copyWith(color: context.appColors.grey),

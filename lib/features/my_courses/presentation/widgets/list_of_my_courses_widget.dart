@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sinna/core/constants/images.dart';
-import 'package:sinna/core/router/app_router.dart'; 
+import 'package:sinna/core/router/app_router.dart';
 import 'package:sinna/core/widgets/custom_animated_dialod.dart';
 import 'package:sinna/core/widgets/custom_empty_screen.dart';
 import 'package:sinna/features/my_courses/presentation/manager/cubit/my_courses_cubit.dart';
@@ -21,15 +21,14 @@ class ListOfMyCoursesWidget extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         } else if (state is MyCoursesFailureState) {
           return Text(state.errMessage);
-        } else if (state is MyCoursesSuccessState) { 
+        } else if (state is MyCoursesSuccessState) {
           return state.courses.isNotEmpty
               ? ListView.builder(
                   physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: state.courses.length,
                   itemBuilder: (context, index) {
-                    return 
-                    SubjectItemWidget(
+                    return SubjectItemWidget(
                       onTap: () {
                         if (state.courses[index].isPaid!) {
                           GoRouter.of(context).push(
@@ -45,10 +44,8 @@ class ListOfMyCoursesWidget extends StatelessWidget {
                           );
                         }
                       },
-                      subjectDoctor: state.courses[index].subjectDoctor
-                          .toString(),
-                      subjectName: state.courses[index].subjectName
-                          .toString(),
+                      subjectDoctor: state.courses[index].instructor.toString(),
+                      subjectName: state.courses[index].title.toString(),
                     );
                   },
                 )

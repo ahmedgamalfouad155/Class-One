@@ -14,8 +14,10 @@ class UserInfoServiceImpl implements UserInfoService {
   @override
   Future<UserAcademicModel> getUserInfo() async {
     return await firestorServices.getDocument(
-      path: FirestorePath.users(uid!),
-      builder: (data, documentId) => UserAcademicModel.fromMap(data),
+      path: FirestorePath.filter(uid!),
+      builder: (data, documentId) { 
+        return UserAcademicModel.fromMap(data);
+      },
     );
   }
 }

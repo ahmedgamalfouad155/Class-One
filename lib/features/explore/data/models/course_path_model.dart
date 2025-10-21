@@ -1,91 +1,87 @@
 class CoursePathModel {
-  String? country;
   String? university;
-  String? faculty;
+  String? specialization;
   String? program;
-  String? stage;
+  String? level;
   String? subject;
   String? term;
   String? id;
   bool? isPaid;
-  String? subjectName;
-  String? subjectDoctor;
-  String? subjectImage;
+  String? title;
+  String? instructor;
+  String? image;
 
   CoursePathModel({
-    this.country,
     this.university,
-    this.faculty,
+    this.specialization,
     this.program,
-    this.stage,
+    this.level,
     this.subject,
     this.term,
     this.id,
     this.isPaid,
-    this.subjectName,
-    this.subjectDoctor,
-    this.subjectImage,
+    this.title,
+    this.instructor,
+    this.image,
   });
 
   void update({
     String? country,
+    String? specialization,
     String? university,
     String? faculty,
     String? program,
-    String? stage,
+    String? level,
     String? subject,
     String? term,
     String? id,
     bool? isPaid,
-    String? subjectName,
-    String? subjectDoctor,
-    String? subjectImage,
+    String? title,
+    String? instructor,
+    String? image,
   }) {
-    if (country != null) this.country = country;
     if (university != null) this.university = university;
-    if (faculty != null) this.faculty = faculty;
+    if (specialization != null) this.specialization = specialization;
     if (program != null) this.program = program;
-    if (stage != null) this.stage = stage;
+    if (level != null) this.level = level;
     if (subject != null) this.subject = subject;
     if (term != null) this.term = term;
     if (id != null) this.id = id;
     if (isPaid != null) this.isPaid = isPaid;
-    if (subjectName != null) this.subjectName = subjectName;
-    if (subjectDoctor != null) this.subjectDoctor = subjectDoctor;
-    if (subjectImage != null) this.subjectImage = subjectImage;
+    if (title != null) this.title = title;
+    if (instructor != null) this.instructor = instructor;
+    if (image != null) this.image = image;
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'country': country,
       'university': university,
-      'faculty': faculty,
+      "specialization": specialization,
       'program': program,
-      'stage': stage,
+      'level': level,
       'subject': subject,
       'term': term,
       'id': id,
       'isPaid': isPaid ?? true,
-      'subjectName': subjectName,
-      'subjectDoctor': subjectDoctor,
-      'subjectImage': subjectImage,
+      'subjectName': title,
+      'subjectDoctor': instructor,
+      'subjectImage': image,
     };
   }
 
   factory CoursePathModel.fromMap(Map<String, dynamic> map, String documentId) {
     return CoursePathModel(
-      country: map['country'],
       university: map['university'],
-      faculty: map['faculty'],
+      specialization: map["specialization"],
       program: map['program'],
-      stage: map['stage'],
+      level: map['level'],
       subject: map['subject'],
       term: map['term'],
       id: documentId,
       isPaid: map['isPaid'] ?? true,
-      subjectName: map['subjectName'],
-      subjectDoctor: map['subjectDoctor'],
-      subjectImage: map['subjectImage'],
+      title: map['subjectName'],
+      instructor: map['subjectDoctor'],
+      image: map['subjectImage'],
     );
   }
 }

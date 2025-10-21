@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart'; 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
 import 'package:sinna/features/course_details/presentation/manager/course_cubit/course_cubit.dart';
 import 'package:sinna/features/my_courses/presentation/widgets/user_course_details_screen_body.dart';
 
-class UserCcourseDetailsScreen extends StatelessWidget {
-  const UserCcourseDetailsScreen({super.key, required this.coursePathModel});
+class UserCourseDetailsScreen extends StatelessWidget {
+  const UserCourseDetailsScreen({super.key, required this.coursePathModel});
   final CoursePathModel coursePathModel;
 
   @override

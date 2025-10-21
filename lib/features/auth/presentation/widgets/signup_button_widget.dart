@@ -32,7 +32,7 @@ class SignupButtonWidget extends StatelessWidget {
     return BlocConsumer<SignUpCubit, SignUpState>(
       listener: (context, state) async {
         if (state is SignupSuccessState) {
-          (context).go(AppRouter.kStepsAcademicScreen);
+          (context).go(AppRouter.kNavBarScreen);
           await FirebaseMessaging.instance.subscribeToTopic("allUsers");
         }
         if (state is SignupFailedState) {

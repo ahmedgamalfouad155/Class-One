@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sinna/core/services/firebase/firebase_path.dart';
 import 'package:sinna/core/services/firebase/firestore_services.dart';
+import 'package:sinna/features/auth/data/models/user_academic_model.dart';
 import 'package:sinna/features/auth/data/models/user_base_model.dart';
 
 abstract class SignupService {
@@ -41,6 +42,20 @@ class SignupServiceImpl extends SignupService {
     await firestor.setData(
       path: FirestorePath.users(userData.email!),
       data: userData.toMap(),
+    );
+    await _addAcadimyInfo(userData.email!);
+  }
+
+  Future<void> _addAcadimyInfo(String uid) async {
+    final userAcademicModel = UserAcademicModel(
+      university: 'Mansoura University',
+      program: 'Professional',
+      level: 'Year 1',
+      specialization: 'Dentistry',
+    );
+    await firestor.setData(
+      path: FirestorePath.filter(uid),
+      data: userAcademicModel.toMap(),
     );
   }
 }
