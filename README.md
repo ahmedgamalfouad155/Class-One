@@ -1,4 +1,4 @@
-# sinna
+# Class One
 
 A new Flutter project.
 
