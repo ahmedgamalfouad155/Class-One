@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sinna/core/theme/colors.dart';
-import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_animated_dialod.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
-import 'package:sinna/core/widgets/custom_text_field_widget.dart';
 import 'package:sinna/features/admin_tools/presentation/manager/instructors/instructors_cubit.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/cancel_button_widget.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/instructors/instructor_title_and_sub_title_and_field_widget.dart';
 
 class AddingInstructorDialog extends StatefulWidget {
   const AddingInstructorDialog({super.key});
@@ -44,32 +44,13 @@ class _AddingInstructorDialogState extends State<AddingInstructorDialog> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "Create Instructor",
-                  style: AppStyles.textStyle16W600(context),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  "Add a new instructor profile to assign courses.",
-                  style: AppStyles.textStyle16W600Grey(context),
-                ),
-                const SizedBox(height: 12),
-                CustomTextFieldWidget(
-                  hintText: "Instructor Name",
-                  controller: nameController,
+                InstructorTitleAndSubTitleAndFieldWidget(
+                  nameController: nameController,
                 ),
                 const SizedBox(height: 12),
                 Row(
                   children: [
-                    Expanded(
-                      child: CustomButton(
-                        text: "Cancel",
-                        onPressed: () => Navigator.pop(context),
-                        bacgrouncColor: context.appColors.greyMoonlight,
-                        textColor: context.appColors.black,
-                        borderSideColor: context.appColors.greyMoonlight,
-                      ),
-                    ),
+                    Expanded(child: CancelButtonWidget()),
                     const SizedBox(width: 10),
                     Expanded(
                       child: BlocConsumer<InstructorsCubit, InstructorsState>(
@@ -78,7 +59,7 @@ class _AddingInstructorDialogState extends State<AddingInstructorDialog> {
                             context: context,
                             message: "Instructor added successfully ✅🎉",
                             animationType: DialogAnimationType.success,
-                          ); 
+                          );
                         },
                         builder: (context, state) {
                           if (state is InstructorAddingState) {

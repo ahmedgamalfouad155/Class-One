@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/theme/customs_box_decoratino.dart';
 import 'package:sinna/core/widgets/custom_option_widget.dart';
 import 'package:sinna/features/admin_tools/presentation/manager/instructors/instructors_cubit.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/dialog/updateing_instructor_dialog.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/instructors/updateing_instructor_dialog.dart';
 
 class ListOfInstructorsWidget extends StatelessWidget {
   const ListOfInstructorsWidget({super.key});

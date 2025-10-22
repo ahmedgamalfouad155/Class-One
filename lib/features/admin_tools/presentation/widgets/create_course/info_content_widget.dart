@@ -3,7 +3,7 @@ import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/core/widgets/custom_text_field_widget.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/teaching_info_section.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/create_course/teaching_info_section.dart';
 
 class InfoContentWidget extends StatelessWidget {
   const InfoContentWidget({super.key});

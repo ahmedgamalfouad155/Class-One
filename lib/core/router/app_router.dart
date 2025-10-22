@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sinna/features/admin_tools/presentation/screens/control_panel_screen.dart';
 import 'package:sinna/features/admin_tools/presentation/screens/create_course_screen.dart';
+import 'package:sinna/features/admin_tools/presentation/screens/institutions_screen.dart';
 import 'package:sinna/features/admin_tools/presentation/screens/instructors_screen.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_state.dart';
@@ -47,6 +48,7 @@ abstract class AppRouter {
   static const String kCreateCourseScreen = '/createCourseScreen';
   static const String kControlPanalScreen = '/controlPanalScreen';
   static const String kInstructorsScreen = '/instructorsScreen';
+  static const String kInstitutionsScreen = '/institutionsScreen';
 
   static final router = GoRouter(
     routes: [
@@ -157,6 +159,10 @@ abstract class AppRouter {
       GoRoute(
         path: kInstructorScreen,
         builder: (context, state) => const InstructorsScreen(),
+      ),
+      GoRoute(
+        path: kInstitutionsScreen,
+        builder: (context, state) => const InstitutionsScreen(),
       ),
     ],
   );

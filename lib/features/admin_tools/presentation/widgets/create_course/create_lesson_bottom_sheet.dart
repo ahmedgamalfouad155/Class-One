@@ -5,9 +5,9 @@ import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/core/widgets/custom_text_field_widget.dart';
 import 'package:sinna/core/widgets/custom_top_shape_in_bottom_sheet.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/attachment_section.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/create_lesson_text_and_bback_icon_widget.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/lesson_placement_section.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/create_course/attachment_section.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/create_course/create_lesson_text_and_bback_icon_widget.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/create_course/lesson_placement_section.dart';
 import 'package:sinna/features/profile/presentation/widgets/custom_bottom_sheet.dart';
 
 void createLessonBottomSheet(BuildContext context) {

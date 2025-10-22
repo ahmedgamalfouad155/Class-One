@@ -8,8 +8,8 @@ import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/core/widgets/custom_text_field_widget.dart';
 import 'package:sinna/features/admin_tools/data/models/instructor_model.dart';
 import 'package:sinna/features/admin_tools/presentation/manager/instructors/instructors_cubit.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/dialog/delete_button_widget.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/dialog/update_button_widget.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/instructors/delete_instructor_button_widget.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/instructors/update_instructor_button_widget.dart';
 
 class UpdateingInstructorDialog extends StatefulWidget {
   const UpdateingInstructorDialog({super.key, required this.instructor});
@@ -67,7 +67,7 @@ class _UpdateingInstructorDialogState extends State<UpdateingInstructorDialog> {
               const SizedBox(height: 12),
               BlocProvider(
                 create: (context) => InstructorsCubit(),
-                child: UpdateButtonWidget(
+                child: UpdateInstructorButtonWidget(
                   formKey: _formKey,
                   widget: widget,
                   nameController: nameController,
@@ -76,7 +76,7 @@ class _UpdateingInstructorDialogState extends State<UpdateingInstructorDialog> {
               const SizedBox(height: 10),
               BlocProvider(
                 create: (context) => InstructorsCubit(),
-                child: DeleteButtonWidget(widget: widget),
+                child: DeleteInstructorButtonWidget(widget: widget),
               ),
               const SizedBox(height: 10),
               CustomButton(

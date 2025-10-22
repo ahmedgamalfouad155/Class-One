@@ -34,6 +34,7 @@ class AcademicPartnersScetion extends StatelessWidget {
               CustomOptionWidget(
                 title: "Institutions",
                 onTap: () { 
+                  GoRouter.of(context).push(AppRouter.kInstitutionsScreen);
                 },
               ),
             ],

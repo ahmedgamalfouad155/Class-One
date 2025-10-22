@@ -4,10 +4,10 @@ import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/widgets/custom_animated_dialod.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/features/admin_tools/presentation/manager/instructors/instructors_cubit.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/dialog/updateing_instructor_dialog.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/instructors/updateing_instructor_dialog.dart';
 
-class DeleteButtonWidget extends StatelessWidget {
-  const DeleteButtonWidget({super.key, required this.widget});
+class DeleteInstructorButtonWidget extends StatelessWidget {
+  const DeleteInstructorButtonWidget({super.key, required this.widget});
 
   final UpdateingInstructorDialog widget;
 
@@ -20,10 +20,10 @@ class DeleteButtonWidget extends StatelessWidget {
             context: context,
             message: "Instructor deleted successfully ✅🎉",
             animationType: DialogAnimationType.success,
-          ); 
+          );
         }
       },
-      builder: (context, state) { 
+      builder: (context, state) {
         if (state is InstructorDeletingState) {
           return const Center(child: CircularProgressIndicator());
         }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/info_content_widget.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/lesson_content_widget.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/setup_contetn_widget.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/create_course/info_content_widget.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/create_course/lesson_content_widget.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/create_course/setup_contetn_widget.dart';
 
 class CreateCourseScreen extends StatefulWidget {
   const CreateCourseScreen({super.key});

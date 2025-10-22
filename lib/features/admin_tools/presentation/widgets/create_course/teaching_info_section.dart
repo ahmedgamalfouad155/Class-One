@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/customs_box_decoratino.dart';
 import 'package:sinna/core/theme/styles.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/sellection_instructor_widget.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/create_course/sellection_instructor_widget.dart';
 
 class TeachingInfoSection extends StatelessWidget {
   const TeachingInfoSection({super.key});
