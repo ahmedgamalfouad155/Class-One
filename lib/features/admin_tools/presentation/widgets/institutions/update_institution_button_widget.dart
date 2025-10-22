@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/widgets/custom_animated_dialod.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
-import 'package:sinna/features/admin_tools/data/models/instructor_model.dart';
-import 'package:sinna/features/admin_tools/presentation/manager/instructors/instructors_cubit.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/instructors/updateing_instructor_dialog.dart';
+import 'package:sinna/features/admin_tools/data/models/institution_model.dart';
+import 'package:sinna/features/admin_tools/presentation/manager/institutions_cubit/institutions_cubit.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/institutions/updateing_institution_dialog.dart';
 
-class UpdateInstructorButtonWidget extends StatelessWidget {
-  const UpdateInstructorButtonWidget({
+class UpdateInstitutionButtonWidget extends StatelessWidget {
+  const UpdateInstitutionButtonWidget({
     super.key,
     required GlobalKey<FormState> formKey,
     required this.widget,
@@ -15,14 +15,14 @@ class UpdateInstructorButtonWidget extends StatelessWidget {
   }) : _formKey = formKey;
 
   final GlobalKey<FormState> _formKey;
-  final UpdateingInstructorDialog widget;
+  final UpdateingInstitutionDialog widget;
   final TextEditingController nameController;
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<InstructorsCubit, InstructorsState>(
+    return BlocConsumer<InstitutionsCubit, InstitutionsState>(
       listener: (context, state) {
-        if (state is InstructorUpdatedSuccessState) {
+        if (state is InstitutionUpdatedSuccessState) {
           CustomAnimatedDialog.show(
             context: context,
             message: "Instructor updated successfully ✅🎉",
@@ -31,17 +31,17 @@ class UpdateInstructorButtonWidget extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        if (state is InstructorUpdatingState) {
+        if (state is InstitutionUpdatingState) {
           return const Center(child: CircularProgressIndicator());
         }
-        if (state is InstructorUpdatedSuccessState ||
-            state is InstructorsInitial) {
+        if (state is InstitutionUpdatedSuccessState ||
+            state is InstitutionsInitial) {
           return CustomButton(
             text: "Update",
             onPressed: () {
               if (_formKey.currentState!.validate()) {
-                context.read<InstructorsCubit>().updateInstructor(
-                  InstructorModel(
+                context.read<InstitutionsCubit>().updateInstitution(
+                  InstitutionModel(
                     id: widget.institution.id,
                     name: nameController.text,
                   ),
@@ -49,7 +49,7 @@ class UpdateInstructorButtonWidget extends StatelessWidget {
               }
             },
           );
-        } else if (state is InstructorUpdateFailureState) {
+        } else if (state is   InstitutionUpdateFailureState) {
           return Text(state.errMessage);
         } else {
           return const Text("error");

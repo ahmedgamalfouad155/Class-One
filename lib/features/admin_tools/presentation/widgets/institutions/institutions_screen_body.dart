@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/theme/customs_box_decoratino.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/widgets/custom_option_widget.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/institutions/add_institutions_dialog.dart';
+import 'package:sinna/features/admin_tools/presentation/manager/institutions_cubit/institutions_cubit.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/institutions/adding_institutions_dialog.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/institutions/list_of_institution_widget.dart';
 
 class InstitutionsScreenBody extends StatelessWidget {
   const InstitutionsScreenBody({super.key});
@@ -23,13 +26,17 @@ class InstitutionsScreenBody extends StatelessWidget {
               title: "Create Institution",
               onTap: () => showDialog(
                 context: context,
-                builder: (_) => const AddInstitutionsDialog(),
+                builder: (_) => const AddingInstitutionsDialog(),
               ),
             ),
           ),
           const SizedBox(height: 10),
           Text('Institutions', style: AppStyles.textStyle16W600Grey(context)),
           const SizedBox(height: 10),
+          BlocProvider(
+            create: (context) => InstitutionsCubit(),
+            child: ListOfInstitutionWidget(),
+          ),
         ],
       ),
     );

@@ -3,19 +3,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/widgets/custom_animated_dialod.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
-import 'package:sinna/features/admin_tools/presentation/manager/instructors/instructors_cubit.dart'; 
-import 'package:sinna/features/admin_tools/presentation/widgets/instructors/updateing_instructor_dialog.dart'; 
+import 'package:sinna/features/admin_tools/presentation/manager/institutions_cubit/institutions_cubit.dart'; 
+import 'package:sinna/features/admin_tools/presentation/widgets/institutions/updateing_institution_dialog.dart';
 
-class DeleteInstructorButtonWidget extends StatelessWidget {
-  const DeleteInstructorButtonWidget({super.key, required this.widget});
 
-  final UpdateingInstructorDialog widget;
+class DeleteInstitutionButtonWidget extends StatelessWidget {
+  const DeleteInstitutionButtonWidget({super.key, required this.widget});
+
+  final UpdateingInstitutionDialog widget;
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<InstructorsCubit, InstructorsState>(
+    return BlocConsumer<InstitutionsCubit, InstitutionsState>(
       listener: (context, state) {
-        if (state is InstructorDeletedSuccessState) {
+        if (state is InstitutionDeletedSuccessState) {
           CustomAnimatedDialog.show(
             context: context,
             message: "Instructor deleted successfully ✅🎉",
@@ -24,15 +25,15 @@ class DeleteInstructorButtonWidget extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        if (state is InstructorDeletingState) {
+        if (state is InstitutionDeletingState) {
           return const Center(child: CircularProgressIndicator());
         }
-        if (state is InstructorDeletedSuccessState ||
-            state is InstructorsInitial) {
+        if (state is InstitutionDeletedSuccessState ||
+            state is InstitutionsInitial) {
           return CustomButton(
             text: "Delete",
             onPressed: () {
-              context.read<InstructorsCubit>().deleteInstructor(
+              context.read<InstitutionsCubit>().deleteInstitution(
                 widget.institution.id,
               );
             },
@@ -40,7 +41,7 @@ class DeleteInstructorButtonWidget extends StatelessWidget {
             textColor: context.appColors.red,
             borderSideColor: context.appColors.greyMoonlight,
           );
-        } else if (state is InstructorDeleteFailureState) {
+        } else if (state is InstitutionDeleteFailureState) {
           return Text(state.errMessage);
         } else {
           return const Text("error");

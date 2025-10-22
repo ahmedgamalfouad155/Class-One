@@ -6,21 +6,22 @@ import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/core/widgets/custom_text_field_widget.dart';
-import 'package:sinna/features/admin_tools/data/models/instructor_model.dart';
-import 'package:sinna/features/admin_tools/presentation/manager/instructors/instructors_cubit.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/instructors/delete_instructor_button_widget.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/instructors/update_instructor_button_widget.dart';
+import 'package:sinna/features/admin_tools/data/models/institution_model.dart'; 
+import 'package:sinna/features/admin_tools/presentation/manager/institutions_cubit/institutions_cubit.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/institutions/delete_institution_button_widget.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/institutions/update_institution_button_widget.dart'; 
 
-class UpdateingInstructorDialog extends StatefulWidget {
-  const UpdateingInstructorDialog({super.key, required this.institution});
-  final InstructorModel institution;
+class UpdateingInstitutionDialog extends StatefulWidget {
+  const UpdateingInstitutionDialog({super.key, required this.institution});
+  final InstitutionModel institution;
 
   @override
-  State<UpdateingInstructorDialog> createState() =>
-      _UpdateingInstructorDialogState();
+  State<UpdateingInstitutionDialog> createState() =>
+      _UpdateingInstitutionDialogState();
 }
 
-class _UpdateingInstructorDialogState extends State<UpdateingInstructorDialog> {
+class _UpdateingInstitutionDialogState
+    extends State<UpdateingInstitutionDialog> {
   final TextEditingController nameController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -66,8 +67,8 @@ class _UpdateingInstructorDialogState extends State<UpdateingInstructorDialog> {
               ),
               const SizedBox(height: 12),
               BlocProvider(
-                create: (context) => InstructorsCubit(),
-                child: UpdateInstructorButtonWidget(
+                create: (context) => InstitutionsCubit(),
+                child: UpdateInstitutionButtonWidget(
                   formKey: _formKey,
                   widget: widget,
                   nameController: nameController,
@@ -75,8 +76,8 @@ class _UpdateingInstructorDialogState extends State<UpdateingInstructorDialog> {
               ),
               const SizedBox(height: 10),
               BlocProvider(
-                create: (context) => InstructorsCubit(),
-                child: DeleteInstructorButtonWidget(widget: widget),
+                create: (context) => InstitutionsCubit(),
+                child: DeleteInstitutionButtonWidget(widget: widget),
               ),
               const SizedBox(height: 10),
               CustomButton(

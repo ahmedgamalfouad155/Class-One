@@ -2,46 +2,45 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/theme/customs_box_decoratino.dart';
 import 'package:sinna/core/widgets/custom_option_widget.dart';
-import 'package:sinna/features/admin_tools/presentation/manager/instructors/instructors_cubit.dart'; 
-import 'package:sinna/features/admin_tools/presentation/widgets/instructors/updateing_instructor_dialog.dart';
+import 'package:sinna/features/admin_tools/presentation/manager/institutions_cubit/institutions_cubit.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/institutions/updateing_institution_dialog.dart'; 
 
-
-class ListOfInstructorsWidget extends StatelessWidget {
-  const ListOfInstructorsWidget({super.key});
+class ListOfInstitutionWidget extends StatelessWidget {
+  const ListOfInstitutionWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<InstructorsCubit, InstructorsState>(
-      bloc: context.read<InstructorsCubit>()..getInstructors(),
+    return BlocBuilder<InstitutionsCubit, InstitutionsState>(
+      bloc: context.read<InstitutionsCubit>()..getInstitutions(),
       builder: (context, state) {
-        if (state is InstructorsLoadingState) {
+        if (state is InstitutionsLoadingState) {
           return const Center(child: CircularProgressIndicator());
         }
-        if (state is InstructorsLoadedState) {
-          final instructors = state.instructors;
+        if (state is InstitutionsLoadedState) {
+          final institutions = state.institutions;
           return Expanded(
             child: ListView.separated(
               itemBuilder: (context, index) => Container(
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 decoration: CustomsBoxDecoration().profileDecoration(context),
                 child: CustomOptionWidget(
-                  title: instructors[index].name,
+                  title: institutions[index].name,
                   onTap: () {
                     showDialog(
                       context: context,
-                      builder: (_) => UpdateingInstructorDialog(institution: instructors[index],
-                        
+                      builder: (_) => UpdateingInstitutionDialog(
+                        institution:  institutions[index],
                       ),
                     );
                   },
                 ),
               ),
               separatorBuilder: (context, index) => const SizedBox(height: 10),
-              itemCount: instructors.length,
+              itemCount: institutions.length,
             ),
           );
         }
-        if (state is InstructorsLoadFailureState) {
+        if (state is InstitutionsLoadFailureState) {
           return Text(state.errMessage);
         } else {
           return const Text("error");
