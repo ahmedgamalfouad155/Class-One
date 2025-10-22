@@ -16,6 +16,7 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color greyNavBar;
   final Color greyMoonlight;
   final Color black;
+  final Color red;
 
   const AppColors({
     required this.primaryBlue,
@@ -28,6 +29,7 @@ class AppColors extends ThemeExtension<AppColors> {
     required this.greyNavBar,
     required this.greyMoonlight,
     required this.black,
+    required this.red,
   });
 
   @override
@@ -42,6 +44,7 @@ class AppColors extends ThemeExtension<AppColors> {
     Color? greyNavBar,
     Color? greyMoonlight,
     Color? black,
+    Color? red,
   }) {
     return AppColors(
       primaryBlue: primaryBlue ?? this.primaryBlue,
@@ -55,6 +58,7 @@ class AppColors extends ThemeExtension<AppColors> {
       greyNavBar: greyNavBar ?? this.greyNavBar,
       greyMoonlight: greyMoonlight ?? this.greyMoonlight,
       black: black ?? this.black,
+      red: red ?? this.red,
     );
   }
 
@@ -76,6 +80,7 @@ class AppColors extends ThemeExtension<AppColors> {
       greyNavBar: Color.lerp(greyNavBar, other.greyNavBar, t)!,
       greyMoonlight: Color.lerp(greyMoonlight, other.greyMoonlight, t)!,
       black: Color.lerp(black, other.black, t)!,
+      red: Color.lerp(red, other.red, t)!,
     );
   }
 }

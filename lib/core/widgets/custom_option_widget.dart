@@ -28,13 +28,14 @@ class CustomOptionWidget extends StatelessWidget {
           children: [
             icon ?? const SizedBox(),
             icon != null ? const SizedBox(width: 10) : const SizedBox(),
-            Text(
-              title,
-              style: AppStyles.textStyle14W600(
-                context,
-              ).copyWith(color: color ?? context.appColors.black),
+            Expanded(
+              child: Text(
+                title,
+                style: AppStyles.textStyle14W600(
+                  context,
+                ).copyWith(color: color ?? context.appColors.black),
+              ),
             ),
-            Spacer(),
             switchIcon ??
                 Icon(
                   Icons.arrow_forward_ios,

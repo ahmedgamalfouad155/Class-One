@@ -1,5 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
+import 'package:cloud_firestore/cloud_firestore.dart'; 
 
 class FirestoreServices {
   FirestoreServices._();
@@ -23,8 +22,7 @@ class FirestoreServices {
   }
 
   Future<void> deleteData({required String path}) async {
-    final refrence = _fireStore.doc(path);
-    debugPrint("Path Data $path");
+    final refrence = _fireStore.doc(path); 
     refrence.delete();
   }
 

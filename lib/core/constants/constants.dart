@@ -1,14 +1,12 @@
 String documentIdFromLocalData() => DateTime.now().toIso8601String();
 
 class FireStoreCollectionsName {
-  static const String users = "users";
-  static const String countries = "countries";
-  static const String universities = "universities";
-  static const String faculties = "faculties";
+  static const String users = "users"; 
+  static const String courses = "courses"; 
+  static const String instructors = "instructors";
+  static const String universities = "universities"; 
   static const String programs = "programs";
-  static const String stages = "stages";
-  static const String subjects = "subjects";
-  static const String terms = "terms";
+  static const String levels = "levels"; 
   static const String lessons = "lessons";
   static const String specializations = "specializations";
 }

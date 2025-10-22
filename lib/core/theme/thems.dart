@@ -29,6 +29,7 @@ final lightTheme = ThemeData(
       greyNavBar: Color(0xffcccccc),
       greyMoonlight: Color(0xffeeeeef),
       black: Color.fromARGB(255, 0, 0, 0),
+      red: Color(0xffFF0000),
     ),
   ],
 );
@@ -49,6 +50,7 @@ final darkTheme = ThemeData(
       greyNavBar: Color(0xffcccccc),
       greyMoonlight: Color(0xffeeeeef),
       black: Color(0xff4CAF50),
+      red: Color(0xffFF0000),
     ),
   ],
 );

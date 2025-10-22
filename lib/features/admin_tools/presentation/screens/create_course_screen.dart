@@ -32,10 +32,7 @@ class _CreateCourseScreenState extends State<CreateCourseScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Course Details',
-          style: AppStyles.textStyle16W600(context),
-        ),
+        title: Text('Create Course', style: AppStyles.textStyle16W600(context)),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(50),
           child: TabBar(
