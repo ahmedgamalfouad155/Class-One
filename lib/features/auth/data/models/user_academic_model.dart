@@ -1,4 +1,4 @@
-/// ✅ الموديل الأكاديمي - بيانات دراسية
+
 class UserAcademicModel {
   final String? university;
   final String? program;

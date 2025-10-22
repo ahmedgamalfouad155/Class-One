@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/colors.dart';
-import 'package:sinna/core/theme/styles.dart';
-import 'package:sinna/core/widgets/custom_filters_widget.dart';
+import 'package:sinna/core/theme/styles.dart'; 
 
 class CustomFilterItemWidget extends StatelessWidget {
   const CustomFilterItemWidget({
     super.key,
     required this.title,
     required this.isSelected,
-    required this.onTap,
-    this.layoutType = SpecialLayoutType.wrap,
+    required this.onTap, 
   });
 
   final String title;
   final bool isSelected;
   final VoidCallback onTap;
-  final SpecialLayoutType layoutType;
+  
 
   @override
   Widget build(BuildContext context) {

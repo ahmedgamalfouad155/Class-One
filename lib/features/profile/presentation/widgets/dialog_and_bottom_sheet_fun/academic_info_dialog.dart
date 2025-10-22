@@ -7,6 +7,7 @@ import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/core/widgets/custom_radio_widget.dart';
 
+/// Dialog مخصص لاختيار الجامعة من قائمة
 void showAcademicInfoDialog(BuildContext context, RadioCubit radioCubit) {
   showDialog(
     context: context,
@@ -14,7 +15,7 @@ void showAcademicInfoDialog(BuildContext context, RadioCubit radioCubit) {
       return BlocProvider.value(
         value: radioCubit,
         child: AlertDialog(
-          insetPadding: const EdgeInsets.symmetric(horizontal: 0),
+          insetPadding: const EdgeInsets.symmetric(horizontal: 16),
           backgroundColor: context.appColors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
@@ -22,36 +23,28 @@ void showAcademicInfoDialog(BuildContext context, RadioCubit radioCubit) {
           title: Text("University", style: AppStyles.textStyle20W600(context)),
           content: SizedBox(
             width: context.width / 1.3,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Regnum Solenvaria",
-                  style: AppStyles.textStyle16W600Grey(context),
-                ),
-
-                CustomRadioWidget(title: "Universitas Luminae Magna"),
-                CustomDividerWidget(),
-                CustomRadioWidget(title: "Academia Neptunalis"),
-                CustomDividerWidget(),
-                CustomRadioWidget(title: "Universitas Arcanae Felis"),
-                CustomDividerWidget(),
-                CustomRadioWidget(title: "Collegium Aetherus"),
-                const SizedBox(height: 10),
-                Text(
-                  "Confœderatio Nivalis",
-                  style: AppStyles.textStyle16W600Grey(context),
-                ),
-                CustomRadioWidget(title: "Schola Obsidianis"),
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  _UniversityGroup(
+                    options: [
+                      "Mansoura University",
+                      "Academia Neptunalis",
+                      "Universitas Arcanae Felis",
+                      "Collegium Aetherus",
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
           actions: [
             TextButton(
               onPressed: () {
                 context.read<RadioCubit>().cancelSelection();
-                Navigator.of(context).pop(false); // Cancel
+                Navigator.of(context).pop(false);
               },
               child: Text(
                 "Cancel",
@@ -65,7 +58,7 @@ void showAcademicInfoDialog(BuildContext context, RadioCubit radioCubit) {
                 return TextButton(
                   onPressed: () {
                     context.read<RadioCubit>().confirmSelection();
-                    Navigator.of(context).pop(false);
+                    Navigator.of(context).pop(true);
                   },
                   child: Text(
                     "Confirm",
@@ -81,4 +74,28 @@ void showAcademicInfoDialog(BuildContext context, RadioCubit radioCubit) {
       );
     },
   );
+}
+
+/// Group Widget لعرض مجموعة من الجامعات تحت عنوان فرعي
+class _UniversityGroup extends StatelessWidget {
+  final List<String> options;
+
+  const _UniversityGroup({required this.options});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ...options.map(
+          (option) => Column(
+            children: [
+              CustomRadioWidget(title: option),
+              if (option != options.last) const CustomDividerWidget(),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
 }

@@ -7,7 +7,7 @@ import 'package:sinna/features/profile/presentation/manager/chekbox_cubit/check_
 import 'package:sinna/features/profile/presentation/widgets/acadimic_info_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/program_filter_bottom_sheet_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/specilalization_filter_bottom_sheet_widget.dart';
-import 'package:sinna/features/profile/presentation/widgets/under_and_post_gragduate_section.dart';
+import 'package:sinna/features/profile/presentation/widgets/levels_widget.dart';
 
 class SetupContentWidget extends StatelessWidget {
   const SetupContentWidget({super.key});
@@ -28,9 +28,9 @@ class SetupContentWidget extends StatelessWidget {
                 children: [
                   SpecializationFilterBottomSheetWidget(),
                   ProgramFilterBottomSheetWidget(),
-                  AcadimicInfoWidget(),
+                  const AcademicInfoWidget(),
                   const SizedBox(height: 20),
-                  const UnderAndPostGraduateSection(),
+                  const LevelsWidget(),
                   const SizedBox(height: 20),
                   BlocBuilder<CheckBoxCubit, Map<String, bool>>(
                     builder: (context, state) {

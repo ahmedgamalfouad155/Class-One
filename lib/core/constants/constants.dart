@@ -37,14 +37,7 @@ Map<String, String> convert = {
   "Operative": "operative",
   "Prothodontics": "pedodontics",
   "Orthodontics": "orthodontics",
-};
-
-final List<String> specializationExpolreFilters = const [
-  "None",
-  'Orthodontics',
-  'Prosthodontics',
-  'Radiology',
-];
+}; 
 
 final List<String> specializationBottomSheetFilters = const [
   "Dentistry",
@@ -54,12 +47,6 @@ final List<String> specializationBottomSheetFilters = const [
 final List<String> programBottomSheetFilters = const [
   "Academic",
   'Professional',
-];
-
-final List<String> dashboardFilters = const [
-  "All",
-  "Recently Saved",
-  'Recently Played',
-];
+]; 
 
 final List<String> terms = const ["First Term", "Second Term"];

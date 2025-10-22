@@ -30,7 +30,7 @@ class CoursesScreenBody extends StatelessWidget {
               if (state is CourseLoadingState) {
                 return const Center(child: CircularProgressIndicator());
               }
-              if (state is CourseSuccessState) {
+              if (state is CourseSuccessState) { 
                 final sortedLessons = List<CourseModel>.from(state.courses)
                   ..sort((a, b) => a.number.compareTo(b.number));
                 bool hasSecondTerm = sortedLessons.any(
@@ -47,7 +47,10 @@ class CoursesScreenBody extends StatelessWidget {
                           child: const Icon(Icons.arrow_back),
                         ),
                         const SizedBox(width: 10),
-                        if (hasSecondTerm) const Expanded(child: TermsWidget()),
+                        if (hasSecondTerm)
+                          Expanded(
+                            child: TermsWidget(),
+                          ),
                       ],
                     ),
                     TitleAndImageCourseWidget(coursePathModel: coursePathModel),
