@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sinna/core/router/app_router.dart';
+import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/customs_box_decoratino.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/widgets/custom_divider_widget.dart';
@@ -26,7 +27,7 @@ class OtherSection extends StatelessWidget {
             children: [
               CustomOptionWidget(
                 title: "delete account",
-                color: Colors.red,
+                color: context.appColors.red,
                 onTap: () {
                   showDialog(
                     context: context,
@@ -37,14 +38,12 @@ class OtherSection extends StatelessWidget {
               CustomDividerWidget(isHeight: false),
               CustomOptionWidget(
                 title: "Logout",
-                color: Colors.red,
+                color: context.appColors.red,
                 onTap: () {
                   BlocProvider.of<AuthCubit>(context).logout();
                   (context).go(AppRouter.klandingScreen);
                 },
               ),
-              CustomDividerWidget(isHeight: false),
-              CustomOptionWidget(title: "Other", onTap: () {}),
             ],
           ),
         ),

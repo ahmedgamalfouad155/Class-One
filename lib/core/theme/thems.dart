@@ -18,8 +18,7 @@ final lightTheme = ThemeData(
   brightness: Brightness.light,
   useMaterial3: true,
   extensions: const [
-    AppColors(
-      primaryBlue: Color.fromARGB(255, 38, 54, 110),
+    AppColors( 
       blue: Color(0xff0088FF),
       white: Color(0xffFFFFFF),
       offWhite: Color(0xffD1D1D1),
@@ -39,8 +38,7 @@ final darkTheme = ThemeData(
   brightness: Brightness.dark,
   useMaterial3: true,
   extensions: const [
-    AppColors(
-      primaryBlue: Color.fromARGB(255, 234, 175, 27),
+    AppColors( 
       blue: Color(0xffFF7A33),
       white: Color.fromARGB(255, 36, 36, 36),
       offWhite: Color(0xff1E1E1E),

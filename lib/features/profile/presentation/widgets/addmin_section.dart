@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sinna/core/router/app_router.dart';
+import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/customs_box_decoratino.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/widgets/custom_option_widget.dart';
@@ -20,6 +21,7 @@ class AddminSection extends StatelessWidget {
           decoration: CustomsBoxDecoration().profileDecoration(context),
           child: CustomOptionWidget(
             title: "Control Panel",
+            color: context.appColors.blue,
             onTap: () {
               GoRouter.of(context).push(AppRouter.kControlPanalScreen);
             },

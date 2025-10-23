@@ -15,7 +15,7 @@ class CustomsBoxDecoration {
           : null,
       boxShadow: [
         BoxShadow(
-          color: context.appColors.primaryBlue.withAlpha((0.4 * 255).toInt()),
+          color: context.appColors.blue.withAlpha((0.4 * 255).toInt()),
           offset: const Offset(-2, 4),
           blurRadius: 6,
           spreadRadius: 1,

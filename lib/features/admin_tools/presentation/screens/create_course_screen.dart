@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
+import 'package:sinna/features/admin_tools/presentation/manager/create_course_cubit/create_course_cubit.dart';
 import 'package:sinna/features/admin_tools/presentation/widgets/create_course/info_content_widget.dart';
 import 'package:sinna/features/admin_tools/presentation/widgets/create_course/lesson_content_widget.dart';
 import 'package:sinna/features/admin_tools/presentation/widgets/create_course/setup_contetn_widget.dart';
@@ -30,32 +32,50 @@ class _CreateCourseScreenState extends State<CreateCourseScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Create Course', style: AppStyles.textStyle16W600(context)),
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(50),
-          child: TabBar(
+    return BlocProvider(
+      create: (context) => CreateCourseCubit(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Create Course',
+            style: AppStyles.textStyle16W600(context),
+          ),
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(50),
+            child: IgnorePointer(
+              // ⛔ يمنع الضغط على التابات
+              ignoring: true,
+              child: TabBar(
+                controller: _tabController,
+                indicatorColor: context.appColors.blue,
+                labelColor: context.appColors.black,
+                unselectedLabelColor: context.appColors.grey,
+                labelStyle: AppStyles.textStyle16W600(context),
+                tabs: const [
+                  Tab(text: 'Setup'),
+                  Tab(text: 'Info'),
+                  Tab(text: 'Lessons'),
+                ],
+              ),
+            ),
+          ),
+        ),
+        body: BlocListener<CreateCourseCubit, CreateCourseState>(
+          listener: (context, state) {
+            if (state is CreateCourseGoToNextTabState) {
+              _tabController.animateTo(state.nextIndex);
+            }
+          },
+          child: TabBarView(
             controller: _tabController,
-            indicatorColor: context.appColors.blue,
-            labelColor: context.appColors.black,
-            unselectedLabelColor: context.appColors.grey,
-            labelStyle: AppStyles.textStyle16W600(context),
-            tabs: const [
-              Tab(text: 'Info'),
-              Tab(text: 'Setup'),
-              Tab(text: 'Lessons'),
+            // physics: const NeverScrollableScrollPhysics(), // ⛔ يمنع السحب
+            children: const [
+              SetupContentWidget(),
+              InfoContentWidget(),
+              LessonsContentWidget(),
             ],
           ),
         ),
-      ),
-      body: TabBarView(
-        controller: _tabController,
-        children: const [
-          InfoContentWidget(),
-          SetupContentWidget(),
-          LessonsContentWidget(),
-        ],
       ),
     );
   }
