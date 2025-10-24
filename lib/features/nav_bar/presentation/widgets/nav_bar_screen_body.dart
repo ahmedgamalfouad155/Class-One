@@ -10,6 +10,7 @@ import 'package:sinna/features/my_courses/presentation/screens/my_corses_screen.
 import 'package:sinna/features/nav_bar/presentation/manager/nav_bar_cubit/navbar_cubit.dart';
 import 'package:sinna/features/nav_bar/presentation/manager/nav_bar_cubit/navbar_state.dart';
 import 'package:sinna/features/notifications/presentation/screen/notifications_screen.dart';
+import 'package:sinna/features/profile/presentation/manager/theme_cubit/theme_cubit.dart';
 import 'package:sinna/features/profile/presentation/screen/profile_screen.dart';
 
 class NavBarScreenBody extends StatefulWidget {
@@ -33,66 +34,81 @@ class _NavBarScreenBodyState extends State<NavBarScreenBody> {
 
     return BlocBuilder<NavBarCubit, NavBarState>(
       builder: (context, state) {
-        return Scaffold(
-          body: IndexedStack(index: navBarCubit.currentIndex, children: screen),
-          bottomNavigationBar: Container(
-            decoration: BoxDecoration(
-              color: context.appColors.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20.r),
-                topRight: Radius.circular(20.r),
+        return BlocBuilder<ThemeCubit, ThemeMode>(
+          builder: (context, themeState) {
+            return Scaffold(
+              body: IndexedStack(
+                index: navBarCubit.currentIndex,
+                children: screen,
               ),
-            ),
-            child: BottomNavigationBar(
-              onTap: (index) => navBarCubit.changeIndex(index),
-              currentIndex: navBarCubit.currentIndex,
-              type: BottomNavigationBarType.fixed,
-              backgroundColor: context.appColors.white,
-              elevation: 0,
-              selectedItemColor: context.appColors.blue,
-              unselectedItemColor: context.appColors.greyNavBar,
-              selectedLabelStyle: AppStyles.textStyle12GreyW400(
-                context,
-              ).copyWith(fontWeight: FontWeight.bold),
-              unselectedLabelStyle: AppStyles.textStyle12GreyW400(
-                context,
-              ).copyWith(fontWeight: FontWeight.bold),
-              items: [
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    navBarCubit.currentIndex == 0
-                        ? AppImages.dashBoard2
-                        : AppImages.dashBoard1,
+              bottomNavigationBar: Container(
+                decoration: BoxDecoration(
+                  color: context.appColors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20.r),
+                    topRight: Radius.circular(20.r),
                   ),
-                  label: "Dashboard",
                 ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    navBarCubit.currentIndex == 1
-                        ? AppImages.explore2
-                        : AppImages.explore1,
-                  ),
-                  label: "Explore",
+                child: BottomNavigationBar(
+                  onTap: (index) => navBarCubit.changeIndex(index),
+                  currentIndex: navBarCubit.currentIndex,
+                  type: BottomNavigationBarType.fixed,
+                  backgroundColor: context.appColors.white,
+                  elevation: 0,
+                  selectedItemColor: context.appColors.blue,
+                  unselectedItemColor: context.appColors.greyNavBar,
+                  selectedLabelStyle: AppStyles.textStyle12GreyW400(
+                    context,
+                  ).copyWith(fontWeight: FontWeight.bold),
+                  unselectedLabelStyle: AppStyles.textStyle12GreyW400(
+                    context,
+                  ).copyWith(fontWeight: FontWeight.bold),
+                  items: [
+                    BottomNavigationBarItem(
+                      icon: SvgPicture.asset(
+                        navBarCubit.currentIndex == 0
+                            ? AppImages.dashBoard2
+                            : themeState == ThemeMode.dark
+                            ? AppImages.dashBoard3
+                            : AppImages.dashBoard1,
+                      ),
+                      label: "Dashboard",
+                    ),
+                    BottomNavigationBarItem(
+                      icon: SvgPicture.asset(
+                        navBarCubit.currentIndex == 1
+                            ? AppImages.explore2
+                            : themeState == ThemeMode.dark
+                            ? AppImages.explore3
+                            : AppImages.explore1,
+                      ),
+                      label: "Explore",
+                    ),
+                    BottomNavigationBarItem(
+                      icon: SvgPicture.asset(
+                        navBarCubit.currentIndex == 2
+                            ? AppImages.inBox2
+                            : themeState == ThemeMode.dark
+                            ? AppImages.dashBoard3
+                            : AppImages.inBox1,
+                      ),
+                      label: "Inbox",
+                    ),
+                    BottomNavigationBarItem(
+                      icon: SvgPicture.asset(
+                        navBarCubit.currentIndex == 3
+                            ? AppImages.you2
+                            : themeState == ThemeMode.dark
+                            ? AppImages.you3
+                            : AppImages.you1,
+                      ),
+                      label: "Profile",
+                    ),
+                  ],
                 ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    navBarCubit.currentIndex == 2
-                        ? AppImages.inBox2
-                        : AppImages.inBox1,
-                  ),
-                  label: "Inbox",
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    navBarCubit.currentIndex == 3
-                        ? AppImages.you2
-                        : AppImages.you1,
-                  ),
-                  label: "Profile",
-                ),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         );
       },
     );

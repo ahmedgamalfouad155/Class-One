@@ -91,8 +91,8 @@ class SetupContentWidget extends StatelessWidget {
                       if (university != null && level != null) {
                         print(specialization);
                         print(program);
-                        print(university);
-                        print(level);
+                        // print(university);
+                        // print(level);
                       }
                     },
                   ),

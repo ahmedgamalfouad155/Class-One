@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/colors.dart';
-import 'package:sinna/core/theme/styles.dart'; 
+import 'package:sinna/core/theme/styles.dart';
 
 class CustomFilterItemWidget extends StatelessWidget {
   const CustomFilterItemWidget({
     super.key,
     required this.title,
     required this.isSelected,
-    required this.onTap, 
+    required this.onTap,
   });
 
   final String title;
   final bool isSelected;
   final VoidCallback onTap;
-  
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +30,9 @@ class CustomFilterItemWidget extends StatelessWidget {
           title,
           textAlign: TextAlign.center,
           style: AppStyles.textStyle14W600(context).copyWith(
-            color: isSelected ? Colors.white : context.appColors.black,
+            color: isSelected
+                ? context.appColors.white
+                : context.appColors.black,
           ),
         ),
       ),

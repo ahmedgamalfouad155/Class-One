@@ -27,7 +27,7 @@ class PhoneFieldWidget extends StatelessWidget {
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: context.appColors.offWhite, width: 2),
+          borderSide: BorderSide(color: context.appColors.greyBackground, width: 2),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),

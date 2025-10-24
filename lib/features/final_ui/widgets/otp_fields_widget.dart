@@ -82,7 +82,7 @@ class _OtpFieldWidgetState extends State<OtpFieldWidget> {
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: BorderSide(
-                  color: context.appColors.offWhite,
+                  color: context.appColors.greyBackground,
                   width: 2,
                 ),
               ),

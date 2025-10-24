@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:sinna/core/constants/constants.dart';
 import 'package:sinna/core/router/app_router.dart';
 import 'package:sinna/core/services/firebase/firebase_service.dart';
 import 'package:sinna/core/services/device/permission_service.dart';
@@ -13,6 +15,7 @@ import 'package:sinna/core/services/notifications/local_notification_service.dar
 import 'package:sinna/core/services/notifications/push_notification_service.dart';
 import 'package:sinna/core/theme/thems.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
+import 'package:sinna/features/profile/presentation/manager/theme_cubit/theme_cubit.dart';
 import 'package:sinna/firebase_options.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -49,7 +52,8 @@ void main() async {
 
   await FirebaseMessaging.instance.subscribeToTopic("allUsers");
 
-  
+  await Hive.initFlutter();
+  await Hive.openBox(AppConstants.hiveBoxName);
 
   runApp(MyApp());
 }
@@ -64,17 +68,24 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return BlocProvider(
-          create: (_) => AuthCubit()..authStatus(),
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (_) => AuthCubit()..authStatus()),
+            BlocProvider(create: (_) => ThemeCubit()..loadTheme()),
+          ],
           child: Builder(
             builder: (context) {
-              return MaterialApp.router(
-                title: 'Sinna',
-                theme: lightTheme,
-                darkTheme: darkTheme,
-                themeMode: ThemeMode.light,
-                debugShowCheckedModeBanner: false,
-                routerConfig: AppRouter.router,
+              return BlocBuilder<ThemeCubit, ThemeMode>(
+                builder: (context, state) {
+                  return MaterialApp.router(
+                    title: 'Sinna',
+                    theme: lightTheme,
+                    darkTheme: darkTheme,
+                    themeMode: state,
+                    debugShowCheckedModeBanner: false,
+                    routerConfig: AppRouter.router,
+                  );
+                },
               );
             },
           ),
@@ -83,28 +94,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-/*
-develop
-feature/Auth
-feature/Navbar
-feature/categories
-feature/profile
-feature/my_courses
-
-
-*/
-
-/* 
-admin email = ahmedgamal@gmail.com
-
-user email = mohamedgamal@gmail.com
-
-
-egypt
-mansoura
-Bachelors/Masters
-level one
-
-
-*/

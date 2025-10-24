@@ -7,8 +7,7 @@ extension AppColorHelper on BuildContext {
 @immutable
 class AppColors extends ThemeExtension<AppColors> { 
   final Color blue;
-  final Color white;
-  final Color offWhite;
+  final Color white; 
   final Color grey;
   final Color greyBackground;
   final Color greyBackgroundTextFiled;
@@ -19,8 +18,7 @@ class AppColors extends ThemeExtension<AppColors> {
 
   const AppColors({ 
     required this.blue,
-    required this.white,
-    required this.offWhite,
+    required this.white, 
     required this.grey,
     required this.greyBackground,
     required this.greyBackgroundTextFiled,
@@ -46,8 +44,7 @@ class AppColors extends ThemeExtension<AppColors> {
   }) {
     return AppColors( 
       blue: blue ?? this.blue,
-      white: white ?? this.white,
-      offWhite: offWhite ?? this.offWhite,
+      white: white ?? this.white, 
       grey: grey ?? this.grey,
       greyBackground: greyBackground ?? this.greyBackground,
       greyBackgroundTextFiled:
@@ -64,8 +61,7 @@ class AppColors extends ThemeExtension<AppColors> {
     if (other is! AppColors) return this;
     return AppColors( 
       blue: Color.lerp(blue, other.blue, t)!,
-      white: Color.lerp(white, other.white, t)!,
-      offWhite: Color.lerp(offWhite, other.offWhite, t)!,
+      white: Color.lerp(white, other.white, t)!, 
       grey: Color.lerp(grey, other.grey, t)!,
       greyBackground: Color.lerp(greyBackground, other.greyBackground, t)!,
       greyBackgroundTextFiled: Color.lerp(

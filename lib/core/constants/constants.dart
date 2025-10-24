@@ -11,6 +11,10 @@ class FireStoreCollectionsName {
   static const String specializations = "specializations";
 }
 
+class AppConstants {
+  static const String hiveBoxName = "settings";
+}
+
 String selectedUniversity = "Select University";
 Map<String, String> convert = {
   "Mansoura University": "mansoura",

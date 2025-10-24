@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sinna/core/theme/colors.dart';
 
 class CustomBottomSheet {
   static Future<T?> show<T>({
@@ -18,7 +19,7 @@ class CustomBottomSheet {
             bottom: 10,
           ),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: context.appColors.white,
             borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
           ),
           child: Column(mainAxisSize: MainAxisSize.min, children: [child]),

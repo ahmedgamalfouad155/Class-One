@@ -6,27 +6,47 @@ import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/core/widgets/custom_radio_widget.dart';
 import 'package:sinna/core/widgets/custom_top_shape_in_bottom_sheet.dart';
+import 'package:sinna/features/profile/presentation/manager/theme_cubit/theme_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/custom_bottom_sheet.dart';
 
 void appearanceContentBottomSheet(BuildContext context) {
+  final isDark = context.read<ThemeCubit>().isDark;
+
   CustomBottomSheet.show(
     context: context,
     child: BlocProvider(
-      create: (context) => RadioCubit(initialValue: "System Default"),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-         CustomTopShapeINBottomSheet(),
-          const SizedBox(height: 10),
-          Text("Appearance", style: AppStyles.textStyle16W600(context)),
-          CustomRadioWidget(title: 'System Default'),
-          CustomDividerWidget(isHeight: false),
-          CustomRadioWidget(title: 'Light'),
-          CustomDividerWidget(isHeight: false),
-          CustomRadioWidget(title: 'Dark'),
-          const SizedBox(height: 10),
-          CustomButton(text: "Apply", onPressed: () {}),
-        ],
+      create: (_) => RadioCubit(initialValue: isDark ? "Dark" : "Light"),
+      child: Builder(
+        builder: (context) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              CustomTopShapeINBottomSheet(),
+              const SizedBox(height: 10),
+              Text("Appearance", style: AppStyles.textStyle16W600(context)),
+
+              // Light Option
+              CustomRadioWidget(title: 'Light'),
+              CustomDividerWidget(isHeight: false),
+
+              // Dark Option
+              CustomRadioWidget(title: 'Dark'),
+              const SizedBox(height: 10),
+
+              CustomButton(
+                text: "Apply",
+                onPressed: () {
+                  final radioCubit = context.read<RadioCubit>();
+                  radioCubit.confirmSelection(); 
+                  final selected = radioCubit.confirmed; 
+                  final themeCubit = context.read<ThemeCubit>();
+                  themeCubit.toggleTheme(selected == "Dark");
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          );
+        },
       ),
     ),
   );
