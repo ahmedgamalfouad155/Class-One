@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,6 +13,7 @@ import 'package:sinna/features/nav_bar/presentation/manager/nav_bar_cubit/navbar
 import 'package:sinna/features/notifications/presentation/screen/notifications_screen.dart';
 import 'package:sinna/features/profile/presentation/manager/theme_cubit/theme_cubit.dart';
 import 'package:sinna/features/profile/presentation/screen/profile_screen.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class NavBarScreenBody extends StatefulWidget {
   const NavBarScreenBody({super.key});
@@ -72,7 +74,7 @@ class _NavBarScreenBodyState extends State<NavBarScreenBody> {
                             ? AppImages.dashBoard3
                             : AppImages.dashBoard1,
                       ),
-                      label: "Dashboard",
+                      label: LocaleKeys.navBar_dashboard.tr(),
                     ),
                     BottomNavigationBarItem(
                       icon: SvgPicture.asset(
@@ -82,7 +84,7 @@ class _NavBarScreenBodyState extends State<NavBarScreenBody> {
                             ? AppImages.explore3
                             : AppImages.explore1,
                       ),
-                      label: "Explore",
+                      label: LocaleKeys.navBar_explore.tr(),
                     ),
                     BottomNavigationBarItem(
                       icon: SvgPicture.asset(
@@ -92,7 +94,7 @@ class _NavBarScreenBodyState extends State<NavBarScreenBody> {
                             ? AppImages.dashBoard3
                             : AppImages.inBox1,
                       ),
-                      label: "Inbox",
+                      label: LocaleKeys.hellow.tr(),
                     ),
                     BottomNavigationBarItem(
                       icon: SvgPicture.asset(
@@ -102,7 +104,7 @@ class _NavBarScreenBodyState extends State<NavBarScreenBody> {
                             ? AppImages.you3
                             : AppImages.you1,
                       ),
-                      label: "Profile",
+                      label: LocaleKeys.navBar_profile.tr(),
                     ),
                   ],
                 ),

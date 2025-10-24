@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ import 'package:sinna/core/theme/thems.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:sinna/features/profile/presentation/manager/theme_cubit/theme_cubit.dart';
 import 'package:sinna/firebase_options.dart';
+import 'package:sinna/generated/codegen_loader.g.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -54,8 +56,18 @@ void main() async {
 
   await Hive.initFlutter();
   await Hive.openBox(AppConstants.hiveBoxName);
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
 
-  runApp(MyApp());
+  runApp(
+    EasyLocalization(
+      supportedLocales: const [Locale('ar'), Locale('en')],
+      path: 'assets/translations',
+      fallbackLocale: const Locale('en'),
+      assetLoader: CodegenLoader(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -79,6 +91,9 @@ class MyApp extends StatelessWidget {
                 builder: (context, state) {
                   return MaterialApp.router(
                     title: 'Sinna',
+                    localizationsDelegates: context.localizationDelegates,
+                    supportedLocales: context.supportedLocales,
+                    locale: context.locale,
                     theme: lightTheme,
                     darkTheme: darkTheme,
                     themeMode: state,
