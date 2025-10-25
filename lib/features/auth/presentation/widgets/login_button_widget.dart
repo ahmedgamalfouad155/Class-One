@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -6,6 +7,7 @@ import 'package:sinna/core/widgets/custom_animated_dialod.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/features/auth/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:sinna/features/auth/presentation/manager/login_cubit/login_state.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class LoginButtonWidget extends StatelessWidget {
   const LoginButtonWidget({
@@ -48,9 +50,10 @@ class LoginButtonWidget extends StatelessWidget {
           return CircularProgressIndicator();
         } else if (state is LoginInitial ||
             state is LoginSuccessState ||
-            state is LoginFailedState|| state is NotSameDeviceState) {
+            state is LoginFailedState ||
+            state is NotSameDeviceState) {
           return CustomButton(
-            text: "Login",
+            text: LocaleKeys.sign_in.tr(),
             onPressed: () {
               if (formKey.currentState!.validate()) {
                 loginCubit.login(emailController.text, passwordController.text);
@@ -58,7 +61,7 @@ class LoginButtonWidget extends StatelessWidget {
             },
           );
         } else {
-          return Text("error");
+          return const Text("error");
         }
       },
     );

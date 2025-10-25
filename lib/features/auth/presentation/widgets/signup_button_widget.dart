@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,6 +10,7 @@ import 'package:sinna/core/widgets/custom_snak_bar.dart';
 import 'package:sinna/features/auth/data/models/user_base_model.dart';
 import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_state.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class SignupButtonWidget extends StatelessWidget {
   const SignupButtonWidget({
@@ -48,7 +50,7 @@ class SignupButtonWidget extends StatelessWidget {
         } else if (state is SignupSuccessState || state is SignUpState) {
           return CustomButton(
             width: context.width,
-            text: "Sign Up",
+            text: LocaleKeys.sign_up.tr(),
             onPressed: () async {
               if (formKey.currentState!.validate()) {
                 if (confirmPasswordController.text == passwordController.text) {

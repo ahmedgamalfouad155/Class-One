@@ -1,10 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/cubit/radio_cubit/radio_cubit.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/academic_info_dialog.dart';
-
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class AcademicInfoWidget extends StatelessWidget {
   const AcademicInfoWidget({super.key});
@@ -17,7 +18,7 @@ class AcademicInfoWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Academic Info',
+            LocaleKeys.academic_info.tr(),
             style: AppStyles.textStyle16W600(
               context,
             ).copyWith(color: context.appColors.grey),
@@ -30,7 +31,7 @@ class AcademicInfoWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'University',
+                  LocaleKeys.university.tr(),
                   style: AppStyles.textStyle16w400Grey(
                     context,
                   ).copyWith(color: context.appColors.black),
@@ -40,7 +41,7 @@ class AcademicInfoWidget extends StatelessWidget {
                     BlocBuilder<RadioCubit, String?>(
                       builder: (context, state) {
                         return Text(
-                          state ?? "Select University",
+                          state ?? LocaleKeys.select_university.tr(),
                           style: AppStyles.textStyle14W600(context),
                         );
                       },

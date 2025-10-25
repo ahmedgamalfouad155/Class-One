@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -8,6 +9,7 @@ import 'package:sinna/core/widgets/custom_empty_screen.dart';
 import 'package:sinna/features/my_courses/presentation/manager/cubit/my_courses_cubit.dart';
 import 'package:sinna/features/my_courses/presentation/manager/cubit/my_courses_state.dart';
 import 'package:sinna/features/my_courses/presentation/widgets/subject_item_widget.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class ListOfMyCoursesWidget extends StatelessWidget {
   const ListOfMyCoursesWidget({super.key});
@@ -51,9 +53,8 @@ class ListOfMyCoursesWidget extends StatelessWidget {
                 )
               : CustomEmptyScreen(
                   image: AppImages.emptyDashbord,
-                  title: "Start Your Learning Journey",
-                  subTitle:
-                      "Browse our catalog and enroll to fill your dashboard with content",
+                  title: LocaleKeys.empty_dashboard.tr(),
+                  subTitle: LocaleKeys.explore_courses.tr(),
                 );
         } else {
           return const Text("error");

@@ -37,7 +37,7 @@ final darkTheme = ThemeData(
   fontFamily: 'cairo',
   scaffoldBackgroundColor: Color(0xff1c1c1e),
   appBarTheme: AppBarTheme(
-    iconTheme: IconThemeData(color: Colors.black),
+    iconTheme: IconThemeData(color: Colors.white),
     backgroundColor: Color(0xff1c1c1e),
     centerTitle: true,
     foregroundColor: Color(0xff1c1c1e),

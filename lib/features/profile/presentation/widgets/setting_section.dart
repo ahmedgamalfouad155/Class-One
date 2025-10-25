@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/customs_box_decoratino.dart';
 import 'package:sinna/core/theme/styles.dart';
@@ -5,6 +6,7 @@ import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/appearance_content_bottom_sheet.dart';
 import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/language_content_bottom_sheet.dart';
 import 'package:sinna/core/widgets/custom_option_widget.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class SettingSection extends StatelessWidget {
   const SettingSection({super.key});
@@ -14,7 +16,10 @@ class SettingSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Settings", style: AppStyles.textStyle16w400Grey(context)),
+        Text(
+          LocaleKeys.settings.tr(),
+          style: AppStyles.textStyle16w400Grey(context),
+        ),
         const SizedBox(height: 10),
         Container(
           padding: EdgeInsets.all(10),
@@ -22,12 +27,12 @@ class SettingSection extends StatelessWidget {
           child: Column(
             children: [
               CustomOptionWidget(
-                title: "Language",
+                title: LocaleKeys.language.tr(),
                 onTap: () => languageContentBottomSheet(context),
               ),
               CustomDividerWidget(isHeight: false),
               CustomOptionWidget(
-                title: "Appearance",
+                title: LocaleKeys.appearance.tr(),
                 onTap: () => appearanceContentBottomSheet(context),
               ),
             ],

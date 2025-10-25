@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/cubit/radio_cubit/radio_cubit.dart';
@@ -8,6 +9,7 @@ import 'package:sinna/core/widgets/custom_radio_widget.dart';
 import 'package:sinna/core/widgets/custom_top_shape_in_bottom_sheet.dart';
 import 'package:sinna/features/profile/presentation/manager/theme_cubit/theme_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/custom_bottom_sheet.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 void appearanceContentBottomSheet(BuildContext context) {
   final isDark = context.read<ThemeCubit>().isDark;
@@ -23,22 +25,25 @@ void appearanceContentBottomSheet(BuildContext context) {
             children: [
               CustomTopShapeINBottomSheet(),
               const SizedBox(height: 10),
-              Text("Appearance", style: AppStyles.textStyle16W600(context)),
+              Text(
+                LocaleKeys.appearance.tr(),
+                style: AppStyles.textStyle16W600(context),
+              ),
 
               // Light Option
-              CustomRadioWidget(title: 'Light'),
+              CustomRadioWidget(title: LocaleKeys.light.tr()),
               CustomDividerWidget(isHeight: false),
 
               // Dark Option
-              CustomRadioWidget(title: 'Dark'),
+              CustomRadioWidget(title: LocaleKeys.dark.tr()),
               const SizedBox(height: 10),
 
               CustomButton(
-                text: "Apply",
+                text: LocaleKeys.apply.tr(),
                 onPressed: () {
                   final radioCubit = context.read<RadioCubit>();
-                  radioCubit.confirmSelection(); 
-                  final selected = radioCubit.confirmed; 
+                  radioCubit.confirmSelection();
+                  final selected = radioCubit.confirmed;
                   final themeCubit = context.read<ThemeCubit>();
                   themeCubit.toggleTheme(selected == "Dark");
                   Navigator.pop(context);

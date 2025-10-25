@@ -1,18 +1,18 @@
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
+
 class AddvancedSettingsAndIconWidget extends StatelessWidget {
-  const AddvancedSettingsAndIconWidget({
-    super.key,
-  });
+  const AddvancedSettingsAndIconWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        CircleAvatar( 
+        CircleAvatar(
           backgroundColor: context.appColors.greyBackgroundTextFiled,
           child: IconButton(
             onPressed: () {
@@ -22,7 +22,7 @@ class AddvancedSettingsAndIconWidget extends StatelessWidget {
           ),
         ),
         Text(
-          "Advanced Settings",
+          LocaleKeys.addvanced_settings.tr(),
           style: AppStyles.textStyle16W600(context),
         ),
       ],

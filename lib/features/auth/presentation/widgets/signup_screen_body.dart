@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/widgets.dart';
+import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/features/auth/presentation/widgets/signup_button_widget.dart';
-import 'package:sinna/features/auth/presentation/widgets/signup_header_text_widget.dart';
 import 'package:sinna/features/auth/presentation/widgets/signup_name_and_email_and_password_fields_section_widget.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class SignupScreenBody extends StatefulWidget {
   const SignupScreenBody({super.key});
@@ -35,13 +37,17 @@ class _SignupScreenBodyState extends State<SignupScreenBody> {
           key: formKey,
           child: Column(
             children: [
-              SignupHeaderTextWidget(),
+              Text(
+                LocaleKeys.start_with_basic_information.tr(),
+                style: AppStyles.textStyle32(context),
+              ),
+              const SizedBox(height: 20),
               SignupNameAndEmailAndPaswordFieldsSectionWidget(
                 nameController: nameController,
                 emailController: emailController,
                 passwordController: passwordController,
                 confirmPasswordController: confirmPasswordController,
-              ), 
+              ),
               const SizedBox(height: 20),
               SignupButtonWidget(
                 nameController: nameController,

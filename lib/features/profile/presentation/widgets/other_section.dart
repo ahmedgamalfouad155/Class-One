@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -9,6 +10,7 @@ import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/delete_account_dialog_widget.dart';
 import 'package:sinna/core/widgets/custom_option_widget.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class OtherSection extends StatelessWidget {
   const OtherSection({super.key});
@@ -18,7 +20,10 @@ class OtherSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Other", style: AppStyles.textStyle16w400Grey(context)),
+        Text(
+          LocaleKeys.other.tr(),
+          style: AppStyles.textStyle16w400Grey(context),
+        ),
         const SizedBox(height: 10),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 10),
@@ -26,7 +31,7 @@ class OtherSection extends StatelessWidget {
           child: Column(
             children: [
               CustomOptionWidget(
-                title: "delete account",
+                title: LocaleKeys.delete_account.tr(),
                 color: context.appColors.red,
                 onTap: () {
                   showDialog(
@@ -37,7 +42,7 @@ class OtherSection extends StatelessWidget {
               ),
               CustomDividerWidget(isHeight: false),
               CustomOptionWidget(
-                title: "Logout",
+                title: LocaleKeys.logout.tr(),
                 color: context.appColors.red,
                 onTap: () {
                   BlocProvider.of<AuthCubit>(context).logout();

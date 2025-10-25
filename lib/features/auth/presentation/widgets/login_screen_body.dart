@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/theme/styles.dart';
@@ -5,6 +6,7 @@ import 'package:sinna/features/auth/presentation/manager/login_cubit/login_cubit
 import 'package:sinna/features/auth/presentation/widgets/having_account_and_forget_password_loing_text_widget.dart';
 import 'package:sinna/features/auth/presentation/widgets/email_and_password_fields_login_widget.dart';
 import 'package:sinna/features/auth/presentation/widgets/login_button_widget.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class LoginScreenBody extends StatefulWidget {
   const LoginScreenBody({super.key});
@@ -37,7 +39,7 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "Sign in with Email",
+                 LocaleKeys.continue_with_email.tr() ,
                   style: AppStyles.textStyle16W600(context),
                 ),
                 const SizedBox(height: 20),

@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/features/course_details/presentation/screens/pdf_viewer.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class InstractorNameAndAttachmentWidget extends StatelessWidget {
   const InstractorNameAndAttachmentWidget({
@@ -30,7 +32,7 @@ class InstractorNameAndAttachmentWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "The Instructor",
+                LocaleKeys.the_instructor.tr(),
                 style: AppStyles.textStyle16W600Grey(context),
               ),
               const SizedBox(height: 10),
@@ -63,7 +65,7 @@ class InstractorNameAndAttachmentWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Attachment",
+                  LocaleKeys.attachment.tr(),
                   style: AppStyles.textStyle16W600Grey(context),
                 ),
                 const SizedBox(height: 10),
@@ -75,11 +77,13 @@ class InstractorNameAndAttachmentWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Supporting Materials",
+                            LocaleKeys.supporting_materials.tr(),
                             style: AppStyles.textStyle14W600(context),
                           ),
                           Text(
-                            "Download the notes before watching the video",
+                            LocaleKeys
+                                .download_the_notes_before_watching_the_video
+                                .tr(),
                             style: AppStyles.textStyle14W600(context).copyWith(
                               color: context.appColors.grey,
                               fontWeight: FontWeight.w400,

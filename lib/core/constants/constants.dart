@@ -1,12 +1,15 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
+
 String documentIdFromLocalData() => DateTime.now().toIso8601String();
 
 class FireStoreCollectionsName {
-  static const String users = "users"; 
-  static const String courses = "courses"; 
+  static const String users = "users";
+  static const String courses = "courses";
   static const String instructors = "instructors";
-  static const String universities = "universities"; 
+  static const String universities = "universities";
   static const String programs = "programs";
-  static const String levels = "levels"; 
+  static const String levels = "levels";
   static const String lessons = "lessons";
   static const String specializations = "specializations";
 }
@@ -39,7 +42,7 @@ Map<String, String> convert = {
   "Operative": "operative",
   "Prothodontics": "pedodontics",
   "Orthodontics": "orthodontics",
-}; 
+};
 
 final List<String> specializationBottomSheetFilters = const [
   "Dentistry",
@@ -49,6 +52,9 @@ final List<String> specializationBottomSheetFilters = const [
 final List<String> programBottomSheetFilters = const [
   "Academic",
   'Professional',
-]; 
+];
 
-final List<String> terms = const ["First Term", "Second Term"];
+final List<String> terms = [
+  LocaleKeys.first_term.tr(),
+  LocaleKeys.second_term.tr(),
+];

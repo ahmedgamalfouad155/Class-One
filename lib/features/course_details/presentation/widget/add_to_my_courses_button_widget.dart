@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/widgets/custom_animated_dialod.dart';
@@ -6,6 +7,7 @@ import 'package:sinna/core/widgets/default_button_widget.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
 import 'package:sinna/features/course_details/presentation/manager/add_to_my_courses_cubit/add_to_my_courses_cubit.dart';
 import 'package:sinna/features/course_details/presentation/manager/add_to_my_courses_cubit/add_to_my_courses_state.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class AddToMyCoursesButtonWidget extends StatelessWidget {
   const AddToMyCoursesButtonWidget({super.key, required this.coursePathModel});
@@ -18,7 +20,7 @@ class AddToMyCoursesButtonWidget extends StatelessWidget {
     return Column(
       children: [
         CustomTextFieldWidget(
-          hintText: "add email",
+          hintText: LocaleKeys.add_email.tr(),
           controller: emailController,
         ),
         const SizedBox(height: 10),
@@ -47,7 +49,7 @@ class AddToMyCoursesButtonWidget extends StatelessWidget {
               return
               // Text("data");
               DefaultButtonWidget(
-                text: "Add Course",
+                text: LocaleKeys.add_course.tr(),
                 onPressed: () {
                   context.read<AddToMyCoursesCubit>().addCouseToMyCourse(
                     coursePathModel: coursePathModel,

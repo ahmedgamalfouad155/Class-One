@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/constants/constants.dart';
@@ -5,6 +6,7 @@ import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/core/widgets/custom_filters_widget.dart';
 import 'package:sinna/features/profile/presentation/manager/specialization_filter_cubit.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class SpecializationFilterBottomSheetWidget extends StatelessWidget {
   const SpecializationFilterBottomSheetWidget({super.key});
@@ -17,7 +19,7 @@ class SpecializationFilterBottomSheetWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Specialization", style: AppStyles.textStyle16w400Grey(context)),
+          Text( LocaleKeys.specialization.tr(), style: AppStyles.textStyle16w400Grey(context)),
           CustomFiltersWidget<SpecializationFilterCubit>(
             padding: const EdgeInsets.only(top: 10),
             filters: specializationBottomSheetFilters, 

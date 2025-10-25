@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/widgets/custom_text_field_widget.dart';
-import 'package:sinna/features/explore/presentation/widgets/list_of_subjects_widget.dart'; 
+import 'package:sinna/features/explore/presentation/widgets/list_of_subjects_widget.dart';
+import 'package:sinna/generated/locale_keys.g.dart'; 
 
 class ExploreScreenBody extends StatelessWidget {
   const ExploreScreenBody({super.key});
@@ -15,7 +17,7 @@ class ExploreScreenBody extends StatelessWidget {
           child: Column(
             children: [ 
               CustomTextFieldWidget(
-                hintText: "Search",
+                hintText: LocaleKeys.search.tr(),
                 icon: Icon(Icons.search, color: context.appColors.greyNavBar),
               ),
               const SizedBox(height: 10),

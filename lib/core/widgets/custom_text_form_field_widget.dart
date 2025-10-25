@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/features/auth/presentation/manager/password_visibility_cubit.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class CustomTextFormFieldWidget extends StatelessWidget {
   const CustomTextFormFieldWidget({
@@ -10,11 +12,13 @@ class CustomTextFormFieldWidget extends StatelessWidget {
     required this.hintText,
     this.controller,
     this.keyboardType,
+    this.vlaidationMessage,
   });
 
   final String hintText;
   final TextEditingController? controller;
   final TextInputType? keyboardType;
+  final String? vlaidationMessage;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +31,8 @@ class CustomTextFormFieldWidget extends StatelessWidget {
           cursorColor: context.appColors.blue,
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'pleaseEnterYour $hintText';
+              return vlaidationMessage ??
+                  '${LocaleKeys.enter_your.tr()} $hintText';
             }
             return null;
           },

@@ -9,8 +9,7 @@ import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/features/explore/presentation/screens/explore_screen.dart';
 import 'package:sinna/features/my_courses/presentation/screens/my_corses_screen.dart';
 import 'package:sinna/features/nav_bar/presentation/manager/nav_bar_cubit/navbar_cubit.dart';
-import 'package:sinna/features/nav_bar/presentation/manager/nav_bar_cubit/navbar_state.dart';
-import 'package:sinna/features/notifications/presentation/screen/notifications_screen.dart';
+import 'package:sinna/features/nav_bar/presentation/manager/nav_bar_cubit/navbar_state.dart'; 
 import 'package:sinna/features/profile/presentation/manager/theme_cubit/theme_cubit.dart';
 import 'package:sinna/features/profile/presentation/screen/profile_screen.dart';
 import 'package:sinna/generated/locale_keys.g.dart';
@@ -26,7 +25,7 @@ class _NavBarScreenBodyState extends State<NavBarScreenBody> {
   final List<Widget> screen = [
     MyCorsesScreen(),
     ExploreScreen(),
-    NotificationsScreen(),
+    // NotificationsScreen(),
     ProfileScreen(),
   ];
 
@@ -74,7 +73,7 @@ class _NavBarScreenBodyState extends State<NavBarScreenBody> {
                             ? AppImages.dashBoard3
                             : AppImages.dashBoard1,
                       ),
-                      label: LocaleKeys.navBar_dashboard.tr(),
+                      label: LocaleKeys.dashboard.tr(),
                     ),
                     BottomNavigationBarItem(
                       icon: SvgPicture.asset(
@@ -84,18 +83,18 @@ class _NavBarScreenBodyState extends State<NavBarScreenBody> {
                             ? AppImages.explore3
                             : AppImages.explore1,
                       ),
-                      label: LocaleKeys.navBar_explore.tr(),
+                      label: LocaleKeys.explore.tr(),
                     ),
-                    BottomNavigationBarItem(
-                      icon: SvgPicture.asset(
-                        navBarCubit.currentIndex == 2
-                            ? AppImages.inBox2
-                            : themeState == ThemeMode.dark
-                            ? AppImages.dashBoard3
-                            : AppImages.inBox1,
-                      ),
-                      label: LocaleKeys.hellow.tr(),
-                    ),
+                    // BottomNavigationBarItem(
+                    //   icon: SvgPicture.asset(
+                    //     navBarCubit.currentIndex == 2
+                    //         ? AppImages.inBox2
+                    //         : themeState == ThemeMode.dark
+                    //         ? AppImages.dashBoard3
+                    //         : AppImages.inBox1,
+                    //   ),
+                    //   label: LocaleKeys.inbox.tr(),
+                    // ),
                     BottomNavigationBarItem(
                       icon: SvgPicture.asset(
                         navBarCubit.currentIndex == 3
@@ -104,7 +103,7 @@ class _NavBarScreenBodyState extends State<NavBarScreenBody> {
                             ? AppImages.you3
                             : AppImages.you1,
                       ),
-                      label: LocaleKeys.navBar_profile.tr(),
+                      label: LocaleKeys.profile.tr(),
                     ),
                   ],
                 ),

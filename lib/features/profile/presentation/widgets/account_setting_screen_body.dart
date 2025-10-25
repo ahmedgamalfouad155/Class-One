@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +9,7 @@ import 'package:sinna/core/widgets/custom_text_field_widget.dart';
 import 'package:sinna/core/widgets/custom_text_form_field_widget.dart';
 import 'package:sinna/features/auth/presentation/manager/password_visibility_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/change_password_dialog.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class AccountSettingScreenBody extends StatelessWidget {
   const AccountSettingScreenBody({super.key});
@@ -41,7 +43,7 @@ class AccountSettingScreenBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Name",
+                LocaleKeys.name.tr(),
                 style: AppStyles.textStyle16W600(
                   context,
                 ).copyWith(color: context.appColors.grey),
@@ -62,7 +64,7 @@ class AccountSettingScreenBody extends StatelessWidget {
           ),
           const SizedBox(height: 32),
           CustomButton(
-            text: "Change",
+            text: LocaleKeys.change.tr(),
             onPressed: () => showChangePasswordDialog(context),
           ),
         ],
