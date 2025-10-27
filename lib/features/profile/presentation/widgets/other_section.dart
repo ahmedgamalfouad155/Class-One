@@ -46,7 +46,7 @@ class OtherSection extends StatelessWidget {
                 color: context.appColors.red,
                 onTap: () {
                   BlocProvider.of<AuthCubit>(context).logout();
-                  (context).go(AppRouter.klandingScreen);
+                  (context).go(AppRouter.klandingScreen); 
                 },
               ),
             ],

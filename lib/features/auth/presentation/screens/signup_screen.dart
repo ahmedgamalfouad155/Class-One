@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart'; 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:sinna/features/auth/presentation/widgets/signup_screen_body.dart';
 
@@ -9,16 +9,7 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // actions: [
-        //   IconButton(
-        //     onPressed: () {
-        //       GoRouter.of(context).push(AppRouter.kAddingPhoneScreen);
-        //     },
-        //     icon: const Icon(Icons.arrow_forward),
-        //   ),
-        // ],
-      ),
+      appBar: AppBar(),
       body: BlocProvider(
         create: (context) => SignUpCubit(),
         child: SignupScreenBody(),
@@ -26,3 +17,5 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 }
+
+// ahmedgfouad2020@gmail.com

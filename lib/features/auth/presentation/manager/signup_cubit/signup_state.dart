@@ -1,8 +1,19 @@
+import 'package:sinna/features/auth/data/models/user_base_model.dart';
+
 class SignUpState {}
 
 final class SignupLoadingState extends SignUpState {}
 
 final class SignupSuccessState extends SignUpState {}
+final class SignupEmailSentState extends SignUpState {
+  final UserBaseModel userBaseModel;
+  SignupEmailSentState(this.userBaseModel);
+}
+final class SignupEmailNotVerifiedState extends SignUpState {
+  final String message;
+  SignupEmailNotVerifiedState(this.message);
+}
+
 
 final class SignupFailedState extends SignUpState {
   final String error;

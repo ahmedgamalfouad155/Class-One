@@ -3,9 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:sinna/features/admin_tools/presentation/screens/control_panel_screen.dart';
 import 'package:sinna/features/admin_tools/presentation/screens/create_course_screen.dart';
 import 'package:sinna/features/admin_tools/presentation/screens/institutions_screen.dart';
-import 'package:sinna/features/admin_tools/presentation/screens/instructors_screen.dart';
+import 'package:sinna/features/admin_tools/presentation/screens/instructors_screen.dart'; 
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
-import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_state.dart';
+import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_state.dart'; 
 import 'package:sinna/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:sinna/features/auth/presentation/screens/login_screen.dart';
 import 'package:sinna/features/auth/presentation/screens/signup_screen.dart';
@@ -27,6 +27,7 @@ import 'package:sinna/features/splash/splash._screen.dart';
 abstract class AppRouter {
   static const String klandingScreen = '/landingScreen';
   static const String kSignUpScreen = '/signUpView';
+  static const String kConfirmingScreen = '/confirmingScreen';
   static const String kForgetPasswordScreen = '/forgetPasswordScreen';
   static const String kAddingPhoneScreen = '/addingPhoneScreen';
   static const String kStepsAcademicScreen = '/stepsAcademicScreen';
@@ -73,6 +74,7 @@ abstract class AppRouter {
         path: kLogInScreen,
         builder: (context, state) => const LoginScreen(),
       ),
+
       GoRoute(
         path: kForgetPasswordScreen,
         builder: (context, state) => const ForgetPasswordScreen(),
@@ -81,6 +83,7 @@ abstract class AppRouter {
         path: kSignUpScreen,
         builder: (context, state) => const SignUpScreen(),
       ),
+
       GoRoute(
         path: kAddingPhoneScreen,
         builder: (context, state) => const AddingPhoneScreen(),
