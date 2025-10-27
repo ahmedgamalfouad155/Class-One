@@ -28,7 +28,7 @@ class CustomDropdownWidget extends StatelessWidget {
         : null;
 
     return DropdownButtonFormField<String>(
-      value:  safeValue ,
+      initialValue:  safeValue ,
       hint: Text(hintText),
       decoration: InputDecoration(
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),

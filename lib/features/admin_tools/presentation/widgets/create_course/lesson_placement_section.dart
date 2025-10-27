@@ -25,7 +25,7 @@ class LessonPlacementSection extends StatelessWidget {
               child: Switch(
                 value: true,
                 onChanged: (val) {},
-                activeColor: Colors.green,
+                activeTrackColor: Colors.green,
                 inactiveTrackColor: context.appColors.greyNavBar,
                 inactiveThumbColor: context.appColors.white,
                 
