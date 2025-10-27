@@ -19,19 +19,36 @@ class SignupServiceImpl extends SignupService {
     String password,
   ) async {
     try {
+      // ✅ نحاول إنشاء الحساب
       final userCredential = await firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
       return userCredential.user;
+
     } on FirebaseAuthException catch (e) {
+      // 🔥 الحالة: البريد مستخدم بالفعل
       if (e.code == 'email-already-in-use') {
-        throw Exception('هذا البريد الإلكتروني مستخدم بالفعل');
-      } else if (e.code == 'weak-password') {
+        // نحاول الحصول على المستخدم الحالي لمعرفة حالته
+        final existingUser = firebaseAuth.currentUser;
+
+        if (existingUser != null && !existingUser.emailVerified) {
+          // 📧 الإيميل مسجل ولكن غير مفعّل
+          throw Exception(
+            'تم التسجيل بهذا البريد من قبل، لكن لم يتم تفعيل الحساب. يرجى تأكيد البريد الإلكتروني.',
+          );
+        } else {
+          // ⚠️ البريد مفعّل بالفعل
+          throw Exception('هذا البريد الإلكتروني مستخدم بالفعل.');
+        }
+      } 
+      else if (e.code == 'weak-password') {
         throw Exception('كلمة المرور ضعيفة جدًا');
-      } else if (e.code == 'invalid-email') {
+      } 
+      else if (e.code == 'invalid-email') {
         throw Exception('البريد الإلكتروني غير صالح');
-      } else {
+      } 
+      else {
         throw Exception('فشل التسجيل: ${e.message}');
       }
     }

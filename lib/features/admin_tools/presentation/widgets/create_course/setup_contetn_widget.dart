@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sinna/core/constants/constants.dart';
+import 'package:flutter_bloc/flutter_bloc.dart'; 
 import 'package:sinna/core/cubit/radio_cubit/radio_cubit.dart';
 import 'package:sinna/core/theme/customs_box_decoratino.dart';
 import 'package:sinna/core/utils/app_media.dart';
@@ -74,26 +73,26 @@ class SetupContentWidget extends StatelessWidget {
                   CustomButton(
                     text: "Next",
                     onPressed: () {
-                      final specialization =
-                          specializationBottomSheetFilters[specializationCubit
-                              .state];
-                      final program =
-                          programBottomSheetFilters[programCubit.state];
-                      final university = universityCubit.state;
-                      final level = levelsCubit.state;
+                      // final specialization =
+                      //     specializationBottomSheetFilters[specializationCubit
+                      //         .state];
+                      // final program =
+                      //     programBottomSheetFilters[programCubit.state];
+                      // final university = universityCubit.state;
+                      // final level = levelsCubit.state;
 
-                      // context.read<CreateCourseCubit>().setSetupData(
-                      //   specialization: specialization,
-                      //   program: program,
-                      //   university: university.toString(),
-                      //   level: level.toString(),
-                      // );
-                      if (university != null && level != null) {
-                        print(specialization);
-                        print(program);
-                        // print(university);
-                        // print(level);
-                      }
+                      // // context.read<CreateCourseCubit>().setSetupData(
+                      // //   specialization: specialization,
+                      // //   program: program,
+                      // //   university: university.toString(),
+                      // //   level: level.toString(),
+                      // // );
+                      // if (university != null && level != null) {
+                      //   print(specialization);
+                      //   print(program);
+                      //   // print(university);
+                      //   // print(level);
+                      // }
                     },
                   ),
                 ],

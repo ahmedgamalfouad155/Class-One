@@ -13,9 +13,8 @@ class SignUpCubit extends Cubit<SignUpState> {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   String? deviceId;
 
-  Timer? _emailCheckTimer; // ⏱️ لمتابعة التفعيل التلقائي
+  Timer? _emailCheckTimer; // ⏱️ متابعة التفعيل التلقائي
 
-  
   Future<void> signUp({
     required String password,
     required UserBaseModel userBaseModel,
@@ -30,6 +29,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       );
 
       if (user != null) {
+        // ✉️ نرسل رابط التفعيل
         await user.sendEmailVerification();
 
         userBaseModel = userBaseModel.copyWith(
@@ -37,41 +37,63 @@ class SignUpCubit extends Cubit<SignUpState> {
           deviceId: deviceId,
         );
 
-        emit(SignupEmailSentState(  userBaseModel));
+        emit(SignupEmailSentState(userBaseModel));
 
-        // نبدأ متابعة التفعيل التلقائي (كل 3 ثواني)
+        // 🕒 نبدأ المتابعة التلقائية كل 3 ثواني
         _startEmailVerificationCheck(user, userBaseModel);
       } else {
         emit(SignupFailedState('Signup failed'));
       }
     } catch (e) {
-      emit(SignupFailedState(e.toString()));
+      final errorMsg = e.toString();
+
+      // ✅ البريد مسجل مسبقًا ولكن غير مفعّل
+      if (errorMsg.contains('لم يتم تفعيل الحساب')) {
+        emit(
+          SignupFailedState(
+            'هذا البريد متسجل مسبقًا ولكن لم يتم تفعيله. برجاء تأكيد البريد الإلكتروني من الرسالة المرسلة.',
+          ),
+        );
+      }
+      // ⚠️ البريد مفعّل مسبقًا
+      else if (errorMsg.contains('مستخدم بالفعل')) {
+        emit(
+          SignupFailedState(
+            'هذا البريد مستخدم بالفعل. برجاء تسجيل الدخول بدلاً من إنشاء حساب جديد.',
+          ),
+        );
+      } else {
+        emit(SignupFailedState('حدث خطأ أثناء التسجيل: $errorMsg'));
+      }
     }
   }
 
   /// 🔁 متابعة التفعيل التلقائي بالبريد
   void _startEmailVerificationCheck(
-      User user, UserBaseModel userBaseModel) async {
+    User user,
+    UserBaseModel userBaseModel,
+  ) async {
     _emailCheckTimer?.cancel();
 
-    _emailCheckTimer = Timer.periodic(const Duration(seconds: 3), (timer) async {
+    _emailCheckTimer = Timer.periodic(const Duration(seconds: 3), (
+      timer,
+    ) async {
       await user.reload();
       final refreshedUser = firebaseAuth.currentUser;
 
       if (refreshedUser != null && refreshedUser.emailVerified) {
         timer.cancel();
-
         await authServices.setUserData(userBaseModel);
-
         emit(SignupSuccessState());
       }
     });
   }
 
-  /// ✅ دالة للتأكيد اليدوي (مثلاً عند ضغط زر "لقد أكدت بريدي الإلكتروني")
+  /// ✅ التأكيد اليدوي (زر "لقد أكدت بريدي الإلكتروني")
   Future<void> checkEmailVerificationManually(
-      UserBaseModel userBaseModel) async {
-        deviceId = await getDeviceId();
+    UserBaseModel userBaseModel,
+  ) async {
+    deviceId = await getDeviceId();
     try {
       final user = firebaseAuth.currentUser;
       await user?.reload();
@@ -82,11 +104,13 @@ class SignUpCubit extends Cubit<SignUpState> {
           deviceId: deviceId,
         );
         await authServices.setUserData(userBaseModel);
-
         emit(SignupSuccessState());
       } else {
-        emit(SignupEmailNotVerifiedState(
-            'Please verify your email before continuing.'));
+        emit(
+          SignupEmailNotVerifiedState(
+            'Please verify your email before continuing.',
+          ),
+        );
       }
     } catch (e) {
       emit(SignupFailedState('Error checking email verification: $e'));
@@ -99,4 +123,3 @@ class SignUpCubit extends Cubit<SignUpState> {
     return super.close();
   }
 }
- // ahmedgfouad2020@gmail.com

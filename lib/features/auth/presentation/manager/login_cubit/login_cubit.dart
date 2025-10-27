@@ -1,4 +1,3 @@
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/helper/get_device_id.dart';
 import 'package:sinna/core/services/firebase/firebase_path.dart';
@@ -11,6 +10,7 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());
 
   final LoginServices loginServices = LoginServceImpl();
+  final firestor = FirestoreServices.instance;
 
   Future<void> login(String email, String password) async {
     emit(LoginLoadingState());
@@ -20,7 +20,21 @@ class LoginCubit extends Cubit<LoginState> {
         email,
         password,
       );
+
       if (user != null) {
+        final isUserExists = await loginServices.checkUserExists(email); 
+        if (!isUserExists) {
+          await loginServices.setUserData(
+            UserBaseModel(
+              email: user.email!,
+              uid: user.email,
+              deviceId: await getDeviceId(),
+              name: user.email!.split('@').first,
+            ),
+          );
+        }
+
+        // ✅ تحقق من الجهاز
         final isSameDevice = await _isSameDeviceAsRegistered(email);
         if (isSameDevice) {
           emit(LoginSuccessState());
@@ -30,7 +44,7 @@ class LoginCubit extends Cubit<LoginState> {
       } else {
         emit(LoginFailedState('Login failed'));
       }
-    } catch (e) {
+    } catch (e) { 
       emit(LoginFailedState(e.toString()));
     }
   }
@@ -56,12 +70,12 @@ Future<bool> _isSameDeviceAsRegistered(String email) async {
       return false;
     }
   }
-  { 
-    userData= userData.copyWith(deviceId: deviceId);
+  {
+    userData = userData.copyWith(deviceId: deviceId);
     await firestor.updatedata(
       path: FirestorePath.users(email),
       data: userData.toMap(),
-    ); 
+    );
     return true;
   }
 }

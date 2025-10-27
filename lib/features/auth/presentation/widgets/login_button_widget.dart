@@ -26,7 +26,7 @@ class LoginButtonWidget extends StatelessWidget {
     final loginCubit = BlocProvider.of<LoginCubit>(context);
     return BlocConsumer<LoginCubit, LoginState>(
       bloc: loginCubit,
-      listener: (context, state) {
+      listener: (context, state) { 
         if (state is LoginSuccessState) {
           (context).go(AppRouter.kNavBarScreen);
         } else if (state is NotSameDeviceState) {

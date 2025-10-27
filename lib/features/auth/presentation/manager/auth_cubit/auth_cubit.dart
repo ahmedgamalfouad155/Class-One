@@ -9,16 +9,17 @@ class AuthCubit extends Cubit<AuthState> {
   final authService = AuthServicesImpl();
 
   bool get emailAdmin =>
-      authService.currentUser?.email == "ahmedgamal@gmail.com";
+      authService.currentUser?.email == "ahmedgfouad2020@gmail.com";
 
   void authStatus() {
-    final user = authService.currentUser;
-    if (user != null) {
-      emit(LoginSuccessState());
-    } else {
-      emit(AuthInitial());
-    }
+  final user = authService.currentUser;
+  if (user != null && user.emailVerified) {
+    emit(LoginSuccessState());
+  } else {
+    emit(AuthInitial());
   }
+}
+
 
   Future<void> logout() async {
     emit(LogoutLoadingState());

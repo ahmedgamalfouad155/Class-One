@@ -30,7 +30,7 @@ class SignupButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = context.read<SignUpCubit>();
     return BlocConsumer<SignUpCubit, SignUpState>(
-      listener: (context, state) async {
+      listener: (context, state) async { 
         if (state is SignupEmailSentState) {
           showConfirmDialog(
             context,
@@ -57,7 +57,7 @@ class SignupButtonWidget extends StatelessWidget {
                   password: passwordController.text,
                   userBaseModel: UserBaseModel(
                     name: nameController.text,
-                    email: emailController.text,
+                    email: emailController.text.trim(),
                   ),
                 );
               } else {
