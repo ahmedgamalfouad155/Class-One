@@ -17,7 +17,7 @@ void appearanceContentBottomSheet(BuildContext context) {
   CustomBottomSheet.show(
     context: context,
     child: BlocProvider(
-      create: (_) => RadioCubit(initialValue: isDark ? "Dark" : "Light"),
+      create: (_) => RadioCubit(initialValue: isDark ? "dark" : "light"),
       child: Builder(
         builder: (context) {
           return Column(
@@ -28,16 +28,18 @@ void appearanceContentBottomSheet(BuildContext context) {
               Text(
                 LocaleKeys.appearance.tr(),
                 style: AppStyles.textStyle16W600(context),
+              ), 
+              CustomRadioWidget(
+                title: LocaleKeys.light.tr(),
+                value: "light",
               ),
-
-              // Light Option
-              CustomRadioWidget(title: LocaleKeys.light.tr()),
-              CustomDividerWidget(isHeight: false),
-
-              // Dark Option
-              CustomRadioWidget(title: LocaleKeys.dark.tr()),
-              const SizedBox(height: 10),
-
+              CustomDividerWidget(isHeight: false), 
+              
+              CustomRadioWidget(
+                title: LocaleKeys.dark.tr(),
+                value: "dark",
+              ),
+              const SizedBox(height: 10), 
               CustomButton(
                 text: LocaleKeys.apply.tr(),
                 onPressed: () {
@@ -45,7 +47,7 @@ void appearanceContentBottomSheet(BuildContext context) {
                   radioCubit.confirmSelection();
                   final selected = radioCubit.confirmed;
                   final themeCubit = context.read<ThemeCubit>();
-                  themeCubit.toggleTheme(selected == "Dark");
+                  themeCubit.toggleTheme(selected == "dark");
                   Navigator.pop(context);
                 },
               ),

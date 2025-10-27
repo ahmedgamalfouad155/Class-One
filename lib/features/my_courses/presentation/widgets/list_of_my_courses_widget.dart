@@ -25,29 +25,37 @@ class ListOfMyCoursesWidget extends StatelessWidget {
           return Text(state.errMessage);
         } else if (state is MyCoursesSuccessState) {
           return state.courses.isNotEmpty
-              ? ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
+              ? GridView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: state.courses.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2, // 👈 صفين في كل سطر
+                    crossAxisSpacing: 16, // 👈 المسافة الأفقية
+                    mainAxisSpacing: 20, // 👈 المسافة الرأسية
+                    childAspectRatio:
+                        0.85, // 👈 للتحكم في شكل العنصر (اختياري حسب التصميم)
+                  ),
                   itemBuilder: (context, index) {
+                    final course = state.courses[index];
                     return SubjectItemWidget(
                       onTap: () {
-                        if (state.courses[index].isPaid!) {
+                        if (course.isPaid!) {
                           GoRouter.of(context).push(
                             AppRouter.kUserCcourseDetailsScreen,
-                            extra: state.courses[index],
+                            extra: course,
                           );
                         } else {
                           CustomAnimatedDialog.show(
                             context: context,
                             message:
-                                "Please contact with support to unlock this course",
+                                "Please contact support to unlock this course",
                             animationType: DialogAnimationType.warning,
                           );
                         }
                       },
-                      subjectDoctor: state.courses[index].instructor.toString(),
-                      subjectName: state.courses[index].title.toString(),
+                      subjectDoctor: course.instructor.toString(),
+                      subjectName: course.title.toString(),
                     );
                   },
                 )

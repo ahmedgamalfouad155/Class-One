@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sinna/core/constants/images.dart';
-import 'package:sinna/core/theme/styles.dart';
-import 'package:sinna/core/utils/app_media.dart';
-import 'package:sinna/core/widgets/custom_divider_widget.dart';
+import 'package:sinna/core/theme/styles.dart'; 
 
 class SubjectItemWidget extends StatelessWidget {
   const SubjectItemWidget({
@@ -19,32 +18,33 @@ class SubjectItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      borderRadius: BorderRadius.circular(16),
       onTap: onTap,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              SizedBox(
-                height: context.height / 6,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
-                  child: Image.asset(AppImages.anatomy, fit: BoxFit.cover),
-                ),
-              ),
-              const SizedBox(width: 10),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(subjectName, style: AppStyles.textStyle14W600(context)),
-                  Text(
-                    subjectDoctor,
-                    style: AppStyles.textStyle12GreyW400(context),
-                  ),
-                ],
-              ),
-            ],
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12.r),
+            child: AspectRatio(
+              aspectRatio: 1.2,
+              child: Image.asset(AppImages.anatomy, fit: BoxFit.cover),
+            ),
           ),
-          const CustomDividerWidget(isHeight: true, height: 13),
+          const SizedBox(height: 8),
+
+          Text(
+            subjectName,
+            style: AppStyles.textStyle16W600(context),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+          const SizedBox(height: 4),
+          Text(
+            subjectDoctor,
+            style: AppStyles.textStyle16w400Grey(context),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
         ],
       ),
     );

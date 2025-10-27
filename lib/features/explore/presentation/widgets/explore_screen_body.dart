@@ -20,14 +20,7 @@ class ExploreScreenBody extends StatelessWidget {
                 hintText: LocaleKeys.search.tr(),
                 icon: Icon(Icons.search, color: context.appColors.greyNavBar),
               ),
-              const SizedBox(height: 10),
-              // BlocProvider(
-              //   create: (context) => FilterCubit(),
-              //   child: CustomFiltersWidget(
-              //     padding: const EdgeInsets.only(left: 25.0, top: 20),
-              //     filters: specializationExpolreFilters,
-              //   ),
-              // ),
+              const SizedBox(height: 10), 
               ListOfSubjectsWidget(),
             ],
           ),

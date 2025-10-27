@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 
@@ -23,7 +24,7 @@ class CustomOptionWidget extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: verticalPading ?? 10),
+        padding: EdgeInsets.symmetric(vertical: verticalPading ?? 10.h),
         child: Row(
           children: [
             icon ?? const SizedBox(),
@@ -39,7 +40,7 @@ class CustomOptionWidget extends StatelessWidget {
             switchIcon ??
                 Icon(
                   Icons.arrow_forward_ios,
-                  color: context.appColors.black,
+                  color: context.appColors.greyNavBar,
                   size: 12,
                 ),
           ],

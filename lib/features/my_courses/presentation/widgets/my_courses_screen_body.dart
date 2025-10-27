@@ -20,15 +20,7 @@ class MyCoursesScreenBody extends StatelessWidget {
                 hintText: LocaleKeys.search.tr(),
                 icon: Icon(Icons.search, color: context.appColors.greyNavBar),
               ),
-              const SizedBox(height: 10),
-              // BlocProvider(
-              //   create: (context) => FilterCubit(),
-              //   child: CustomFiltersWidget(
-              //     filters: dashboardFilters,
-              //     layoutType: SpecialLayoutType.wrap,
-              //   ),
-              // ),
-              // const SizedBox(height: 20),
+              const SizedBox(height: 10), 
               ListOfMyCoursesWidget(),
             ],
           ),

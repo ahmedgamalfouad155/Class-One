@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sinna/core/constants/images.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/utils/app_media.dart';
-import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/features/explore/data/models/subject_info_model.dart';
 
 class NameOfSubjectItemWidget extends StatelessWidget {
@@ -20,39 +20,34 @@ class NameOfSubjectItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Column(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          SizedBox(
+            height: context.height / 7,
+            width: context.width / 4,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16.r),
+              child: Image.asset(AppImages.anatomy, fit: BoxFit.cover),
+            ),
+          ),
+          const SizedBox(width: 10),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: context.height / 6,
-                width: context.width / 4,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
-                  child: Image.asset(AppImages.anatomy, fit: BoxFit.cover),
-                ),
+              Text(
+                subjectInfo.title,
+                style: AppStyles.textStyle14W600(context),
               ),
-              const SizedBox(width: 10),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    subjectInfo.title,
-                    style: AppStyles.textStyle14W600(context),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    subjectInfo.instructor,
-                    style: AppStyles.textStyle12GreyW400(
-                      context,
-                    ).copyWith(color: context.appColors.grey),
-                  ),
-                ],
+              const SizedBox(height: 5),
+              Text(
+                subjectInfo.instructor,
+                style: AppStyles.textStyle12GreyW400(
+                  context,
+                ).copyWith(color: context.appColors.grey),
               ),
             ],
           ),
-          const CustomDividerWidget(isHeight: true, height: 13),
         ],
       ),
     );

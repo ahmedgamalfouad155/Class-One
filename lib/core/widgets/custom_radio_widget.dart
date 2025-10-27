@@ -6,24 +6,31 @@ import 'package:sinna/core/cubit/radio_cubit/radio_cubit.dart';
 import 'package:sinna/core/theme/colors.dart';
 
 class CustomRadioWidget extends StatelessWidget {
-  const CustomRadioWidget({super.key, required this.title});
+  const CustomRadioWidget({
+    super.key,
+    required this.title,
+    this.value,
+  });
 
   final String title;
+  final String? value; 
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<RadioCubit, String?>(
       builder: (context, selected) {
+        final currentValue = value ?? title; 
+
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(title),
             Radio<String>(
-              value: title,
+              value: currentValue,
               groupValue: selected,
-              onChanged: (value) {
-                if (value != null) {
-                  context.read<RadioCubit>().selectTemp(value);
+              onChanged: (val) {
+                if (val != null) {
+                  context.read<RadioCubit>().selectTemp(val);
                 }
               },
               activeColor: context.appColors.blue,

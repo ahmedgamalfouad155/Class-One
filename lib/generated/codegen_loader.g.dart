@@ -59,7 +59,6 @@ class CodegenLoader extends AssetLoader{
   "support": "الدعم",
   "addmin_tools": "أدوات المشرف",
   "control_panel": "لوحة التحكم",
-  "other": "أخرى",
   "delete_account": "حذف الحساب",
   "are_you_sure_you_want_to_delete_your_account": "هل أنت متأكد أنك تريد حذف حسابك؟",
   "this_action_cannot_be_undone": "لا يمكن التراجع عن هذا الإجراء.",
@@ -110,7 +109,10 @@ class CodegenLoader extends AssetLoader{
   "institution_name": "اسم المؤسسة",
   "user_managment": "إدارة المستخدمين",
   "users": "المستخدمون",
-  "admins": "المشرفون"
+  "admins": "المشرفون",
+  "help": "مساعدة",
+  "account": "الحساب",
+  "other": "أخرى"
 };
 static const Map<String,dynamic> _en = {
   "ready_when_you_are": "Ready When You Are",
@@ -157,7 +159,6 @@ static const Map<String,dynamic> _en = {
   "support": "Support",
   "addmin_tools": "Admin Tools",
   "control_panel": "Control Panel",
-  "other": "Other",
   "delete_account": "Delete Account",
   "are_you_sure_you_want_to_delete_your_account": "Are you sure you want to delete your account?",
   "this_action_cannot_be_undone": "This action cannot be undone.",
@@ -208,7 +209,10 @@ static const Map<String,dynamic> _en = {
   "institution_name": "Institution Name",
   "user_managment": "User Managment",
   "users": "Users",
-  "admins": "Admins"
+  "admins": "Admins",
+  "help": "Help",
+  "account": "Account",
+  "other": "Other"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
 }

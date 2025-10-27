@@ -37,10 +37,12 @@ class ListOfSubjectsWidget extends StatelessWidget {
                     context.read<UserInfoCubit>().getUserInfo();
                     context.read<SubjectCubit>().getSubjects(path);
                   },
-                  child: ListView.builder(
+                  child: ListView.separated(
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: state.subjects.length,
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 16),
                     itemBuilder: (context, index) {
                       return NameOfSubjectItemWidget(
                         onTap: () {
@@ -49,7 +51,7 @@ class ListOfSubjectsWidget extends StatelessWidget {
                             title: state.subjects[index].title,
                             instructor: state.subjects[index].instructor,
                             image: state.subjects[index].image,
-                          ); 
+                          );
                           GoRouter.of(
                             context,
                           ).push(AppRouter.kCoursesScreen, extra: path);
