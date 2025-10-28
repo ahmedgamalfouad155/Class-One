@@ -11,6 +11,7 @@ import 'package:sinna/features/my_courses/presentation/screens/my_corses_screen.
 import 'package:sinna/features/nav_bar/presentation/manager/nav_bar_cubit/navbar_cubit.dart';
 import 'package:sinna/features/nav_bar/presentation/manager/nav_bar_cubit/navbar_state.dart';
 import 'package:sinna/features/profile/presentation/manager/theme_cubit/theme_cubit.dart';
+import 'package:sinna/features/profile/presentation/manager/user_info/user_info_cubit.dart';
 import 'package:sinna/features/profile/presentation/screen/profile_screen.dart';
 import 'package:sinna/generated/locale_keys.g.dart';
 
@@ -26,7 +27,10 @@ class _NavBarScreenBodyState extends State<NavBarScreenBody> {
     MyCorsesScreen(),
     ExploreScreen(),
     // NotificationsScreen(),
-    ProfileScreen(),
+    BlocProvider(
+      create: (context) => UserInfoCubit()..getUserInfo(),
+      child: ProfileScreen(),
+    ),
   ];
 
   @override
