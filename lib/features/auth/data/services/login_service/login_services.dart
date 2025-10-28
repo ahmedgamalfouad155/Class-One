@@ -2,12 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sinna/core/services/firebase/firebase_path.dart';
 import 'package:sinna/core/services/firebase/firestore_services.dart';
 import 'package:sinna/features/auth/data/models/user_academic_model.dart';
-import 'package:sinna/features/auth/data/models/user_base_model.dart';
+import 'package:sinna/features/auth/data/models/user_info_model.dart';
 
 abstract class LoginServices {
   Future<User?> loginWithEmailAndPassword(String email, String password);
   Future<bool> checkUserExists(String email);
-  Future<void> setUserData(UserBaseModel userData);
+  Future<void> setUserData(UserInfoModel userData);
 }
 
 class LoginServceImpl implements LoginServices {
@@ -17,14 +17,14 @@ class LoginServceImpl implements LoginServices {
     try {
       final userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
-       final user = userCredential.user;
+      final user = userCredential.user;
 
       // ✅ تحقق من التفعيل
       if (user != null && !user.emailVerified) {
         // أعمل signOut علشان مايفضلش اليوزر داخل
         await FirebaseAuth.instance.signOut();
         throw Exception('يجب تأكيد البريد الإلكتروني قبل تسجيل الدخول');
-      } 
+      }
       return user;
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
@@ -42,14 +42,13 @@ class LoginServceImpl implements LoginServices {
     }
   }
 
-   @override
-  Future<bool> checkUserExists(String email) { 
+  @override
+  Future<bool> checkUserExists(String email) {
     return firestor.checkUserExists(email);
   }
 
-  
   @override
-  Future<void> setUserData(UserBaseModel userData) async {
+  Future<void> setUserData(UserInfoModel userData) async {
     await firestor.setData(
       path: FirestorePath.users(userData.email!),
       data: userData.toMap(),

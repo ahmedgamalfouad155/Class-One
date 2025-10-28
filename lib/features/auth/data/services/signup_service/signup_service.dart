@@ -2,11 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sinna/core/services/firebase/firebase_path.dart';
 import 'package:sinna/core/services/firebase/firestore_services.dart';
 import 'package:sinna/features/auth/data/models/user_academic_model.dart';
-import 'package:sinna/features/auth/data/models/user_base_model.dart';
+import 'package:sinna/features/auth/data/models/user_info_model.dart';
 
 abstract class SignupService {
   Future<User?> signUpWithEmailAndPassword(String email, String password);
-  Future<void> setUserData(UserBaseModel userData);
+  Future<void> setUserData(UserInfoModel userData);
 }
 
 class SignupServiceImpl extends SignupService {
@@ -25,7 +25,6 @@ class SignupServiceImpl extends SignupService {
         password: password,
       );
       return userCredential.user;
-
     } on FirebaseAuthException catch (e) {
       // 🔥 الحالة: البريد مستخدم بالفعل
       if (e.code == 'email-already-in-use') {
@@ -41,21 +40,18 @@ class SignupServiceImpl extends SignupService {
           // ⚠️ البريد مفعّل بالفعل
           throw Exception('هذا البريد الإلكتروني مستخدم بالفعل.');
         }
-      } 
-      else if (e.code == 'weak-password') {
+      } else if (e.code == 'weak-password') {
         throw Exception('كلمة المرور ضعيفة جدًا');
-      } 
-      else if (e.code == 'invalid-email') {
+      } else if (e.code == 'invalid-email') {
         throw Exception('البريد الإلكتروني غير صالح');
-      } 
-      else {
+      } else {
         throw Exception('فشل التسجيل: ${e.message}');
       }
     }
   }
 
   @override
-  Future<void> setUserData(UserBaseModel userData) async {
+  Future<void> setUserData(UserInfoModel userData) async {
     await firestor.setData(
       path: FirestorePath.users(userData.email!),
       data: userData.toMap(),

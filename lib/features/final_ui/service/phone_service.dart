@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:sinna/core/services/firebase/firebase_path.dart';
 import 'package:sinna/core/services/firebase/firestore_services.dart';
-import 'package:sinna/features/auth/data/models/user_base_model.dart';
+import 'package:sinna/features/auth/data/models/user_info_model.dart';
 
 abstract class PhoneAuthService {
   /// إرسال الكود لرقم الموبايل
@@ -20,7 +20,7 @@ abstract class PhoneAuthService {
   });
 
   /// حفظ بيانات المستخدم في Firestore
-  Future<void> setUserData(UserBaseModel userData);
+  Future<void> setUserData(UserInfoModel userData);
 }
 
 class PhoneAuthServiceImpl extends PhoneAuthService {
@@ -32,7 +32,7 @@ class PhoneAuthServiceImpl extends PhoneAuthService {
     required String phoneNumber,
     required Function(String verificationId) codeSent,
     required Function(FirebaseAuthException e) verificationFailed,
-     PhoneVerificationCompleted? verificationCompleted,
+    PhoneVerificationCompleted? verificationCompleted,
     Function(String verificationId)? codeAutoRetrievalTimeout,
   }) async {
     await firebaseAuth.verifyPhoneNumber(
@@ -61,8 +61,9 @@ class PhoneAuthServiceImpl extends PhoneAuthService {
         verificationId: verificationId,
         smsCode: smsCode,
       );
-      final userCredential =
-          await firebaseAuth.signInWithCredential(credential);
+      final userCredential = await firebaseAuth.signInWithCredential(
+        credential,
+      );
       return userCredential.user;
     } on FirebaseAuthException catch (e) {
       throw Exception("فشل تسجيل الدخول: ${e.message}");
@@ -70,10 +71,10 @@ class PhoneAuthServiceImpl extends PhoneAuthService {
   }
 
   @override
-  Future<void> setUserData(UserBaseModel userData) async {
+  Future<void> setUserData(UserInfoModel userData) async {
     // await firestor.setData(
-      // path: FirestorePath.users(userData.phone!), // هنا نخزن بالـ phone بدل email
-      // data: userData.toMap(),
+    // path: FirestorePath.users(userData.phone!), // هنا نخزن بالـ phone بدل email
+    // data: userData.toMap(),
     // );
   }
 }

@@ -3,11 +3,11 @@ import 'package:sinna/core/services/firebase/firestore_services.dart';
 import 'package:sinna/features/auth/data/models/user_academic_model.dart';
 import 'package:sinna/features/auth/data/services/auth_service/auth_services.dart';
 
-abstract class UserInfoService {
+abstract class UserAcademicInfoService {
   Future<UserAcademicModel> getUserInfo();
 }
 
-class UserInfoServiceImpl implements UserInfoService {
+class UserAcademicInfoServiceImpl implements UserAcademicInfoService {
   final firestorServices = FirestoreServices.instance;
   final uid = AuthServicesImpl().currentUser!.email;
 
@@ -15,7 +15,7 @@ class UserInfoServiceImpl implements UserInfoService {
   Future<UserAcademicModel> getUserInfo() async {
     return await firestorServices.getDocument(
       path: FirestorePath.filter(uid!),
-      builder: (data, documentId) { 
+      builder: (data, documentId) {
         return UserAcademicModel.fromMap(data);
       },
     );

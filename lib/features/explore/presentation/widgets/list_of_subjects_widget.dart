@@ -6,8 +6,8 @@ import 'package:sinna/core/router/app_router.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
 import 'package:sinna/features/explore/presentation/manager/subject_cubit/subject_cubit.dart';
 import 'package:sinna/features/explore/presentation/manager/subject_cubit/subject_state.dart';
-import 'package:sinna/features/explore/presentation/manager/user_info_cubit/user_info_cubit.dart';
-import 'package:sinna/features/explore/presentation/manager/user_info_cubit/user_info_state.dart';
+import 'package:sinna/features/explore/presentation/manager/user_academic_info_cubit/user_academic_info_cubit.dart';
+import 'package:sinna/features/explore/presentation/manager/user_academic_info_cubit/user_academic_info_state.dart';
 import 'package:sinna/features/explore/presentation/widgets/name_of_subject_item_widget.dart';
 
 class ListOfSubjectsWidget extends StatelessWidget {
@@ -15,9 +15,9 @@ class ListOfSubjectsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UserInfoCubit, UserInfoState>(
+    return BlocBuilder<UserAcademicInfoCubit, UserAcademicInfoState>(
       builder: (context, state) {
-        if (state is UserInfoSuccessState) {
+        if (state is UserAcademicInfoSuccessState) {
           final path = CoursePathModel(
             specialization: convert[state.userModel.specialization],
             university: convert[state.userModel.university],
@@ -34,7 +34,7 @@ class ListOfSubjectsWidget extends StatelessWidget {
               } else if (state is SubjectSuccessState) {
                 return RefreshIndicator(
                   onRefresh: () async {
-                    context.read<UserInfoCubit>().getUserInfo();
+                    context.read<UserAcademicInfoCubit>().getUserInfo();
                     context.read<SubjectCubit>().getSubjects(path);
                   },
                   child: ListView.separated(

@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/helper/get_device_id.dart';
-import 'package:sinna/features/auth/data/models/user_base_model.dart';
+import 'package:sinna/features/auth/data/models/user_info_model.dart';
 import 'package:sinna/features/auth/data/services/signup_service/signup_service.dart';
 import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_state.dart';
 
@@ -17,7 +17,7 @@ class SignUpCubit extends Cubit<SignUpState> {
 
   Future<void> signUp({
     required String password,
-    required UserBaseModel userBaseModel,
+    required UserInfoModel userBaseModel,
   }) async {
     emit(SignupLoadingState());
     deviceId = await getDeviceId();
@@ -71,7 +71,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   /// 🔁 متابعة التفعيل التلقائي بالبريد
   void _startEmailVerificationCheck(
     User user,
-    UserBaseModel userBaseModel,
+    UserInfoModel userBaseModel,
   ) async {
     _emailCheckTimer?.cancel();
 
@@ -91,7 +91,7 @@ class SignUpCubit extends Cubit<SignUpState> {
 
   /// ✅ التأكيد اليدوي (زر "لقد أكدت بريدي الإلكتروني")
   Future<void> checkEmailVerificationManually(
-    UserBaseModel userBaseModel,
+    UserInfoModel userBaseModel,
   ) async {
     deviceId = await getDeviceId();
     try {

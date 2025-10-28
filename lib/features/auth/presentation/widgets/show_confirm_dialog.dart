@@ -7,14 +7,14 @@ import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/widgets/custom_snak_bar.dart';
 import 'package:sinna/core/widgets/default_button_widget.dart';
 import 'package:sinna/features/admin_tools/presentation/widgets/cancel_button_widget.dart';
-import 'package:sinna/features/auth/data/models/user_base_model.dart';
+import 'package:sinna/features/auth/data/models/user_info_model.dart';
 import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_state.dart';
 
 void showConfirmDialog(
   BuildContext context,
   SignUpCubit signUpCubit,
-  UserBaseModel userBaseModel,
+  UserInfoModel userBaseModel,
 ) {
   showDialog(
     context: context,

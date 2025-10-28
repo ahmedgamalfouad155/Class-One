@@ -15,14 +15,29 @@ class ProfileScreen extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 18.r,
-              child: Icon(Icons.person, color: context.appColors.black),
+              backgroundColor: context.appColors.blue,
+              child: Text(
+                "A",
+                style: AppStyles.textStyle16W600(
+                  context,
+                ).copyWith(color: context.appColors.white),
+              ),
             ),
             const SizedBox(width: 10),
-            Text(
-              "Ahmed gamal",
-              style: AppStyles.textStyle16W600(
-                context,
-              ).copyWith(color: context.appColors.black),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Ahmed gamal",
+                  style: AppStyles.textStyle16W600(
+                    context,
+                  ).copyWith(color: context.appColors.black),
+                ),
+                Text(
+                  "amina.kareem@icloud.com",
+                  style: AppStyles.textStyle15W400Grey(context),
+                ),
+              ],
             ),
           ],
         ),

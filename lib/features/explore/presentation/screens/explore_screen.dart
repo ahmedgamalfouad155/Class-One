@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/features/explore/presentation/manager/subject_cubit/subject_cubit.dart';
-import 'package:sinna/features/explore/presentation/manager/user_info_cubit/user_info_cubit.dart';
+import 'package:sinna/features/explore/presentation/manager/user_academic_info_cubit/user_academic_info_cubit.dart';
 import 'package:sinna/features/explore/presentation/widgets/explore_screen_body.dart';
 
 class ExploreScreen extends StatelessWidget {
@@ -12,7 +12,7 @@ class ExploreScreen extends StatelessWidget {
     return Scaffold(
       body: MultiBlocProvider(
         providers: [
-          BlocProvider(create: (context) => UserInfoCubit()),
+          BlocProvider(create: (context) => UserAcademicInfoCubit()),
           BlocProvider(create: (context) => SubjectCubit()),
         ],
         child: ExploreScreenBody(),

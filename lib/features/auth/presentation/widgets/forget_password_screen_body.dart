@@ -94,8 +94,7 @@ class _ForgetPasswordScreenBodyState extends State<ForgetPasswordScreenBody> {
                         width: context.width / 4,
                         borderRadius: BorderRadius.circular(30),
                       );
-                    } else {
-                      print(state);
+                    } else { 
                       return const Center(child: Text("Error"));
                     }
                   },

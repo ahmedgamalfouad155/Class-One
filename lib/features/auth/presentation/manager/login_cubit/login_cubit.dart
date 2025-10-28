@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/helper/get_device_id.dart';
 import 'package:sinna/core/services/firebase/firebase_path.dart';
 import 'package:sinna/core/services/firebase/firestore_services.dart';
-import 'package:sinna/features/auth/data/models/user_base_model.dart';
+import 'package:sinna/features/auth/data/models/user_info_model.dart';
 import 'package:sinna/features/auth/data/services/login_service/login_services.dart';
 import 'package:sinna/features/auth/presentation/manager/login_cubit/login_state.dart';
 
@@ -22,10 +22,10 @@ class LoginCubit extends Cubit<LoginState> {
       );
 
       if (user != null) {
-        final isUserExists = await loginServices.checkUserExists(email); 
+        final isUserExists = await loginServices.checkUserExists(email);
         if (!isUserExists) {
           await loginServices.setUserData(
-            UserBaseModel(
+            UserInfoModel(
               email: user.email!,
               uid: user.email,
               deviceId: await getDeviceId(),
@@ -44,7 +44,7 @@ class LoginCubit extends Cubit<LoginState> {
       } else {
         emit(LoginFailedState('Login failed'));
       }
-    } catch (e) { 
+    } catch (e) {
       emit(LoginFailedState(e.toString()));
     }
   }
@@ -57,7 +57,7 @@ Future<bool> _isSameDeviceAsRegistered(String email) async {
   var userData = await firestor.getDocument(
     path: FirestorePath.users(email),
     builder: (data, documentId) {
-      return UserBaseModel.fromMap(data, documentId);
+      return UserInfoModel.fromMap(data, documentId);
     },
   );
   deviceIdByEmail = userData.deviceId;

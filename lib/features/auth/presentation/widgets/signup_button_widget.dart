@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/core/widgets/custom_snak_bar.dart';
-import 'package:sinna/features/auth/data/models/user_base_model.dart';
+import 'package:sinna/features/auth/data/models/user_info_model.dart';
 import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:sinna/features/auth/presentation/manager/signup_cubit/signup_state.dart';
 import 'package:sinna/features/auth/presentation/widgets/show_confirm_dialog.dart';
@@ -23,14 +23,14 @@ class SignupButtonWidget extends StatelessWidget {
   final TextEditingController nameController,
       emailController,
       passwordController,
-      confirmPasswordController; 
+      confirmPasswordController;
   final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<SignUpCubit>();
     return BlocConsumer<SignUpCubit, SignUpState>(
-      listener: (context, state) async { 
+      listener: (context, state) async {
         if (state is SignupEmailSentState) {
           showConfirmDialog(
             context,
@@ -55,7 +55,7 @@ class SignupButtonWidget extends StatelessWidget {
               if (confirmPasswordController.text == passwordController.text) {
                 await cubit.signUp(
                   password: passwordController.text,
-                  userBaseModel: UserBaseModel(
+                  userBaseModel: UserInfoModel(
                     name: nameController.text,
                     email: emailController.text.trim(),
                   ),
@@ -69,4 +69,4 @@ class SignupButtonWidget extends StatelessWidget {
       },
     );
   }
-} 
+}
