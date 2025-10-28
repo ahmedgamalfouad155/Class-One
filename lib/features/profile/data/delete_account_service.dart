@@ -1,15 +1,30 @@
-
-
+import 'package:cloud_firestore/cloud_firestore.dart'; 
+import 'package:sinna/core/services/firebase/firebase_path.dart';
 import 'package:sinna/core/services/firebase/firestore_services.dart';
 
-abstract class DeleteAccountService {
-  Future<void> deleteAccount(String path);
-}
+class DeleteAccountService {
+  DeleteAccountService._();
+  static final instance = DeleteAccountService._();
 
-class DeleteAccountServiceImpl extends DeleteAccountService { 
-  final service = FirestoreServices.instance;
-  @override
-  Future<void> deleteAccount(String path) async {
-    await service.deleteData(path: path);
+  final _fireStore = FirebaseFirestore.instance;
+  final _firestoreService = FirestoreServices.instance;
+
+  
+  Future<void> deleteUserWithSubcollections({required String email}) async {
+    try {
+      final userDocRef = _fireStore.doc(FirestorePath.users(email)); 
+      final subcollections = ['myCourses', 'filter'];
+
+      for (final sub in subcollections) {
+        final subColRef = userDocRef.collection(sub);
+        final snapshots = await subColRef.get();
+        for (final doc in snapshots.docs) {
+          await doc.reference.delete();
+        }
+      } 
+      await _firestoreService.deleteData(path: FirestorePath.users(email)); 
+    } catch (e) { 
+      rethrow;
+    }
   }
 }
