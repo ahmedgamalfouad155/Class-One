@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sinna/core/router/app_router.dart';
+import 'package:sinna/core/theme/colors.dart';
+import 'package:sinna/core/theme/styles.dart';
+import 'package:sinna/core/utils/app_media.dart';
+import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/core/widgets/custom_text_field_widget.dart';
 import 'package:sinna/features/profile/presentation/manager/deleting_account_cubit.dart';
 
@@ -31,14 +35,18 @@ class _DeleteAccountDialogWidgetState extends State<DeleteAccountDialogWidget> {
     final service = DeletingAccountCubit();
 
     return AlertDialog(
-      title: const Text("Delete Account"),
+      insetPadding: const EdgeInsets.symmetric(horizontal: 16),
+      backgroundColor: context.appColors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      title: Text("Delete Account", style: AppStyles.textStyle20W600(context)),
       content: Form(
         key: _formKey,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text(
+            Text(
               "Are you sure you want to delete your account?\nThis action cannot be undone.",
+              style: AppStyles.textStyle16W600Grey(context),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 12),
@@ -59,10 +67,13 @@ class _DeleteAccountDialogWidgetState extends State<DeleteAccountDialogWidget> {
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context), // إلغاء
-          child: const Text("Cancel"),
+          child: Text("Cancel", style: AppStyles.textStyle16W600(context)),
         ),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+        CustomButton(
+          bacgrouncColor: context.appColors.red,
+          borderSideColor: context.appColors.red,
+          width: context.width / 3,
+          text: "Delete",
           onPressed: _loading
               ? null
               : () async {
@@ -91,13 +102,6 @@ class _DeleteAccountDialogWidgetState extends State<DeleteAccountDialogWidget> {
                     }
                   }
                 },
-          child: _loading
-              ? const SizedBox(
-                  width: 20,
-                  height: 20,
-                  child: CircularProgressIndicator(strokeWidth: 2),
-                )
-              : const Text("Delete"),
         ),
       ],
     );

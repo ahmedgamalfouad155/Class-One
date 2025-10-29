@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sinna/core/router/app_router.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
+import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:sinna/features/profile/presentation/manager/user_info/user_info_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/profile_screen_body.dart';
 
@@ -13,6 +16,15 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {
+              BlocProvider.of<AuthCubit>(context).logout();
+              (context).go(AppRouter.klandingScreen);
+            },
+            icon: Icon(Icons.logout_outlined, color: context.appColors.red),
+          ),
+        ],
         title: Row(
           children: [
             CircleAvatar(

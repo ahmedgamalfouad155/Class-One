@@ -2,10 +2,9 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class LocaleKeys {
+abstract class  LocaleKeys {
   static const ready_when_you_are = 'ready_when_you_are';
-  static const explore_academic_and_professional_courses =
-      'explore_academic_and_professional_courses';
+  static const explore_academic_and_professional_courses = 'explore_academic_and_professional_courses';
   static const sign_in_with_email = 'sign_in_with_email';
   static const sign_up_free = 'sign_up_free';
   static const continue_with_email = 'continue_with_email';
@@ -42,15 +41,14 @@ abstract class LocaleKeys {
   static const language = 'language';
   static const english = 'english';
   static const arabic = 'arabic';
-  static const appearance = 'appearance';
+  static const theme = 'theme';
   static const dark = 'dark';
   static const light = 'light';
-  static const support = 'support';
+  static const help_center = 'help_center';
   static const addmin_tools = 'addmin_tools';
   static const control_panel = 'control_panel';
   static const delete_account = 'delete_account';
-  static const are_you_sure_you_want_to_delete_your_account =
-      'are_you_sure_you_want_to_delete_your_account';
+  static const are_you_sure_you_want_to_delete_your_account = 'are_you_sure_you_want_to_delete_your_account';
   static const this_action_cannot_be_undone = 'this_action_cannot_be_undone';
   static const logout = 'logout';
   static const empty_dashboard = 'empty_dashboard';
@@ -62,8 +60,7 @@ abstract class LocaleKeys {
   static const the_instructor = 'the_instructor';
   static const attachment = 'attachment';
   static const supporting_materials = 'supporting_materials';
-  static const download_the_notes_before_watching_the_video =
-      'download_the_notes_before_watching_the_video';
+  static const download_the_notes_before_watching_the_video = 'download_the_notes_before_watching_the_video';
   static const addvanced_settings = 'addvanced_settings';
   static const specialization = 'specialization';
   static const dentistry = 'dentistry';
@@ -92,18 +89,16 @@ abstract class LocaleKeys {
   static const lesson_placement = 'lesson_placement';
   static const instructors = 'instructors';
   static const create_instructor = 'create_instructor';
-  static const add_new_instructor_profile_to_assign_courses =
-      'add_new_instructor_profile_to_assign_courses';
+  static const add_new_instructor_profile_to_assign_courses = 'add_new_instructor_profile_to_assign_courses';
   static const instructor_name = 'instructor_name';
   static const institutions = 'institutions';
   static const create_institution = 'create_institution';
-  static const add_new_institution_to_associate_with_courses_and_instructors =
-      'add_new_institution_to_associate_with_courses_and_instructors';
+  static const add_new_institution_to_associate_with_courses_and_instructors = 'add_new_institution_to_associate_with_courses_and_instructors';
   static const institution_name = 'institution_name';
   static const user_managment = 'user_managment';
   static const users = 'users';
   static const admins = 'admins';
   static const help = 'help';
   static const account = 'account';
-  static const other = 'other';
+
 }

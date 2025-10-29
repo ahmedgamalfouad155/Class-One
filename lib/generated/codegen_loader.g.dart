@@ -53,10 +53,10 @@ class CodegenLoader extends AssetLoader{
   "language": "اللغة",
   "english": "الإنجليزية",
   "arabic": "العربية",
-  "appearance": "المظهر",
+  "theme": "المظهر",
   "dark": "داكن",
   "light": "فاتح",
-  "support": "الدعم",
+  "help_center": "مركز المساعدة",
   "addmin_tools": "أدوات المشرف",
   "control_panel": "لوحة التحكم",
   "delete_account": "حذف الحساب",
@@ -111,8 +111,7 @@ class CodegenLoader extends AssetLoader{
   "users": "المستخدمون",
   "admins": "المشرفون",
   "help": "مساعدة",
-  "account": "الحساب",
-  "other": "أخرى"
+  "account": "الحساب"
 };
 static const Map<String,dynamic> _en = {
   "ready_when_you_are": "Ready When You Are",
@@ -153,10 +152,10 @@ static const Map<String,dynamic> _en = {
   "language": "Language",
   "english": "English",
   "arabic": "Arabic",
-  "appearance": "Appearance",
+  "theme": "Theme",
   "dark": "Dark",
   "light": "Light",
-  "support": "Support",
+  "help_center": "Help Center",
   "addmin_tools": "Admin Tools",
   "control_panel": "Control Panel",
   "delete_account": "Delete Account",
@@ -211,8 +210,7 @@ static const Map<String,dynamic> _en = {
   "users": "Users",
   "admins": "Admins",
   "help": "Help",
-  "account": "Account",
-  "other": "Other"
+  "account": "Account"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
 }

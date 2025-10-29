@@ -26,7 +26,7 @@ void appearanceContentBottomSheet(BuildContext context) {
               CustomTopShapeINBottomSheet(),
               const SizedBox(height: 10),
               Text(
-                LocaleKeys.appearance.tr(),
+                LocaleKeys.theme.tr(),
                 style: AppStyles.textStyle16W600(context),
               ), 
               CustomRadioWidget(

@@ -1,9 +1,14 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sinna/core/router/app_router.dart';
+import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
+import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/core/widgets/custom_option_widget.dart';
+import 'package:sinna/features/profile/presentation/widgets/delete_account_dialog_widget.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class AccountScreenBody extends StatelessWidget {
   const AccountScreenBody({super.key});
@@ -29,6 +34,22 @@ class AccountScreenBody extends StatelessWidget {
             onTap: () {
               GoRouter.of(context).push(AppRouter.kPasswordScreen);
             },
+          ),
+
+          CustomDividerWidget(isHeight: true),
+          InkWell(
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (_) => const DeleteAccountDialogWidget(),
+              );
+            },
+            child: Text(
+              LocaleKeys.delete_account.tr(),
+              style: AppStyles.textStyle16W600(
+                context,
+              ).copyWith(color: context.appColors.red),
+            ),
           ),
         ],
       ),

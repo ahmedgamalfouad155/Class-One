@@ -1,16 +1,21 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sinna/core/helper/open_whatsapp.dart';
+import 'package:sinna/core/router/app_router.dart';
+import 'package:sinna/core/widgets/custom_divider_widget.dart';
+import 'package:sinna/core/widgets/custom_option_widget.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/addmin_section.dart';
-import 'package:sinna/features/profile/presentation/widgets/other_section.dart';
-import 'package:sinna/features/profile/presentation/widgets/account_section.dart';
-import 'package:sinna/features/profile/presentation/widgets/setting_section.dart';
-import 'package:sinna/features/profile/presentation/widgets/help_section.dart';
+import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/appearance_content_bottom_sheet.dart';
+import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/filter_content_bottom_sheet.dart';
+import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/language_content_bottom_sheet.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class ProfileScreenBody extends StatelessWidget {
   const ProfileScreenBody({super.key});
-
   @override
   Widget build(BuildContext context) {
     final isAdmin = context.read<AuthCubit>().emailAdmin;
@@ -19,27 +24,35 @@ class ProfileScreenBody extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            // isAdmin
-            //     ? ProfileOptionWidget(
-            //         title: 'Admin Control Users Courses',
-            //         icon: MaterialCommunityIcons.controller_classic_outline,
-            //         onTap: () {
-            //           GoRouter.of(context).push(AppRouter.kControlPanal);
-            //         },
-            //       )
-            //     : SizedBox(),
-            // isAdmin ? CustomDividerWidget() : SizedBox(),
-            AccountSection(),
+            CustomOptionWidget(
+              title: LocaleKeys.profile.tr(),
+              onTap: () {
+                GoRouter.of(context).push(AppRouter.kAccountScreen);
+              },
+            ),
+            CustomOptionWidget(
+              title: LocaleKeys.preferences.tr(),
+              onTap: () {
+                filterContentBottomSheet(context);
+              },
+            ),
+            CustomDividerWidget(isHeight: true),
+            CustomOptionWidget(
+              title: LocaleKeys.language.tr(),
+              onTap: () => languageContentBottomSheet(context),
+            ),
+            CustomOptionWidget(
+              title: LocaleKeys.theme.tr(),
+              onTap: () => appearanceContentBottomSheet(context),
+            ),
             SizedBox(height: 20.h),
-            SettingSection(),
-            SizedBox(height: 20.h),
-            HelpSection(),
+            CustomOptionWidget(
+              title: LocaleKeys.help_center.tr(),
+              onTap: openWhatsApp,
+            ),
             SizedBox(height: 20.h),
             isAdmin ? AddminSection() : SizedBox(),
-            SizedBox(height: isAdmin ? 20.h : 0),
-            OtherSection(),
           ],
         ),
       ),
