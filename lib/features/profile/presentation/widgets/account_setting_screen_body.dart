@@ -10,8 +10,8 @@ import 'package:sinna/core/widgets/custom_option_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/delete_account_dialog_widget.dart';
 import 'package:sinna/generated/locale_keys.g.dart';
 
-class AccountScreenBody extends StatelessWidget {
-  const AccountScreenBody({super.key});
+class ProfileScreenBody extends StatelessWidget {
+  const ProfileScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {

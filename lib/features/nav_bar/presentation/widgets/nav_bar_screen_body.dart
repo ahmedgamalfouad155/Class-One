@@ -12,7 +12,7 @@ import 'package:sinna/features/nav_bar/presentation/manager/nav_bar_cubit/navbar
 import 'package:sinna/features/nav_bar/presentation/manager/nav_bar_cubit/navbar_state.dart';
 import 'package:sinna/features/profile/presentation/manager/theme_cubit/theme_cubit.dart';
 import 'package:sinna/features/profile/presentation/manager/user_info/user_info_cubit.dart';
-import 'package:sinna/features/profile/presentation/screen/profile_screen.dart';
+import 'package:sinna/features/profile/presentation/screen/you_screen.dart';
 import 'package:sinna/generated/locale_keys.g.dart';
 
 class NavBarScreenBody extends StatefulWidget {
@@ -29,7 +29,7 @@ class _NavBarScreenBodyState extends State<NavBarScreenBody> {
     // NotificationsScreen(),
     BlocProvider(
       create: (context) => UserInfoCubit()..getUserInfo(),
-      child: ProfileScreen(),
+      child: YouScreen(),
     ),
   ];
 
@@ -107,7 +107,7 @@ class _NavBarScreenBodyState extends State<NavBarScreenBody> {
                             ? AppImages.you3
                             : AppImages.you1,
                       ),
-                      label: LocaleKeys.profile.tr(),
+                      label: LocaleKeys.you.tr(),
                     ),
                   ],
                 ),

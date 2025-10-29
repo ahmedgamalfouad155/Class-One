@@ -21,7 +21,7 @@ import 'package:sinna/features/course_details/presentation/screens/courses_scree
 import 'package:sinna/features/landing/presentation/screen/landing_screen.dart';
 import 'package:sinna/features/my_courses/presentation/screens/user_course_details_screen.dart';
 import 'package:sinna/features/nav_bar/presentation/screens/nav_bar_screen.dart';
-import 'package:sinna/features/profile/presentation/screen/account_screen.dart';
+import 'package:sinna/features/profile/presentation/screen/profile_screen.dart';
 import 'package:sinna/features/profile/presentation/screen/name_screen.dart';
 import 'package:sinna/features/profile/presentation/screen/password_screen.dart';
 import 'package:sinna/features/splash/splash._screen.dart';
@@ -39,7 +39,7 @@ abstract class AppRouter {
   static const String kCoursesScreen = '/lessonsScreen';
   static const String kCourseVideoScreen = '/courseVideoScreen';
   static const String kLanguageScreen = '/languageScreen';
-  static const String kModeScreen = '/modeScreen'; 
+  static const String kModeScreen = '/modeScreen';
   static const String kUserCcourseDetailsScreen = '/userCcourseDetailsScreen';
   // static const String kControlPanal = '/controlPanal';
   static const String kFinalRegister = '/registerfinal';
@@ -113,14 +113,14 @@ abstract class AppRouter {
           final coursePathModel = state.extra as CourseModel;
           return CourseVideoScreen(course: coursePathModel);
         },
-      ), 
+      ),
       GoRoute(
         path: kUserCcourseDetailsScreen,
         builder: (context, state) {
           final coursePathModel = state.extra as CoursePathModel;
           return UserCourseDetailsScreen(coursePathModel: coursePathModel);
         },
-      ), 
+      ),
       GoRoute(
         path: kFinalRegister,
         builder: (context, state) => const RegisterScreen(),
@@ -143,7 +143,7 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kAccountScreen,
-        builder: (context, state) => const AccountScreen(),
+        builder: (context, state) => const ProfileScreen(),
       ),
       GoRoute(
         path: kCreateCourseScreen,

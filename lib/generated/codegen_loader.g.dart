@@ -34,7 +34,7 @@ class CodegenLoader extends AssetLoader{
   "profile": "الملف الشخصي",
   "inbox": "الرسائل",
   "explore": "اكتشف",
-  "dashboard": "لوحة التحكم",
+  "dashboard": "الرئسية",
   "confirm": "تأكيد",
   "cancel": "إلغاء",
   "apply": "تطبيق",
@@ -111,7 +111,8 @@ class CodegenLoader extends AssetLoader{
   "users": "المستخدمون",
   "admins": "المشرفون",
   "help": "مساعدة",
-  "account": "الحساب"
+  "account": "الحساب",
+  "you": "أنت",
 };
 static const Map<String,dynamic> _en = {
   "ready_when_you_are": "Ready When You Are",
@@ -210,7 +211,8 @@ static const Map<String,dynamic> _en = {
   "users": "Users",
   "admins": "Admins",
   "help": "Help",
-  "account": "Account"
+  "account": "Account",
+  "you":"You"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
 }

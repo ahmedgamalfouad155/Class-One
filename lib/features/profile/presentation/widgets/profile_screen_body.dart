@@ -14,8 +14,8 @@ import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sh
 import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/language_content_bottom_sheet.dart';
 import 'package:sinna/generated/locale_keys.g.dart';
 
-class ProfileScreenBody extends StatelessWidget {
-  const ProfileScreenBody({super.key});
+class YouScreenBody extends StatelessWidget {
+  const YouScreenBody({super.key});
   @override
   Widget build(BuildContext context) {
     final isAdmin = context.read<AuthCubit>().emailAdmin;
@@ -58,4 +58,4 @@ class ProfileScreenBody extends StatelessWidget {
       ),
     );
   }
-} 
+}
