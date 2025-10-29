@@ -1,3 +1,5 @@
+import 'package:sinna/core/constants/constants.dart';
+
 class CourseModel {
   String id;
   String tittle;
@@ -24,31 +26,31 @@ class CourseModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'tittle': tittle,
-      'number': number,
-      'video_url': videoUrl,
-      'pdf_url': pdfUrl,
-      'hours': hours,
-      'ninutes': minutes,
-      'pdf_title': pdfTitle,
-      'term': term,
-      "subtitle": subTitle,
+      FireStoreLessonFieldsName.id: id,
+      FireStoreLessonFieldsName.title: tittle,
+      FireStoreLessonFieldsName.number: number,
+      FireStoreLessonFieldsName.videoUrl: videoUrl,
+      FireStoreLessonFieldsName.pdfUrl: pdfUrl,
+      FireStoreLessonFieldsName.hours: hours,
+      FireStoreLessonFieldsName.ninutes: minutes,
+      FireStoreLessonFieldsName.pdfTitle: pdfTitle,
+      FireStoreLessonFieldsName.term: term,
+      FireStoreLessonFieldsName.subtitle: subTitle,
     };
   }
 
   factory CourseModel.fromMap(Map<String, dynamic> map, String documentId) {
     return CourseModel(
       id: documentId,
-      tittle: map['tittle'] as String,
-      number: map['number'] as int,
-      videoUrl: map['video_url'] as String,
-      pdfUrl: map['pdf_url'] as String,
-      hours: map['hours'] as String,
-      minutes: map['ninutes'] as String,
-      pdfTitle: map['pdf_title'] as String,
-      term: map['term'] as String,
-      subTitle: map['subtitle'] as String,
+      tittle: map[FireStoreLessonFieldsName.title] as String,
+      number: map[FireStoreLessonFieldsName.number] as int,
+      videoUrl: map[FireStoreLessonFieldsName.videoUrl] as String,
+      pdfUrl: map[FireStoreLessonFieldsName.pdfUrl] as String,
+      hours: map[FireStoreLessonFieldsName.hours] as String,
+      minutes: map[FireStoreLessonFieldsName.ninutes] as String,
+      pdfTitle: map[FireStoreLessonFieldsName.pdfTitle] as String,
+      term: map[FireStoreLessonFieldsName.term] as String,
+      subTitle: map[FireStoreLessonFieldsName.subtitle] as String,
     );
   }
 }

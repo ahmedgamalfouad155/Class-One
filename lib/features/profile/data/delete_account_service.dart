@@ -1,4 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart'; 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sinna/core/constants/constants.dart';
 import 'package:sinna/core/services/firebase/firebase_path.dart';
 import 'package:sinna/core/services/firebase/firestore_services.dart';
 
@@ -9,11 +10,13 @@ class DeleteAccountService {
   final _fireStore = FirebaseFirestore.instance;
   final _firestoreService = FirestoreServices.instance;
 
-  
   Future<void> deleteUserWithSubcollections({required String email}) async {
     try {
-      final userDocRef = _fireStore.doc(FirestorePath.users(email)); 
-      final subcollections = ['myCourses', 'filter'];
+      final userDocRef = _fireStore.doc(FirestorePath.users(email));
+      final subcollections = [
+        FireStoreCollectionsName.myCourses,
+        FireStoreCollectionsName.filter,
+      ];
 
       for (final sub in subcollections) {
         final subColRef = userDocRef.collection(sub);
@@ -21,9 +24,9 @@ class DeleteAccountService {
         for (final doc in snapshots.docs) {
           await doc.reference.delete();
         }
-      } 
-      await _firestoreService.deleteData(path: FirestorePath.users(email)); 
-    } catch (e) { 
+      }
+      await _firestoreService.deleteData(path: FirestorePath.users(email));
+    } catch (e) {
       rethrow;
     }
   }

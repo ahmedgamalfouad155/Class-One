@@ -4,7 +4,7 @@ import 'package:sinna/core/constants/images.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/utils/app_media.dart';
-import 'package:sinna/features/explore/data/models/subject_info_model.dart';
+import 'package:sinna/features/explore/data/models/course_info_model.dart';
 
 class NameOfSubjectItemWidget extends StatelessWidget {
   const NameOfSubjectItemWidget({
@@ -13,7 +13,7 @@ class NameOfSubjectItemWidget extends StatelessWidget {
     required this.onTap,
   });
 
-  final SubjectInfoModel subjectInfo;
+  final CourseInfoModel subjectInfo;
   final void Function() onTap;
 
   @override

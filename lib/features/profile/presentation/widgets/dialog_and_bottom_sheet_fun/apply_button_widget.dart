@@ -37,15 +37,13 @@ class ApplyButtonWidget extends StatelessWidget {
           return CustomButton(
             text: "Apply",
             onPressed: () {
-              final specializationIndex = specializationCubit.state;
-              final programIndex = programCubit.state;
+              final specializationIndex = specializationCubit.state; 
               final universitySelected = universityCubit.state;
-              final levelSelected = levelsCubit.state; 
+              final levelSelected = levelsCubit.state;
               final userAcademicModel = UserAcademicModel(
                 specialization:
-                    specializationBottomSheetFilters[specializationIndex],
-                program: programBottomSheetFilters[programIndex],
-                university: universitySelected,
+                    specializationBottomSheetFilters[specializationIndex], 
+                institution: universitySelected,
                 level: levelSelected,
               );
               context.read<AcademicInfoUpdateCubit>().updateAcademicInfo(

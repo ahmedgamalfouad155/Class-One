@@ -58,8 +58,7 @@ class LoginServceImpl implements LoginServices {
 
   Future<void> _addAcadimyInfo(String uid) async {
     final userAcademicModel = UserAcademicModel(
-      university: 'Mansoura University',
-      program: 'Professional',
+      institution: 'Mansoura University', 
       level: 'Year 1',
       specialization: 'Dentistry',
     );

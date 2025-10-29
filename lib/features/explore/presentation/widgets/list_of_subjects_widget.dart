@@ -20,8 +20,7 @@ class ListOfSubjectsWidget extends StatelessWidget {
         if (state is UserAcademicInfoSuccessState) {
           final path = CoursePathModel(
             specialization: convert[state.userModel.specialization],
-            university: convert[state.userModel.university],
-            program: convert[state.userModel.program],
+            institution: convert[state.userModel.institution],
             level: convert[state.userModel.level],
           );
           return BlocBuilder<SubjectCubit, SubjectState>(
@@ -47,7 +46,7 @@ class ListOfSubjectsWidget extends StatelessWidget {
                       return NameOfSubjectItemWidget(
                         onTap: () {
                           path.update(
-                            subject: state.subjects[index].id,
+                            courseId: state.subjects[index].id,
                             title: state.subjects[index].title,
                             instructor: state.subjects[index].instructor,
                             image: state.subjects[index].image,

@@ -1,26 +1,19 @@
+import 'package:sinna/core/constants/constants.dart';
 
 class UserAcademicModel {
-  final String? university;
-  final String? program;
+  final String? institution;
   final String? level;
   final String? specialization;
 
-  UserAcademicModel({
-    this.university,
-    this.program,
-    this.level,
-    this.specialization,
-  });
+  UserAcademicModel({this.institution, this.level, this.specialization});
 
   UserAcademicModel copyWith({
-    String? university,
-    String? program,
+    String? institution,
     String? level,
     String? specialization,
   }) {
     return UserAcademicModel(
-      university: university ?? this.university,
-      program: program ?? this.program,
+      institution: institution ?? this.institution,
       level: level ?? this.level,
       specialization: specialization ?? this.specialization,
     );
@@ -28,23 +21,23 @@ class UserAcademicModel {
 
   Map<String, dynamic> toMap() {
     final data = <String, dynamic>{};
-    if (university != null && university!.isNotEmpty) {
-      data['university'] = university;
+    if (institution != null && institution!.isNotEmpty) {
+      data[FireStoreFilterFieldsName.institution] = institution;
     }
-    if (program != null && program!.isNotEmpty) data['program'] = program;
-    if (level != null && level!.isNotEmpty) data['level'] = level;
+    if (level != null && level!.isNotEmpty) {
+      data[FireStoreFilterFieldsName.level] = level;
+    }
     if (specialization != null && specialization!.isNotEmpty) {
-      data['specialization'] = specialization;
+      data[FireStoreFilterFieldsName.specialization] = specialization;
     }
     return data;
   }
 
-  factory UserAcademicModel.fromMap(Map<String, dynamic> map) { 
+  factory UserAcademicModel.fromMap(Map<String, dynamic> map) {
     return UserAcademicModel(
-      university: map['university'],
-      program: map['program'],
-      level: map['level'],
-      specialization: map['specialization'],
+      institution: map[FireStoreFilterFieldsName.institution],
+      level: map[FireStoreFilterFieldsName.level],
+      specialization: map[FireStoreFilterFieldsName.specialization],
     );
   }
 }

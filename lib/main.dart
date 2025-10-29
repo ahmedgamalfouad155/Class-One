@@ -15,7 +15,7 @@ import 'package:sinna/core/services/device/webview_service.dart';
 import 'package:sinna/core/services/notifications/local_notification_service.dart';
 import 'package:sinna/core/services/notifications/push_notification_service.dart';
 import 'package:sinna/core/theme/thems.dart';
-import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart'; 
+import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:sinna/features/profile/presentation/manager/theme_cubit/theme_cubit.dart';
 import 'package:sinna/firebase_options.dart';
 import 'package:sinna/generated/codegen_loader.g.dart';
@@ -62,7 +62,7 @@ void main() async {
   runApp(
     EasyLocalization(
       supportedLocales: const [Locale('ar'), Locale('en')],
-      path: 'assets/translations',
+      path: AppConstants.translationsPath,
       fallbackLocale: const Locale('en'),
       assetLoader: CodegenLoader(),
       child: MyApp(),
@@ -81,9 +81,8 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return MultiBlocProvider(
-          providers: [ 
-
-            BlocProvider(create: (_) => AuthCubit()..authStatus()), 
+          providers: [
+            BlocProvider(create: (_) => AuthCubit()..authStatus()),
             BlocProvider(create: (_) => ThemeCubit()..loadTheme()),
           ],
           child: Builder(
@@ -91,7 +90,7 @@ class MyApp extends StatelessWidget {
               return BlocBuilder<ThemeCubit, ThemeMode>(
                 builder: (context, state) {
                   return MaterialApp.router(
-                    title: 'Sinna',
+                    title: AppConstants.appTitle,
                     localizationsDelegates: context.localizationDelegates,
                     supportedLocales: context.supportedLocales,
                     locale: context.locale,

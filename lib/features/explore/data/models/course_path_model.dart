@@ -1,9 +1,10 @@
+import 'package:sinna/core/constants/constants.dart';
+
 class CoursePathModel {
-  String? university;
+  String? institution;
   String? specialization;
-  String? program;
   String? level;
-  String? subject;
+  String? courseId;
   String? term;
   String? id;
   bool? isPaid;
@@ -12,11 +13,10 @@ class CoursePathModel {
   String? image;
 
   CoursePathModel({
-    this.university,
+    this.institution,
     this.specialization,
-    this.program,
     this.level,
-    this.subject,
+    this.courseId,
     this.term,
     this.id,
     this.isPaid,
@@ -28,11 +28,11 @@ class CoursePathModel {
   void update({
     String? country,
     String? specialization,
-    String? university,
+    String? institution,
     String? faculty,
     String? program,
     String? level,
-    String? subject,
+    String? courseId,
     String? term,
     String? id,
     bool? isPaid,
@@ -40,11 +40,10 @@ class CoursePathModel {
     String? instructor,
     String? image,
   }) {
-    if (university != null) this.university = university;
+    if (institution != null) this.institution = institution;
     if (specialization != null) this.specialization = specialization;
-    if (program != null) this.program = program;
     if (level != null) this.level = level;
-    if (subject != null) this.subject = subject;
+    if (courseId != null) this.courseId = courseId;
     if (term != null) this.term = term;
     if (id != null) this.id = id;
     if (isPaid != null) this.isPaid = isPaid;
@@ -55,33 +54,31 @@ class CoursePathModel {
 
   Map<String, dynamic> toMap() {
     return {
-      'university': university,
-      "specialization": specialization,
-      'program': program,
-      'level': level,
-      'subject': subject,
-      'term': term,
-      'id': id,
-      'isPaid': isPaid ?? true,
-      'subjectName': title,
-      'subjectDoctor': instructor,
-      'subjectImage': image,
+      FireStoreCoursePathFieldsName.institution: institution,
+      FireStoreCoursePathFieldsName.specialization: specialization,
+      FireStoreCoursePathFieldsName.level: level,
+      FireStoreCoursePathFieldsName.coursrId: courseId,
+      FireStoreCoursePathFieldsName.term: term,
+      FireStoreCoursePathFieldsName.id: id,
+      FireStoreCoursePathFieldsName.isPaid: isPaid ?? true,
+      FireStoreCoursePathFieldsName.title: title,
+      FireStoreCoursePathFieldsName.instructor: instructor,
+      FireStoreCoursePathFieldsName.imageUrl: image,
     };
   }
 
   factory CoursePathModel.fromMap(Map<String, dynamic> map, String documentId) {
     return CoursePathModel(
-      university: map['university'],
-      specialization: map["specialization"],
-      program: map['program'],
-      level: map['level'],
-      subject: map['subject'],
-      term: map['term'],
+      institution: map[FireStoreCoursePathFieldsName.institution],
+      specialization: map[FireStoreCoursePathFieldsName.specialization],
+      level: map[FireStoreCoursePathFieldsName.level],
+      courseId: map[FireStoreCoursePathFieldsName.coursrId],
+      term: map[FireStoreCoursePathFieldsName.term],
       id: documentId,
-      isPaid: map['isPaid'] ?? true,
-      title: map['subjectName'],
-      instructor: map['subjectDoctor'],
-      image: map['subjectImage'],
+      isPaid: map[FireStoreCoursePathFieldsName.isPaid] ?? true,
+      title: map[FireStoreCoursePathFieldsName.title],
+      instructor: map[FireStoreCoursePathFieldsName.instructor],
+      image: map[FireStoreCoursePathFieldsName.imageUrl],
     );
   }
 }

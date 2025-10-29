@@ -1,3 +1,5 @@
+import 'package:sinna/core/constants/constants.dart';
+
 class UserInfoModel {
   final String? uid;
   final String? name;
@@ -26,19 +28,27 @@ class UserInfoModel {
 
   Map<String, dynamic> toMap() {
     final data = <String, dynamic>{};
-    if (uid != null && uid!.isNotEmpty) data['uid'] = uid;
-    if (name != null && name!.isNotEmpty) data['name'] = name;
-    if (email != null && email!.isNotEmpty) data['email'] = email;
-    if (deviceId != null && deviceId!.isNotEmpty) data['deviceId'] = deviceId;
+    if (uid != null && uid!.isNotEmpty) {
+      data[FireStoreUserInfoFieldsName.uid] = uid;
+    }
+    if (name != null && name!.isNotEmpty) {
+      data[FireStoreUserInfoFieldsName.name] = name;
+    }
+    if (email != null && email!.isNotEmpty) {
+      data[FireStoreUserInfoFieldsName.email] = email;
+    }
+    if (deviceId != null && deviceId!.isNotEmpty) {
+      data[FireStoreUserInfoFieldsName.deviceId] = deviceId;
+    }
     return data;
   }
 
   factory UserInfoModel.fromMap(Map<String, dynamic> map, String documentId) {
     return UserInfoModel(
       uid: documentId,
-      name: map['name'],
-      email: map['email'],
-      deviceId: map['deviceId'],
+      name: map[FireStoreUserInfoFieldsName.name],
+      email: map[FireStoreUserInfoFieldsName.email],
+      deviceId: map[FireStoreUserInfoFieldsName.deviceId],
     );
   }
 }

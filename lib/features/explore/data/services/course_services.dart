@@ -15,16 +15,15 @@ class CourseServicesImpl implements CourseServices {
   @override
   Future<List<CourseModel>> getCourses({
     required CoursePathModel coursePathModel,
-  }) async { 
+  }) async {
     return await firestor.getCollection(
       path: FirestorePath.newLessonsPath(
         specialization: coursePathModel.specialization.toString(),
-        program: coursePathModel.program.toString(),
-        university: coursePathModel.university.toString(),
+        institution: coursePathModel.institution.toString(),
         level: coursePathModel.level.toString(),
-        course: coursePathModel.subject.toString(),
+        course: coursePathModel.courseId.toString(),
       ),
-      builder: (data, documentId) { 
+      builder: (data, documentId) {
         return CourseModel.fromMap(data, documentId);
       },
     );

@@ -1,18 +1,24 @@
+import 'package:sinna/core/constants/constants.dart';
+
 class FirestorePath {
-  static String users(String uid) => "users/$uid";
-  static String myUsers() => "users/";
+  static String users(String uid) => "${FireStoreCollectionsName.users}/$uid";
+  static String myUsers() => "${FireStoreCollectionsName.users}/";
 
-  static String myInstructors() => "instructors/";
-  static String instructorsId(String id) => "instructors/$id";
+  static String myInstructors() => "${FireStoreCollectionsName.instructors}/";
+  static String instructorsId(String id) =>
+      "${FireStoreCollectionsName.instructors}/$id";
 
-  static String myInstitutions() => "institutions/";
-  static String institutionsId(String id) => "institutions/$id";
+  static String myInstitutions() => "${FireStoreCollectionsName.institutions}/";
+  static String institutionsId(String id) =>
+      "${FireStoreCollectionsName.institutions}/$id";
 
   static String courses(String uid, String courseId) =>
-      "users/$uid/myCourses/$courseId";
-  static String myCourses(String uid) => "users/$uid/myCourses/";
+      "${FireStoreCollectionsName.users}/$uid/${FireStoreCollectionsName.myCourses}/$courseId";
+  static String myCourses(String uid) =>
+      "${FireStoreCollectionsName.users}/$uid/${FireStoreCollectionsName.myCourses}/";
 
-  static String filter(String uid) => "users/$uid/filter/filter";
+  static String filter(String uid) =>
+      "${FireStoreCollectionsName.users}/$uid/${FireStoreCollectionsName.filter}/${FireStoreCollectionsName.filter}";
 
   static String notifications(String notificationsId) =>
       "notifications/$notificationsId";
@@ -21,18 +27,15 @@ class FirestorePath {
 
   static String newCoursesPath({
     required String specialization,
-    required String program,
-    required String university,
+    required String institution,
     required String level,
   }) =>
-      "courses/info/specialization/$specialization/program/$program/universities/$university/levels/$level/courses/";
-
+      "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}/$institution/${FireStoreCollectionsName.levels}/$level/${FireStoreCollectionsName.courses}/";
   static String newLessonsPath({
     required String specialization,
-    required String program,
-    required String university,
+    required String institution,
     required String level,
     required String course,
   }) =>
-      "courses/info/specialization/$specialization/program/$program/universities/$university/levels/$level/courses/$course/lessons/";
+      "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}/$institution/${FireStoreCollectionsName.levels}/$level/${FireStoreCollectionsName.courses}/$course/${FireStoreCollectionsName.lessons}/";
 }
