@@ -1,44 +1,40 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sinna/core/cubit/radio_cubit/radio_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart'; 
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
-import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/academic_info_dialog.dart';
+import 'package:sinna/features/profile/presentation/manager/institutions_cubit.dart';
+import 'package:sinna/features/profile/presentation/widgets/bottom_sheet/show_institutions_bottom_sheet.dart';
 import 'package:sinna/generated/locale_keys.g.dart';
 
-class AcademicInfoWidget extends StatelessWidget {
-  const AcademicInfoWidget({super.key});
+class InstitutionsInfoWidget extends StatelessWidget {
+  const InstitutionsInfoWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-      value: context.read<RadioCubit>(),
+      value: context.read<InstitutionsRadioCubit>(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            LocaleKeys.academic_info.tr(),
-            style: AppStyles.textStyle16W600(
-              context,
-            ).copyWith(color: context.appColors.grey),
-          ),
-          const SizedBox(height: 10),
           InkWell(
-            onTap: () =>
-                showAcademicInfoDialog(context, context.read<RadioCubit>()),
+            onTap: () => showInstitutionsBottomSheet(
+              context,
+              context.read<InstitutionsRadioCubit>(),
+            ),
+
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  LocaleKeys.university.tr(),
+                  LocaleKeys.institutions.tr(),
                   style: AppStyles.textStyle16w400Grey(
                     context,
                   ).copyWith(color: context.appColors.black),
                 ),
                 Row(
                   children: [
-                    BlocBuilder<RadioCubit, String?>(
+                    BlocBuilder<InstitutionsRadioCubit, String?>(
                       builder: (context, state) {
                         return Text(
                           state ?? LocaleKeys.select_university.tr(),
@@ -47,7 +43,11 @@ class AcademicInfoWidget extends StatelessWidget {
                       },
                     ),
                     const SizedBox(width: 5),
-                    const Icon(Icons.arrow_drop_down_sharp),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      color: context.appColors.greyNavBar,
+                      size: 12,
+                    ),
                   ],
                 ),
               ],

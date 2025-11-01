@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart'; 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/cubit/radio_cubit/radio_cubit.dart';
 import 'package:sinna/core/theme/customs_box_decoratino.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
-import 'package:sinna/core/widgets/custom_divider_widget.dart'; 
+import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/features/profile/presentation/manager/academic_info_update/academic_info_update_cubit.dart';
 import 'package:sinna/features/profile/presentation/manager/levels_radio_cubit.dart';
 import 'package:sinna/features/profile/presentation/manager/program_filter_cubit.dart';
 import 'package:sinna/features/profile/presentation/manager/specialization_filter_cubit.dart';
-import 'package:sinna/features/profile/presentation/widgets/acadimic_info_widget.dart';
+import 'package:sinna/features/profile/presentation/widgets/institutions_info_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/program_filter_bottom_sheet_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/specilalization_filter_bottom_sheet_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/levels_widget.dart';
@@ -59,7 +59,7 @@ class SetupContentWidget extends StatelessWidget {
                       children: [
                         BlocProvider.value(
                           value: universityCubit,
-                          child: const AcademicInfoWidget(),
+                          child: const InstitutionsInfoWidget(),
                         ),
                         CustomDividerWidget(isHeight: true),
                         BlocProvider.value(

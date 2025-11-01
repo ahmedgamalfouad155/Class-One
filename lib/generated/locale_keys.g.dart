@@ -105,5 +105,7 @@ abstract class LocaleKeys {
   static const admins = 'admins';
   static const help = 'help';
   static const account = 'account';
-  static const you = 'you';
+  static const you = 'you'; 
+  static const specialty = 'specialty';
+  static const select_specialty = 'select_specialty';
 }

@@ -38,4 +38,12 @@ class FirestorePath {
     required String course,
   }) =>
       "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}/$institution/${FireStoreCollectionsName.levels}/$level/${FireStoreCollectionsName.courses}/$course/${FireStoreCollectionsName.lessons}/";
+
+  static String preferencesSpecialization() =>
+      "${FireStoreCollectionsName.coursesInfoSpecialization}/";
+  static String preferencesInstitutions({required String specialization}) =>
+      "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}";
+  
+  // static String preferencesLevels({required String specialization}) =>
+      // "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}";
 }

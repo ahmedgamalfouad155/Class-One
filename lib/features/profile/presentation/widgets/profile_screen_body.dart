@@ -9,8 +9,7 @@ import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/core/widgets/custom_option_widget.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/addmin_section.dart';
-import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/appearance_content_bottom_sheet.dart';
-import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/filter_content_bottom_sheet.dart';
+import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/appearance_content_bottom_sheet.dart'; 
 import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/language_content_bottom_sheet.dart';
 import 'package:sinna/generated/locale_keys.g.dart';
 
@@ -34,7 +33,7 @@ class YouScreenBody extends StatelessWidget {
             CustomOptionWidget(
               title: LocaleKeys.preferences.tr(),
               onTap: () {
-                filterContentBottomSheet(context);
+                GoRouter.of(context).push(AppRouter.kPreferencesScreen);
               },
             ),
             CustomDividerWidget(isHeight: true),

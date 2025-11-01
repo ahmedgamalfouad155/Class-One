@@ -21,6 +21,7 @@ import 'package:sinna/features/course_details/presentation/screens/courses_scree
 import 'package:sinna/features/landing/presentation/screen/landing_screen.dart';
 import 'package:sinna/features/my_courses/presentation/screens/user_course_details_screen.dart';
 import 'package:sinna/features/nav_bar/presentation/screens/nav_bar_screen.dart';
+import 'package:sinna/features/profile/presentation/screen/preferences_screen.dart';
 import 'package:sinna/features/profile/presentation/screen/profile_screen.dart';
 import 'package:sinna/features/profile/presentation/screen/name_screen.dart';
 import 'package:sinna/features/profile/presentation/screen/password_screen.dart';
@@ -53,6 +54,7 @@ abstract class AppRouter {
   static const String kInstitutionsScreen = '/institutionsScreen';
   static const String kNameScreen = '/nameScreen';
   static const String kPasswordScreen = '/passwordScreen';
+  static const String kPreferencesScreen = '/preferencesScreen';
 
   static final router = GoRouter(
     routes: [
@@ -168,6 +170,10 @@ abstract class AppRouter {
       GoRoute(
         path: kPasswordScreen,
         builder: (context, state) => const PasswordScreen(),
+      ),
+      GoRoute(
+        path: kPreferencesScreen,
+        builder: (context, state) => const PreferencesScreen(),
       ),
     ],
   );

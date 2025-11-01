@@ -7,8 +7,8 @@ import 'package:sinna/features/profile/presentation/manager/academic_info_update
 import 'package:sinna/features/profile/presentation/manager/program_filter_cubit.dart';
 import 'package:sinna/features/profile/presentation/manager/specialization_filter_cubit.dart';
 import 'package:sinna/features/profile/presentation/manager/levels_radio_cubit.dart';
-import 'package:sinna/features/profile/presentation/widgets/acadimic_info_widget.dart';
-import 'package:sinna/features/profile/presentation/widgets/addvanced_settings_and_icon_widget.dart';
+import 'package:sinna/features/profile/presentation/widgets/institutions_info_widget.dart';
+import 'package:sinna/features/profile/presentation/widgets/title_in_buttom_sheet_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/apply_button_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/program_filter_bottom_sheet_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/specilalization_filter_bottom_sheet_widget.dart';
@@ -22,7 +22,7 @@ void filterContentBottomSheet(BuildContext context) {
       providers: [
         BlocProvider(create: (_) => SpecializationFilterCubit()),
         BlocProvider(create: (_) => ProgramFilterCubit()),
-        BlocProvider(create: (_) => RadioCubit()), 
+        BlocProvider(create: (_) => RadioCubit()),
         BlocProvider(create: (_) => LevelsRadioCubit()),
         BlocProvider(create: (_) => AcademicInfoUpdateCubit()),
       ],
@@ -42,7 +42,7 @@ void filterContentBottomSheet(BuildContext context) {
                 children: [
                   const CustomTopShapeINBottomSheet(),
                   const SizedBox(height: 10),
-                  const AddvancedSettingsAndIconWidget(),
+                  const TitleInButtomSheetWidget(),
                   const SizedBox(height: 30),
 
                   BlocProvider.value(
@@ -55,7 +55,7 @@ void filterContentBottomSheet(BuildContext context) {
                   ),
                   BlocProvider.value(
                     value: universityCubit,
-                    child: const AcademicInfoWidget(),
+                    child: const InstitutionsInfoWidget(),
                   ),
                   const SizedBox(height: 10),
                   BlocProvider.value(
