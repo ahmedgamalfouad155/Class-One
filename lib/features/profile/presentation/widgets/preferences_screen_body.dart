@@ -22,7 +22,7 @@ class PreferencesScreenBody extends StatelessWidget {
         BlocProvider(create: (_) => LevelsRadioCubit()),
       ],
       child: Builder(
-        builder: (context) {
+        builder: (context) { 
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
