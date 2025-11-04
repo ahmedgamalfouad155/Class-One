@@ -50,8 +50,7 @@ void showInstitutionsBottomSheet(
                   }
                   if (state is InstitutionsLoadingFailedState) {
                     return Text(state.errorMessage);
-                  }
-                  print(state);
+                  } 
                   return const Text("error");
                 },
               );

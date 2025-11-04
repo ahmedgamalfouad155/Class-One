@@ -25,8 +25,7 @@ class NavBarScreenBody extends StatefulWidget {
 class _NavBarScreenBodyState extends State<NavBarScreenBody> {
   final List<Widget> screen = [
     MyCorsesScreen(),
-    ExploreScreen(),
-    // NotificationsScreen(),
+    ExploreScreen(), 
     BlocProvider(
       create: (context) => UserInfoCubit()..getUserInfo(),
       child: YouScreen(),
@@ -88,17 +87,7 @@ class _NavBarScreenBodyState extends State<NavBarScreenBody> {
                             : AppImages.explore1,
                       ),
                       label: LocaleKeys.explore.tr(),
-                    ),
-                    // BottomNavigationBarItem(
-                    //   icon: SvgPicture.asset(
-                    //     navBarCubit.currentIndex == 2
-                    //         ? AppImages.inBox2
-                    //         : themeState == ThemeMode.dark
-                    //         ? AppImages.dashBoard3
-                    //         : AppImages.inBox1,
-                    //   ),
-                    //   label: LocaleKeys.inbox.tr(),
-                    // ),
+                    ), 
                     BottomNavigationBarItem(
                       icon: SvgPicture.asset(
                         navBarCubit.currentIndex == 2
