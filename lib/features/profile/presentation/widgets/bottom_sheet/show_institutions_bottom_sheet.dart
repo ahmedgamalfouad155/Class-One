@@ -14,46 +14,48 @@ import 'package:sinna/generated/locale_keys.g.dart';
 void showInstitutionsBottomSheet(
   BuildContext context,
   InstitutionsRadioCubit radioCubit,
+  PreferencesCubit preferencesCubit,
 ) {
   CustomBottomSheet.show(
     context: context,
-    child: BlocProvider.value(
-      value: radioCubit,
-      child: BlocProvider(
-        create: (context) => PreferencesCubit()..getInstitutions(),
-        child: ConstrainedBox(
-          constraints: BoxConstraints(
-            minHeight: context.height * .8,
-            minWidth: context.width,
-          ),
-          child: SingleChildScrollView(
-            child: Builder(
-              builder: (context) {
-                return BlocBuilder<PreferencesCubit, PreferencesState>(
-                  builder: (context, state) {
-                    if (state is InstitutionsLoadingState) {
-                      return const Center(child: CircularProgressIndicator());
-                    }
-                    if (state is InstitutionsLoadedState) {
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          TitleInButtomSheetWidget(
-                            title: LocaleKeys.institutions.tr(),
-                          ),
-                          InstitutionsRadioGroup(options: state.institutions),
-                        ],
-                      );
-                    }
-                    if (state is InstitutionsLoadingFailedState) {
-                      return Text(state.errorMessage);
-                    }
-                    return const Text("error");
-                  },
-                );
-              },
-            ),
+    child: MultiBlocProvider(
+      providers: [
+        BlocProvider.value(value: radioCubit),
+        BlocProvider.value(value: preferencesCubit),
+      ],
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          minHeight: context.height * .8,
+          minWidth: context.width,
+        ),
+        child: SingleChildScrollView(
+          child: Builder(
+            builder: (context) {
+              return BlocBuilder<PreferencesCubit, PreferencesState>(
+                builder: (context, state) {
+                  if (state is InstitutionsLoadingState) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  if (state is InstitutionsLoadedState) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        TitleInButtomSheetWidget(
+                          title: LocaleKeys.institutions.tr(),
+                        ),
+                        InstitutionsRadioGroup(options: state.institutions),
+                      ],
+                    );
+                  }
+                  if (state is InstitutionsLoadingFailedState) {
+                    return Text(state.errorMessage);
+                  }
+                  print(state);
+                  return const Text("error");
+                },
+              );
+            },
           ),
         ),
       ),
@@ -62,7 +64,7 @@ void showInstitutionsBottomSheet(
 }
 
 class InstitutionsRadioGroup extends StatelessWidget {
-  final List<String> options; 
+  final List<String> options;
   const InstitutionsRadioGroup({super.key, required this.options});
 
   @override

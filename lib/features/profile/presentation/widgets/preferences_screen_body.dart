@@ -5,6 +5,7 @@ import 'package:sinna/core/cubit/radio_cubit/radio_cubit.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/features/profile/presentation/manager/institutions_cubit.dart';
 import 'package:sinna/features/profile/presentation/manager/levels_radio_cubit.dart';
+import 'package:sinna/features/profile/presentation/manager/preferences_cubit/preferences_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/institutions_info_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/levels_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/specialty_widget.dart';
@@ -20,9 +21,10 @@ class PreferencesScreenBody extends StatelessWidget {
         BlocProvider(create: (_) => RadioCubit()),
         BlocProvider(create: (_) => InstitutionsRadioCubit()),
         BlocProvider(create: (_) => LevelsRadioCubit()),
+        BlocProvider(create: (_) => PreferencesCubit()),
       ],
       child: Builder(
-        builder: (context) { 
+        builder: (context) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
@@ -47,7 +49,7 @@ class PreferencesScreenBody extends StatelessWidget {
                   value: BlocProvider.of<LevelsRadioCubit>(context),
                   child: const LevelsWidget(),
                 ),
-                const SizedBox(height: 15),
+                const SizedBox(height: 15), 
               ],
             ),
           );
