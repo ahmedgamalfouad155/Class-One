@@ -4,21 +4,21 @@ import 'package:sinna/features/explore/data/models/course_path_model.dart';
 import 'package:sinna/features/explore/data/models/course_info_model.dart';
 
 abstract class SubjectService {
-  Future<List<CourseInfoModel>> getSubjects(CoursePathModel path);
+  Stream<List<CourseInfoModel>> getSubjects(CoursePathModel path);
 }
 
 class SubjectServiceImpl extends SubjectService {
   final firestor = FirestoreServices.instance;
   @override
-  Future<List<CourseInfoModel>> getSubjects(CoursePathModel path) {
-    return firestor.getCollection(
+  Stream<List<CourseInfoModel>> getSubjects(CoursePathModel path) {
+    return firestor.collectionsStram(
       path: FirestorePath.newCoursesPath(
         specialization: path.specialization.toString(),
         institution: path.institution.toString(),
         level: path.level.toString(),
       ),
       builder: (data, documentId) {
-        return CourseInfoModel.fromMap(data, documentId);
+        return CourseInfoModel.fromMap(data!, documentId);
       },
     );
   }

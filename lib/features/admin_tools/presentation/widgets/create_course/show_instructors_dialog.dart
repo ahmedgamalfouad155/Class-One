@@ -4,9 +4,8 @@ import 'package:sinna/core/cubit/radio_cubit/radio_cubit.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/utils/app_media.dart';
-import 'package:sinna/core/widgets/custom_divider_widget.dart';
-import 'package:sinna/core/widgets/custom_radio_widget.dart';
 import 'package:sinna/features/admin_tools/presentation/manager/instructors/instructors_cubit.dart';
+import 'package:sinna/features/profile/presentation/widgets/bottom_sheet/custom_radio_group.dart';
 
 void showInstructorsDialog(BuildContext context, RadioCubit radioCubit) {
   showDialog(
@@ -43,11 +42,7 @@ void showInstructorsDialog(BuildContext context, RadioCubit radioCubit) {
                               .map((instructor) => instructor.name)
                               .toList();
 
-                          return Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [_InstructorGroup(options: instructors)],
-                          );
+                          return CustomRadioGroup(options: instructors);
                         }
                         if (state is InstructorsLoadFailureState) {
                           return Text(state.errMessage);
@@ -95,28 +90,4 @@ void showInstructorsDialog(BuildContext context, RadioCubit radioCubit) {
       );
     },
   );
-}
-
-/// Group Widget لعرض مجموعة من الجامعات تحت عنوان فرعي
-class _InstructorGroup extends StatelessWidget {
-  final List<String> options;
-
-  const _InstructorGroup({required this.options});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ...options.map(
-          (option) => Column(
-            children: [
-              CustomRadioWidget(title: option),
-              if (option != options.last) const CustomDividerWidget(),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
 }

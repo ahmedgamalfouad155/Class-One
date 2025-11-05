@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
-import 'package:sinna/features/admin_tools/presentation/manager/create_course_cubit/create_course_cubit.dart';
+import 'package:sinna/features/explore/presentation/manager/create_course_cubit/create_course_cubit.dart';
 import 'package:sinna/features/admin_tools/presentation/widgets/create_course/info_content_widget.dart';
 import 'package:sinna/features/admin_tools/presentation/widgets/create_course/lesson_content_widget.dart';
 import 'package:sinna/features/admin_tools/presentation/widgets/create_course/setup_contetn_widget.dart';

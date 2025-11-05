@@ -20,10 +20,7 @@ class FirestorePath {
   static String filter(String uid) =>
       "${FireStoreCollectionsName.users}/$uid/${FireStoreCollectionsName.filter}/${FireStoreCollectionsName.filter}";
 
-  static String notifications(String notificationsId) =>
-      "notifications/$notificationsId";
-
-  static String myNotifications() => "notifications/";
+  
 
   static String newCoursesPath({
     required String specialization,
@@ -31,6 +28,15 @@ class FirestorePath {
     required String level,
   }) =>
       "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}/$institution/${FireStoreCollectionsName.levels}/$level/${FireStoreCollectionsName.courses}/";
+  
+  static String createNewCourse({
+    required String specialization,
+    required String institution,
+    required String level,
+    required String course,
+  }) =>
+      "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}/$institution/${FireStoreCollectionsName.levels}/$level/${FireStoreCollectionsName.courses}/$course";
+  
   static String newLessonsPath({
     required String specialization,
     required String institution,
