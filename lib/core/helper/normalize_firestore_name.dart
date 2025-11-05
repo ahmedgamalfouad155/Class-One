@@ -1,3 +1,6 @@
+String documentIdFromLocalData() => DateTime.now().toIso8601String();
+
+
 String normalizeFirestoreName(String input) {
   
   String normalized = input.toLowerCase(); 

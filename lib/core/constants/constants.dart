@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:sinna/generated/locale_keys.g.dart';
 
-String documentIdFromLocalData() => DateTime.now().toIso8601String();
 
 class AppConstants {
   static const String hiveBoxName = "settings";
@@ -79,31 +78,7 @@ class FireStoreInstitutionFieldsName {
   static const String name = "name";
 }
 
-String selectedUniversity = "Select University";
-Map<String, String> convert = {
-  "Mansoura University": "mansoura_university",
-  "King Khalid University": "king_khalid_university",
-  "Academic": "academic",
-  "Dentistry": "dentistry",
-  "Professional": "professional",
-  "Nursing": "nursing",
-  "Bachelor": "bachelors",
-  "Master": "masters",
-  "Piometry": "prometric",
-  "Year 1": "year_1",
-  "Year 2": "year_2",
-  "Year 3": "year_3",
-  "Year 4": "year_4",
-  "Year 5 ": "year_5",
-
-  "Periodontology": "prothodontics",
-  "Oral surgery": "oral_surgery",
-  "Pedodontics": "periodontology",
-  "Endodontics": "endodontics",
-  "Operative": "operative",
-  "Prothodontics": "pedodontics",
-  "Orthodontics": "orthodontics",
-};
+String selectedUniversity = "Select University"; 
 
 final List<String> specializationBottomSheetFilters = const [
   "Dentistry",
