@@ -1,15 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sinna/core/helper/open_whatsapp.dart';
 import 'package:sinna/core/router/app_router.dart';
-import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/core/widgets/custom_option_widget.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
-import 'package:sinna/features/profile/presentation/widgets/addmin_section.dart';
-import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/appearance_content_bottom_sheet.dart'; 
+import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/appearance_content_bottom_sheet.dart';
 import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/language_content_bottom_sheet.dart';
 import 'package:sinna/generated/locale_keys.g.dart';
 
@@ -36,7 +33,6 @@ class YouScreenBody extends StatelessWidget {
                 GoRouter.of(context).push(AppRouter.kPreferencesScreen);
               },
             ),
-            CustomDividerWidget(isHeight: true),
             CustomOptionWidget(
               title: LocaleKeys.language.tr(),
               onTap: () => languageContentBottomSheet(context),
@@ -45,13 +41,25 @@ class YouScreenBody extends StatelessWidget {
               title: LocaleKeys.theme.tr(),
               onTap: () => appearanceContentBottomSheet(context),
             ),
-            SizedBox(height: 20.h),
             CustomOptionWidget(
               title: LocaleKeys.help_center.tr(),
               onTap: openWhatsApp,
             ),
-            SizedBox(height: 20.h),
-            isAdmin ? AddminSection() : SizedBox(),
+            isAdmin
+                ? CustomOptionWidget(
+                    title: LocaleKeys.control_panel.tr(),
+                    onTap: () {
+                      GoRouter.of(context).push(AppRouter.kControlPanalScreen);
+                    },
+                  )
+                : SizedBox(),
+            CustomOptionWidget(
+              title: LocaleKeys.logout.tr(),
+              onTap: () {
+                BlocProvider.of<AuthCubit>(context).logout();
+                (context).go(AppRouter.klandingScreen);
+              },
+            ),
           ],
         ),
       ),
