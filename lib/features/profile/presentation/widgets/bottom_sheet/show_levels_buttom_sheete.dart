@@ -12,11 +12,9 @@ void showLevelsButtomSheet(BuildContext context, LevelsRadioCubit radioCubit) {
     context: context,
     child: BlocProvider.value(
       value: radioCubit,
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          minHeight: context.height * .8,
-          minWidth: context.width,
-        ),
+      child: SizedBox(
+        height: context.height * 0.93,
+        width: context.width,
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,

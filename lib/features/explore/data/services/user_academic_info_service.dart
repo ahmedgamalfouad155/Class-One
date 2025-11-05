@@ -4,7 +4,7 @@ import 'package:sinna/features/auth/data/models/user_academic_model.dart';
 import 'package:sinna/features/auth/data/services/auth_service/auth_services.dart';
 
 abstract class UserAcademicInfoService {
-  Future<UserAcademicModel> getUserInfo();
+  Stream<UserAcademicModel> getUserInfo();
 }
 
 class UserAcademicInfoServiceImpl implements UserAcademicInfoService {
@@ -12,11 +12,11 @@ class UserAcademicInfoServiceImpl implements UserAcademicInfoService {
   final uid = AuthServicesImpl().currentUser!.email;
 
   @override
-  Future<UserAcademicModel> getUserInfo() async {
-    return await firestorServices.getDocument(
+  Stream<UserAcademicModel> getUserInfo() {
+    return firestorServices.documentstream(
       path: FirestorePath.filter(uid!),
       builder: (data, documentId) {
-        return UserAcademicModel.fromMap(data);
+        return UserAcademicModel.fromMap(data!,);
       },
     );
   }

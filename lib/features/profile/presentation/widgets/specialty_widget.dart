@@ -22,6 +22,7 @@ class SpecialtyWidget extends StatelessWidget {
           context.read<PreferencesCubit>().getInstitutions(
             specialization: selectedSpecialty!,
           );
+          context.read<PreferencesCubit>().updateSpecialty(selectedSpecialty);
         },
         child: BlocBuilder<RadioCubit, String?>(
           builder: (context, state) {

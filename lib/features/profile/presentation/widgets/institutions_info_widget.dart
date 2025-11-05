@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart'; 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/features/profile/presentation/manager/institutions_cubit.dart';
@@ -38,6 +38,11 @@ class InstitutionsInfoWidget extends StatelessWidget {
                   children: [
                     BlocBuilder<InstitutionsRadioCubit, String?>(
                       builder: (context, state) {
+                        state != null
+                            ? context
+                                  .read<PreferencesCubit>()
+                                  .updateInstitutions(state)
+                            : null;
                         return Text(
                           state ?? LocaleKeys.select_university.tr(),
                           style: AppStyles.textStyle14W600(context),

@@ -23,11 +23,9 @@ void showInstitutionsBottomSheet(
         BlocProvider.value(value: radioCubit),
         BlocProvider.value(value: preferencesCubit),
       ],
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          minHeight: context.height * .8,
-          minWidth: context.width,
-        ),
+      child: SizedBox(
+        height: context.height * 0.9,
+        width: context.width,
         child: SingleChildScrollView(
           child: Builder(
             builder: (context) {
@@ -36,7 +34,7 @@ void showInstitutionsBottomSheet(
                   if (state is InstitutionsLoadingState) {
                     return const Center(child: CircularProgressIndicator());
                   }
-                  if (state is InstitutionsLoadedState) {
+                  if (state is InstitutionsSuccessState) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
@@ -48,9 +46,9 @@ void showInstitutionsBottomSheet(
                       ],
                     );
                   }
-                  if (state is InstitutionsLoadingFailedState) {
+                  if (state is InstitutionsFailedState) {
                     return Text(state.errorMessage);
-                  } 
+                  }
                   return const Text("error");
                 },
               );

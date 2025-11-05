@@ -21,21 +21,18 @@ void showSpecialtyBottomSheet(
         BlocProvider.value(value: radioCubit),
         BlocProvider.value(value: preferencesCubit..getSpecialty()),
       ],
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          minHeight: context.height * .8,
-          minWidth: context.width,
-        ),
+      child: SizedBox(
+        height: context.height * 0.9,
+        width: context.width,
         child: SingleChildScrollView(
           child: Builder(
             builder: (context) {
-              return BlocBuilder<PreferencesCubit, PreferencesState>( 
+              return BlocBuilder<PreferencesCubit, PreferencesState>(
                 builder: (context, state) {
                   if (state is SpecialtyLoadingState) {
                     return const Center(child: CircularProgressIndicator());
                   }
-
-                  if (state is SpecialtyLoadedState) { 
+                  if (state is SpecialtySuccessState) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
@@ -47,8 +44,8 @@ void showSpecialtyBottomSheet(
                       ],
                     );
                   }
-                  if (state is InstitutionsLoadedState ||
-                      state is InstitutionsLoadingFailedState ||
+                  if (state is InstitutionsSuccessState ||
+                      state is InstitutionsFailedState ||
                       state is InstitutionsLoadingState) {
                     final prevState = context
                         .read<PreferencesCubit>()
@@ -63,10 +60,10 @@ void showSpecialtyBottomSheet(
                         CustomRadioGroup(options: prevState),
                       ],
                     );
-                  } 
-                  if (state is SpecialtyLoadingFailedState) {
+                  }
+                  if (state is SpecialtyFailedState) {
                     return Text(state.errorMessage);
-                  } 
+                  }
                   return const Text("error");
                 },
               );

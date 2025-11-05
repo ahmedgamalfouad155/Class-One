@@ -7,25 +7,24 @@ final class PreferencesInitial extends PreferencesState {}
 
 final class SpecialtyLoadingState extends PreferencesState {}
 
-final class SpecialtyLoadedState extends PreferencesState {
+final class SpecialtySuccessState extends PreferencesState {
   final List<String> specialty;
-  SpecialtyLoadedState(this.specialty);
+  SpecialtySuccessState(this.specialty);
 }
 
-  final class SpecialtyLoadingFailedState extends PreferencesState {
+final class SpecialtyFailedState extends PreferencesState {
   final String errorMessage;
-  SpecialtyLoadingFailedState(this.errorMessage);
+  SpecialtyFailedState(this.errorMessage);
 }
-
 
 final class InstitutionsLoadingState extends PreferencesState {}
 
-final class InstitutionsLoadedState extends PreferencesState {
+final class InstitutionsSuccessState extends PreferencesState {
   final List<String> institutions;
-  InstitutionsLoadedState(this.institutions);
+  InstitutionsSuccessState(this.institutions);
 }
 
-  final class InstitutionsLoadingFailedState extends PreferencesState {
+final class InstitutionsFailedState extends PreferencesState {
   final String errorMessage;
-  InstitutionsLoadingFailedState(this.errorMessage);
+  InstitutionsFailedState(this.errorMessage);
 }

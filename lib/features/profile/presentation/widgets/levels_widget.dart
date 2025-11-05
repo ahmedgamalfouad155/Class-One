@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
-import 'package:sinna/features/profile/presentation/manager/levels_radio_cubit.dart'; 
+import 'package:sinna/features/profile/presentation/manager/levels_radio_cubit.dart';
+import 'package:sinna/features/profile/presentation/manager/preferences_cubit/preferences_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/bottom_sheet/show_levels_buttom_sheete.dart';
 import 'package:sinna/generated/locale_keys.g.dart';
 
@@ -16,11 +17,17 @@ class LevelsWidget extends StatelessWidget {
       value: context.read<LevelsRadioCubit>(),
       child: BlocBuilder<LevelsRadioCubit, String?>(
         builder: (context, state) {
+          state != null
+              ? context.read<PreferencesCubit>().updateLevels(state)
+              : null;
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               InkWell(
-                onTap: () =>  showLevelsButtomSheet(context, context.read<LevelsRadioCubit>()), 
+                onTap: () => showLevelsButtomSheet(
+                  context,
+                  context.read<LevelsRadioCubit>(),
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

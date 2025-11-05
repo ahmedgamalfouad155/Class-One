@@ -10,27 +10,38 @@ class PreferencesCubit extends Cubit<PreferencesState> {
   final PreferencesService service = PreferencesServiceImpl();
   List<String> previousSpecialties = [];
 
-
   Future<void> getSpecialty() async {
     emit(SpecialtyLoadingState());
     try {
       final specialty = await service.getSpecialty();
       previousSpecialties = specialty;
-      emit(SpecialtyLoadedState(specialty));
+      emit(SpecialtySuccessState(specialty));
     } catch (e) {
-      emit(SpecialtyLoadingFailedState(e.toString()));
+      emit(SpecialtyFailedState(e.toString()));
     }
   }
 
   Future<void> getInstitutions({required String specialization}) async {
     emit(InstitutionsLoadingState());
-    try { 
+    try {
       final institutions = await service.getInstitutions(
         specialization: normalizeFirestoreName(specialization.trim()),
       );
-      emit(InstitutionsLoadedState(institutions));
+      emit(InstitutionsSuccessState(institutions));
     } catch (e) {
-      emit(InstitutionsLoadingFailedState(e.toString()));
+      emit(InstitutionsFailedState(e.toString()));
     }
+  }
+
+  Future<void> updateSpecialty(String specialty) async {
+    return service.updateSpecialty(specialty);
+  }
+
+  Future<void> updateInstitutions(String institutions) async {
+    return service.updateInstitutions(institutions);
+  }
+
+  Future<void> updateLevels(String levels) async {
+    return service.updateLevels(levels);
   }
 }
