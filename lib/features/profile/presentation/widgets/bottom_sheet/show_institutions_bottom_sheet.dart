@@ -1,9 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sinna/core/constants/images.dart';
 import 'package:sinna/core/helper/normalize_firestore_name.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_divider_widget.dart';
+import 'package:sinna/core/widgets/custom_empty_screen.dart';
 import 'package:sinna/core/widgets/institutions_radio_widget.dart';
 import 'package:sinna/features/profile/presentation/manager/institutions_cubit.dart';
 import 'package:sinna/features/profile/presentation/manager/preferences_cubit/preferences_cubit.dart';
@@ -49,7 +51,13 @@ void showInstitutionsBottomSheet(
                   if (state is InstitutionsFailedState) {
                     return Text(state.errorMessage);
                   }
-                  return const Text("error");
+                  return Center(
+                    child: CustomEmptyScreen(
+                      image: AppImages.emptyDashbord,
+                      title: "No Institutions Found",
+                      subTitle: "Please select a specialty first",
+                    ),
+                  );
                 },
               );
             },

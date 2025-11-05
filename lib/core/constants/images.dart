@@ -27,5 +27,6 @@ class AppImages {
   static final String emptyDashbord = 'assets/images/empty_dashbord.svg';
   static final String emptyNotifications =
       'assets/images/empty_notifications.svg';
-  static final String addIcon = 'assets/images/add_circle.svg';
+  static final String addIcon = 'assets/images/add_circle.svg'; 
+
 }
