@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sinna/core/theme/styles.dart';
-import 'package:sinna/core/utils/app_media.dart';
+import 'package:sinna/core/theme/styles.dart'; 
 
 class CustomEmptyScreen extends StatelessWidget {
   const CustomEmptyScreen({
@@ -15,7 +14,7 @@ class CustomEmptyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: context.height / 1.3,
+      // height: context.height / 1.3,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

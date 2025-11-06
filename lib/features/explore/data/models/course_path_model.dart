@@ -25,12 +25,9 @@ class CoursePathModel {
     this.image,
   });
 
-  void update({
-    String? country,
+  void update({ 
     String? specialization,
-    String? institution,
-    String? faculty,
-    String? program,
+    String? institution, 
     String? level,
     String? courseId,
     String? term,

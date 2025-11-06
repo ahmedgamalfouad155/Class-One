@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sinna/core/constants/images.dart';
 import 'package:sinna/core/theme/customs_box_decoratino.dart';
-import 'package:sinna/core/widgets/custom_option_widget.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/create_course/create_lesson_bottom_sheet.dart';
+import 'package:sinna/core/widgets/custom_option_widget.dart'; 
 
 class LessonsContentWidget extends StatelessWidget {
   const LessonsContentWidget({super.key});
@@ -21,7 +20,7 @@ class LessonsContentWidget extends StatelessWidget {
               icon: SvgPicture.asset(AppImages.addIcon),
               title: 'Create Lesson',
               onTap: () {
-                createLessonBottomSheet(context);
+                
               },
             ),
           ),

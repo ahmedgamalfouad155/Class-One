@@ -1,21 +1,17 @@
 import 'package:sinna/core/constants/constants.dart';
 
-class CourseModel {
+class LessonModel {
   String id;
   String tittle;
   int number;
-  String videoUrl;
-  String pdfUrl; 
-  String pdfTitle;
+  String videoUrl; 
   String term;
   
-  CourseModel({
+  LessonModel({
     required this.id,
     required this.tittle,
     required this.number,
-    required this.videoUrl,
-    required this.pdfUrl,
-    required this.pdfTitle,
+    required this.videoUrl, 
     required this.term,
   }); 
 
@@ -25,20 +21,16 @@ class CourseModel {
       FireStoreLessonFieldsName.title: tittle,
       FireStoreLessonFieldsName.number: number,
       FireStoreLessonFieldsName.videoUrl: videoUrl,
-      FireStoreLessonFieldsName.pdfUrl: pdfUrl,
-      FireStoreLessonFieldsName.pdfTitle: pdfTitle,
       FireStoreLessonFieldsName.term: term,
     };
   }
 
-  factory CourseModel.fromMap(Map<String, dynamic> map, String documentId) {
-    return CourseModel(
+  factory LessonModel.fromMap(Map<String, dynamic> map, String documentId) {
+    return LessonModel(
       id: documentId,
       tittle: map[FireStoreLessonFieldsName.title] as String,
       number: map[FireStoreLessonFieldsName.number] as int,
       videoUrl: map[FireStoreLessonFieldsName.videoUrl] as String,
-      pdfUrl: map[FireStoreLessonFieldsName.pdfUrl] as String,
-      pdfTitle: map[FireStoreLessonFieldsName.pdfTitle] as String,
       term: map[FireStoreLessonFieldsName.term] as String,
     );
   }

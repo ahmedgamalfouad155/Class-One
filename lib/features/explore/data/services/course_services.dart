@@ -17,11 +17,11 @@ class CourseServicesImpl implements CourseServices {
     required CoursePathModel coursePathModel,
   }) async {
     return await firestor.getCollection(
-      path: FirestorePath.newLessonsPath(
+      path: FirestorePath.myLessons(
         specialization: coursePathModel.specialization.toString(),
         institution: coursePathModel.institution.toString(),
         level: coursePathModel.level.toString(),
-        course: coursePathModel.courseId.toString(),
+        course: coursePathModel.courseId.toString(), 
       ),
       builder: (data, documentId) {
         return CourseModel.fromMap(data, documentId);

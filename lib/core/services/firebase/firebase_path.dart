@@ -20,15 +20,13 @@ class FirestorePath {
   static String filter(String uid) =>
       "${FireStoreCollectionsName.users}/$uid/${FireStoreCollectionsName.filter}/${FireStoreCollectionsName.filter}";
 
-  
-
   static String newCoursesPath({
     required String specialization,
     required String institution,
     required String level,
   }) =>
       "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}/$institution/${FireStoreCollectionsName.levels}/$level/${FireStoreCollectionsName.courses}/";
-  
+
   static String createNewCourse({
     required String specialization,
     required String institution,
@@ -36,20 +34,29 @@ class FirestorePath {
     required String course,
   }) =>
       "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}/$institution/${FireStoreCollectionsName.levels}/$level/${FireStoreCollectionsName.courses}/$course";
-  
+
   static String newLessonsPath({
     required String specialization,
     required String institution,
     required String level,
     required String course,
+    required String lessonId,
   }) =>
-      "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}/$institution/${FireStoreCollectionsName.levels}/$level/${FireStoreCollectionsName.courses}/$course/${FireStoreCollectionsName.lessons}/";
+      "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}/$institution/${FireStoreCollectionsName.levels}/$level/${FireStoreCollectionsName.courses}/$course/${FireStoreCollectionsName.lessons}/$lessonId";
+  static String myLessons({
+    required String specialization,
+    required String institution,
+    required String level,
+    required String course,
+    
+  }) =>
+      "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}/$institution/${FireStoreCollectionsName.levels}/$level/${FireStoreCollectionsName.courses}/$course/${FireStoreCollectionsName.lessons}";
 
   static String preferencesSpecialization() =>
       "${FireStoreCollectionsName.coursesInfoSpecialization}/";
   static String preferencesInstitutions({required String specialization}) =>
       "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}";
-  
+
   // static String preferencesLevels({required String specialization}) =>
-      // "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}";
+  // "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}";
 }

@@ -48,7 +48,7 @@ class LessonItemWidget extends StatelessWidget {
                   ),
                   const SizedBox(height: 5),
                   Text(
-                    course.subTitle,
+                    course.tittle,
                     // "${course.hours} : ${course.minutes}",
                     style: AppStyles.textStyle16w400Grey(context),
                   ),
