@@ -17,3 +17,11 @@ final class CourseFailureState extends CourseState {
   CourseFailureState(this.errMessage);
 }
 
+final class CourseDeleteLoadingState extends CourseState {}
+
+final class CourseDeleteSuccessState extends CourseState {}
+
+final class CourseDeleteFailureState extends CourseState {
+  final String errMessage;
+  CourseDeleteFailureState(this.errMessage);
+}

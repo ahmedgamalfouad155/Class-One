@@ -19,4 +19,14 @@ class CourseCubit extends Cubit<CourseState> {
       emit(CourseFailureState(e.toString()));
     }
   }
+
+  Future<void> deleteCourse(CoursePathModel coursePathModel) async {
+    emit(CourseDeleteLoadingState());
+    try {
+      await courseServices.deleteCourse(coursePathModel);
+      emit(CourseDeleteSuccessState());
+    } catch (e) {
+      emit(CourseFailureState(e.toString()));
+    }
+  }
 }

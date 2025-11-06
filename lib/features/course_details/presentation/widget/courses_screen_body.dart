@@ -6,6 +6,7 @@ import 'package:sinna/core/widgets/custom_filters_widget.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:sinna/features/course_details/presentation/manager/course_cubit/course_cubit.dart';
 import 'package:sinna/features/course_details/presentation/manager/course_cubit/course_state.dart';
+import 'package:sinna/features/course_details/presentation/widget/course_app_bar_widget.dart';
 import 'package:sinna/features/course_details/presentation/widget/list_of_lessons_widget.dart';
 import 'package:sinna/features/explore/data/models/course_model.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
@@ -40,6 +41,7 @@ class CoursesScreenBody extends StatelessWidget {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    CourseAppBarWidget(coursePathModel: coursePathModel), 
                     // TitleAndImageCourseWidget(coursePathModel: coursePathModel),
                     const SizedBox(height: 10),
                     if (hasSecondTerm)

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/helper/normalize_firestore_name.dart';
-import 'package:sinna/core/widgets/custom_buton.dart';
-import 'package:sinna/features/course_details/data/models/lesson_model.dart';
+import 'package:sinna/core/widgets/custom_buton.dart'; 
 import 'package:sinna/features/course_details/presentation/manager/create_lesson/create_lesson_cubit.dart';
 import 'package:sinna/features/explore/data/models/course_model.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';

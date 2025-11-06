@@ -7,6 +7,7 @@ abstract class CourseServices {
   Future<List<CourseModel>> getCourses({
     required CoursePathModel coursePathModel,
   });
+  Future<void> deleteCourse(CoursePathModel coursePathModel);
 }
 
 class CourseServicesImpl implements CourseServices {
@@ -27,5 +28,17 @@ class CourseServicesImpl implements CourseServices {
         return CourseModel.fromMap(data, documentId);
       },
     );
+  }
+  
+  @override
+  Future<void> deleteCourse(CoursePathModel coursePathModel) { 
+      return firestor.deleteData(
+        path: FirestorePath.createNewCourse(
+          specialization: coursePathModel.specialization.toString(),
+          institution: coursePathModel.institution.toString(),
+          level: coursePathModel.level.toString(),
+          course: coursePathModel.courseId.toString(),
+        ),
+      );
   }
 }
