@@ -14,8 +14,14 @@ final class CreateCourseFailureState extends CreateCourseState {
   CreateCourseFailureState(this.errMessage);
 }
 
-
 class CreateCourseGoToNextTabState extends CreateCourseState {
   final int nextIndex;
   CreateCourseGoToNextTabState(this.nextIndex);
+}
+
+final class EditCourseLoadingState extends CreateCourseState {}
+final class EditCourseSuccessState extends CreateCourseState {}
+final class EditCourseFailureState extends CreateCourseState {
+  final String errMessage;
+  EditCourseFailureState(this.errMessage);
 }

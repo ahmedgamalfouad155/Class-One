@@ -8,8 +8,8 @@ import 'package:sinna/features/explore/data/models/course_path_model.dart';
 import 'package:sinna/features/explore/presentation/manager/create_course_cubit/create_course_cubit.dart';
 import 'package:sinna/features/explore/data/models/course_info_model.dart';
 
-class ApplyInfoButtonWidget extends StatelessWidget {
-  const ApplyInfoButtonWidget({
+class ApplyButtonWidget extends StatelessWidget {
+  const ApplyButtonWidget({
     super.key,
     required GlobalKey<FormState> formKey,
     required this.courseTitleController,

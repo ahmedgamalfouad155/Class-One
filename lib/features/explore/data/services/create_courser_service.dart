@@ -5,6 +5,7 @@ import 'package:sinna/features/explore/data/models/course_path_model.dart';
 
 abstract class CreateCourseService {
   Future<void> createCourse(CourseInfoModel courseInfo , CoursePathModel path);
+  Future<void> editCourse(CourseInfoModel courseInfo , CoursePathModel path);
 }
 
 class CreateCourseServiceImpl extends CreateCourseService {
@@ -22,5 +23,18 @@ class CreateCourseServiceImpl extends CreateCourseService {
       data: courseInfo.toMap(),
     );
     
+  }
+
+  @override
+  Future<void> editCourse(CourseInfoModel courseInfo , CoursePathModel path) async {
+    await firestor.updatedata(
+      path: FirestorePath.createNewCourse(
+        specialization: path.specialization.toString(),
+        institution: path.institution.toString(),
+        level: path.level.toString(),
+        course: courseInfo.id.toString(),
+      ),
+      data: courseInfo.toMap(),
+    );
   }
 }

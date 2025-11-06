@@ -23,4 +23,17 @@ class CreateCourseCubit extends Cubit<CreateCourseState> {
       emit(CreateCourseFailureState(e.toString()));
     }
   }
+
+  Future<void> editCourse(
+    CourseInfoModel courseInfo,
+    CoursePathModel path,
+  ) async {
+    emit(EditCourseLoadingState());
+    try {
+      await _createCourseService.editCourse(courseInfo, path);
+      emit(EditCourseSuccessState());
+    } catch (e) {
+      emit(EditCourseFailureState(e.toString()));
+    }
+  }
 }
