@@ -25,7 +25,7 @@ class InstractorNameAndAttachmentWidget extends StatelessWidget {
         children: [
           Text(
             "UX Design in Practice: Accessibility and Collaboration",
-            style: AppStyles.textStyle22Bold(context),
+            style: AppStyles.textStyle22W600(context),
           ),
           CustomDividerWidget(isHeight: true),
           Column(

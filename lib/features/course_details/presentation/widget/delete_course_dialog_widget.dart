@@ -31,6 +31,7 @@ class DeleteCourseDialogWidget extends StatelessWidget {
               "You’re about to delete this course. This action can’t be undone.",
               style: AppStyles.textStyle16W600Grey(context),
             ),
+            
           ],
         ),
         actions: [
@@ -38,8 +39,8 @@ class DeleteCourseDialogWidget extends StatelessWidget {
             children: [
               Expanded(
                 child: CustomButton(
-                  bacgrouncColor: context.appColors.greyNavBar,
-                  borderSideColor: context.appColors.greyNavBar,
+                  bacgrouncColor: context.appColors.greyMoonlight,
+                  borderSideColor: context.appColors.greyMoonlight,
                   textColor: context.appColors.black,
                   text: "Cancel",
                   onPressed: () => Navigator.pop(context),

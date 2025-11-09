@@ -19,6 +19,7 @@ class FireStoreCollectionsName {
   static const String levels = "levels";
   static const String lessons = "lessons";
   static const String specialization = "specialization";
+  static const String participants = "participants";
   static const String coursesInfoSpecialization = "courses/info/specialization";
 }
 

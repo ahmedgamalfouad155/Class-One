@@ -23,7 +23,7 @@ class FirestorePath {
   static String newCoursesPath({
     required String specialization,
     required String institution,
-    required String level,
+    required String level,  
   }) =>
       "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}/$institution/${FireStoreCollectionsName.levels}/$level/${FireStoreCollectionsName.courses}/";
 
@@ -43,12 +43,29 @@ class FirestorePath {
     required String lessonId,
   }) =>
       "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}/$institution/${FireStoreCollectionsName.levels}/$level/${FireStoreCollectionsName.courses}/$course/${FireStoreCollectionsName.lessons}/$lessonId";
+
+  static String newParticipantsPath({
+    required String specialization,
+    required String institution,
+    required String level,
+    required String course,
+    required String participantId,
+  }) =>
+      "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}/$institution/${FireStoreCollectionsName.levels}/$level/${FireStoreCollectionsName.courses}/$course/${FireStoreCollectionsName.participants}/$participantId";
+
+  static String myParticipantsPath({
+    required String specialization,
+    required String institution,
+    required String level,
+    required String course, 
+  }) =>
+      "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}/$institution/${FireStoreCollectionsName.levels}/$level/${FireStoreCollectionsName.courses}/$course/${FireStoreCollectionsName.participants}";
+
   static String myLessons({
     required String specialization,
     required String institution,
     required String level,
     required String course,
-    
   }) =>
       "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}/$institution/${FireStoreCollectionsName.levels}/$level/${FireStoreCollectionsName.courses}/$course/${FireStoreCollectionsName.lessons}";
 

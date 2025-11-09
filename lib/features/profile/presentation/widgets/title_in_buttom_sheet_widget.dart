@@ -10,22 +10,22 @@ class TitleInButtomSheetWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
       children: [
-        const CustomTopShapeINBottomSheet(),
-        const SizedBox(height: 10),
-        Row(
+        CircleAvatar(
+          backgroundColor: context.appColors.greyBackgroundTextFiled,
+          child: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.close, color: context.appColors.black),
+          ),
+        ),
+        SizedBox(width: context.width / 4),
+        Column(
           children: [
-            CircleAvatar(
-              backgroundColor: context.appColors.greyBackgroundTextFiled,
-              child: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: Icon(Icons.close, color: context.appColors.black),
-              ),
-            ),
-            SizedBox(width: context.width / 4),
+            const CustomTopShapeINBottomSheet(),
+            const SizedBox(height: 10),
             Text(title ?? "", style: AppStyles.textStyle17W600(context)),
           ],
         ),

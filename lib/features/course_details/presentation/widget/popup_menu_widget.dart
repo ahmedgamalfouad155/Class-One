@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/features/course_details/presentation/widget/create_lesson_bottom_sheet.dart';
+import 'package:sinna/features/course_details/presentation/widget/participants_bootom_sheet.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
 import 'package:sinna/features/explore/presentation/widgets/create_course_bottom_sheet.dart';
 // تأكد إنها تحتوي على context.width
@@ -29,6 +30,7 @@ class PopupMenuWidget extends StatelessWidget {
             break;
 
           case 'participants':
+            participantsBottomSheet(context , coursePathModels);
             break;
         }
       },
