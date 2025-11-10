@@ -6,6 +6,7 @@ import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/widgets/custom_animated_dialod.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/core/widgets/custom_text_field_widget.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/cancel_button_widget.dart';
 import 'package:sinna/features/course_details/presentation/manager/course_participants_cubit/course_participants_cubit.dart';
 import 'package:sinna/features/course_details/presentation/manager/course_participants_cubit/course_participants_state.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
@@ -58,15 +59,7 @@ class _AddParticipantDialogWidgetState
         actions: [
           Row(
             children: [
-              Expanded(
-                child: CustomButton(
-                  bacgrouncColor: context.appColors.greyMoonlight,
-                  borderSideColor: context.appColors.greyMoonlight,
-                  textColor: context.appColors.black,
-                  text: "Cancel",
-                  onPressed: () => Navigator.pop(context),
-                ),
-              ),
+              Expanded(child: CancelButtonWidget()),
               const SizedBox(width: 10),
               BlocConsumer<CourseParticipantsCubit, CourseParticipantsState>(
                 listener: (context, state) {
@@ -114,6 +107,4 @@ class _AddParticipantDialogWidgetState
       ),
     );
   }
-}
-
-//ahmedgfouad2020@gmail.com
+} 

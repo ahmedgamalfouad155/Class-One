@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/colors.dart';
+import 'package:sinna/features/course_details/presentation/widget/attachments_bottom_sheet.dart';
 import 'package:sinna/features/course_details/presentation/widget/create_lesson_bottom_sheet.dart';
 import 'package:sinna/features/explore/data/models/course_model.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
@@ -29,7 +30,7 @@ class PopupMenuCourseVideoWidget extends StatelessWidget {
             break;
 
           case 'attachments':
-            // createLessonBottomSheet(context, coursePathModels);
+            attachmentsBottomSheet(context, coursePathModels, course);
             break;
         }
       },

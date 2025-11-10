@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/material.dart'; 
+import 'package:sinna/core/helper/course_video_helper.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/widgets/custom_divider_widget.dart';
@@ -20,21 +20,19 @@ class CourseVideoScreenBody extends StatefulWidget {
 
   @override
   State<CourseVideoScreenBody> createState() => _CourseVideoScreenBodyState();
-}
-
+} 
 class _CourseVideoScreenBodyState extends State<CourseVideoScreenBody> {
-  late YoutubePlayerController _controller;
+  late YoutubePlayerController controller;
 
   @override
   void initState() {
     super.initState();
-    _initPlayer();
-  }
-
-  void _initPlayer() {
+    initPlayer();
+  } 
+  void initPlayer() {
     final videoId = YoutubePlayer.convertUrlToId(widget.course.videoUrl);
     if (videoId != null) {
-      _controller = YoutubePlayerController(
+      controller = YoutubePlayerController(
         initialVideoId: videoId,
         flags: const YoutubePlayerFlags(
           autoPlay: false,
@@ -47,16 +45,9 @@ class _CourseVideoScreenBodyState extends State<CourseVideoScreenBody> {
 
   @override
   void dispose() {
-    _controller.dispose();
+    controller.dispose();
     super.dispose();
-  }
-
-  void _exitFullScreen() {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
-  }
+  } 
 
   @override
   Widget build(BuildContext context) {
@@ -82,11 +73,11 @@ class _CourseVideoScreenBodyState extends State<CourseVideoScreenBody> {
           ),
           YoutubePlayerBuilder(
             player: YoutubePlayer(
-              controller: _controller,
+              controller: controller,
               showVideoProgressIndicator: true,
               progressIndicatorColor: context.appColors.red,
               onEnded: (metaData) {
-                _exitFullScreen();
+                exitFullScreen();
               },
             ),
             builder: (context, player) => player,
@@ -97,8 +88,8 @@ class _CourseVideoScreenBodyState extends State<CourseVideoScreenBody> {
               children: [
                 CustomDividerWidget(isHeight: true),
                 ListOfAttachmentWidtget(
-                  pdfTitle: widget.course.pdfTitle,
-                  pdfUrl: widget.course.pdfUrl,
+                  pdfTitle: "widget.course.pdfTitle",
+                  pdfUrl: "widget.course.pdfUrl",
                 ),
               ],
             ),

@@ -52,6 +52,7 @@ class FireStoreLessonFieldsName {
   static const String pdfUrl = "pdf_url";
   static const String subtitle = "subtitle";
   static const String term = "term";
+  static const String attachments = "attachments";
   static const String title = "title";
   static const String videoUrl = "video_url";
 }

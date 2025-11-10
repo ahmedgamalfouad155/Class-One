@@ -29,3 +29,19 @@ final class UpdateLessonFailureState extends LessonManagerState {
   final String errMessage;
   UpdateLessonFailureState(this.errMessage);
 }
+
+final class AddAttachmentLoadingState extends LessonManagerState {}
+
+final class AddAttachmentSuccessState extends LessonManagerState {}
+  final class AddAttachmentFailureState extends LessonManagerState {
+  final String errMessage;
+  AddAttachmentFailureState(this.errMessage);
+}
+
+
+final class RemoveAttachmentLoadingState extends LessonManagerState {}
+final class RemoveAttachmentSuccessState extends LessonManagerState {}
+  final class RemoveAttachmentFailureState extends LessonManagerState {
+  final String errMessage;
+  RemoveAttachmentFailureState(this.errMessage);
+}
