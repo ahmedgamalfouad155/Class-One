@@ -59,7 +59,9 @@ class ListOfLessonsWidget extends StatelessWidget {
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) =>
-              LessonItemWidget(course: filteredLessons[index]),
+              LessonItemWidget(course: filteredLessons[index],
+              coursePathModel: coursePathModels,
+              ),
           itemCount: filteredLessons.length,
         );
       },

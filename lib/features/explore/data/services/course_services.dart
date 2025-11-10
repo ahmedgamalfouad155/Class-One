@@ -4,7 +4,7 @@ import 'package:sinna/features/explore/data/models/course_model.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
 
 abstract class CourseServices {
-  Future<List<CourseModel>> getCourses({
+  Stream<List<CourseModel>> getCourses({
     required CoursePathModel coursePathModel,
   });
   Future<void> deleteCourse(CoursePathModel coursePathModel);
@@ -14,18 +14,18 @@ class CourseServicesImpl implements CourseServices {
   final firestor = FirestoreServices.instance;
 
   @override
-  Future<List<CourseModel>> getCourses({
+  Stream<List<CourseModel>> getCourses({
     required CoursePathModel coursePathModel,
-  }) async {
-    return await firestor.getCollection(
+  }) {
+    return firestor.collectionsStram(
       path: FirestorePath.myLessons(
         specialization: coursePathModel.specialization.toString(),
         institution: coursePathModel.institution.toString(),
         level: coursePathModel.level.toString(),
-        course: coursePathModel.courseId.toString(), 
+        course: coursePathModel.courseId.toString(),
       ),
       builder: (data, documentId) {
-        return CourseModel.fromMap(data, documentId);
+        return CourseModel.fromMap(data!, documentId);
       },
     );
   }

@@ -10,8 +10,8 @@ import 'package:sinna/features/auth/presentation/screens/forget_password_screen.
 import 'package:sinna/features/auth/presentation/screens/login_screen.dart';
 import 'package:sinna/features/auth/presentation/screens/signup_screen.dart';
 import 'package:sinna/features/auth/presentation/screens/steps_academic_screen.dart';
-import 'package:sinna/features/explore/data/models/course_path_model.dart';
-import 'package:sinna/features/explore/data/models/course_model.dart';
+import 'package:sinna/features/course_details/data/models/course_video_args_model.dart';
+import 'package:sinna/features/explore/data/models/course_path_model.dart'; 
 import 'package:sinna/features/final_ui/screens/register_screen.dart';
 import 'package:sinna/features/auth/presentation/screens/adding_phone_screen.dart';
 import 'package:sinna/features/final_ui/screens/otp_screen.dart';
@@ -41,8 +41,7 @@ abstract class AppRouter {
   static const String kCourseVideoScreen = '/courseVideoScreen';
   static const String kLanguageScreen = '/languageScreen';
   static const String kModeScreen = '/modeScreen';
-  static const String kUserCcourseDetailsScreen = '/userCcourseDetailsScreen';
-  // static const String kControlPanal = '/controlPanal';
+  static const String kUserCcourseDetailsScreen = '/userCcourseDetailsScreen'; 
   static const String kFinalRegister = '/registerfinal';
   static const String kFinalSignin = '/finalSignin';
   static const String kFinalOtpScreen = '/finalOtpScreen';
@@ -112,8 +111,11 @@ abstract class AppRouter {
       GoRoute(
         path: kCourseVideoScreen,
         builder: (context, state) {
-          final coursePathModel = state.extra as CourseModel;
-          return CourseVideoScreen(course: coursePathModel);
+          final args = state.extra as CourseVideoArgs;
+          return CourseVideoScreen(
+            course: args.course,
+            coursePathModel: args.coursePathModel,
+          );
         },
       ),
       GoRoute(

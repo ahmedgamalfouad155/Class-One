@@ -19,6 +19,24 @@ class CourseModel {
     required this.term,
   }); 
 
+  void update({
+    String? id,
+    String? tittle,
+    int? number,
+    String? videoUrl,
+    String? pdfUrl,
+    String? pdfTitle,
+    String? term,
+  }) {
+    if (id != null) this.id = id;
+    if (tittle != null) this.tittle = tittle;
+    if (number != null) this.number = number;
+    if (videoUrl != null) this.videoUrl = videoUrl;
+    if (pdfUrl != null) this.pdfUrl = pdfUrl;
+    if (pdfTitle != null) this.pdfTitle = pdfTitle;
+    if (term != null) this.term = term;
+  }
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       FireStoreLessonFieldsName.id: id,

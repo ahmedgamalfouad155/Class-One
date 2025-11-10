@@ -6,8 +6,8 @@ import 'package:sinna/features/explore/data/models/course_path_model.dart';
 import 'package:sinna/features/explore/presentation/widgets/create_course_bottom_sheet.dart';
 // تأكد إنها تحتوي على context.width
 
-class PopupMenuWidget extends StatelessWidget {
-  const PopupMenuWidget({super.key, required this.coursePathModels});
+class PopupMenuCourseWidget extends StatelessWidget {
+  const PopupMenuCourseWidget({super.key, required this.coursePathModels});
   final CoursePathModel coursePathModels;
 
   @override
@@ -30,7 +30,7 @@ class PopupMenuWidget extends StatelessWidget {
             break;
 
           case 'participants':
-            participantsBottomSheet(context , coursePathModels);
+            participantsBottomSheet(context, coursePathModels);
             break;
         }
       },
