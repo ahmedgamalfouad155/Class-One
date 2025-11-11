@@ -49,7 +49,7 @@ class PreferencesScreenBody extends StatelessWidget {
                   value: BlocProvider.of<LevelsRadioCubit>(context),
                   child: const LevelsWidget(),
                 ),
-                const SizedBox(height: 15), 
+                const SizedBox(height: 15),
               ],
             ),
           );

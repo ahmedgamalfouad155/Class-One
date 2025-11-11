@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sinna/core/constants/constants.dart';
 import 'package:sinna/core/cubit/special_cubit/filter_cubit.dart';
-import 'package:sinna/core/widgets/custom_filters_widget.dart';
 import 'package:sinna/features/course_details/presentation/manager/course_cubit/course_cubit.dart';
 import 'package:sinna/features/course_details/presentation/manager/course_cubit/course_state.dart';
 import 'package:sinna/features/course_details/presentation/widget/course_app_bar_widget.dart';
@@ -15,8 +13,7 @@ class CoursesScreenBody extends StatelessWidget {
   final CoursePathModel coursePathModel;
 
   @override
-  Widget build(BuildContext context) { 
-
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: BlocProvider(
@@ -30,27 +27,19 @@ class CoursesScreenBody extends StatelessWidget {
               if (state is CourseSuccessState) {
                 final sortedLessons = List<CourseModel>.from(state.courses)
                   ..sort((a, b) => a.number.compareTo(b.number));
-                bool hasSecondTerm = sortedLessons.any(
-                  (lesson) => lesson.term.contains(FireStoreLessonFieldsName.secondTerm),
-                );
 
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CourseAppBarWidget(coursePathModel: coursePathModel), 
-                    // TitleAndImageCourseWidget(coursePathModel: coursePathModel),
-                    const SizedBox(height: 10),
-                    if (hasSecondTerm)
-                      CustomFiltersWidget<FilterCubit>(filters: terms),
+                    CourseAppBarWidget(coursePathModel: coursePathModel),
                     const SizedBox(height: 10),
                     ListOfLessonsWidget(
                       sortedLessons: sortedLessons,
                       coursePathModels: coursePathModel,
                     ),
-                    const SizedBox(height: 10), 
                   ],
                 );
-              } 
+              }
               if (state is CourseFailureState) {
                 return Text(state.errMessage);
               }

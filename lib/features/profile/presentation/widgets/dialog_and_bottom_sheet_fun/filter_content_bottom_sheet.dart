@@ -7,11 +7,8 @@ import 'package:sinna/features/profile/presentation/manager/academic_info_update
 import 'package:sinna/features/profile/presentation/manager/program_filter_cubit.dart';
 import 'package:sinna/features/profile/presentation/manager/specialization_filter_cubit.dart';
 import 'package:sinna/features/profile/presentation/manager/levels_radio_cubit.dart';
-import 'package:sinna/features/profile/presentation/widgets/institutions_info_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/title_in_buttom_sheet_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/apply_button_widget.dart';
-import 'package:sinna/features/profile/presentation/widgets/program_filter_bottom_sheet_widget.dart';
-import 'package:sinna/features/profile/presentation/widgets/specilalization_filter_bottom_sheet_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/levels_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/custom_bottom_sheet.dart';
 
@@ -45,18 +42,18 @@ void filterContentBottomSheet(BuildContext context) {
                   const TitleInButtomSheetWidget(),
                   const SizedBox(height: 30),
 
-                  BlocProvider.value(
-                    value: specializationCubit,
-                    child: const SpecializationFilterBottomSheetWidget(),
-                  ),
-                  BlocProvider.value(
-                    value: programCubit,
-                    child: const ProgramFilterBottomSheetWidget(),
-                  ),
-                  BlocProvider.value(
-                    value: universityCubit,
-                    child: const InstitutionsInfoWidget(),
-                  ),
+                  // BlocProvider.value(
+                  //   value: specializationCubit,
+                  //   child: const SpecializationFilterBottomSheetWidget(),
+                  // ),
+                  // BlocProvider.value(
+                  //   value: programCubit,
+                  //   child: const ProgramFilterBottomSheetWidget(),
+                  // ),
+                  // BlocProvider.value(
+                  //   value: universityCubit,
+                  //   child: const InstitutionsInfoWidget(),
+                  // ),
                   const SizedBox(height: 10),
                   BlocProvider.value(
                     value: levelsCubit,

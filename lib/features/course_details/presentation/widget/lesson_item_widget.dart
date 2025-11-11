@@ -30,9 +30,7 @@ class LessonItemWidget extends StatelessWidget {
           coursePathModel: coursePathModel,
         );
         if (isAdmin) {
-          GoRouter.of(
-            context,
-          ).push(AppRouter.kCourseVideoScreen, extra: args);
+          GoRouter.of(context).push(AppRouter.kCourseVideoScreen, extra: args);
         } else {
           course.number == 1
               ? GoRouter.of(
@@ -50,21 +48,7 @@ class LessonItemWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    course.tittle,
-                    style: AppStyles.textStyle14W600(context),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    course.tittle,
-                    // "${course.hours} : ${course.minutes}",
-                    style: AppStyles.textStyle16w400Grey(context),
-                  ),
-                ],
-              ),
+              Text(course.tittle, style: AppStyles.textStyle14W600(context)),
               CircleAvatar(
                 radius: 20.r,
                 backgroundColor: context.appColors.greyMoonlight,
@@ -79,7 +63,7 @@ class LessonItemWidget extends StatelessWidget {
               ),
             ],
           ),
-          CustomDividerWidget(isHeight: true),
+          CustomDividerWidget(isHeight: true, height: 15),
         ],
       ),
     );

@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sinna/core/constants/constants.dart';
 import 'package:sinna/core/constants/images.dart';
 import 'package:sinna/core/cubit/special_cubit/filter_cubit.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/core/widgets/custom_empty_screen.dart';
+import 'package:sinna/core/widgets/custom_filters_widget.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:sinna/features/course_details/presentation/widget/create_lesson_bottom_sheet.dart';
 import 'package:sinna/features/course_details/presentation/widget/lesson_item_widget.dart';
+import 'package:sinna/features/course_details/presentation/widget/title_and_image_course_widget.dart';
 import 'package:sinna/features/explore/data/models/course_model.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
 
 class ListOfLessonsWidget extends StatelessWidget {
-  const ListOfLessonsWidget({super.key, required this.sortedLessons, required this.coursePathModels});
+  const ListOfLessonsWidget({
+    super.key,
+    required this.sortedLessons,
+    required this.coursePathModels,
+  });
 
   final List<CourseModel> sortedLessons;
   final CoursePathModel coursePathModels;
@@ -21,10 +28,14 @@ class ListOfLessonsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<FilterCubit, int>(
       builder: (context, selectedIndex) {
+        bool hasSecondTerm = sortedLessons.any(
+          (lesson) =>
+              lesson.term.contains(FireStoreLessonFieldsName.secondTerm),
+        );
         // 🟩 تحديد الترم الحالي بناءً على الفلتر
         final String currentTerm = selectedIndex == 0
-            ? 'first term'
-            : 'second term';
+            ? FireStoreLessonFieldsName.firstTerm
+            : FireStoreLessonFieldsName.secondTerm;
 
         // 🟩 تصفية الدروس بناءً على الترم المختار
         final filteredLessons = sortedLessons
@@ -47,22 +58,31 @@ class ListOfLessonsWidget extends StatelessWidget {
                     ? CustomButton(
                         width: context.width / 2,
                         text: "Create Lesson",
-                        onPressed: () => createLessonBottomSheet(context , coursePathModels),
+                        onPressed: () =>
+                            createLessonBottomSheet(context, coursePathModels),
                       )
                     : const SizedBox(),
               ],
             ),
           );
-        }
+        } 
+        return Column(
+          children: [
+            TitleAndImageCourseWidget(coursePathModel: coursePathModels),
+            const SizedBox(height: 10),
+            if (hasSecondTerm) CustomFiltersWidget<FilterCubit>(filters: terms),
+            const SizedBox(height: 10),
 
-        return ListView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (context, index) =>
-              LessonItemWidget(course: filteredLessons[index],
-              coursePathModel: coursePathModels,
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) => LessonItemWidget(
+                course: filteredLessons[index],
+                coursePathModel: coursePathModels,
               ),
-          itemCount: filteredLessons.length,
+              itemCount: filteredLessons.length,
+            ),
+          ],
         );
       },
     );
