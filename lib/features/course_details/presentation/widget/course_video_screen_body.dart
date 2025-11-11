@@ -87,9 +87,8 @@ class _CourseVideoScreenBodyState extends State<CourseVideoScreenBody> {
             child: Column(
               children: [
                 CustomDividerWidget(isHeight: true),
-                ListOfAttachmentWidtget(
-                  pdfTitle: "widget.course.pdfTitle",
-                  pdfUrl: "widget.course.pdfUrl",
+                ListOfAttachmentWidtget( 
+                  attachmentModel:  widget.course.attachments, 
                 ),
               ],
             ),

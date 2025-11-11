@@ -31,7 +31,7 @@ class CoursesScreenBody extends StatelessWidget {
                 final sortedLessons = List<CourseModel>.from(state.courses)
                   ..sort((a, b) => a.number.compareTo(b.number));
                 bool hasSecondTerm = sortedLessons.any(
-                  (lesson) => lesson.term.contains('second term'),
+                  (lesson) => lesson.term.contains(FireStoreLessonFieldsName.secondTerm),
                 );
 
                 return Column(

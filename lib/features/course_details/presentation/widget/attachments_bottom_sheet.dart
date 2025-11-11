@@ -1,9 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/material.dart'; 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sinna/core/theme/colors.dart';
-import 'package:sinna/core/utils/app_media.dart';
-import 'package:sinna/features/course_details/presentation/manager/lesson_manager/lesson_manager_cubit.dart';
+import 'package:sinna/core/utils/app_media.dart'; 
 import 'package:sinna/features/course_details/presentation/widget/add_attachment_dialog_widget.dart';
 import 'package:sinna/features/course_details/presentation/widget/list_of_attachment_bottom_sheet_widget.dart';
 import 'package:sinna/features/explore/data/models/course_model.dart';

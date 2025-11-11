@@ -19,4 +19,6 @@ class AttachmentModel {
       pdfTitle: map[FireStoreLessonFieldsName.pdfTitle] as String,
     );
   }
+
+  void operator [](int other) {}
 }

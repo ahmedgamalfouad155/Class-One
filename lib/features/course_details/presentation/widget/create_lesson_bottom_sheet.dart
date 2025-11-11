@@ -5,6 +5,7 @@ import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_text_field_widget.dart';
 import 'package:sinna/features/course_details/presentation/manager/lesson_manager/lesson_manager_cubit.dart';
+import 'package:sinna/features/course_details/presentation/manager/term_switch_cubit.dart';
 import 'package:sinna/features/course_details/presentation/widget/create_lesson_button_widget.dart';
 import 'package:sinna/features/course_details/presentation/widget/second_semester_section.dart';
 import 'package:sinna/features/course_details/presentation/widget/update_lesson_button_widget.dart';
@@ -21,10 +22,12 @@ void createLessonBottomSheet(
 ]) {
   final TextEditingController lessonTitleController = TextEditingController();
   final TextEditingController videoUrlController = TextEditingController();
+  final TextEditingController lessonNumberController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   isEdit == true ? lessonTitleController.text = course!.tittle : '';
   isEdit == true ? videoUrlController.text = course!.videoUrl : '';
+  isEdit == true ? lessonNumberController.text = course!.number.toString() : '';
 
   CustomBottomSheet.show(
     context: context,
@@ -34,65 +37,83 @@ void createLessonBottomSheet(
       width: context.width,
       child: Form(
         key: formKey,
-        child: CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TitleInButtomSheetWidget(title: "Create Lesson"),
-                  const SizedBox(height: 6),
-                  CustomTextFieldWidget(
-                    hintText: "Impression Techniques for Crowns",
-                    controller: lessonTitleController,
-                    vlaidationMessage: "Enter a valid lesson title.",
-                  ),
-                  const SizedBox(height: 16),
-                  CustomTextFieldWidget(
-                    hintText: "https://youtu.be/abcd1234",
-                    controller: videoUrlController,
-                    vlaidationMessage: "Enter a valid video link.",
-                  ),
-                  const SizedBox(height: 16),
-                  SecondSemesterSection(),
-                  const SizedBox(height: 10),
-                  Text(
-                    "When off, the lesson applies to the first semester or the full year if no second semester is set.",
-                    style: AppStyles.textStyle12GreyW400(
-                      context,
-                    ).copyWith(fontSize: 13.sp),
-                  ),
-                ],
-              ),
-            ),
-            SliverFillRemaining(
-              hasScrollBody: false,
-              fillOverscroll: true,
-              child: BlocProvider(
-                create: (context) => LessonManagerCubit(),
+        child: BlocProvider(
+          create: (context) => TermSwitcherCubit(
+            initialValue: isEdit == true && course!.term == 'second term',
+          ),
+          child: CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(child: const SizedBox()),
-                    isEdit == false
-                        ? CreateLessonButtonWidget(
-                            lessonTitleController: lessonTitleController,
-                            videoUrlController: videoUrlController,
-                            formKey: formKey,
-                            path: path,
-                          )
-                        : UpdateLessonButtonWidget(
-                            formKey: formKey,
-                            lessonTitleController: lessonTitleController,
-                            videoUrlController: videoUrlController,
-                            course: course!,
-                            path: path,
-                          ),
+                    TitleInButtomSheetWidget(
+                      title: isEdit == false
+                          ? "Create Lesson"
+                          : "Update Lesson",
+                    ),
+                    const SizedBox(height: 6),
+                    CustomTextFieldWidget(
+                      hintText: "Impression Techniques for Crowns",
+                      controller: lessonTitleController,
+                      vlaidationMessage: "Enter a valid lesson title.",
+                    ),
+                    const SizedBox(height: 16),
+                    CustomTextFieldWidget(
+                      hintText: "https://youtu.be/abcd1234",
+                      controller: videoUrlController,
+                      vlaidationMessage: "Enter a valid video link.",
+                    ),
+                    const SizedBox(height: 16),
+                    CustomTextFieldWidget(
+                      hintText: "Lesson Number",
+                      controller: lessonNumberController,
+                      vlaidationMessage: "Enter a valid lesson number.",
+                      keyboardType: TextInputType.number,
+                    ),
+                    const SizedBox(height: 16),
+                    const SecondSemesterSection(),
+                    const SizedBox(height: 10),
+                    Text(
+                      "When off, the lesson applies to the first semester or the full year if no second semester is set.",
+                      style: AppStyles.textStyle12GreyW400(
+                        context,
+                      ).copyWith(fontSize: 13.sp),
+                    ),
                   ],
                 ),
               ),
-            ),
-          ],
+              SliverFillRemaining(
+                hasScrollBody: false,
+                fillOverscroll: true,
+                child: BlocProvider(
+                  create: (context) => LessonManagerCubit(),
+                  child: Column(
+                    children: [
+                      Expanded(child: const SizedBox()),
+                      isEdit == false
+                          ? CreateLessonButtonWidget(
+                              lessonTitleController: lessonTitleController,
+                              videoUrlController: videoUrlController,
+                              lessonNumberController: lessonNumberController,
+                              formKey: formKey,
+                              path: path,
+                            )
+                          : UpdateLessonButtonWidget(
+                              formKey: formKey,
+                              lessonTitleController: lessonTitleController,
+                              videoUrlController: videoUrlController,
+                              lessonNumberController: lessonNumberController,
+                              course: course!,
+                              path: path,
+                            ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     ),

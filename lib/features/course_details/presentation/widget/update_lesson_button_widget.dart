@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sinna/core/constants/constants.dart';
 import 'package:sinna/core/widgets/custom_animated_dialod.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/features/course_details/presentation/manager/lesson_manager/lesson_manager_cubit.dart';
+import 'package:sinna/features/course_details/presentation/manager/term_switch_cubit.dart';
 import 'package:sinna/features/explore/data/models/course_model.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
 
@@ -12,13 +14,15 @@ class UpdateLessonButtonWidget extends StatelessWidget {
     required this.formKey,
     required this.lessonTitleController,
     required this.videoUrlController,
+    required this.lessonNumberController,
     required this.course,
     required this.path,
   });
 
   final GlobalKey<FormState> formKey;
-  final TextEditingController lessonTitleController;
-  final TextEditingController videoUrlController;
+  final TextEditingController lessonTitleController,
+      videoUrlController,
+      lessonNumberController;
   final CourseModel course;
   final CoursePathModel path;
 
@@ -48,8 +52,12 @@ class UpdateLessonButtonWidget extends StatelessWidget {
                 lessonModel.update(
                   tittle: lessonTitleController.text,
                   videoUrl: videoUrlController.text,
-                  term: "first term",
-                  number: 1,
+                  term: context.read<TermSwitcherCubit>().state
+                      ? FireStoreLessonFieldsName.secondTerm
+                      : FireStoreLessonFieldsName.firstTerm,
+                  number: lessonNumberController.text.isEmpty
+                      ? 0
+                      : int.parse(lessonNumberController.text),
                 );
                 context.read<LessonManagerCubit>().updateLesson(
                   lessonModel,
