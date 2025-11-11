@@ -1,8 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sinna/features/admin_tools/presentation/screens/admins_screen.dart';
 import 'package:sinna/features/admin_tools/presentation/screens/control_panel_screen.dart';
+import 'package:sinna/features/admin_tools/presentation/screens/filds_screen.dart';
 import 'package:sinna/features/admin_tools/presentation/screens/institutions_screen.dart';
 import 'package:sinna/features/admin_tools/presentation/screens/instructors_screen.dart';
+import 'package:sinna/features/admin_tools/presentation/screens/participants_screen.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_state.dart';
 import 'package:sinna/features/auth/presentation/screens/forget_password_screen.dart';
@@ -53,6 +56,9 @@ abstract class AppRouter {
   static const String kNameScreen = '/nameScreen';
   static const String kPasswordScreen = '/passwordScreen';
   static const String kPreferencesScreen = '/preferencesScreen';
+  static const String kFildsScreen = '/fildsScreen';
+  static const String kParticipantsScreen = '/participantsScreen';
+  static const String kAdminsScreen = '/adminsScreen';
 
   static final router = GoRouter(
     routes: [
@@ -173,6 +179,20 @@ abstract class AppRouter {
         path: kPreferencesScreen,
         builder: (context, state) => const PreferencesScreen(),
       ),
+      GoRoute(
+        path: kFildsScreen, 
+        builder: (context, state) => const FildsScreen(),
+      ),
+      GoRoute(
+        path: kParticipantsScreen,
+        builder: (context, state) => const ParticipantsScreen(),
+      ),
+      GoRoute(
+        path: kAdminsScreen,
+        builder: (context, state) => const AdminsScreen(),
+      ),
+
+
     ],
   );
 }

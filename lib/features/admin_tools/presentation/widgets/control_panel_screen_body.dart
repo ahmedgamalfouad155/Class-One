@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sinna/core/router/app_router.dart';
 import 'package:sinna/core/theme/styles.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/academic_partners_scetion.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/user_management_section.dart';
+import 'package:sinna/core/widgets/custom_option_widget.dart';
 
 class ControlPanelScreenBody extends StatelessWidget {
   const ControlPanelScreenBody({super.key});
@@ -15,9 +16,38 @@ class ControlPanelScreenBody extends StatelessWidget {
         children: [
           Text("Control Panel", style: AppStyles.textStyle24W600(context)),
           const SizedBox(height: 16),
-          AcademicPartnersScetion(),
-          const SizedBox(height: 32),
-          UserManagementSection(),
+          CustomOptionWidget(title: "phone", onTap: () {}),
+          CustomOptionWidget(
+            title: "Fields",
+            onTap: () {
+              GoRouter.of(context).push(AppRouter.kFildsScreen);
+            },
+          ),
+
+          CustomOptionWidget(
+            title: "Instructors",
+            onTap: () {
+              GoRouter.of(context).push(AppRouter.kInstructorScreen);
+            },
+          ),
+          CustomOptionWidget(
+            title: "Institutions",
+            onTap: () {
+              GoRouter.of(context).push(AppRouter.kInstitutionsScreen);
+            },
+          ),
+          CustomOptionWidget(
+            title: "Participants",
+            onTap: () {
+              GoRouter.of(context).push(AppRouter.kParticipantsScreen);
+            },
+          ),
+          CustomOptionWidget(
+            title: "Admins",
+            onTap: () {
+              GoRouter.of(context).push(AppRouter.kAdminsScreen);
+            },
+          ),
         ],
       ),
     );

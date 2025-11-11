@@ -5,7 +5,7 @@ import 'package:sinna/core/cubit/radio_cubit/radio_cubit.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/customs_box_decoratino.dart';
 import 'package:sinna/core/theme/styles.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/create_course/show_instructors_dialog.dart';
+import 'package:sinna/features/explore/presentation/widgets/show_instructors_dialog.dart';
 
 class InstructorsInfoSection extends StatelessWidget {
   const InstructorsInfoSection({super.key});

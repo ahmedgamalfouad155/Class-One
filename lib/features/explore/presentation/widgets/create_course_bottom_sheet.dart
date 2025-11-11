@@ -7,7 +7,7 @@ import 'package:sinna/features/explore/data/models/course_path_model.dart';
 import 'package:sinna/features/explore/presentation/manager/create_course_cubit/create_course_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/custom_bottom_sheet.dart';
 import 'package:sinna/features/explore/presentation/widgets/apply_button_widget.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/create_course/course_title_and_image_section.dart';
+import 'package:sinna/features/explore/presentation/widgets/course_title_and_image_section.dart';
 import 'package:sinna/features/explore/presentation/widgets/instructors_info_section.dart';
 import 'package:sinna/features/profile/presentation/widgets/title_in_buttom_sheet_widget.dart';
 

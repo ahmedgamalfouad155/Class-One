@@ -13,8 +13,7 @@ import 'package:sinna/generated/locale_keys.g.dart';
 class YouScreenBody extends StatelessWidget {
   const YouScreenBody({super.key});
   @override
-  Widget build(BuildContext context) {
-    final isAdmin = context.read<AuthCubit>().emailAdmin;
+  Widget build(BuildContext context) { 
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 15),
@@ -44,15 +43,7 @@ class YouScreenBody extends StatelessWidget {
             CustomOptionWidget(
               title: LocaleKeys.help_center.tr(),
               onTap: openWhatsApp,
-            ),
-            isAdmin
-                ? CustomOptionWidget(
-                    title: LocaleKeys.control_panel.tr(),
-                    onTap: () {
-                      GoRouter.of(context).push(AppRouter.kControlPanalScreen);
-                    },
-                  )
-                : SizedBox(),
+            ), 
             CustomOptionWidget(
               title: LocaleKeys.logout.tr(),
               onTap: () {
