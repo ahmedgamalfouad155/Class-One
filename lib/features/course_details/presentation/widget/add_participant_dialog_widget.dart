@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
+import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_animated_dialod.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/core/widgets/custom_text_field_widget.dart';
@@ -58,8 +59,9 @@ class _AddParticipantDialogWidgetState
         ),
         actions: [
           Row(
+              mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Expanded(child: CancelButtonWidget()),
+              CustomCancelTextWidget(),
               const SizedBox(width: 10),
               BlocConsumer<CourseParticipantsCubit, CourseParticipantsState>(
                 listener: (context, state) {
@@ -83,18 +85,17 @@ class _AddParticipantDialogWidgetState
                   } else if (state is CourseParticipantsInitial ||
                       state is AddingCourseToPaticipantsSuccessState ||
                       state is AddingCourseToPaticipantsFailureState) {
-                    return Expanded(
-                      child: CustomButton(
-                        text: LocaleKeys.add.tr(),
-                        onPressed: () {
-                          context
-                              .read<CourseParticipantsCubit>()
-                              .addCouseToMyCourse(
-                                coursePathModel: widget.coursePathModel,
-                                email: emailController.text,
-                              );
-                        },
-                      ),
+                    return CustomButton(
+                      width: context.width / 2.5,
+                      text: LocaleKeys.add.tr(),
+                      onPressed: () {
+                        context
+                            .read<CourseParticipantsCubit>()
+                            .addCouseToMyCourse(
+                              coursePathModel: widget.coursePathModel,
+                              email: emailController.text,
+                            );
+                      },
                     );
                   } else {
                     return const Text("error");
@@ -107,4 +108,4 @@ class _AddParticipantDialogWidgetState
       ),
     );
   }
-} 
+}

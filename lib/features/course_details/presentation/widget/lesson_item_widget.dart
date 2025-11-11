@@ -26,7 +26,7 @@ class LessonItemWidget extends StatelessWidget {
     return InkWell(
       onTap: () {
         final args = CourseVideoArgs(
-          course: course,
+          lessonId: course.id.toString(),
           coursePathModel: coursePathModel,
         );
         if (isAdmin) {

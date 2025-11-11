@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/core/widgets/custom_option_widget.dart';
 import 'package:sinna/features/course_details/presentation/manager/lesson_manager/lesson_manager_cubit.dart';
 import 'package:sinna/features/course_details/presentation/widget/remove_attachment_icon_widget.dart';
@@ -31,15 +32,21 @@ class ListOfAttachmentBottomSheetWidget extends StatelessWidget {
               create: (context) => LessonManagerCubit(),
               child: RemoveAttachmentIconWidget(
                 course: course,
-                  index: index,
+                index: index,
                 coursePathModel: coursePathModel,
               ),
             ),
           ],
         ),
-        child: CustomOptionWidget(
-          title: course.attachments[index].pdfTitle,
-          onTap: () {},
+        child: Column(
+          children: [
+            CustomOptionWidget(
+              title: course.attachments[index].pdfTitle,
+              onTap: () {},
+            ),
+            if (index != course.attachments.length - 1)
+              const CustomDividerWidget(),
+          ],
         ),
       ),
 

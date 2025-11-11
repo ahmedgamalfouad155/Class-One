@@ -110,7 +110,7 @@ void showConfirmDialog(
                   },
                 ),
                 const SizedBox(height: 10),
-                CancelButtonWidget(),
+                CustomCancelTextWidget(),
               ],
             );
           },

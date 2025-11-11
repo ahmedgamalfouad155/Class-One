@@ -1,12 +1,11 @@
-import 'package:sinna/features/explore/data/models/course_model.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
 
 class CourseVideoArgs {
-  final CourseModel course;
+  final String lessonId;
   final CoursePathModel coursePathModel;
 
   CourseVideoArgs({
-    required this.course,
+    required this.lessonId,
     required this.coursePathModel,
   });
 }

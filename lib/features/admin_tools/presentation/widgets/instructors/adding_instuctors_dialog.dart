@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +9,7 @@ import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/features/admin_tools/presentation/manager/instructors/instructors_cubit.dart';
 import 'package:sinna/features/admin_tools/presentation/widgets/cancel_button_widget.dart';
 import 'package:sinna/features/admin_tools/presentation/widgets/instructors/instructor_title_and_sub_title_and_field_widget.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class AddingInstructorDialog extends StatefulWidget {
   const AddingInstructorDialog({super.key});
@@ -49,42 +51,42 @@ class _AddingInstructorDialogState extends State<AddingInstructorDialog> {
                 ),
                 const SizedBox(height: 12),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Expanded(child: CancelButtonWidget()),
+                    CustomCancelTextWidget(),
                     const SizedBox(width: 10),
-                    Expanded(
-                      child: BlocConsumer<InstructorsCubit, InstructorsState>(
-                        listener: (context, state) {
-                          CustomAnimatedDialog.show(
-                            context: context,
-                            message: "Instructor added successfully ✅🎉",
-                            animationType: DialogAnimationType.success,
+                    BlocConsumer<InstructorsCubit, InstructorsState>(
+                      listener: (context, state) {
+                        CustomAnimatedDialog.show(
+                          context: context,
+                          message: "Instructor added successfully ✅🎉",
+                          animationType: DialogAnimationType.success,
+                        );
+                      },
+                      builder: (context, state) {
+                        if (state is InstructorAddingState) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
                           );
-                        },
-                        builder: (context, state) {
-                          if (state is InstructorAddingState) {
-                            return const Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          } else if (state is InstructorAddedSuccessState ||
-                              state is InstructorsInitial) {
-                            return CustomButton(
-                              text: "Save",
-                              onPressed: () {
-                                if (_formKey.currentState!.validate()) {
-                                  context
-                                      .read<InstructorsCubit>()
-                                      .addInstructor(nameController.text);
-                                }
-                              },
-                            );
-                          } else if (state is InstructorAddFailureState) {
-                            return Text(state.errMessage);
-                          } else {
-                            return const Text("error");
-                          }
-                        },
-                      ),
+                        } else if (state is InstructorAddedSuccessState ||
+                            state is InstructorsInitial) {
+                          return CustomButton(
+                            width: context.width / 2.5,
+                            text: LocaleKeys.save.tr(),
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                context
+                                    .read<InstructorsCubit>()
+                                    .addInstructor(nameController.text);
+                              }
+                            },
+                          );
+                        } else if (state is InstructorAddFailureState) {
+                          return Text(state.errMessage);
+                        } else {
+                          return const Text("error");
+                        }
+                      },
                     ),
                   ],
                 ),

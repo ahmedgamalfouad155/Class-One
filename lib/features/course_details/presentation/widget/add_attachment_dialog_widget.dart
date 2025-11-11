@@ -65,8 +65,9 @@ class _AddingAttachmentDialogWidgetState
         ),
         actions: [
           Row(
+              mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Expanded(child: CancelButtonWidget()),
+              CustomCancelTextWidget(),
               const SizedBox(width: 10),
               BlocProvider(
                 create: (context) => LessonManagerCubit(),

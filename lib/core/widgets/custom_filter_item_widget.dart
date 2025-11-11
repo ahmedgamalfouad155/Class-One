@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 
@@ -24,7 +25,7 @@ class CustomFilterItemWidget extends StatelessWidget {
           color: isSelected
               ? context.appColors.blue
               : context.appColors.greyMoonlight,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(20.r),
         ),
         child: Text(
           title,

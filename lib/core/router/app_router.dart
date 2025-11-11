@@ -112,7 +112,7 @@ abstract class AppRouter {
         builder: (context, state) {
           final args = state.extra as CourseVideoArgs;
           return CourseVideoScreen(
-            course: args.course,
+            lessonId: args.lessonId,
             coursePathModel: args.coursePathModel,
           );
         },

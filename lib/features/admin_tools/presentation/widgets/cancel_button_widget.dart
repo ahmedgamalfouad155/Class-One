@@ -1,21 +1,20 @@
-
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/colors.dart';
-import 'package:sinna/core/widgets/custom_buton.dart';
+import 'package:sinna/core/theme/styles.dart';
 
-class CancelButtonWidget extends StatelessWidget {
-  const CancelButtonWidget({
-    super.key,
-  });
+class CustomCancelTextWidget extends StatelessWidget {
+  const CustomCancelTextWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return CustomButton(
-      text: "Cancel",
+    return TextButton(
       onPressed: () => Navigator.pop(context),
-      bacgrouncColor: context.appColors.greyMoonlight,
-      textColor: context.appColors.black,
-      borderSideColor: context.appColors.greyMoonlight,
+      child: Text(
+        "Cancel",
+        style: AppStyles.textStyle15W600(
+          context,
+        ).copyWith(color: context.appColors.blue),
+      ),
     );
   }
 }

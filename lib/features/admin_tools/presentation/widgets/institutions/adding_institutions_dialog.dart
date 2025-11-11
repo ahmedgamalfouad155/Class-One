@@ -50,8 +50,9 @@ class _AddingInstitutionsDialogState extends State<AddingInstitutionsDialog> {
                 ),
                 const SizedBox(height: 12),
                 Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Expanded(child: CancelButtonWidget()),
+                    CustomCancelTextWidget(),
                     const SizedBox(width: 10),
                     Expanded(
                       child: BlocConsumer<InstitutionsCubit, InstitutionsState>(
@@ -78,6 +79,7 @@ class _AddingInstitutionsDialogState extends State<AddingInstitutionsDialog> {
                           if (state is InstitutionAddedSuccessState ||
                               state is InstitutionsInitial) {
                             return CustomButton(
+                              width: context.width / 2.5,
                               text: "Save",
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {

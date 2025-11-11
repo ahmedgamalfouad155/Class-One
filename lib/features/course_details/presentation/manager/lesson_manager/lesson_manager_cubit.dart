@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/features/course_details/data/models/attachment_model.dart';
@@ -10,6 +12,22 @@ part 'lesson_manager_state.dart';
 class LessonManagerCubit extends Cubit<LessonManagerState> {
   LessonManagerCubit() : super(LessonManagerInitial());
   final LessonManagerService _lessonManagerService = LessonManagerServiceImpl();
+  StreamSubscription? _lessonSubscription;
+
+  Stream<CourseModel> getLesson(String lessonId, CoursePathModel path) {
+    emit(GetingLessonLoadingState());
+    _lessonSubscription = _lessonManagerService
+        .getLesson(lessonId, path)
+        .listen(
+          (lesson) {
+            emit(GetingLessonSuccessState(lesson));
+          },
+          onError: (e) {
+            emit(GetingLessonFailureState(e.toString()));
+          },
+        );
+    return _lessonManagerService.getLesson(lessonId, path);
+  }
 
   Future<void> createLesson(
     CourseModel lessonModel,
@@ -83,4 +101,10 @@ class LessonManagerCubit extends Cubit<LessonManagerState> {
       emit(RemoveAttachmentFailureState(e.toString()));
     }
   }
+  @override
+  Future<void> close() {
+    _lessonSubscription?.cancel();
+    return super.close();
+  }
+
 }

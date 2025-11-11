@@ -7,6 +7,7 @@ import 'package:sinna/features/explore/data/models/course_model.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
 
 abstract class LessonManagerService {
+  Stream<CourseModel> getLesson(String lessonId, CoursePathModel path);
   Future<void> createLesson(CourseModel lessonModel, CoursePathModel path);
   Future<void> deleteLesson(CourseModel lessonModel, CoursePathModel path);
   Future<void> updateLesson(CourseModel lessonModel, CoursePathModel path);
@@ -24,6 +25,21 @@ abstract class LessonManagerService {
 
 class LessonManagerServiceImpl extends LessonManagerService {
   final firestor = FirestoreServices.instance;
+  @override
+    Stream<CourseModel> getLesson(String lessonId, CoursePathModel path) {
+    return firestor.documentstream(
+      path: FirestorePath.newLessonsPath(
+        specialization: path.specialization.toString(),
+        institution: path.institution.toString(),
+        level: path.level.toString(),
+        course: path.courseId.toString(),
+        lessonId: lessonId,
+      ),
+      builder: (data, documentId) {
+        return CourseModel.fromMap(data!, documentId);
+      },
+    );
+  }
   @override
   Future<void> createLesson(
     CourseModel lessonModel,
