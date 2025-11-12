@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sinna/core/helper/normalize_firestore_name.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_animated_dialod.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
@@ -11,7 +10,7 @@ import 'package:sinna/features/profile/presentation/widgets/title_in_buttom_shee
 
 void institutionBottomSheet(
   BuildContext context,
-  String specialization, [
+  String specializationId, [
   bool? isEdit = false,
 ]) {
   final TextEditingController institutionController = TextEditingController();
@@ -73,14 +72,14 @@ void institutionBottomSheet(
                           return CustomButton(
                             text: "Save",
                             onPressed: () {
-                              if (formKey.currentState!.validate()) {
+                              if (formKey.currentState!.validate()) { 
                                 context
                                     .read<InstitutionsCubit>()
                                     .addInstitution(
-                                      specialization: specialization,
-                                      institutionname: normalizeFirestoreName(
-                                        institutionController.text.trim(),
-                                      ),
+                                      specializationId: specializationId,
+                                      institutionname: institutionController
+                                          .text
+                                          .trim(),
                                     );
                               }
                             },

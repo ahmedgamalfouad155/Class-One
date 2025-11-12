@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sinna/features/admin_tools/data/models/field_model.dart';
 import 'package:sinna/features/admin_tools/data/service/fields_service.dart';
 part 'fields_state.dart';
 
@@ -10,7 +11,7 @@ class FieldsCubit extends Cubit<FieldsState> {
   final FieldsServiceImpl fieldsService = FieldsServiceImpl();
   StreamSubscription? _fieldsSubscription;
 
-  Stream<List<String>> getFields() {
+  Stream<List<FieldModel>> getFields() {
     emit(FieldsLoadingState());
     _fieldsSubscription = fieldsService.getFields().listen(
       (fields) {
@@ -23,10 +24,10 @@ class FieldsCubit extends Cubit<FieldsState> {
     return fieldsService.getFields();
   }
 
-  void addField(String field) async {
+  void addField(String specialization) async {
     emit(AddingFieldsLoadingState());
     try {
-      await FieldsServiceImpl().addField(field);
+      await FieldsServiceImpl().addField(specialization);
       emit(AddingFieldsSuccessState());
     } catch (e) {
       emit(AddingFieldsFailureState(e.toString()));

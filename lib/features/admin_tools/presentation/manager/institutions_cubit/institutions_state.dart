@@ -11,7 +11,7 @@ final class InstitutionsLoadingState extends InstitutionsState {}
 
 /// عند نجاح جلب البيانات
 final class InstitutionsLoadedState extends InstitutionsState {
-  final List<String> institutions;
+  final List<InstitutionModel> institutions;
   InstitutionsLoadedState(this.institutions);
 }
 

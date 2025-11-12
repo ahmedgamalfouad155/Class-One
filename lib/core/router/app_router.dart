@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sinna/features/admin_tools/data/models/field_model.dart';
 import 'package:sinna/features/admin_tools/presentation/screens/admins_screen.dart';
 import 'package:sinna/features/admin_tools/presentation/screens/control_panel_screen.dart';
 import 'package:sinna/features/admin_tools/presentation/screens/fields_screen.dart';
@@ -167,8 +168,10 @@ abstract class AppRouter {
       GoRoute(
         path: kInstitutionsScreen,
         builder: (context, state) {
-          final specialization = state.extra as String;
-          return FieldNameAndInstitutionsScreen(specialization: specialization);
+          final fieldModel = state.extra as FieldModel;
+          return FieldNameAndInstitutionsScreen(
+            fieldModel: fieldModel,
+          );
         },
       ),
       GoRoute(

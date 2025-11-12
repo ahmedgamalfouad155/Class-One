@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sinna/core/helper/normalize_firestore_name.dart';
+import 'package:flutter_bloc/flutter_bloc.dart'; 
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_animated_dialod.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
@@ -66,14 +65,12 @@ void fieldsBottomSheet(BuildContext context) {
                             onPressed: () {
                               if (formKey.currentState!.validate()) {
                                 context.read<FieldsCubit>().addField(
-                                  normalizeFirestoreName(
-                                    fieldController.text.trim(),
-                                  ),
+                                  fieldController.text.trim(),
                                 );
                               }
                             },
                           );
-                        } else if (state is AddingFieldsFailureState) { 
+                        } else if (state is AddingFieldsFailureState) {
                           return Text(state.errMessage);
                         } else {
                           return const Text("error");

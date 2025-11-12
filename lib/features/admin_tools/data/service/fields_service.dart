@@ -1,26 +1,30 @@
 import 'package:sinna/core/constants/constants.dart';
+import 'package:sinna/core/helper/normalize_firestore_name.dart';
 import 'package:sinna/core/services/firebase/firebase_path.dart';
 import 'package:sinna/core/services/firebase/firestore_services.dart';
+import 'package:sinna/features/admin_tools/data/models/field_model.dart';
 
 abstract class FieldsService {
-  Stream<List<String>> getFields();
-  Future<void> addField(String field);
+  Stream<List<FieldModel>> getFields();
+  Future<void> addField(String specialization);
 }
 
 class FieldsServiceImpl extends FieldsService {
   @override
-  Stream<List<String>> getFields() {
+  Stream<List<FieldModel>> getFields() {
     return firestor.collectionsStram(
       path: FirestorePath.preferencesSpecialization(),
-      builder: (data, documentId) => documentId,
+      builder: (data, documentId) => FieldModel.fromMap(data!, documentId),
     );
   }
+
   final firestor = FirestoreServices.instance;
   @override
-  Future<void> addField(String field) async {
+  Future<void> addField(String specialization) async { 
+    final id = generateFirestoreId(FireStoreCollectionsName.specialization);
     await firestor.setData(
-      path: FirestorePath.specialiaztion(field),
-      data: {FireStoreCollectionsName.specialization: field},
+      path: FirestorePath.specialiaztion(id),
+      data: FieldModel(id: id, name: specialization).toMap(),
     );
   }
 }

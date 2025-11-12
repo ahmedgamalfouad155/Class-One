@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sinna/core/helper/normalize_firestore_name.dart';
+import 'package:flutter_bloc/flutter_bloc.dart'; 
 import 'package:sinna/core/widgets/custom_option_widget.dart';
 import 'package:sinna/features/admin_tools/presentation/manager/institutions_cubit/institutions_cubit.dart';
 
 class ListOfInstitutionWidget extends StatelessWidget {
-  const ListOfInstitutionWidget({super.key, required this.specialization});
+  const ListOfInstitutionWidget({super.key, required this.specializationId});
 
-  final String specialization;
+  final String specializationId;
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<InstitutionsCubit, InstitutionsState>(
       bloc: context.read<InstitutionsCubit>()
-        ..getInstitutions(specialization: specialization),
+        ..getInstitutions(specializationId: specializationId),
       builder: (context, state) {
         if (state is InstitutionsLoadingState) {
           return const Center(child: CircularProgressIndicator());
@@ -23,7 +22,7 @@ class ListOfInstitutionWidget extends StatelessWidget {
           return Expanded(
             child: ListView.separated(
               itemBuilder: (context, index) => CustomOptionWidget(
-                title: denormalizeFirestoreName(institutions[index]),
+                title: institutions[index].name,
                 onTap: () {
                   // showDialog(
                   //   context: context,

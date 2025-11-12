@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sinna/core/helper/normalize_firestore_name.dart';
 import 'package:sinna/features/admin_tools/data/models/institution_model.dart';
 import 'package:sinna/features/admin_tools/data/service/institutions_service.dart';
 
@@ -12,10 +11,10 @@ class InstitutionsCubit extends Cubit<InstitutionsState> {
   final InstitutionService institutionService = InstitutionServiceImpl();
   StreamSubscription? _institutionsSubscription;
 
-  void getInstitutions({required String specialization}) async {
+  void getInstitutions({required String specializationId}) async { 
     emit(InstitutionsLoadingState());
     _institutionsSubscription = institutionService
-        .getInstitutions(specialization: specialization)
+        .getInstitutions(specialization: specializationId)
         .listen(
           (institutions) {
             emit(InstitutionsLoadedState(institutions));
@@ -27,19 +26,14 @@ class InstitutionsCubit extends Cubit<InstitutionsState> {
   }
 
   void addInstitution({
-    required String specialization,
+    required String specializationId,
     required String institutionname,
   }) async {
     emit(InstitutionAddingState());
     try {
-      final institutionModel = InstitutionModel(
-        name: institutionname,
-        id: documentIdFromLocalData(),
-      );
       await institutionService.addInstitution(
         institution: institutionname,
-        specialization: specialization,
-        institutionModel: institutionModel,
+        specializationid: specializationId,
       );
       emit(InstitutionAddedSuccessState());
     } catch (e) {

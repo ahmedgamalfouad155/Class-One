@@ -1,13 +1,16 @@
+import 'package:sinna/core/constants/constants.dart';
+import 'package:sinna/core/helper/normalize_firestore_name.dart';
 import 'package:sinna/core/services/firebase/firebase_path.dart';
 import 'package:sinna/core/services/firebase/firestore_services.dart';
 import 'package:sinna/features/admin_tools/data/models/institution_model.dart';
 
 abstract class InstitutionService {
-  Stream<List<String>> getInstitutions({required String specialization});
-  Future<void> addInstitution({
+  Stream<List<InstitutionModel>> getInstitutions({
     required String specialization,
+  });
+  Future<void> addInstitution({
+    required String specializationid,
     required String institution,
-    required InstitutionModel institutionModel,
   });
   Future<void> deleteInstitution(String id);
   Future<void> updateInstitution(InstitutionModel institutionModel);
@@ -17,24 +20,31 @@ class InstitutionServiceImpl extends InstitutionService {
   final firestore = FirestoreServices.instance;
 
   @override
-  Stream<List<String>> getInstitutions( {required String specialization}) {
+  Stream<List<InstitutionModel>> getInstitutions({
+    required String specialization,
+  }) {
     return firestore.collectionsStram(
-      path: FirestorePath.preferencesInstitutions(specialization: specialization),
+      path: FirestorePath.preferencesInstitutions(
+        specialization: specialization,
+      ),
       builder: (data, documentId) {
-        return  documentId;
+        return InstitutionModel.fromMap(data!, documentId);
       },
     );
   }
 
   @override
   Future<void> addInstitution({
-    required String specialization,
+    required String specializationid,
     required String institution,
-    required InstitutionModel institutionModel,
   }) async {
+    final id = generateFirestoreId(FireStoreCollectionsName.institution);
     await firestore.setData(
-      path: FirestorePath.newINstitution(specialization, institution),
-      data: institutionModel.toMap(),
+      path: FirestorePath.newInstitution(
+        specializationId: specializationid,
+        institutionId: id,
+      ),
+      data: InstitutionModel(id: id, name: institution).toMap(),
     );
   }
 

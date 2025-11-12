@@ -8,7 +8,7 @@ final class FieldsInitial extends FieldsState {}
 final class FieldsLoadingState extends FieldsState {}
 
 final class FieldsSuccessState extends FieldsState {
-  final List<String> fields;
+  final List<FieldModel> fields;
   FieldsSuccessState(this.fields);
 }
 

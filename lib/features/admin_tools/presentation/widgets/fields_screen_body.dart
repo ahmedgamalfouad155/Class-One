@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sinna/core/helper/normalize_firestore_name.dart';
 import 'package:sinna/core/router/app_router.dart';
+import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/core/widgets/custom_option_widget.dart';
 import 'package:sinna/features/admin_tools/presentation/manager/fields/fields_cubit.dart';
@@ -17,8 +17,12 @@ class FieldsScreenBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FieldsAppBarWidget(),
+            const SizedBox(height: 10),
+            Text("Fields", style: AppStyles.textStyle24W600(context)),
+            const SizedBox(height: 10),
             BlocProvider(
               create: (context) => FieldsCubit()..getFields(),
               child: Builder(
@@ -35,13 +39,12 @@ class FieldsScreenBody extends StatelessWidget {
                           itemBuilder: (context, index) => Column(
                             children: [
                               CustomOptionWidget(
-                                title: denormalizeFirestoreName(
-                                  state.fields[index],
-                                ),
+                                title: state.fields[index].name,
                                 onTap: () {
-                                  GoRouter.of(
-                                    context,
-                                  ).push(AppRouter.kInstitutionsScreen , extra: state.fields[index]);
+                                  GoRouter.of(context).push(
+                                    AppRouter.kInstitutionsScreen,
+                                    extra: state.fields[index],
+                                  );
                                 },
                               ),
                               if (index != state.fields.length - 1)

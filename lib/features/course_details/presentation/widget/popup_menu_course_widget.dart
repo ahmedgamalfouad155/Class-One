@@ -3,8 +3,11 @@ import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/features/admin_tools/presentation/widgets/institutions/institution_bottom_sheet.dart';
 
 class PopupMenufieldNameAndInstitutionWidget extends StatelessWidget {
-  const PopupMenufieldNameAndInstitutionWidget({super.key, required this.specialization});
-  final String specialization;
+  const PopupMenufieldNameAndInstitutionWidget({
+    super.key,
+    required this.specializationId,
+  });
+  final String specializationId;
 
   @override
   Widget build(BuildContext context) {
@@ -16,19 +19,11 @@ class PopupMenufieldNameAndInstitutionWidget extends StatelessWidget {
       offset: const Offset(0, 40),
       onSelected: (value) {
         switch (value) {
-          case 'edit_field':
-            // createCourseBottomSheet(context, coursePathModels, true);
-            //
+          case 'edit_field': 
             break;
 
           case 'add_institution':
-            institutionBottomSheet(context, specialization);
-
-            //
-            // showDialog(
-            //   context: context,
-            //   builder: (_) => const AddingInstitutionsDialog(),
-            // );
+            institutionBottomSheet(context, specializationId); 
             break;
         }
       },
