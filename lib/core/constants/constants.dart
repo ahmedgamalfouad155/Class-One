@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:sinna/generated/locale_keys.g.dart';
 
-
 class AppConstants {
   static const String hiveBoxName = "settings";
   static const String translationsPath = 'assets/translations';
@@ -82,7 +81,7 @@ class FireStoreInstitutionFieldsName {
   static const String name = "name";
 }
 
-String selectedUniversity = "Select University"; 
+String selectedUniversity = "Select University";
 
 final List<String> specializationBottomSheetFilters = const [
   "Dentistry",

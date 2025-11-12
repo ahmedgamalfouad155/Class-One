@@ -2,8 +2,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sinna/features/admin_tools/presentation/screens/admins_screen.dart';
 import 'package:sinna/features/admin_tools/presentation/screens/control_panel_screen.dart';
-import 'package:sinna/features/admin_tools/presentation/screens/filds_screen.dart';
-import 'package:sinna/features/admin_tools/presentation/screens/institutions_screen.dart';
+import 'package:sinna/features/admin_tools/presentation/screens/fields_screen.dart';
+import 'package:sinna/features/admin_tools/presentation/screens/field_name_and_institutions_screen.dart';
 import 'package:sinna/features/admin_tools/presentation/screens/instructors_screen.dart';
 import 'package:sinna/features/admin_tools/presentation/screens/participants_screen.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
@@ -13,7 +13,7 @@ import 'package:sinna/features/auth/presentation/screens/login_screen.dart';
 import 'package:sinna/features/auth/presentation/screens/signup_screen.dart';
 import 'package:sinna/features/auth/presentation/screens/steps_academic_screen.dart';
 import 'package:sinna/features/course_details/data/models/course_video_args_model.dart';
-import 'package:sinna/features/explore/data/models/course_path_model.dart'; 
+import 'package:sinna/features/explore/data/models/course_path_model.dart';
 import 'package:sinna/features/final_ui/screens/register_screen.dart';
 import 'package:sinna/features/auth/presentation/screens/adding_phone_screen.dart';
 import 'package:sinna/features/final_ui/screens/otp_screen.dart';
@@ -43,7 +43,7 @@ abstract class AppRouter {
   static const String kCourseVideoScreen = '/courseVideoScreen';
   static const String kLanguageScreen = '/languageScreen';
   static const String kModeScreen = '/modeScreen';
-  static const String kUserCcourseDetailsScreen = '/userCcourseDetailsScreen'; 
+  static const String kUserCcourseDetailsScreen = '/userCcourseDetailsScreen';
   static const String kFinalRegister = '/registerfinal';
   static const String kFinalSignin = '/finalSignin';
   static const String kFinalOtpScreen = '/finalOtpScreen';
@@ -59,6 +59,7 @@ abstract class AppRouter {
   static const String kFildsScreen = '/fildsScreen';
   static const String kParticipantsScreen = '/participantsScreen';
   static const String kAdminsScreen = '/adminsScreen';
+  static const String kFieldNameScreen = '/fieldNameScreen';
 
   static final router = GoRouter(
     routes: [
@@ -154,7 +155,7 @@ abstract class AppRouter {
         path: kAccountScreen,
         builder: (context, state) => const ProfileScreen(),
       ),
-      
+
       GoRoute(
         path: kControlPanalScreen,
         builder: (context, state) => const ControlPanelScreen(),
@@ -165,7 +166,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kInstitutionsScreen,
-        builder: (context, state) => const InstitutionsScreen(),
+        builder: (context, state) {
+          final specialization = state.extra as String;
+          return FieldNameAndInstitutionsScreen(specialization: specialization);
+        },
       ),
       GoRoute(
         path: kNameScreen,
@@ -180,7 +184,7 @@ abstract class AppRouter {
         builder: (context, state) => const PreferencesScreen(),
       ),
       GoRoute(
-        path: kFildsScreen, 
+        path: kFildsScreen,
         builder: (context, state) => const FildsScreen(),
       ),
       GoRoute(
@@ -191,8 +195,6 @@ abstract class AppRouter {
         path: kAdminsScreen,
         builder: (context, state) => const AdminsScreen(),
       ),
-
-
     ],
   );
 }

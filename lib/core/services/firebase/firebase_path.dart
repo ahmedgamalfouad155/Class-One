@@ -23,7 +23,7 @@ class FirestorePath {
   static String newCoursesPath({
     required String specialization,
     required String institution,
-    required String level,  
+    required String level,
   }) =>
       "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}/$institution/${FireStoreCollectionsName.levels}/$level/${FireStoreCollectionsName.courses}/";
 
@@ -57,7 +57,7 @@ class FirestorePath {
     required String specialization,
     required String institution,
     required String level,
-    required String course, 
+    required String course,
   }) =>
       "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}/$institution/${FireStoreCollectionsName.levels}/$level/${FireStoreCollectionsName.courses}/$course/${FireStoreCollectionsName.participants}";
 
@@ -73,6 +73,12 @@ class FirestorePath {
       "${FireStoreCollectionsName.coursesInfoSpecialization}/";
   static String preferencesInstitutions({required String specialization}) =>
       "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}";
+
+  static String specialiaztion(String specialization) =>
+      "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization";
+
+  static String newINstitution(String specialization,String institution) =>
+      "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}/$institution";
 
   // static String preferencesLevels({required String specialization}) =>
   // "${FireStoreCollectionsName.coursesInfoSpecialization}/$specialization/${FireStoreCollectionsName.institution}";

@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sinna/core/constants/images.dart';
 import 'package:sinna/core/theme/styles.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/institutions/popup_menu_field_and_institutions_widget.dart';
 import 'package:sinna/features/course_details/presentation/manager/course_cubit/course_cubit.dart';
 import 'package:sinna/features/course_details/presentation/widget/delete_course_icon_widget.dart';
-import 'package:sinna/features/course_details/presentation/widget/popup_menu_course_widget.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
 
 class CourseAppBarWidget extends StatelessWidget {

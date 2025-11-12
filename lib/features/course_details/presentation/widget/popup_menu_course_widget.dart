@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/colors.dart';
-import 'package:sinna/features/course_details/presentation/widget/create_lesson_bottom_sheet.dart';
-import 'package:sinna/features/course_details/presentation/widget/participants_bootom_sheet.dart';
-import 'package:sinna/features/explore/data/models/course_path_model.dart';
-import 'package:sinna/features/explore/presentation/widgets/create_course_bottom_sheet.dart';
-// تأكد إنها تحتوي على context.width
+import 'package:sinna/features/admin_tools/presentation/widgets/institutions/institution_bottom_sheet.dart';
 
-class PopupMenuCourseWidget extends StatelessWidget {
-  const PopupMenuCourseWidget({super.key, required this.coursePathModels});
-  final CoursePathModel coursePathModels;
+class PopupMenufieldNameAndInstitutionWidget extends StatelessWidget {
+  const PopupMenufieldNameAndInstitutionWidget({super.key, required this.specialization});
+  final String specialization;
 
   @override
   Widget build(BuildContext context) {
@@ -20,38 +16,35 @@ class PopupMenuCourseWidget extends StatelessWidget {
       offset: const Offset(0, 40),
       onSelected: (value) {
         switch (value) {
-          case 'edit':
-            createCourseBottomSheet(context, coursePathModels, true);
-
+          case 'edit_field':
+            // createCourseBottomSheet(context, coursePathModels, true);
+            //
             break;
 
-          case 'add_lesson':
-            createLessonBottomSheet(context, coursePathModels);
-            break;
+          case 'add_institution':
+            institutionBottomSheet(context, specialization);
 
-          case 'participants':
-            participantsBottomSheet(context, coursePathModels);
+            //
+            // showDialog(
+            //   context: context,
+            //   builder: (_) => const AddingInstitutionsDialog(),
+            // );
             break;
         }
       },
 
       itemBuilder: (context) => [
         PopupMenuItem(
-          value: 'edit',
+          value: 'edit_field',
           child: SizedBox(
             width: MediaQuery.of(context).size.width / 4,
-            child: const Text('Edit Course', style: TextStyle(fontSize: 14)),
+            child: const Text('Edit Field', style: TextStyle(fontSize: 14)),
           ),
         ),
         const PopupMenuDivider(height: 1),
         const PopupMenuItem(
-          value: 'add_lesson',
-          child: Text('Add Lesson', style: TextStyle(fontSize: 14)),
-        ),
-        const PopupMenuDivider(height: 1),
-        const PopupMenuItem(
-          value: 'participants',
-          child: Text('Participants', style: TextStyle(fontSize: 14)),
+          value: 'add_institution',
+          child: Text('Add Institution', style: TextStyle(fontSize: 14)),
         ),
       ],
     );

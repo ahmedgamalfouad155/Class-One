@@ -1,60 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sinna/core/helper/normalize_firestore_name.dart';
-import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_animated_dialod.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
+import 'package:sinna/core/widgets/custom_text_field_widget.dart';
 import 'package:sinna/features/admin_tools/presentation/manager/institutions_cubit/institutions_cubit.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/cancel_button_widget.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/institutions/institutions_title_and_sub_title_and_field_section.dart';
+import 'package:sinna/features/profile/presentation/widgets/custom_bottom_sheet.dart';
+import 'package:sinna/features/profile/presentation/widgets/title_in_buttom_sheet_widget.dart';
 
-class AddingInstitutionsDialog extends StatefulWidget {
-  const AddingInstitutionsDialog({super.key});
-
-  @override
-  State<AddingInstitutionsDialog> createState() =>
-      _AddingInstitutionsDialogState();
-}
-
-class _AddingInstitutionsDialogState extends State<AddingInstitutionsDialog> {
+void institutionBottomSheet(
+  BuildContext context,
+  String specialization, [
+  bool? isEdit = false,
+]) {
   final TextEditingController institutionController = TextEditingController();
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  @override
-  void dispose() {
-    institutionController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
+  CustomBottomSheet.show(
+    context: context,
+    child: BlocProvider(
       create: (context) => InstitutionsCubit(),
-      child: Dialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16.r),
-        ),
-        backgroundColor: context.appColors.white,
+      child: SizedBox(
+        height: context.height * 0.9,
+        width: double.infinity,
         child: Form(
-          key: _formKey,
-          child: Container(
-            width: context.width * .9,
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                InstitutionsTitleAndSubTitleAndFieldSection(
-                  institutionController: institutionController,
-                ),
-                const SizedBox(height: 12),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+          key: formKey,
+          child: CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomCancelTextWidget(),
-                    const SizedBox(width: 10),
+                    TitleInButtomSheetWidget(title: "Create Institution"),
+                    const SizedBox(height: 20),
+                    CustomTextFieldWidget(
+                      hintText: "e.g., Cairo University",
+                      controller: institutionController,
+                    ),
+                  ],
+                ),
+              ),
+              SliverFillRemaining(
+                hasScrollBody: false,
+                fillOverscroll: true,
+                child: Column(
+                  children: [
+                    Expanded(child: const SizedBox()),
                     BlocConsumer<InstitutionsCubit, InstitutionsState>(
                       buildWhen: (previous, current) =>
                           current is InstitutionsInitial ||
@@ -79,14 +71,13 @@ class _AddingInstitutionsDialogState extends State<AddingInstitutionsDialog> {
                         if (state is InstitutionAddedSuccessState ||
                             state is InstitutionsInitial) {
                           return CustomButton(
-                            width: context.width / 2.5,
                             text: "Save",
                             onPressed: () {
-                              if (_formKey.currentState!.validate()) {
+                              if (formKey.currentState!.validate()) {
                                 context
                                     .read<InstitutionsCubit>()
                                     .addInstitution(
-                                      specialization: "test",
+                                      specialization: specialization,
                                       institutionname: normalizeFirestoreName(
                                         institutionController.text.trim(),
                                       ),
@@ -104,11 +95,11 @@ class _AddingInstitutionsDialogState extends State<AddingInstitutionsDialog> {
                     ),
                   ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
 }

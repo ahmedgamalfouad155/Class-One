@@ -2,10 +2,13 @@ import 'package:sinna/core/services/firebase/firebase_path.dart';
 import 'package:sinna/core/services/firebase/firestore_services.dart';
 import 'package:sinna/features/admin_tools/data/models/institution_model.dart';
 
-
 abstract class InstitutionService {
-  Stream<List<InstitutionModel>> getInstitutions();
-  Future<void> addInstitution(InstitutionModel institutionModel);
+  Stream<List<String>> getInstitutions({required String specialization});
+  Future<void> addInstitution({
+    required String specialization,
+    required String institution,
+    required InstitutionModel institutionModel,
+  });
   Future<void> deleteInstitution(String id);
   Future<void> updateInstitution(InstitutionModel institutionModel);
 }
@@ -14,19 +17,23 @@ class InstitutionServiceImpl extends InstitutionService {
   final firestore = FirestoreServices.instance;
 
   @override
-  Stream<List<InstitutionModel>> getInstitutions() {
+  Stream<List<String>> getInstitutions( {required String specialization}) {
     return firestore.collectionsStram(
-      path: FirestorePath.myInstitutions(),
+      path: FirestorePath.preferencesInstitutions(specialization: specialization),
       builder: (data, documentId) {
-        return InstitutionModel.fromMap(data!, documentId);
+        return  documentId;
       },
     );
   }
 
   @override
-  Future<void> addInstitution(InstitutionModel institutionModel) async {
+  Future<void> addInstitution({
+    required String specialization,
+    required String institution,
+    required InstitutionModel institutionModel,
+  }) async {
     await firestore.setData(
-      path: FirestorePath.institutionsId(institutionModel.id),
+      path: FirestorePath.newINstitution(specialization, institution),
       data: institutionModel.toMap(),
     );
   }
