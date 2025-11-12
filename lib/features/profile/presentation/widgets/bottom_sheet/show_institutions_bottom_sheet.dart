@@ -37,6 +37,10 @@ void showInstitutionsBottomSheet(
                     return const Center(child: CircularProgressIndicator());
                   }
                   if (state is InstitutionsSuccessState) {
+                    final institutions = state.institutions
+                        .map((e) => e.name)
+                        .toList();
+                    
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
@@ -44,7 +48,7 @@ void showInstitutionsBottomSheet(
                         TitleInButtomSheetWidget(
                           title: LocaleKeys.institutions.tr(),
                         ),
-                        InstitutionsRadioGroup(options: state.institutions),
+                        InstitutionsRadioGroup(options: institutions),
                       ],
                     );
                   }

@@ -33,6 +33,9 @@ void showSpecialtyBottomSheet(
                     return const Center(child: CircularProgressIndicator());
                   }
                   if (state is SpecialtySuccessState) {
+                    final specialties = state.specialty
+                        .map((e) => e.name)
+                        .toList();
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
@@ -40,7 +43,7 @@ void showSpecialtyBottomSheet(
                         TitleInButtomSheetWidget(
                           title: LocaleKeys.specialty.tr(),
                         ),
-                        CustomRadioGroup(options: state.specialty),
+                        CustomRadioGroup(options: specialties),
                       ],
                     );
                   }
@@ -50,6 +53,9 @@ void showSpecialtyBottomSheet(
                     final prevState = context
                         .read<PreferencesCubit>()
                         .previousSpecialties;
+                    final prevSpecialties = prevState
+                        .map((e) => e.name)
+                        .toList();
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
@@ -57,7 +63,7 @@ void showSpecialtyBottomSheet(
                         TitleInButtomSheetWidget(
                           title: LocaleKeys.specialty.tr(),
                         ),
-                        CustomRadioGroup(options: prevState),
+                        CustomRadioGroup(options: prevSpecialties),
                       ],
                     );
                   }

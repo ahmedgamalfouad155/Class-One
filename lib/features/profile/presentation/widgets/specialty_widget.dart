@@ -18,9 +18,9 @@ class SpecialtyWidget extends StatelessWidget {
       child: BlocListener<RadioCubit, String?>(
         listenWhen: (previous, current) =>
             previous != current && current != null,
-        listener: (context, selectedSpecialty) {
+        listener: (context, selectedSpecialty) { 
           context.read<PreferencesCubit>().getInstitutions(
-            specialization: selectedSpecialty!,
+            specializationId: selectedSpecialty!,
           );
           context.read<PreferencesCubit>().updateSpecialty(selectedSpecialty);
         },

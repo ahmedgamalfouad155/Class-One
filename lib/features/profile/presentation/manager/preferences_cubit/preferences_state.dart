@@ -8,7 +8,7 @@ final class PreferencesInitial extends PreferencesState {}
 final class SpecialtyLoadingState extends PreferencesState {}
 
 final class SpecialtySuccessState extends PreferencesState {
-  final List<String> specialty;
+  final List<FieldModel> specialty;
   SpecialtySuccessState(this.specialty);
 }
 
@@ -20,7 +20,7 @@ final class SpecialtyFailedState extends PreferencesState {
 final class InstitutionsLoadingState extends PreferencesState {}
 
 final class InstitutionsSuccessState extends PreferencesState {
-  final List<String> institutions;
+  final List<InstitutionModel> institutions;
   InstitutionsSuccessState(this.institutions);
 }
 

@@ -1,11 +1,13 @@
 import 'package:sinna/core/constants/constants.dart';
 import 'package:sinna/core/services/firebase/firebase_path.dart';
 import 'package:sinna/core/services/firebase/firestore_services.dart';
+import 'package:sinna/features/admin_tools/data/models/field_model.dart';
+import 'package:sinna/features/admin_tools/data/models/institution_model.dart';
 import 'package:sinna/features/auth/data/services/auth_service/auth_services.dart';
 
 abstract class PreferencesService {
-  Future<List<String>> getSpecialty();
-  Future<List<String>> getInstitutions({required String specialization});
+  Future<List<FieldModel>> getSpecialty();
+  Future<List<InstitutionModel>> getInstitutions({required String specialization});
   Future<List<String>> getLevels();
 
   Future<void> updateSpecialty(String specialty);
@@ -17,20 +19,20 @@ class PreferencesServiceImpl extends PreferencesService {
   final firestor = FirestoreServices.instance;
   final uid = AuthServicesImpl().currentUser!.email;
   @override
-  Future<List<String>> getSpecialty() {
+  Future<List<FieldModel>> getSpecialty() {
     return firestor.getCollection(
       path: FirestorePath.preferencesSpecialization(),
-      builder: (data, documentId) => documentId,
+      builder: (data, documentId) => FieldModel.fromMap(data, documentId),
     );
   }
 
   @override
-  Future<List<String>> getInstitutions({required String specialization}) {
+  Future<List<InstitutionModel>> getInstitutions({required String specialization}) {
     return firestor.getCollection(
       path: FirestorePath.preferencesInstitutions(
         specialization: specialization,
       ),
-      builder: (data, documentId) => documentId,
+      builder: (data, documentId) => InstitutionModel.fromMap(data, documentId),
     );
   }
 
