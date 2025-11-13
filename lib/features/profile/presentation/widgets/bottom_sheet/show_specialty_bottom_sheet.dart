@@ -1,17 +1,21 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sinna/core/cubit/radio_cubit/radio_cubit.dart';
+
 import 'package:sinna/core/utils/app_media.dart';
+import 'package:sinna/core/widgets/custom_divider_widget.dart';
+import 'package:sinna/features/admin_tools/data/models/field_model.dart';
 import 'package:sinna/features/profile/presentation/manager/preferences_cubit/preferences_cubit.dart';
-import 'package:sinna/features/profile/presentation/widgets/bottom_sheet/custom_radio_group.dart';
+import 'package:sinna/features/profile/presentation/manager/specialty_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/custom_bottom_sheet.dart';
 import 'package:sinna/features/profile/presentation/widgets/title_in_buttom_sheet_widget.dart';
 import 'package:sinna/generated/locale_keys.g.dart';
+// ignore_for_file: deprecated_member_use
+import 'package:sinna/core/theme/colors.dart';
 
 void showSpecialtyBottomSheet(
   BuildContext context,
-  RadioCubit radioCubit,
+  SpecialtyRadioCubit radioCubit,
   PreferencesCubit preferencesCubit,
 ) {
   CustomBottomSheet.show(
@@ -32,10 +36,7 @@ void showSpecialtyBottomSheet(
                   if (state is SpecialtyLoadingState) {
                     return const Center(child: CircularProgressIndicator());
                   }
-                  if (state is SpecialtySuccessState) {
-                    final specialties = state.specialty
-                        .map((e) => e.name)
-                        .toList();
+                  if (state is SpecialtySuccessState) { 
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
@@ -43,7 +44,7 @@ void showSpecialtyBottomSheet(
                         TitleInButtomSheetWidget(
                           title: LocaleKeys.specialty.tr(),
                         ),
-                        CustomRadioGroup(options: specialties),
+                        SpecialtyRadioGroup(options: state.specialty),
                       ],
                     );
                   }
@@ -53,9 +54,7 @@ void showSpecialtyBottomSheet(
                     final prevState = context
                         .read<PreferencesCubit>()
                         .previousSpecialties;
-                    final prevSpecialties = prevState
-                        .map((e) => e.name)
-                        .toList();
+
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
@@ -63,7 +62,7 @@ void showSpecialtyBottomSheet(
                         TitleInButtomSheetWidget(
                           title: LocaleKeys.specialty.tr(),
                         ),
-                        CustomRadioGroup(options: prevSpecialties),
+                        SpecialtyRadioGroup(options: prevState),
                       ],
                     );
                   }
@@ -79,4 +78,57 @@ void showSpecialtyBottomSheet(
       ),
     ),
   );
+}
+
+class SpecialtyRadioGroup extends StatelessWidget {
+  final List<FieldModel> options;
+  const SpecialtyRadioGroup({super.key, required this.options});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: List.generate(options.length, (index) {
+        final option = options[index];
+        return Column(
+          children: [
+            SpecialtyRadioWidget(option: option),
+            if (index != options.length - 1) const CustomDividerWidget(),
+          ],
+        );
+      }),
+    );
+  }
+}
+
+class SpecialtyRadioWidget extends StatelessWidget {
+  const SpecialtyRadioWidget({super.key, required this.option});
+
+  final FieldModel option;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SpecialtyRadioCubit, FieldModel?>(
+      builder: (context, selected) {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(option.name),
+            Radio<String>(
+              value: option.id, // نستخدم id كـ value فريدة
+              groupValue: selected?.id, // نطابق بناءً على id
+              onChanged: (value) {
+                if (value != null) {
+                  context.read<SpecialtyRadioCubit>().selectTemp(
+                    FieldModel(id: option.id, name: option.name),
+                  );
+                }
+              },
+              activeColor: context.appColors.blue,
+            ),
+          ],
+        );
+      },
+    );
+  }
 }

@@ -1,12 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sinna/core/constants/images.dart';
-import 'package:sinna/core/helper/normalize_firestore_name.dart';
+import 'package:sinna/core/constants/images.dart'; 
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/core/widgets/custom_empty_screen.dart';
 import 'package:sinna/core/widgets/institutions_radio_widget.dart';
+import 'package:sinna/features/admin_tools/data/models/institution_model.dart';
 import 'package:sinna/features/profile/presentation/manager/institutions_cubit.dart';
 import 'package:sinna/features/profile/presentation/manager/preferences_cubit/preferences_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/title_in_buttom_sheet_widget.dart';
@@ -36,11 +36,7 @@ void showInstitutionsBottomSheet(
                   if (state is InstitutionsLoadingState) {
                     return const Center(child: CircularProgressIndicator());
                   }
-                  if (state is InstitutionsSuccessState) {
-                    final institutions = state.institutions
-                        .map((e) => e.name)
-                        .toList();
-                    
+                  if (state is InstitutionsSuccessState) { 
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
@@ -48,7 +44,7 @@ void showInstitutionsBottomSheet(
                         TitleInButtomSheetWidget(
                           title: LocaleKeys.institutions.tr(),
                         ),
-                        InstitutionsRadioGroup(options: institutions),
+                        InstitutionsRadioGroup(options: state.institutions),
                       ],
                     );
                   }
@@ -73,7 +69,7 @@ void showInstitutionsBottomSheet(
 }
 
 class InstitutionsRadioGroup extends StatelessWidget {
-  final List<String> options;
+  final List<InstitutionModel> options;
   const InstitutionsRadioGroup({super.key, required this.options});
 
   @override
@@ -84,7 +80,7 @@ class InstitutionsRadioGroup extends StatelessWidget {
         final option = options[index];
         return Column(
           children: [
-            InstitutionsRadioWidget(title: denormalizeFirestoreName(option)),
+            InstitutionsRadioWidget(option: option),
             if (index != options.length - 1) const CustomDividerWidget(),
           ],
         );

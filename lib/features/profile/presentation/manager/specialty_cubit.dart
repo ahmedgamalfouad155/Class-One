@@ -1,41 +1,32 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sinna/features/admin_tools/data/models/field_model.dart';
 
-/// موديل للتخصص
-class SpecialtyItem {
-  final String id;
-  final String name;
+class SpecialtyRadioCubit extends Cubit<FieldModel?> {
+  FieldModel? _confirmed; // اللي تم تأكيده
+  FieldModel? _temp;      // الاختيار المؤقت
 
-  SpecialtyItem({required this.id, required this.name});
-}
-
-/// Cubit لتخزين التخصص المختار
-class SpecialtyCubit extends Cubit<SpecialtyItem?> {
-  SpecialtyItem? _confirmed; // العنصر المؤكد
-  SpecialtyItem? _temp;      // العنصر المؤقت (داخل الدايلوج)
-
-  SpecialtyCubit({SpecialtyItem? initialValue}) : super(initialValue) {
+  SpecialtyRadioCubit({FieldModel? initialValue}) : super(initialValue) {
     _confirmed = initialValue;
     _temp = initialValue;
   }
 
-  /// اختيار مؤقت
-  void selectTemp(SpecialtyItem item) {
-    _temp = item;
+  // اختيار مؤقت (قبل التأكيد)
+  void selectTemp(FieldModel field) {
+    _temp = field;
     emit(_temp);
   }
 
-  /// تأكيد الاختيار
+  // تأكيد الاختيار
   void confirmSelection() {
     _confirmed = _temp;
     emit(_confirmed);
   }
 
-  /// إلغاء والرجوع للحالة السابقة
+  // إلغاء التغيير والرجوع للاختيار المؤكد السابق
   void cancelSelection() {
     _temp = _confirmed;
     emit(_confirmed);
   }
 
-  /// العنصر المؤكد الحالي
-  SpecialtyItem? get confirmed => _confirmed;
+  FieldModel? get confirmed => _confirmed;
 }

@@ -1,11 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sinna/core/cubit/radio_cubit/radio_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart'; 
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/features/profile/presentation/manager/institutions_cubit.dart';
 import 'package:sinna/features/profile/presentation/manager/levels_radio_cubit.dart';
 import 'package:sinna/features/profile/presentation/manager/preferences_cubit/preferences_cubit.dart';
+import 'package:sinna/features/profile/presentation/manager/specialty_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/institutions_info_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/levels_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/specialty_widget.dart';
@@ -18,7 +18,7 @@ class PreferencesScreenBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => RadioCubit()),
+        BlocProvider(create: (_) => SpecialtyRadioCubit()),
         BlocProvider(create: (_) => InstitutionsRadioCubit()),
         BlocProvider(create: (_) => LevelsRadioCubit()),
         BlocProvider(create: (_) => PreferencesCubit()),
@@ -36,7 +36,7 @@ class PreferencesScreenBody extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 BlocProvider.value(
-                  value: BlocProvider.of<RadioCubit>(context),
+                  value: BlocProvider.of<SpecialtyRadioCubit>(context),
                   child: const SpecialtyWidget(),
                 ),
                 const SizedBox(height: 15),

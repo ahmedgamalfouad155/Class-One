@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
+import 'package:sinna/features/admin_tools/data/models/institution_model.dart';
 import 'package:sinna/features/profile/presentation/manager/institutions_cubit.dart';
 import 'package:sinna/features/profile/presentation/manager/preferences_cubit/preferences_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/bottom_sheet/show_institutions_bottom_sheet.dart';
@@ -36,15 +37,15 @@ class InstitutionsInfoWidget extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    BlocBuilder<InstitutionsRadioCubit, String?>(
+                    BlocBuilder<InstitutionsRadioCubit, InstitutionModel?>(
                       builder: (context, state) {
                         state != null
                             ? context
                                   .read<PreferencesCubit>()
-                                  .updateInstitutions(state)
+                                  .updateInstitutions(state.id)
                             : null;
                         return Text(
-                          state ?? LocaleKeys.select_university.tr(),
+                          state?.name ?? LocaleKeys.select_university.tr(),
                           style: AppStyles.textStyle14W600(context),
                         );
                       },

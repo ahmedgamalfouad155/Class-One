@@ -1,10 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sinna/core/cubit/radio_cubit/radio_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart'; 
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
+import 'package:sinna/features/admin_tools/data/models/field_model.dart';
 import 'package:sinna/features/profile/presentation/manager/preferences_cubit/preferences_cubit.dart';
+import 'package:sinna/features/profile/presentation/manager/specialty_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/bottom_sheet/show_specialty_bottom_sheet.dart';
 import 'package:sinna/generated/locale_keys.g.dart';
 
@@ -14,17 +15,17 @@ class SpecialtyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-      value: context.read<RadioCubit>(),
-      child: BlocListener<RadioCubit, String?>(
+      value: context.read<SpecialtyRadioCubit>(),
+      child: BlocListener<SpecialtyRadioCubit, FieldModel?>(
         listenWhen: (previous, current) =>
             previous != current && current != null,
         listener: (context, selectedSpecialty) { 
           context.read<PreferencesCubit>().getInstitutions(
-            specializationId: selectedSpecialty!,
+            specializationId: selectedSpecialty!.id,
           );
-          context.read<PreferencesCubit>().updateSpecialty(selectedSpecialty);
+          context.read<PreferencesCubit>().updateSpecialty(selectedSpecialty.id);
         },
-        child: BlocBuilder<RadioCubit, String?>(
+        child: BlocBuilder<SpecialtyRadioCubit, FieldModel?>(
           builder: (context, state) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,7 +33,7 @@ class SpecialtyWidget extends StatelessWidget {
                 InkWell(
                   onTap: () => showSpecialtyBottomSheet(
                     context,
-                    context.read<RadioCubit>(),
+                    context.read<SpecialtyRadioCubit>(),
                     context.read<PreferencesCubit>(),
                   ),
                   child: Row(
@@ -47,7 +48,7 @@ class SpecialtyWidget extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            state ?? LocaleKeys.select_specialty.tr(),
+                            state?.name ?? LocaleKeys.select_specialty.tr(),
                             style: AppStyles.textStyle14W600(context),
                           ),
                           const SizedBox(width: 5),
