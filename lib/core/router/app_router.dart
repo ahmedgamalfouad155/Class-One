@@ -12,13 +12,10 @@ import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_state.d
 import 'package:sinna/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:sinna/features/auth/presentation/screens/login_screen.dart';
 import 'package:sinna/features/auth/presentation/screens/signup_screen.dart';
-import 'package:sinna/features/auth/presentation/screens/steps_academic_screen.dart';
+
 import 'package:sinna/features/course_details/data/models/course_video_args_model.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
-import 'package:sinna/features/final_ui/screens/register_screen.dart';
 import 'package:sinna/features/auth/presentation/screens/adding_phone_screen.dart';
-import 'package:sinna/features/final_ui/screens/otp_screen.dart';
-import 'package:sinna/features/final_ui/screens/study_location_screen.dart';
 import 'package:sinna/features/course_details/presentation/screens/course_video_screen.dart';
 import 'package:sinna/features/course_details/presentation/screens/courses_screen.dart';
 import 'package:sinna/features/landing/presentation/screen/landing_screen.dart';
@@ -98,11 +95,7 @@ abstract class AppRouter {
       GoRoute(
         path: kAddingPhoneScreen,
         builder: (context, state) => const AddingPhoneScreen(),
-      ),
-      GoRoute(
-        path: kStepsAcademicScreen,
-        builder: (context, state) => const StepsAcademicScreen(),
-      ),
+      ), 
       GoRoute(
         path: kNavBarScreen,
         builder: (context, state) => const NavBarScreen(),
@@ -131,27 +124,11 @@ abstract class AppRouter {
           final coursePathModel = state.extra as CoursePathModel;
           return UserCourseDetailsScreen(coursePathModel: coursePathModel);
         },
-      ),
-      GoRoute(
-        path: kFinalRegister,
-        builder: (context, state) => const RegisterScreen(),
-      ),
-      GoRoute(
-        path: kFinalRegister,
-        builder: (context, state) => const RegisterScreen(),
-      ),
+      ), 
       GoRoute(
         path: kFinalSignin,
         builder: (context, state) => const AddingPhoneScreen(),
-      ),
-      GoRoute(
-        path: kFinalOtpScreen,
-        builder: (context, state) => const OtpScreen(),
-      ),
-      GoRoute(
-        path: kStudyLocationScreen,
-        builder: (context, state) => const StudyLocationScreen(),
-      ),
+      ), 
       GoRoute(
         path: kAccountScreen,
         builder: (context, state) => const ProfileScreen(),
