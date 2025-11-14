@@ -21,64 +21,67 @@ void institutionBottomSheet(
 
   CustomBottomSheet.show(
     context: context,
-    child: BlocProvider(
-      create: (context) => InstitutionsCubit(),
-      child: SizedBox(
-        height: context.height * 0.9,
-        width: double.infinity,
-        child: Form(
-          key: formKey,
-          child: CustomScrollView(
-            slivers: [
-              SliverToBoxAdapter(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    TitleInButtomSheetWidget(
-                      title: isEdit == true
-                          ? "Edit Institution"
-                          : "Create Institution",
-                    ),
-                    const SizedBox(height: 20),
-                    CustomTextFieldWidget(
-                      hintText: "e.g., Cairo University",
-                      controller: institutionController,
-                    ),
-                  ],
-                ),
+    child: SizedBox(
+      height: context.height * 0.9,
+      width: double.infinity,
+      child: Form(
+        key: formKey,
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TitleInButtomSheetWidget(
+                    title: isEdit == true
+                        ? "Edit Institution"
+                        : "Create Institution",
+                  ),
+                  const SizedBox(height: 20),
+                  CustomTextFieldWidget(
+                    hintText: "e.g., Cairo University",
+                    controller: institutionController,
+                  ),
+                ],
               ),
-              SliverFillRemaining(
-                hasScrollBody: false,
-                fillOverscroll: true,
-                child: Column(
-                  children: [
-                    Expanded(child: const SizedBox()),
-                    isEdit == false
-                        ? SaveInstitutionButtonWidget(
+            ),
+            SliverFillRemaining(
+              hasScrollBody: false,
+              fillOverscroll: true,
+              child: Column(
+                children: [
+                  Expanded(child: const SizedBox()),
+                  isEdit == false
+                      ? BlocProvider(
+                          create: (context) => InstitutionsCubit(),
+                          child: SaveInstitutionButtonWidget(
                             formKey: formKey,
                             institutionController: institutionController,
                             specializationId: specializationId,
-                          )
-                        : Column(
-                            children: [
-                              UpdateInstitutionButtonWidget(
+                          ),
+                        )
+                      : Column(
+                          children: [
+                            BlocProvider(
+                              create: (context) => InstitutionsCubit(),
+                              child: UpdateInstitutionButtonWidget(
                                 formKey: formKey,
                                 institution: institution!,
                                 institutionController: institutionController,
                                 specializationId: specializationId,
                               ),
-                              // const SizedBox(height: 10),
-                              // DeleteInstitutionButtonWidget(
-                              //   specializationId: specializationId,
-                              //   institutionId: institution.id,
-                              // ),
-                            ],
-                          ),
-                  ],
-                ),
+                            ),
+                            // const SizedBox(height: 10),
+                            // DeleteInstitutionButtonWidget(
+                            //   specializationId: specializationId,
+                            //   institutionId: institution.id,
+                            // ),
+                          ],
+                        ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     ),

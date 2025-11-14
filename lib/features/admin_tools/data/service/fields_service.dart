@@ -7,6 +7,7 @@ import 'package:sinna/features/admin_tools/data/models/field_model.dart';
 abstract class FieldsService {
   Stream<List<FieldModel>> getFields();
   Future<void> addField(String specialization);
+  Future<void> updateField(FieldModel fieldModel);
 }
 
 class FieldsServiceImpl extends FieldsService {
@@ -25,6 +26,14 @@ class FieldsServiceImpl extends FieldsService {
     await firestor.setData(
       path: FirestorePath.specialiaztion(id),
       data: FieldModel(id: id, name: specialization).toMap(),
+    );
+  }
+
+  @override
+  Future<void> updateField(FieldModel fieldModel) async {
+    await firestor.updatedata(
+      path: FirestorePath.specialiaztion(fieldModel.id),
+      data: fieldModel.toMap(),
     );
   }
 }

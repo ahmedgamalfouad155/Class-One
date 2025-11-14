@@ -34,6 +34,16 @@ class FieldsCubit extends Cubit<FieldsState> {
     }
   }
 
+  void updateField(FieldModel fieldModel) async {
+    emit(UpdatingFieldLoadingState());
+    try {
+      await fieldsService.updateField(fieldModel);
+      emit(UpdatingFieldSuccessState());
+    } catch (e) {
+      emit(UpdatingFieldFailureState(e.toString()));
+    }
+  }
+
   @override
   Future<void> close() {
     _fieldsSubscription?.cancel();

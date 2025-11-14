@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/colors.dart';
+import 'package:sinna/features/admin_tools/data/models/field_model.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/fields_buttom_sheet_widget.dart';
 import 'package:sinna/features/admin_tools/presentation/widgets/institutions/institution_bottom_sheet.dart';
 
 class PopupMenufieldNameAndInstitutionWidget extends StatelessWidget {
   const PopupMenufieldNameAndInstitutionWidget({
     super.key,
-    required this.specializationId,
+    required this.field,
   });
-  final String specializationId;
+  final FieldModel field;
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +21,12 @@ class PopupMenufieldNameAndInstitutionWidget extends StatelessWidget {
       offset: const Offset(0, 40),
       onSelected: (value) {
         switch (value) {
-          case 'edit_field': 
+          case 'edit_field':
+            fieldsBottomSheet(context, true, field);
             break;
 
           case 'add_institution':
-            institutionBottomSheet(context, specializationId); 
+            institutionBottomSheet(context, field.id);
             break;
         }
       },

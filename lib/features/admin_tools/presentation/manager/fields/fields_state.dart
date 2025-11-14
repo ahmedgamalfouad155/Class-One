@@ -25,3 +25,13 @@ final class AddingFieldsFailureState extends FieldsState {
   final String errMessage;
   AddingFieldsFailureState(this.errMessage);
 }
+
+
+final class UpdatingFieldLoadingState extends FieldsState {}
+
+final class UpdatingFieldSuccessState extends FieldsState {}
+
+final class UpdatingFieldFailureState extends FieldsState {
+  final String errMessage;
+  UpdatingFieldFailureState(this.errMessage);
+}

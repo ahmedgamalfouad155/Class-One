@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart'; 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/utils/app_media.dart';
-import 'package:sinna/core/widgets/custom_animated_dialod.dart';
-import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/core/widgets/custom_text_field_widget.dart';
+import 'package:sinna/features/admin_tools/data/models/field_model.dart';
 import 'package:sinna/features/admin_tools/presentation/manager/fields/fields_cubit.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/create_field_button_widget.dart';
+import 'package:sinna/features/admin_tools/presentation/widgets/update_field_button_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/custom_bottom_sheet.dart';
 import 'package:sinna/features/profile/presentation/widgets/title_in_buttom_sheet_widget.dart';
 
-void fieldsBottomSheet(BuildContext context) {
+void fieldsBottomSheet(
+  BuildContext context, [
+  bool? isEdit = false,
+  FieldModel? field,
+]) {
   final TextEditingController fieldController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+  isEdit == true ? fieldController.text = field!.name : '';
   CustomBottomSheet.show(
     context: context,
     child: BlocProvider(
@@ -27,7 +33,9 @@ void fieldsBottomSheet(BuildContext context) {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TitleInButtomSheetWidget(title: "Create Field"),
+                    TitleInButtomSheetWidget(
+                      title: isEdit == false ? "Create Field" : "Update Field",
+                    ),
                     const SizedBox(height: 20),
                     CustomTextFieldWidget(
                       hintText: "e.g., Dentistry",
@@ -42,41 +50,15 @@ void fieldsBottomSheet(BuildContext context) {
                 child: Column(
                   children: [
                     Expanded(child: const SizedBox()),
-                    BlocConsumer<FieldsCubit, FieldsState>(
-                      listener: (context, state) {
-                        if (state is AddingFieldsSuccessState) {
-                          CustomAnimatedDialog.show(
-                            context: context,
-                            message: "Field added successfully ✅🎉",
-                            animationType: DialogAnimationType.success,
-                          );
-                        }
-                      },
-                      builder: (context, state) {
-                        if (state is AddingFieldsLoadingState) {
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        }
-                        if (state is AddingFieldsSuccessState ||
-                            state is FieldsInitial) {
-                          return CustomButton(
-                            text: "Create",
-                            onPressed: () {
-                              if (formKey.currentState!.validate()) {
-                                context.read<FieldsCubit>().addField(
-                                  fieldController.text.trim(),
-                                );
-                              }
-                            },
-                          );
-                        } else if (state is AddingFieldsFailureState) {
-                          return Text(state.errMessage);
-                        } else {
-                          return const Text("error");
-                        }
-                      },
-                    ),
+                    isEdit == false
+                        ? CreateFieldButtonWidget(
+                            formKey: formKey,
+                            fieldController: fieldController,
+                          )
+                        : UpdateFieldButtonWidget(
+                            field: field!,
+                            fieldController: fieldController,
+                          ),
                   ],
                 ),
               ),

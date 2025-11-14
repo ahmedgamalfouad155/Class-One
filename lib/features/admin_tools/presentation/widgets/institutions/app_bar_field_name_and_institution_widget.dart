@@ -18,8 +18,8 @@ class AppBarFieldNameAndInstitutionWidget extends StatelessWidget {
         ),
         const SizedBox(width: 10),
         Text(field.name, style: AppStyles.textStyle22W600(context)),
-        const Spacer(), 
-        PopupMenufieldNameAndInstitutionWidget(specializationId: field.id),
+        const Spacer(),
+        PopupMenufieldNameAndInstitutionWidget(field: field),
       ],
     );
   }
