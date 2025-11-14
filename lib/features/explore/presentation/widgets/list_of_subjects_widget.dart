@@ -34,7 +34,7 @@ class ListOfSubjectsWidget extends StatelessWidget {
                     title: state.subjects[index].title,
                     instructor: state.subjects[index].instructor,
                     image: state.subjects[index].image,
-                  );
+                  ); 
                   GoRouter.of(
                     context,
                   ).push(AppRouter.kCoursesScreen, extra: path);

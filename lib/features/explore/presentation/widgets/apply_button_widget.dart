@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sinna/core/constants/constants.dart';
 import 'package:sinna/core/cubit/radio_cubit/radio_cubit.dart';
 import 'package:sinna/core/helper/normalize_firestore_name.dart';
 import 'package:sinna/core/widgets/custom_animated_dialod.dart';
@@ -48,7 +49,7 @@ class ApplyButtonWidget extends StatelessWidget {
                 if (_formKey.currentState!.validate()) {
                   
                   final courseInfo = CourseInfoModel(
-                    id: normalizeFirestoreName(courseTitleController.text),
+                    id: generateFirestoreId(FireStoreCollectionsName.courses), 
                     title: courseTitleController.text.trim(),
                     instructor: context.read<RadioCubit>().state!,
                     image: photoUrlController.text.trim(),

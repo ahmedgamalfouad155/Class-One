@@ -18,21 +18,16 @@ class ExploreScreenBody extends StatelessWidget {
           padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 10.0),
           child: BlocBuilder<UserAcademicInfoCubit, UserAcademicInfoState>(
             builder: (context, state) {
-              if (state is UserAcademicInfoSuccessState) {
-                // print(state.userModel.specialization);
-                // print(state.userModel.institution);
-                // print(state.userModel.level);
+              if (state is UserAcademicInfoSuccessState) { 
                 final path = CoursePathModel(
-                  specialization: normalizeFirestoreName(
-                    state.userModel.specialization.toString(),
-                  ),
-                  institution: normalizeFirestoreName(
-                    state.userModel.institution.toString(),
-                  ),
+                  specialization: 
+                    state.userModel.specialization.toString(), 
+                  institution: 
+                    state.userModel.institution.toString(), 
                   level: normalizeFirestoreName(
                     state.userModel.level.toString(),
                   ),
-                );
+                ); 
                 return Column(
                   children: [
                     DiscoverAppBarWidget(path: path),

@@ -42,10 +42,10 @@ class CreateLessonButtonWidget extends StatelessWidget {
             state is LessonManagerInitial) {
           return CustomButton(
             text: "Create",
-            onPressed: () {
+            onPressed: () { 
               if (formKey.currentState!.validate()) {
                 final lessonModel = CourseModel(
-                  id: documentIdFromLocalData(),
+                  id:   generateFirestoreId(FireStoreCollectionsName.lessons),
                   tittle: lessonTitleController.text,
                   number: lessonNumberController.text.isEmpty
                       ? 0

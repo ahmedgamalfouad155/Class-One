@@ -61,9 +61,9 @@ class SignupServiceImpl extends SignupService {
 
   Future<void> _addAcadimyInfo(String uid) async {
     final userAcademicModel = UserAcademicModel(
-      institution: 'Mansoura University', 
+      institution: 'YrmK0xYmU5jHtjw937M6', 
       level: 'Year 1',
-      specialization: 'Dentistry',
+      specialization: 'bRsWPrl3BjyrV2Z0qhih',
     );
     await firestor.setData(
       path: FirestorePath.filter(uid),
