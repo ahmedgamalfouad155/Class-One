@@ -12,8 +12,14 @@ abstract class InstitutionService {
     required String specializationid,
     required String institution,
   });
-  Future<void> deleteInstitution(String id);
-  Future<void> updateInstitution(InstitutionModel institutionModel);
+  // Future<void> deleteInstitution({
+  //   required String specializationId,
+  //   required String institutionId,
+  // });
+  Future<void> updateInstitution(
+    String specializationId,
+    InstitutionModel institutionModel,
+  );
 }
 
 class InstitutionServiceImpl extends InstitutionService {
@@ -49,15 +55,27 @@ class InstitutionServiceImpl extends InstitutionService {
   }
 
   @override
-  Future<void> updateInstitution(InstitutionModel institutionModel) {
+  Future<void> updateInstitution(
+    String specializationId,
+    InstitutionModel institutionModel,
+  ) {
     return firestore.updatedata(
-      path: FirestorePath.institutionsId(institutionModel.id),
+      path: FirestorePath.newInstitution(
+        specializationId: specializationId,
+        institutionId: institutionModel.id,
+      ),
       data: institutionModel.toMap(),
     );
   }
 
-  @override
-  Future<void> deleteInstitution(String id) {
-    return firestore.deleteData(path: FirestorePath.institutionsId(id));
-  }
+  // @override
+  // Future<void> deleteInstitution({
+  //   required String specializationId,
+  //   required String institutionId,
+  // }) {
+  //   return firestore.deleteData(path: FirestorePath.newInstitution(
+  //     specializationId: specializationId,
+  //     institutionId: institutionId,
+  //   ));
+  // }
 }

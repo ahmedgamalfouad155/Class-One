@@ -1,26 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart'; 
 import 'package:sinna/core/widgets/custom_animated_dialod.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/features/admin_tools/data/models/institution_model.dart';
 import 'package:sinna/features/admin_tools/presentation/manager/institutions_cubit/institutions_cubit.dart';
-import 'package:sinna/features/admin_tools/presentation/widgets/institutions/updateing_institution_dialog.dart';
 
 class UpdateInstitutionButtonWidget extends StatelessWidget {
   const UpdateInstitutionButtonWidget({
     super.key,
     required GlobalKey<FormState> formKey,
-    required this.widget,
-    required this.nameController,
+    required this.institution,
+    required this.institutionController,
+    required this.specializationId,
   }) : _formKey = formKey;
 
   final GlobalKey<FormState> _formKey;
-  final UpdateingInstitutionDialog widget;
-  final TextEditingController nameController;
+  final InstitutionModel institution;
+
+  final TextEditingController institutionController;
+  final String specializationId;
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<InstitutionsCubit, InstitutionsState>(
+      buildWhen: (previous, current) =>
+          current is InstitutionUpdatingState ||
+          current is InstitutionUpdatedSuccessState ||
+          current is InstitutionUpdateFailureState ||
+          current is InstitutionsInitial,
       listener: (context, state) {
         if (state is InstitutionUpdatedSuccessState) {
           CustomAnimatedDialog.show(
@@ -36,20 +43,20 @@ class UpdateInstitutionButtonWidget extends StatelessWidget {
         }
         if (state is InstitutionUpdatedSuccessState ||
             state is InstitutionsInitial) {
-          return CustomButton(
+          return CustomButton( 
             text: "Update",
             onPressed: () {
               if (_formKey.currentState!.validate()) {
+                final updatedInstitution = institution
+                  ..update(name: institutionController.text.trim());
                 context.read<InstitutionsCubit>().updateInstitution(
-                  InstitutionModel(
-                    id: widget.institution.id,
-                    name: nameController.text,
-                  ),
+                  specializationId: specializationId,
+                  institutionModel: updatedInstitution,
                 );
               }
             },
           );
-        } else if (state is   InstitutionUpdateFailureState) {
+        } else if (state is InstitutionUpdateFailureState) {
           return Text(state.errMessage);
         } else {
           return const Text("error");

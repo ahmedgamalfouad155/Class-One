@@ -6,7 +6,7 @@ import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/features/admin_tools/data/models/field_model.dart';
 import 'package:sinna/features/profile/presentation/manager/preferences_cubit/preferences_cubit.dart';
-import 'package:sinna/features/profile/presentation/manager/specialty_cubit.dart';
+import 'package:sinna/features/profile/presentation/manager/specialty_radio_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/custom_bottom_sheet.dart';
 import 'package:sinna/features/profile/presentation/widgets/title_in_buttom_sheet_widget.dart';
 import 'package:sinna/generated/locale_keys.g.dart';

@@ -5,7 +5,7 @@ import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/features/admin_tools/data/models/field_model.dart';
 import 'package:sinna/features/profile/presentation/manager/preferences_cubit/preferences_cubit.dart';
-import 'package:sinna/features/profile/presentation/manager/specialty_cubit.dart';
+import 'package:sinna/features/profile/presentation/manager/specialty_radio_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/bottom_sheet/show_specialty_bottom_sheet.dart';
 import 'package:sinna/generated/locale_keys.g.dart';
 

@@ -53,6 +53,10 @@ abstract class AppStyles {
     fontSize: 17.sp,
     fontWeight: FontWeight.w600,
     color: context.appColors.black,
+  );static TextStyle textStyle17W400(BuildContext context) => TextStyle(
+    fontSize: 17.sp,
+    fontWeight: FontWeight.w400,
+    color: context.appColors.black,
   );
   static TextStyle textStyle24W600(BuildContext context) => TextStyle(
     fontSize: 24.sp,

@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/features/admin_tools/data/models/institution_model.dart';
-import 'package:sinna/features/profile/presentation/manager/institutions_cubit.dart';
+import 'package:sinna/features/profile/presentation/manager/institutions_radio_cubit.dart';
 import 'package:sinna/features/profile/presentation/manager/preferences_cubit/preferences_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/bottom_sheet/show_institutions_bottom_sheet.dart';
 import 'package:sinna/generated/locale_keys.g.dart';

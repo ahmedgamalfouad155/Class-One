@@ -33,20 +33,19 @@ final class InstitutionAddFailureState extends InstitutionsState {
   InstitutionAddFailureState(this.errMessage);
 }
 
-/// أثناء الحذف
-final class InstitutionDeletingState extends InstitutionsState {}
+// /// أثناء الحذف
+// final class InstitutionDeletingState extends InstitutionsState {}
 
-/// عند نجاح الحذف
-final class InstitutionDeletedSuccessState extends InstitutionsState {
-  final String deletedId;
-  InstitutionDeletedSuccessState(this.deletedId);
-}
+// /// عند نجاح الحذف
+// final class InstitutionDeletedSuccessState extends InstitutionsState { 
+//   InstitutionDeletedSuccessState();
+// }
 
-/// عند فشل الحذف
-final class InstitutionDeleteFailureState extends InstitutionsState {
-  final String errMessage;
-  InstitutionDeleteFailureState(this.errMessage);
-}
+// /// عند فشل الحذف
+// final class InstitutionDeleteFailureState extends InstitutionsState {
+//   final String errMessage;
+//   InstitutionDeleteFailureState(this.errMessage);
+// }
 
 /// أثناء التحديث
 final class InstitutionUpdatingState extends InstitutionsState {}

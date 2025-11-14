@@ -32,7 +32,7 @@ class CustomOptionWidget extends StatelessWidget {
             Expanded(
               child: Text(
                 title,
-                style: AppStyles.textStyle14W600(
+                style: AppStyles.textStyle17W400(
                   context,
                 ).copyWith(color: color ?? context.appColors.black),
               ),

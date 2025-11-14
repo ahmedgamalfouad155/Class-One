@@ -11,16 +11,18 @@ class FieldNameAndInstitutionsScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
+    return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AppBarFieldNameAndInstitutionWidget(field: field),
           const SizedBox(height: 16),
-          BlocProvider(
-            create: (context) => InstitutionsCubit(),
-            child: ListOfInstitutionWidget(specializationId: field.id),
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+            child: BlocProvider(
+              create: (context) => InstitutionsCubit(),
+              child: ListOfInstitutionWidget(specializationId: field.id),
+            ),
           ),
         ],
       ),

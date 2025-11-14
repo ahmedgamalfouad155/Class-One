@@ -7,7 +7,7 @@ import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/core/widgets/custom_empty_screen.dart';
 import 'package:sinna/core/widgets/institutions_radio_widget.dart';
 import 'package:sinna/features/admin_tools/data/models/institution_model.dart';
-import 'package:sinna/features/profile/presentation/manager/institutions_cubit.dart';
+import 'package:sinna/features/profile/presentation/manager/institutions_radio_cubit.dart';
 import 'package:sinna/features/profile/presentation/manager/preferences_cubit/preferences_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/title_in_buttom_sheet_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/custom_bottom_sheet.dart';

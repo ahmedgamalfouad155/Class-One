@@ -11,7 +11,7 @@ class InstitutionsCubit extends Cubit<InstitutionsState> {
   final InstitutionService institutionService = InstitutionServiceImpl();
   StreamSubscription? _institutionsSubscription;
 
-  void getInstitutions({required String specializationId}) async { 
+  void getInstitutions({required String specializationId}) async {
     emit(InstitutionsLoadingState());
     _institutionsSubscription = institutionService
         .getInstitutions(specialization: specializationId)
@@ -41,25 +41,37 @@ class InstitutionsCubit extends Cubit<InstitutionsState> {
     }
   }
 
-  void updateInstitution(InstitutionModel institutionModel) async {
+  void updateInstitution({
+    required String specializationId,
+    required InstitutionModel institutionModel,
+  }) async {
     emit(InstitutionUpdatingState());
     try {
-      await institutionService.updateInstitution(institutionModel);
+      await institutionService.updateInstitution(
+        specializationId,
+        institutionModel,
+      );
       emit(InstitutionUpdatedSuccessState(institutionModel));
     } catch (e) {
       emit(InstitutionUpdateFailureState(e.toString()));
     }
   }
 
-  void deleteInstitution(String id) async {
-    emit(InstitutionDeletingState());
-    try {
-      await institutionService.deleteInstitution(id);
-      emit(InstitutionDeletedSuccessState(id));
-    } catch (e) {
-      emit(InstitutionDeleteFailureState(e.toString()));
-    }
-  }
+  // void deleteInstitution({
+  //   required String specializationId,
+  //   required String institutionId,
+  // }) async {
+  //   emit(InstitutionDeletingState());
+  //   try {
+  //     await institutionService.deleteInstitution( 
+  //       specializationId: specializationId,
+  //       institutionId: institutionId,
+  //     );
+  //     emit(InstitutionDeletedSuccessState());
+  //   } catch (e) {
+  //     emit(InstitutionDeleteFailureState(e.toString()));
+  //   }
+  // }
 
   @override
   Future<void> close() {

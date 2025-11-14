@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/features/admin_tools/data/models/institution_model.dart';
-import 'package:sinna/features/profile/presentation/manager/institutions_cubit.dart';
+import 'package:sinna/features/profile/presentation/manager/institutions_radio_cubit.dart';
 
 class InstitutionsRadioWidget extends StatelessWidget {
   const InstitutionsRadioWidget({super.key, required this.option});

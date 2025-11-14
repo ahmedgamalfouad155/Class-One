@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
+import 'package:sinna/core/utils/app_media.dart';
 
 // ignore: must_be_immutable
 class CustomButton extends StatelessWidget {
@@ -28,7 +29,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: height ?? 52.h,
-      width: width ?? MediaQuery.of(context).size.width.w,
+      width: width ?? context.width,
       child: TextButton(
         onPressed: onPressed,
         style: TextButton.styleFrom(
