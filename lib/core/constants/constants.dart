@@ -31,6 +31,7 @@ class FireStoreUserInfoFieldsName {
 
 class FireStoreFilterFieldsName {
   static const String institution = "institution";
+  static const String institutionName = "institution";
   static const String level = "level";
   static const String specialization = "specialization";
 }

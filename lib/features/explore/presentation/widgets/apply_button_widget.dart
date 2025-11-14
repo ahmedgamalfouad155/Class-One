@@ -46,6 +46,7 @@ class ApplyButtonWidget extends StatelessWidget {
               text: "Apply",
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
+                  
                   final courseInfo = CourseInfoModel(
                     id: normalizeFirestoreName(courseTitleController.text),
                     title: courseTitleController.text.trim(),

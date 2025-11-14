@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/cubit/radio_cubit/radio_cubit.dart';
-import 'package:sinna/core/utils/app_media.dart'; 
+import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/features/course_details/presentation/widget/update_course_button_widget.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
 import 'package:sinna/features/explore/presentation/manager/create_course_cubit/create_course_cubit.dart';
@@ -21,8 +21,7 @@ void createCourseBottomSheet(
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   isEdit == true ? courseTitleController.text = path.title! : '';
-  isEdit == true ? photoUrlController.text = path.image! : '';
-
+  isEdit == true ? photoUrlController.text = path.image! : ''; 
   CustomBottomSheet.show(
     context: context,
     child: BlocProvider(
@@ -69,7 +68,7 @@ void createCourseBottomSheet(
                               photoUrlController: photoUrlController,
                               courseTitleController: courseTitleController,
                               path: path,
-                          ),
+                            ),
                     ],
                   ),
                 ),

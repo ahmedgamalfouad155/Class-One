@@ -29,16 +29,16 @@ class CourseServicesImpl implements CourseServices {
       },
     );
   }
-  
+
   @override
-  Future<void> deleteCourse(CoursePathModel coursePathModel) { 
-      return firestor.deleteData(
-        path: FirestorePath.createNewCourse(
-          specialization: coursePathModel.specialization.toString(),
-          institution: coursePathModel.institution.toString(),
-          level: coursePathModel.level.toString(),
-          course: coursePathModel.courseId.toString(),
-        ),
-      );
+  Future<void> deleteCourse(CoursePathModel coursePathModel) {
+    return firestor.deleteData(
+      path: FirestorePath.createNewCourse(
+        specializationId: coursePathModel.specialization.toString(),
+        institution: coursePathModel.institution.toString(),
+        level: coursePathModel.level.toString(),
+        course: coursePathModel.courseId.toString(),
+      ),
+    );
   }
 }
