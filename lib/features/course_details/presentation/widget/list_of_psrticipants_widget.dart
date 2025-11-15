@@ -26,7 +26,7 @@ class ListOfParticipantsWidget extends StatelessWidget {
               children: [
                 SizedBox(height: context.height / 5),
                 CustomEmptyScreen(
-                  image: AppImages.emptyDashbord,
+                  image: AppImages.emptyDashbordLight,
                   title: "This course doesn’t have any enrolled users",
                   subTitle: "",
                 ),

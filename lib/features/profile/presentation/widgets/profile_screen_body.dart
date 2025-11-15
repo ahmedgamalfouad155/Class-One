@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
+import 'package:go_router/go_router.dart'; 
 import 'package:sinna/core/helper/open_whatsapp.dart';
 import 'package:sinna/core/router/app_router.dart';
 import 'package:sinna/core/widgets/custom_option_widget.dart';
@@ -13,7 +13,7 @@ import 'package:sinna/generated/locale_keys.g.dart';
 class YouScreenBody extends StatelessWidget {
   const YouScreenBody({super.key});
   @override
-  Widget build(BuildContext context) { 
+  Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 15),
@@ -43,7 +43,7 @@ class YouScreenBody extends StatelessWidget {
             CustomOptionWidget(
               title: LocaleKeys.help_center.tr(),
               onTap: openWhatsApp,
-            ), 
+            ),
             CustomOptionWidget(
               title: LocaleKeys.logout.tr(),
               onTap: () {

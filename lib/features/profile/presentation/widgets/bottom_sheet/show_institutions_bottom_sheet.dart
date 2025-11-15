@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sinna/core/constants/images.dart'; 
+import 'package:sinna/core/constants/images.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/core/widgets/custom_empty_screen.dart';
@@ -36,7 +36,7 @@ void showInstitutionsBottomSheet(
                   if (state is InstitutionsLoadingState) {
                     return const Center(child: CircularProgressIndicator());
                   }
-                  if (state is InstitutionsSuccessState) { 
+                  if (state is InstitutionsSuccessState) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
@@ -53,7 +53,7 @@ void showInstitutionsBottomSheet(
                   }
                   return Center(
                     child: CustomEmptyScreen(
-                      image: AppImages.emptyDashbord,
+                      image: AppImages.emptyDashbordLight,
                       title: "No Institutions Found",
                       subTitle: "Please select a specialty first",
                     ),

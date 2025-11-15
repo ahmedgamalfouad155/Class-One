@@ -49,7 +49,7 @@ class ListOfLessonsWidget extends StatelessWidget {
               children: [
                 SizedBox(height: context.height / 7),
                 CustomEmptyScreen(
-                  image: AppImages.emptyDashbord,
+                  image: AppImages.emptyDashbordLight,
                   title: "No lessons yet",
                   subTitle: "You can add one to get started",
                 ),
@@ -65,7 +65,7 @@ class ListOfLessonsWidget extends StatelessWidget {
               ],
             ),
           );
-        } 
+        }
         return Column(
           children: [
             TitleAndImageCourseWidget(coursePathModel: coursePathModels),

@@ -60,7 +60,7 @@ class ListOfMyCoursesWidget extends StatelessWidget {
                   },
                 )
               : CustomEmptyScreen(
-                  image: AppImages.emptyDashbord,
+                  image: AppImages.emptyAttachmentDark,
                   title: LocaleKeys.empty_dashboard.tr(),
                   subTitle: LocaleKeys.explore_courses.tr(),
                 );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/utils/app_media.dart';
 
@@ -9,18 +9,22 @@ class CustomEmptyScreen extends StatelessWidget {
     required this.image,
     required this.title,
     required this.subTitle,
+    this.width,
+    this.height,
   });
   final String image, title, subTitle;
+  final double? width, height;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: context.width,
+      width: width ?? context.width,
+      height: height ?? context.height,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SvgPicture.asset(image),
-          const SizedBox(height: 20),
+          Image.asset(image),
+          const SizedBox(height: 16),
           Text(
             title,
             style: AppStyles.textStyle22W600(context),
@@ -29,7 +33,9 @@ class CustomEmptyScreen extends StatelessWidget {
           const SizedBox(height: 6),
           Text(
             subTitle,
-            style: AppStyles.textStyle16w400Grey(context),
+            style: AppStyles.textStyle22W600(
+              context,
+            ).copyWith(color: context.appColors.grey),
             textAlign: TextAlign.center,
           ),
         ],
@@ -37,4 +43,3 @@ class CustomEmptyScreen extends StatelessWidget {
     );
   }
 }
-
