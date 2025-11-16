@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sinna/core/constants/images.dart';
-import 'package:sinna/core/theme/colors.dart';
+import 'package:sinna/core/constants/images.dart'; 
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/features/explore/data/models/course_info_model.dart';
@@ -32,21 +31,25 @@ class NameOfSubjectItemWidget extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                subjectInfo.title,
-                style: AppStyles.textStyle14W600(context),
-              ),
-              const SizedBox(height: 5),
-              Text(
-                subjectInfo.instructor,
-                style: AppStyles.textStyle12GreyW400(
-                  context,
-                ).copyWith(color: context.appColors.grey),
-              ),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  subjectInfo.title,
+                  style: AppStyles.textStyle22W600(context),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  subjectInfo.instructor,
+                  style: AppStyles.textStyle15W400Grey(context),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
           ),
         ],
       ),

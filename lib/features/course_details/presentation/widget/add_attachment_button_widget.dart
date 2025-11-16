@@ -1,4 +1,5 @@
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/utils/app_media.dart';
@@ -8,6 +9,7 @@ import 'package:sinna/features/course_details/data/models/attachment_model.dart'
 import 'package:sinna/features/course_details/presentation/manager/lesson_manager/lesson_manager_cubit.dart';
 import 'package:sinna/features/explore/data/models/course_model.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class AddAttachmentButtonWidget extends StatelessWidget {
   const AddAttachmentButtonWidget({
@@ -33,7 +35,7 @@ class AddAttachmentButtonWidget extends StatelessWidget {
         if (state is AddAttachmentSuccessState) {
           CustomAnimatedDialog.show(
             context: context,
-            message: "Attachment added successfully ✅🎉",
+            message: "${LocaleKeys.attachment_added_successfully.tr()} ✅🎉",
           );
         }
       },
@@ -44,7 +46,7 @@ class AddAttachmentButtonWidget extends StatelessWidget {
             state is LessonManagerInitial) {
           return CustomButton(
             width: context.width / 2.5,
-            text: "Add Attachment",
+            text:   LocaleKeys.add_attachment.tr(),
             onPressed: () {
               if (_formKey.currentState!.validate()) {
                 context.read<LessonManagerCubit>().addAttachment(

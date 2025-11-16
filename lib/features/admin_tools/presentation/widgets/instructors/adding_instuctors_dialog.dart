@@ -40,8 +40,8 @@ class _AddingInstructorDialogState extends State<AddingInstructorDialog> {
         child: Form(
           key: _formKey,
           child: Container(
-            width: context.width * .9,
-            padding: const EdgeInsets.all(16),
+            width: context.width,
+            padding: const EdgeInsets.all(10),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,38 +55,40 @@ class _AddingInstructorDialogState extends State<AddingInstructorDialog> {
                   children: [
                     CustomCancelTextWidget(),
                     const SizedBox(width: 10),
-                    BlocConsumer<InstructorsCubit, InstructorsState>(
-                      listener: (context, state) {
-                        CustomAnimatedDialog.show(
-                          context: context,
-                          message: "Instructor added successfully ✅🎉",
-                          animationType: DialogAnimationType.success,
-                        );
-                      },
-                      builder: (context, state) {
-                        if (state is InstructorAddingState) {
-                          return const Center(
-                            child: CircularProgressIndicator(),
+                    Expanded(
+                      child: BlocConsumer<InstructorsCubit, InstructorsState>(
+                        listener: (context, state) {
+                          CustomAnimatedDialog.show(
+                            context: context,
+                            message:
+                                "${LocaleKeys.instructor_added_successfully.tr()} ✅🎉",
+                            animationType: DialogAnimationType.success,
                           );
-                        } else if (state is InstructorAddedSuccessState ||
-                            state is InstructorsInitial) {
-                          return CustomButton(
-                            width: context.width / 2.5,
-                            text: LocaleKeys.save.tr(),
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                context
-                                    .read<InstructorsCubit>()
-                                    .addInstructor(nameController.text);
-                              }
-                            },
-                          );
-                        } else if (state is InstructorAddFailureState) {
-                          return Text(state.errMessage);
-                        } else {
-                          return const Text("error");
-                        }
-                      },
+                        },
+                        builder: (context, state) {
+                          if (state is InstructorAddingState) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          } else if (state is InstructorAddedSuccessState ||
+                              state is InstructorsInitial) {
+                            return CustomButton(
+                              text: LocaleKeys.save.tr(),
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  context
+                                      .read<InstructorsCubit>()
+                                      .addInstructor(nameController.text);
+                                }
+                              },
+                            );
+                          } else if (state is InstructorAddFailureState) {
+                            return Text(state.errMessage);
+                          } else {
+                            return const Text("error");
+                          }
+                        },
+                      ),
                     ),
                   ],
                 ),

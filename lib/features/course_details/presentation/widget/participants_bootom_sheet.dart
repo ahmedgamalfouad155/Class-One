@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +10,7 @@ import 'package:sinna/features/course_details/presentation/widget/list_of_psrtic
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
 import 'package:sinna/features/profile/presentation/widgets/custom_bottom_sheet.dart';
 import 'package:sinna/features/profile/presentation/widgets/title_in_buttom_sheet_widget.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 void participantsBottomSheet(
   BuildContext context,
@@ -29,7 +31,7 @@ void participantsBottomSheet(
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    TitleInButtomSheetWidget(title: "Participants"),
+                    TitleInButtomSheetWidget(title:   LocaleKeys.participants.tr()),
                     Spacer(),
                     InkWell(
                       onTap: () {

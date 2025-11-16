@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/features/admin_tools/data/models/field_model.dart';
 import 'package:sinna/features/admin_tools/presentation/widgets/fields_buttom_sheet_widget.dart';
 import 'package:sinna/features/admin_tools/presentation/widgets/institutions/institution_bottom_sheet.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class PopupMenufieldNameAndInstitutionWidget extends StatelessWidget {
   const PopupMenufieldNameAndInstitutionWidget({
@@ -36,13 +38,19 @@ class PopupMenufieldNameAndInstitutionWidget extends StatelessWidget {
           value: 'edit_field',
           child: SizedBox(
             width: MediaQuery.of(context).size.width / 4,
-            child: const Text('Edit Field', style: TextStyle(fontSize: 14)),
+            child: Text(
+              LocaleKeys.edit_field.tr(),
+              style: TextStyle(fontSize: 14),
+            ),
           ),
         ),
         const PopupMenuDivider(height: 1),
-        const PopupMenuItem(
+        PopupMenuItem(
           value: 'add_institution',
-          child: Text('Add Institution', style: TextStyle(fontSize: 14)),
+          child: Text(
+            LocaleKeys.add_institution.tr(),
+            style: TextStyle(fontSize: 14),
+          ),
         ),
       ],
     );

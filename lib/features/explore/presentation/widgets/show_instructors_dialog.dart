@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/cubit/radio_cubit/radio_cubit.dart';
@@ -6,6 +7,7 @@ import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/features/admin_tools/presentation/manager/instructors/instructors_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/bottom_sheet/custom_radio_group.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 void showInstructorsDialog(BuildContext context, RadioCubit radioCubit) {
   showDialog(
@@ -24,7 +26,7 @@ void showInstructorsDialog(BuildContext context, RadioCubit radioCubit) {
                   borderRadius: BorderRadius.circular(16),
                 ),
                 title: Text(
-                  "Instructors",
+                    LocaleKeys.educator.tr(),
                   style: AppStyles.textStyle20W600(context),
                 ),
                 content: SizedBox(
@@ -60,7 +62,7 @@ void showInstructorsDialog(BuildContext context, RadioCubit radioCubit) {
                       Navigator.of(context).pop(false);
                     },
                     child: Text(
-                      "Cancel",
+                        LocaleKeys.cancel.tr(),
                       style: AppStyles.textStyle16W600(
                         context,
                       ).copyWith(color: context.appColors.blue),
@@ -74,7 +76,7 @@ void showInstructorsDialog(BuildContext context, RadioCubit radioCubit) {
                           Navigator.of(context).pop(true);
                         },
                         child: Text(
-                          "Confirm",
+                            LocaleKeys.confirm.tr(),
                           style: AppStyles.textStyle16W600(
                             context,
                           ).copyWith(color: context.appColors.blue),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/theme/colors.dart';
@@ -7,6 +8,7 @@ import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/features/admin_tools/presentation/widgets/cancel_button_widget.dart';
 import 'package:sinna/features/course_details/presentation/manager/course_cubit/course_cubit.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class DeleteCourseDialogWidget extends StatelessWidget {
   const DeleteCourseDialogWidget({
@@ -26,7 +28,7 @@ class DeleteCourseDialogWidget extends StatelessWidget {
         backgroundColor: context.appColors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: Text(
-          "Delete Course",
+          LocaleKeys.delete_course.tr(),
           style: AppStyles.textStyle20W600(context),
           textAlign: TextAlign.center,
         ),
@@ -34,7 +36,7 @@ class DeleteCourseDialogWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              "This action will permanently delete the course and cannot be undone.",
+                LocaleKeys.this_action_will_permanently_delete_the_course_and_cannot_be_undone.tr(),
               style: AppStyles.textStyle16W600Grey(context),
             ),
           ],
@@ -47,7 +49,7 @@ class DeleteCourseDialogWidget extends StatelessWidget {
               const SizedBox(width: 10),
               CustomButton(
                 width: context.width / 2.5,
-                text: "Delete Course",
+                text:   LocaleKeys.delete_course.tr(),
                 onPressed: () {
                   cubit.deleteCourse(coursePathModel);
                   Navigator.pop(context);

@@ -28,11 +28,15 @@ class _PasswordScreenBodyState extends State<PasswordScreenBody> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Password", style: AppStyles.textStyle16w400Grey(context)),
+          Text(
+            LocaleKeys.password.tr(),
+            style: AppStyles.textStyle16w400Grey(context),
+          ),
           const SizedBox(height: 10),
           CustomTextFieldWidget(
             hintText: "••••••••",
             controller: passwordController,
+            keyboardType: TextInputType.visiblePassword,
           ),
           const SizedBox(height: 32),
           Align(

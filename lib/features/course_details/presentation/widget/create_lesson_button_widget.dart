@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/constants/constants.dart';
@@ -8,6 +9,7 @@ import 'package:sinna/features/course_details/presentation/manager/lesson_manage
 import 'package:sinna/features/course_details/presentation/manager/term_switch_cubit.dart';
 import 'package:sinna/features/explore/data/models/course_model.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class CreateLessonButtonWidget extends StatelessWidget {
   const CreateLessonButtonWidget({
@@ -32,7 +34,7 @@ class CreateLessonButtonWidget extends StatelessWidget {
         if (state is CreateLessonSuccessState) {
           CustomAnimatedDialog.show(
             context: context,
-            message: "Lesson created successfully ✅🎉",
+            message: "${LocaleKeys.lesson_created_successfully.tr()} ✅🎉",
             animationType: DialogAnimationType.success,
           );
         }
@@ -41,7 +43,7 @@ class CreateLessonButtonWidget extends StatelessWidget {
         if (state is CreateLessonSuccessState ||
             state is LessonManagerInitial) {
           return CustomButton(
-            text: "Create",
+            text:   LocaleKeys.create.tr(),
             onPressed: () { 
               if (formKey.currentState!.validate()) {
                 final lessonModel = CourseModel(

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/utils/app_media.dart';
@@ -8,6 +9,7 @@ import 'package:sinna/features/admin_tools/presentation/widgets/institutions/sav
 import 'package:sinna/features/admin_tools/presentation/widgets/institutions/update_institution_button_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/custom_bottom_sheet.dart';
 import 'package:sinna/features/profile/presentation/widgets/title_in_buttom_sheet_widget.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 void institutionBottomSheet(
   BuildContext context,
@@ -34,8 +36,8 @@ void institutionBottomSheet(
                 children: [
                   TitleInButtomSheetWidget(
                     title: isEdit == true
-                        ? "Edit Institution"
-                        : "Create Institution",
+                        ?   LocaleKeys.edit_institution.tr()
+                        :   LocaleKeys.create_institution.tr(),
                   ),
                   const SizedBox(height: 20),
                   CustomTextFieldWidget(
@@ -60,24 +62,15 @@ void institutionBottomSheet(
                             specializationId: specializationId,
                           ),
                         )
-                      : Column(
-                          children: [
-                            BlocProvider(
-                              create: (context) => InstitutionsCubit(),
-                              child: UpdateInstitutionButtonWidget(
-                                formKey: formKey,
-                                institution: institution!,
-                                institutionController: institutionController,
-                                specializationId: specializationId,
-                              ),
-                            ),
-                            // const SizedBox(height: 10),
-                            // DeleteInstitutionButtonWidget(
-                            //   specializationId: specializationId,
-                            //   institutionId: institution.id,
-                            // ),
-                          ],
+                      : BlocProvider(
+                        create: (context) => InstitutionsCubit(),
+                        child: UpdateInstitutionButtonWidget(
+                          formKey: formKey,
+                          institution: institution!,
+                          institutionController: institutionController,
+                          specializationId: specializationId,
                         ),
+                      ),
                 ],
               ),
             ),

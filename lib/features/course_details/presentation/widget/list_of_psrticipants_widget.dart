@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,6 +10,8 @@ import 'package:sinna/features/course_details/presentation/manager/course_partic
 import 'package:sinna/features/course_details/presentation/manager/course_participants_cubit/course_participants_state.dart';
 import 'package:sinna/features/course_details/presentation/widget/remove_participant_icon_widget.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
+import 'package:sinna/features/profile/presentation/manager/theme_cubit/theme_cubit.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class ListOfParticipantsWidget extends StatelessWidget {
   const ListOfParticipantsWidget({super.key, required this.coursePathModel});
@@ -20,15 +23,17 @@ class ListOfParticipantsWidget extends StatelessWidget {
       builder: (context, state) {
         if (state is GetingPaticipantsLoadingState) {
           return const Center(child: CircularProgressIndicator());
-        } else if (state is GetingPaticipantsSuccessState) {
+        } else if (state is GetingPaticipantsSuccessState) { 
           if (state.participants.isEmpty) {
             return Column(
               children: [
                 SizedBox(height: context.height / 5),
                 CustomEmptyScreen(
-                  image: AppImages.emptyDashbordLight,
-                  title: "This course doesn’t have any enrolled users",
-                  subTitle: "",
+                  image: context.read<ThemeCubit>().isDark
+                      ? AppImages.emptyParticipantsDark
+                      : AppImages.emptyParticipantsLight,
+                  title: "",
+                  subTitle: LocaleKeys.this_course_doesnt_have_any_enrolled_users.tr(), 
                 ),
               ],
             );

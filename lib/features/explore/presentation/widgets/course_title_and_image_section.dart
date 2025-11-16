@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/widgets/custom_text_field_widget.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class CourseTitleAndImageSection extends StatelessWidget {
   const CourseTitleAndImageSection({
@@ -17,21 +19,28 @@ class CourseTitleAndImageSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Title", style: AppStyles.textStyle16W600Grey(context)),
+        Text(
+          LocaleKeys.course_title.tr(),
+          style: AppStyles.textStyle16W600Grey(context),
+        ),
         const SizedBox(height: 12),
         CustomTextFieldWidget(
-          hintText: "Introduction to Prosthodontics",
+          hintText: "e.g., Endodontics Basics",
           controller: courseTitleController,
+          vlaidationMessage: LocaleKeys.enter_valid_course_title.tr(),
         ),
 
         const SizedBox(height: 10),
-        Text("Photo", style: AppStyles.textStyle16W600Grey(context)),
+        Text(
+          LocaleKeys.photo_link.tr(),
+          style: AppStyles.textStyle16W600Grey(context),
+        ),
         const SizedBox(height: 12),
         CustomTextFieldWidget(
           hintText: "https://example.com/image.jpg",
           controller: photoUrlController,
-        ),
-
+          vlaidationMessage: LocaleKeys.enter_valid_photo_link.tr(),
+        ), 
         const SizedBox(height: 10),
       ],
     );

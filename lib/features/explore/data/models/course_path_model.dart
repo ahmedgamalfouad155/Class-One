@@ -4,9 +4,8 @@ class CoursePathModel {
   String? institution;
   String? specialization;
   String? level;
-  String? courseId;
-  String? term;
-  String? id;
+  String? courseId; 
+  
   bool? isPaid;
   String? title;
   String? instructor;
@@ -16,9 +15,8 @@ class CoursePathModel {
     this.institution,
     this.specialization,
     this.level,
-    this.courseId,
-    this.term,
-    this.id,
+    this.courseId, 
+    
     this.isPaid,
     this.title,
     this.instructor,
@@ -30,8 +28,7 @@ class CoursePathModel {
     String? institution, 
     String? level,
     String? courseId,
-    String? term,
-    String? id,
+    String? term, 
     bool? isPaid,
     String? title,
     String? instructor,
@@ -40,9 +37,7 @@ class CoursePathModel {
     if (institution != null) this.institution = institution;
     if (specialization != null) this.specialization = specialization;
     if (level != null) this.level = level;
-    if (courseId != null) this.courseId = courseId;
-    if (term != null) this.term = term;
-    if (id != null) this.id = id;
+    if (courseId != null) this.courseId = courseId; 
     if (isPaid != null) this.isPaid = isPaid;
     if (title != null) this.title = title;
     if (instructor != null) this.instructor = instructor;
@@ -54,9 +49,8 @@ class CoursePathModel {
       FireStoreCoursePathFieldsName.institution: institution,
       FireStoreCoursePathFieldsName.specialization: specialization,
       FireStoreCoursePathFieldsName.level: level,
-      FireStoreCoursePathFieldsName.coursrId: courseId,
-      FireStoreCoursePathFieldsName.term: term,
-      FireStoreCoursePathFieldsName.id: id,
+      FireStoreCoursePathFieldsName.coursrId: courseId, 
+      
       FireStoreCoursePathFieldsName.isPaid: isPaid ?? true,
       FireStoreCoursePathFieldsName.title: title,
       FireStoreCoursePathFieldsName.instructor: instructor,
@@ -69,9 +63,7 @@ class CoursePathModel {
       institution: map[FireStoreCoursePathFieldsName.institution],
       specialization: map[FireStoreCoursePathFieldsName.specialization],
       level: map[FireStoreCoursePathFieldsName.level],
-      courseId: map[FireStoreCoursePathFieldsName.coursrId],
-      term: map[FireStoreCoursePathFieldsName.term],
-      id: documentId,
+      courseId: map[FireStoreCoursePathFieldsName.coursrId], 
       isPaid: map[FireStoreCoursePathFieldsName.isPaid] ?? true,
       title: map[FireStoreCoursePathFieldsName.title],
       instructor: map[FireStoreCoursePathFieldsName.instructor],

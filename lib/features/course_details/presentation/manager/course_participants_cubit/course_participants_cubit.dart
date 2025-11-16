@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sinna/core/helper/normalize_firestore_name.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
 import 'package:sinna/features/course_details/data/services/course_participants_services.dart';
 import 'package:sinna/features/course_details/presentation/manager/course_participants_cubit/course_participants_state.dart';
@@ -22,8 +21,7 @@ class CourseParticipantsCubit extends Cubit<CourseParticipantsState> {
       usersIsExist = await service.checkUserExists(email);
     }
     try {
-      if (usersIsExist) {
-        coursePathModel.update(id: documentIdFromLocalData());
+      if (usersIsExist) { 
         await service.addCourseToUserCouses(
           coursePathModel: coursePathModel,
           email: email,

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,6 +14,7 @@ import 'package:sinna/features/explore/data/models/course_model.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
 import 'package:sinna/features/profile/presentation/widgets/custom_bottom_sheet.dart';
 import 'package:sinna/features/profile/presentation/widgets/title_in_buttom_sheet_widget.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 void createLessonBottomSheet(
   BuildContext context,
@@ -50,33 +52,37 @@ void createLessonBottomSheet(
                   children: [
                     TitleInButtomSheetWidget(
                       title: isEdit == false
-                          ? "Create Lesson"
-                          : "Update Lesson",
+                          ? LocaleKeys.create_lesson.tr()
+                          : LocaleKeys.update_lesson.tr(),
                     ),
                     const SizedBox(height: 6),
                     CustomTextFieldWidget(
                       hintText: "Impression Techniques for Crowns",
                       controller: lessonTitleController,
-                      vlaidationMessage: "Enter a valid lesson title.",
+                      vlaidationMessage: LocaleKeys.enter_valid_lesson_title
+                          .tr(),
                     ),
                     const SizedBox(height: 16),
                     CustomTextFieldWidget(
                       hintText: "https://youtu.be/abcd1234",
                       controller: videoUrlController,
-                      vlaidationMessage: "Enter a valid video link.",
+                      vlaidationMessage: LocaleKeys.enter_valid_video_link.tr(),
                     ),
                     const SizedBox(height: 16),
                     CustomTextFieldWidget(
                       hintText: "Lesson Number",
                       controller: lessonNumberController,
-                      vlaidationMessage: "Enter a valid lesson number.",
+                      vlaidationMessage: LocaleKeys.enter_valid_lesson_number
+                          .tr(),
                       keyboardType: TextInputType.number,
                     ),
                     const SizedBox(height: 16),
                     const SecondSemesterSection(),
                     const SizedBox(height: 10),
                     Text(
-                      "When off, the lesson applies to the first semester or the full year if no second semester is set.",
+                      LocaleKeys
+                          .when_off_the_lesson_applies_to_the_first_semester_or_the_full_year_if_no_second_semester_is_set
+                          .tr(),
                       style: AppStyles.textStyle12GreyW400(
                         context,
                       ).copyWith(fontSize: 13.sp),

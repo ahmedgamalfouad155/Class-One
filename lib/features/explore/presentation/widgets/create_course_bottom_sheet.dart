@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/cubit/radio_cubit/radio_cubit.dart';
@@ -10,6 +11,7 @@ import 'package:sinna/features/explore/presentation/widgets/apply_button_widget.
 import 'package:sinna/features/explore/presentation/widgets/course_title_and_image_section.dart';
 import 'package:sinna/features/explore/presentation/widgets/instructors_info_section.dart';
 import 'package:sinna/features/profile/presentation/widgets/title_in_buttom_sheet_widget.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 void createCourseBottomSheet(
   BuildContext context,
@@ -37,7 +39,7 @@ void createCourseBottomSheet(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TitleInButtomSheetWidget(title: "Create Course"),
+                    TitleInButtomSheetWidget(title: LocaleKeys.create_course.tr()),
                     const SizedBox(height: 20),
                     CourseTitleAndImageSection(
                       courseTitleController: courseTitleController,

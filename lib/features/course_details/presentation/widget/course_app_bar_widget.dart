@@ -16,48 +16,52 @@ class CourseAppBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isAdmin = context.read<AuthCubit>().emailAdmin;
-    return Row(
-      children: [
-        InkWell(
-          onTap: () => Navigator.pop(context),
-          child: Icon(Icons.arrow_back),
-        ),
-        const SizedBox(width: 10),
-        CircleAvatar(
-          radius: 18.r,
-          backgroundImage: AssetImage(AppImages.cours),
-        ),
-        const SizedBox(width: 10),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              coursePathModel.title.toString(),
-              style: AppStyles.textStyle15W600(context),
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0, top: 16),
+      child: Row(
+        children: [
+          InkWell(
+            onTap: () => Navigator.pop(context),
+            child: Icon(Icons.arrow_back),
+          ),
+          const SizedBox(width: 10),
+          CircleAvatar(
+            radius: 18.r,
+            backgroundImage: AssetImage(AppImages.cours),
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  coursePathModel.title.toString(),
+                  style: AppStyles.textStyle15W600(context),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                Text(
+                  coursePathModel.instructor.toString(),
+                  style: AppStyles.textStyle15W400Grey(context),
+                ),
+              ],
             ),
-
-            Text(
-              coursePathModel.instructor.toString(),
-              style: AppStyles.textStyle15W400Grey(context),
-            ),
-          ],
-        ),
-        Spacer(),
-        isAdmin
-            ? Row(
-                children: [
-                  BlocProvider(
-                    create: (context) => CourseCubit(),
-                    child: DeleteCourseIconWidget(
-                      coursePathModel: coursePathModel,
+          ),
+          isAdmin
+              ? Row(
+                  children: [
+                    BlocProvider(
+                      create: (context) => CourseCubit(),
+                      child: DeleteCourseIconWidget(
+                        coursePathModel: coursePathModel,
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 10),
-                  PopupMenuCourseWidget(coursePathModels: coursePathModel),
-                ],
-              )
-            : const SizedBox(),
-      ],
+                    PopupMenuCourseWidget(coursePathModels: coursePathModel),
+                  ],
+                )
+              : const SizedBox(),
+        ],
+      ),
     );
   }
 }

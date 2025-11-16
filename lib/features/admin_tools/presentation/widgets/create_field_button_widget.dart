@@ -1,9 +1,11 @@
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart'; 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/widgets/custom_animated_dialod.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/features/admin_tools/presentation/manager/fields/fields_cubit.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class CreateFieldButtonWidget extends StatelessWidget {
   const CreateFieldButtonWidget({
@@ -27,7 +29,7 @@ class CreateFieldButtonWidget extends StatelessWidget {
         if (state is AddingFieldsSuccessState) {
           CustomAnimatedDialog.show(
             context: context,
-            message: "Field added successfully ✅🎉",
+            message: "${LocaleKeys.field_added_successfully.tr()} ✅🎉",
             animationType: DialogAnimationType.success,
           );
         }
@@ -41,7 +43,7 @@ class CreateFieldButtonWidget extends StatelessWidget {
         if (state is AddingFieldsSuccessState ||
             state is FieldsInitial) {
           return CustomButton(
-            text: "Create",
+            text:   LocaleKeys.create.tr(),
             onPressed: () {
               if (formKey.currentState!.validate()) {
                 context.read<FieldsCubit>().addField(

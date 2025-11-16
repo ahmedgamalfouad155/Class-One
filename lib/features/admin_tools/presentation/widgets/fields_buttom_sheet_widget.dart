@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/utils/app_media.dart';
@@ -8,6 +9,7 @@ import 'package:sinna/features/admin_tools/presentation/widgets/create_field_but
 import 'package:sinna/features/admin_tools/presentation/widgets/update_field_button_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/custom_bottom_sheet.dart';
 import 'package:sinna/features/profile/presentation/widgets/title_in_buttom_sheet_widget.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 void fieldsBottomSheet(
   BuildContext context, [
@@ -34,7 +36,7 @@ void fieldsBottomSheet(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TitleInButtomSheetWidget(
-                      title: isEdit == false ? "Create Field" : "Update Field",
+                      title: isEdit == false ?  LocaleKeys.create_field.tr() :  LocaleKeys.edit_field.tr(),
                     ),
                     const SizedBox(height: 20),
                     CustomTextFieldWidget(

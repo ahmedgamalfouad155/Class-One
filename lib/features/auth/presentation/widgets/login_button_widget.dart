@@ -32,8 +32,8 @@ class LoginButtonWidget extends StatelessWidget {
         } else if (state is NotSameDeviceState) {
           return CustomAnimatedDialog.show(
             context: context,
-            message:
-                "هذا الميل مسجل علي جهاز اخر بالغعل يجب تسجيل الخروج من الجهاز الاخر اولا ثم المحاوله مره اخري ",
+            message: 
+              LocaleKeys.this_email_is_registered_on_another_device_please_logout_from_that_device_first_then_try_again.tr(),
             animationType: DialogAnimationType.warning,
           );
         }

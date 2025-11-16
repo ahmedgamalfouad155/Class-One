@@ -40,14 +40,14 @@ class _AddParticipantDialogWidgetState
         backgroundColor: context.appColors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: Text(
-          "Add Participant",
+            LocaleKeys.add_participant.tr(),
           style: AppStyles.textStyle20W600(context),
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              "Enter the user’s email to enroll them in this course.",
+                LocaleKeys.enter_the_users_email_to_enroll_them_in_this_course.tr(),
               style: AppStyles.textStyle16W600Grey(context),
             ),
             const SizedBox(height: 10),
@@ -68,7 +68,7 @@ class _AddParticipantDialogWidgetState
                   if (state is AddingCourseToPaticipantsSuccessState) {
                     CustomAnimatedDialog.show(
                       context: context,
-                      message: "Course added successfully ✅🎉",
+                      message: "${LocaleKeys.course_added_successfully.tr()} ✅🎉",
                     );
                   }
                   if (state is AddingCourseToPaticipantsFailureState) {

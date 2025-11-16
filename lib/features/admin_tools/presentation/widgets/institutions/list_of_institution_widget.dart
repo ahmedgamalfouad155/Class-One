@@ -1,8 +1,13 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sinna/core/constants/images.dart';
+import 'package:sinna/core/widgets/custom_empty_screen.dart';
 import 'package:sinna/core/widgets/custom_option_widget.dart';
 import 'package:sinna/features/admin_tools/presentation/manager/institutions_cubit/institutions_cubit.dart';
 import 'package:sinna/features/admin_tools/presentation/widgets/institutions/institution_bottom_sheet.dart';
+import 'package:sinna/features/profile/presentation/manager/theme_cubit/theme_cubit.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class ListOfInstitutionWidget extends StatelessWidget {
   const ListOfInstitutionWidget({super.key, required this.specializationId});
@@ -20,6 +25,15 @@ class ListOfInstitutionWidget extends StatelessWidget {
         }
         if (state is InstitutionsLoadedState) {
           final institutions = state.institutions;
+          if (institutions.isEmpty) {
+            return CustomEmptyScreen(
+              image: context.read<ThemeCubit>().isDark
+                  ? AppImages.emptyFieldDark
+                  : AppImages.emptyFieldLight,
+              title: LocaleKeys.no_institutions_found.tr(),
+              subTitle: LocaleKeys.please_add_a_new_institution.tr(),
+            );
+          }
           return ListView.separated(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
@@ -31,7 +45,7 @@ class ListOfInstitutionWidget extends StatelessWidget {
                   specializationId,
                   true,
                   institutions[index],
-                ); 
+                );
               },
             ),
             separatorBuilder: (context, index) => const SizedBox(height: 10),

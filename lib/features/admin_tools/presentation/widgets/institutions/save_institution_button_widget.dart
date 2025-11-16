@@ -1,9 +1,11 @@
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/widgets/custom_animated_dialod.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/features/admin_tools/presentation/manager/institutions_cubit/institutions_cubit.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class SaveInstitutionButtonWidget extends StatelessWidget {
   const SaveInstitutionButtonWidget({
@@ -29,7 +31,7 @@ class SaveInstitutionButtonWidget extends StatelessWidget {
         if (state is InstitutionAddedSuccessState) {
           CustomAnimatedDialog.show(
             context: context,
-            message: "Institution added successfully ✅🎉",
+            message: "${LocaleKeys.instiution_added_successfully.tr()} ✅🎉",
             animationType: DialogAnimationType.success,
           );
         }
@@ -41,7 +43,7 @@ class SaveInstitutionButtonWidget extends StatelessWidget {
         if (state is InstitutionAddedSuccessState ||
             state is InstitutionsInitial) {
           return CustomButton(
-            text: "Save",
+            text:   LocaleKeys.save.tr(),
             onPressed: () {
               if (formKey.currentState!.validate()) {
                 context.read<InstitutionsCubit>().addInstitution(

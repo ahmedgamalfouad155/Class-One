@@ -1,11 +1,13 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/features/course_details/presentation/widget/create_lesson_bottom_sheet.dart';
 import 'package:sinna/features/course_details/presentation/widget/participants_bootom_sheet.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
 import 'package:sinna/features/explore/presentation/widgets/create_course_bottom_sheet.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class PopupMenuCourseWidget extends StatelessWidget {
   const PopupMenuCourseWidget({super.key, required this.coursePathModels});
@@ -41,18 +43,18 @@ class PopupMenuCourseWidget extends StatelessWidget {
           value: 'edit',
           child: SizedBox(
             width: MediaQuery.of(context).size.width / 4,
-            child: const Text('Edit Course', style: TextStyle(fontSize: 14)),
+            child:  Text(  LocaleKeys.edit_course.tr(), style: TextStyle(fontSize: 14)),
           ),
         ),
         const PopupMenuDivider(height: 1),
-        const PopupMenuItem(
+         PopupMenuItem(
           value: 'add_lesson',
-          child: Text('Add Lesson', style: TextStyle(fontSize: 14)),
+          child: Text(  LocaleKeys.add_lesson.tr(), style: TextStyle(fontSize: 14)),
         ),
         const PopupMenuDivider(height: 1),
-        const PopupMenuItem(
+         PopupMenuItem(
           value: 'participants',
-          child: Text('Participants', style: TextStyle(fontSize: 14)),
+          child: Text(  LocaleKeys.participants.tr() , style: TextStyle(fontSize: 14)),
         ),
       ],
     );

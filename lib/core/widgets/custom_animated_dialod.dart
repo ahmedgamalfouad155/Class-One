@@ -17,9 +17,9 @@ class CustomAnimatedDialog {
       context: context,
       barrierDismissible: true,
       builder: (context) {
-        // لو فيه أيقونة مخصصة من المستخدم، نستخدمها
+        
         Widget displayedIcon =
-            icon ?? _getDefaultIcon(animationType); // الافتراضية لو مفيش مخصصة
+            icon ?? _getDefaultIcon(animationType);
 
         return Dialog(
           shape: RoundedRectangleBorder(
@@ -48,7 +48,7 @@ class CustomAnimatedDialog {
       },
     );
 
-    // إغلاق تلقائي بعد المدة المحددة
+    
     Future.delayed(duration, () {
       if (Navigator.of(context).canPop()) {
         Navigator.of(context).pop();

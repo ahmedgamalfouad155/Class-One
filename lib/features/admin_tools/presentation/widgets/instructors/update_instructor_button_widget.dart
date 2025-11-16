@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/widgets/custom_animated_dialod.dart';
@@ -5,6 +6,7 @@ import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/features/admin_tools/data/models/instructor_model.dart';
 import 'package:sinna/features/admin_tools/presentation/manager/instructors/instructors_cubit.dart';
 import 'package:sinna/features/admin_tools/presentation/widgets/instructors/updateing_instructor_dialog.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class UpdateInstructorButtonWidget extends StatelessWidget {
   const UpdateInstructorButtonWidget({
@@ -25,7 +27,7 @@ class UpdateInstructorButtonWidget extends StatelessWidget {
         if (state is InstructorUpdatedSuccessState) {
           CustomAnimatedDialog.show(
             context: context,
-            message: "Instructor updated successfully ✅🎉",
+            message: "${LocaleKeys.institution_updated_successfully.tr()}✅🎉",
             animationType: DialogAnimationType.success,
           );
         }
@@ -37,7 +39,7 @@ class UpdateInstructorButtonWidget extends StatelessWidget {
         if (state is InstructorUpdatedSuccessState ||
             state is InstructorsInitial) {
           return CustomButton(
-            text: "Update",
+            text:   LocaleKeys.update.tr(),
             onPressed: () {
               if (_formKey.currentState!.validate()) {
                 context.read<InstructorsCubit>().updateInstructor(

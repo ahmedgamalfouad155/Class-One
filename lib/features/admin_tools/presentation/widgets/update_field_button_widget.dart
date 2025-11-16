@@ -1,14 +1,20 @@
-import 'package:flutter/material.dart'; 
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/widgets/custom_animated_dialod.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/features/admin_tools/data/models/field_model.dart';
 import 'package:sinna/features/admin_tools/presentation/manager/fields/fields_cubit.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class UpdateFieldButtonWidget extends StatelessWidget {
-  const UpdateFieldButtonWidget({super.key, required this.field, required this.fieldController});
+  const UpdateFieldButtonWidget({
+    super.key,
+    required this.field,
+    required this.fieldController,
+  });
   final FieldModel field;
-  final TextEditingController fieldController ;
+  final TextEditingController fieldController;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +28,7 @@ class UpdateFieldButtonWidget extends StatelessWidget {
         if (state is UpdatingFieldSuccessState) {
           CustomAnimatedDialog.show(
             context: context,
-            message: "Field updated successfully ✅🎉",
+            message: "${LocaleKeys.field_updated_successfully.tr()} ✅🎉",
             animationType: DialogAnimationType.success,
           );
         }
@@ -32,14 +38,14 @@ class UpdateFieldButtonWidget extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         }
         if (state is UpdatingFieldSuccessState || state is FieldsInitial) {
-          return CustomButton(text: "Update", onPressed: () {
-            context.read<FieldsCubit>().updateField(
-              FieldModel(
-                id: field.id,
-                name: fieldController.text.trim(),
-              ),
-            );
-          });
+          return CustomButton(
+            text: LocaleKeys.update.tr(),
+            onPressed: () {
+              context.read<FieldsCubit>().updateField(
+                FieldModel(id: field.id, name: fieldController.text.trim()),
+              );
+            },
+          );
         }
         if (state is UpdatingFieldFailureState) {
           return Text(state.errMessage);

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/constants/constants.dart';
@@ -8,6 +9,7 @@ import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
 import 'package:sinna/features/explore/presentation/manager/create_course_cubit/create_course_cubit.dart';
 import 'package:sinna/features/explore/data/models/course_info_model.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class ApplyButtonWidget extends StatelessWidget {
   const ApplyButtonWidget({
@@ -31,7 +33,7 @@ class ApplyButtonWidget extends StatelessWidget {
           if (state is CreateCourseSuccessState) {
             CustomAnimatedDialog.show(
               context: context,
-              message: "Course created successfully ✅🎉",
+              message: " ${LocaleKeys.course_created_successfully.tr()} ✅🎉",
               animationType: DialogAnimationType.success,
             );
           }
@@ -44,12 +46,11 @@ class ApplyButtonWidget extends StatelessWidget {
           } else if (state is CreateCourseInitial ||
               state is CreateCourseSuccessState) {
             return CustomButton(
-              text: "Apply",
+              text: LocaleKeys.create.tr(),
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  
                   final courseInfo = CourseInfoModel(
-                    id: generateFirestoreId(FireStoreCollectionsName.courses), 
+                    id: generateFirestoreId(FireStoreCollectionsName.courses),
                     title: courseTitleController.text.trim(),
                     instructor: context.read<RadioCubit>().state!,
                     image: photoUrlController.text.trim(),

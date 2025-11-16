@@ -25,7 +25,7 @@ class CourseParticipantsServicesImp extends CourseParticipantsServices {
     required String email,
   }) async {
     await firestor.setData(
-      path: FirestorePath.courses(email, coursePathModel.id!),
+      path: FirestorePath.courses(email, coursePathModel.courseId!),
       data: coursePathModel.toMap(),
     );
     _addParticipantToCourse(email, coursePathModel);
@@ -79,7 +79,7 @@ class CourseParticipantsServicesImp extends CourseParticipantsServices {
     CoursePathModel coursePathModel,
   ) async {
     await firestor.deleteData(
-      path: FirestorePath.courses(email, coursePathModel.id!),
+      path: FirestorePath.courses(email, coursePathModel.courseId!),
     );
     return firestor.deleteData(
       path: FirestorePath.newParticipantsPath(

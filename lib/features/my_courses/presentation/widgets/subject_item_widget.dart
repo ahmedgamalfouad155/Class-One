@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sinna/core/constants/images.dart';
-import 'package:sinna/core/theme/styles.dart'; 
+import 'package:sinna/core/theme/styles.dart';
 
 class SubjectItemWidget extends StatelessWidget {
   const SubjectItemWidget({

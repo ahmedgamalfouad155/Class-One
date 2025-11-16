@@ -14,39 +14,39 @@ class CoursesScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: BlocProvider(
-        create: (_) => FilterCubit(),
-        child: SingleChildScrollView(
-          child: BlocBuilder<CourseCubit, CourseState>(
-            builder: (context, state) {
-              if (state is CourseLoadingState) {
-                return const Center(child: CircularProgressIndicator());
-              }
-              if (state is CourseSuccessState) {
-                final sortedLessons = List<CourseModel>.from(state.courses)
-                  ..sort((a, b) => a.number.compareTo(b.number));
-
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CourseAppBarWidget(coursePathModel: coursePathModel),
-                    const SizedBox(height: 10),
-                    ListOfLessonsWidget(
+    return BlocProvider(
+      create: (_) => FilterCubit(),
+      child: SingleChildScrollView(
+        child: BlocBuilder<CourseCubit, CourseState>(
+          builder: (context, state) {
+            if (state is CourseLoadingState) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (state is CourseSuccessState) {
+              final sortedLessons = List<CourseModel>.from(state.courses)
+                ..sort((a, b) => a.number.compareTo(b.number));
+    
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CourseAppBarWidget(coursePathModel: coursePathModel),
+                  const SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: ListOfLessonsWidget(
                       sortedLessons: sortedLessons,
                       coursePathModels: coursePathModel,
                     ),
-                  ],
-                );
-              }
-              if (state is CourseFailureState) {
-                return Text(state.errMessage);
-              }
-
-              return const Text('error');
-            },
-          ),
+                  ),
+                ],
+              );
+            }
+            if (state is CourseFailureState) {
+              return Text(state.errMessage);
+            }
+    
+            return const Text('error');
+          },
         ),
       ),
     );

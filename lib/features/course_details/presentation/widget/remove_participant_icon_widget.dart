@@ -32,7 +32,7 @@ class RemoveParticipantIconWidget extends StatelessWidget {
               if (state is RemovingParticipantFromCourseSuccessState ||
                   state is CourseParticipantsInitial) {
                 return CustomSlidableAction(
-                  onPressed: (_) {
+                  onPressed: (_) { 
                     context
                         .read<CourseParticipantsCubit>()
                         .removeParticipantFromCourse(

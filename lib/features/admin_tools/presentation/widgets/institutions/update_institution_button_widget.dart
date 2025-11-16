@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart'; 
 import 'package:sinna/core/widgets/custom_animated_dialod.dart';
 import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/features/admin_tools/data/models/institution_model.dart';
 import 'package:sinna/features/admin_tools/presentation/manager/institutions_cubit/institutions_cubit.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class UpdateInstitutionButtonWidget extends StatelessWidget {
   const UpdateInstitutionButtonWidget({
@@ -32,7 +34,7 @@ class UpdateInstitutionButtonWidget extends StatelessWidget {
         if (state is InstitutionUpdatedSuccessState) {
           CustomAnimatedDialog.show(
             context: context,
-            message: "Instructor updated successfully ✅🎉",
+            message: "${LocaleKeys.instructor_updated_successfully.tr()} ✅🎉",
             animationType: DialogAnimationType.success,
           );
         }
@@ -44,7 +46,7 @@ class UpdateInstitutionButtonWidget extends StatelessWidget {
         if (state is InstitutionUpdatedSuccessState ||
             state is InstitutionsInitial) {
           return CustomButton( 
-            text: "Update",
+            text:   LocaleKeys.update.tr(),
             onPressed: () {
               if (_formKey.currentState!.validate()) {
                 final updatedInstitution = institution

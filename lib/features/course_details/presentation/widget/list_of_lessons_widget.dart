@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/constants/constants.dart';
@@ -13,6 +14,8 @@ import 'package:sinna/features/course_details/presentation/widget/lesson_item_wi
 import 'package:sinna/features/course_details/presentation/widget/title_and_image_course_widget.dart';
 import 'package:sinna/features/explore/data/models/course_model.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
+import 'package:sinna/features/profile/presentation/manager/theme_cubit/theme_cubit.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class ListOfLessonsWidget extends StatelessWidget {
   const ListOfLessonsWidget({
@@ -49,15 +52,19 @@ class ListOfLessonsWidget extends StatelessWidget {
               children: [
                 SizedBox(height: context.height / 7),
                 CustomEmptyScreen(
-                  image: AppImages.emptyDashbordLight,
-                  title: "No lessons yet",
-                  subTitle: "You can add one to get started",
+                  image: context.read<ThemeCubit>().isDark
+                      ? AppImages.emptyLessonDark
+                      : AppImages.emptyLessonLight,
+                  title: LocaleKeys.no_lessons_yet.tr(),
+                  subTitle: isAdmin
+                      ? LocaleKeys.you_can_add_one_to_get_started.tr()
+                      :LocaleKeys.your_lessons_will_be_here_soon.tr(), 
                 ),
                 const SizedBox(height: 10),
                 isAdmin
                     ? CustomButton(
                         width: context.width / 2,
-                        text: "Create Lesson",
+                        text: LocaleKeys.create_lesson.tr(),
                         onPressed: () =>
                             createLessonBottomSheet(context, coursePathModels),
                       )

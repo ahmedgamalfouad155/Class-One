@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -7,6 +8,7 @@ import 'package:sinna/core/widgets/custom_divider_widget.dart';
 import 'package:sinna/core/widgets/custom_option_widget.dart';
 import 'package:sinna/features/admin_tools/presentation/manager/fields/fields_cubit.dart';
 import 'package:sinna/features/admin_tools/presentation/widgets/fields_app_bar_widget.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class FieldsScreenBody extends StatelessWidget {
   const FieldsScreenBody({super.key});
@@ -21,7 +23,10 @@ class FieldsScreenBody extends StatelessWidget {
           children: [
             FieldsAppBarWidget(),
             const SizedBox(height: 10),
-            Text("Fields", style: AppStyles.textStyle24W600(context)),
+            Text(
+              LocaleKeys.fields.tr(),
+              style: AppStyles.textStyle24W600(context),
+            ),
             const SizedBox(height: 10),
             BlocProvider(
               create: (context) => FieldsCubit()..getFields(),
@@ -42,7 +47,7 @@ class FieldsScreenBody extends StatelessWidget {
                                 title: state.fields[index].name,
                                 onTap: () {
                                   GoRouter.of(context).push(
-                                    AppRouter.kInstitutionsScreen,
+                                    AppRouter.kFieldNameAndInstitutionsScreen,
                                     extra: state.fields[index],
                                   );
                                 },

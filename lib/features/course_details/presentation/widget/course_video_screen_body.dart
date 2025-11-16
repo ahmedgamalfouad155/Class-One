@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/helper/course_video_helper.dart';
 import 'package:sinna/core/theme/colors.dart';
-import 'package:sinna/core/theme/styles.dart';
-import 'package:sinna/core/widgets/custom_divider_widget.dart';
+import 'package:sinna/core/theme/styles.dart'; 
 import 'package:sinna/features/course_details/presentation/manager/lesson_manager/lesson_manager_cubit.dart';
 import 'package:sinna/features/course_details/presentation/widget/course_video_app_bar_widget.dart';
 import 'package:sinna/features/course_details/presentation/widget/list_of_attachment_widget.dart';
@@ -99,13 +98,8 @@ class _CourseVideoScreenBodyState extends State<CourseVideoScreenBody> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Column(
-                    children: [
-                      CustomDividerWidget(isHeight: true),
-                      ListOfAttachmentWidtget(
-                        attachmentModel: course.attachments,
-                      ),
-                    ],
+                  child: ListOfAttachmentWidtget(
+                    attachmentModel: course.attachments,
                   ),
                 ),
               ],

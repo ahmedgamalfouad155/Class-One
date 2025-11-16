@@ -50,7 +50,7 @@ abstract class AppRouter {
   static const String kCreateCourseScreen = '/createCourseScreen';
   static const String kControlPanalScreen = '/controlPanalScreen';
   static const String kInstructorsScreen = '/instructorsScreen';
-  static const String kInstitutionsScreen = '/institutionsScreen';
+  static const String kFieldNameAndInstitutionsScreen = '/institutionsScreen';
   static const String kNameScreen = '/nameScreen';
   static const String kPasswordScreen = '/passwordScreen';
   static const String kPreferencesScreen = '/preferencesScreen';
@@ -95,7 +95,7 @@ abstract class AppRouter {
       GoRoute(
         path: kAddingPhoneScreen,
         builder: (context, state) => const AddingPhoneScreen(),
-      ), 
+      ),
       GoRoute(
         path: kNavBarScreen,
         builder: (context, state) => const NavBarScreen(),
@@ -124,11 +124,11 @@ abstract class AppRouter {
           final coursePathModel = state.extra as CoursePathModel;
           return UserCourseDetailsScreen(coursePathModel: coursePathModel);
         },
-      ), 
+      ),
       GoRoute(
         path: kFinalSignin,
         builder: (context, state) => const AddingPhoneScreen(),
-      ), 
+      ),
       GoRoute(
         path: kAccountScreen,
         builder: (context, state) => const ProfileScreen(),
@@ -143,12 +143,10 @@ abstract class AppRouter {
         builder: (context, state) => const InstructorsScreen(),
       ),
       GoRoute(
-        path: kInstitutionsScreen,
+        path: kFieldNameAndInstitutionsScreen,
         builder: (context, state) {
           final fieldModel = state.extra as FieldModel;
-          return FieldNameAndInstitutionsScreen(
-            fieldModel: fieldModel,
-          );
+          return FieldNameAndInstitutionsScreen(fieldModel: fieldModel);
         },
       ),
       GoRoute(

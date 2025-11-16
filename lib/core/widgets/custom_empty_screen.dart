@@ -10,27 +10,23 @@ class CustomEmptyScreen extends StatelessWidget {
     required this.title,
     required this.subTitle,
     this.width,
-    this.height,
   });
   final String image, title, subTitle;
-  final double? width, height;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: width ?? context.width,
-      height: height ?? context.height,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(image),
-          const SizedBox(height: 16),
+          Image.asset(image), 
           Text(
             title,
             style: AppStyles.textStyle22W600(context),
             textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 6),
+          ), 
           Text(
             subTitle,
             style: AppStyles.textStyle22W600(

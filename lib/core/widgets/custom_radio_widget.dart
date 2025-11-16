@@ -6,25 +6,21 @@ import 'package:sinna/core/cubit/radio_cubit/radio_cubit.dart';
 import 'package:sinna/core/theme/colors.dart';
 
 class CustomRadioWidget extends StatelessWidget {
-  const CustomRadioWidget({
-    super.key,
-    required this.title,
-    this.value,
-  });
+  const CustomRadioWidget({super.key, required this.title, this.value});
 
   final String title;
-  final String? value; 
+  final String? value;
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<RadioCubit, String?>(
       builder: (context, selected) {
-        final currentValue = value ?? title; 
+        final currentValue = value ?? title;
 
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(title),
+            Expanded(child: Text(title)),
             Radio<String>(
               value: currentValue,
               groupValue: selected,

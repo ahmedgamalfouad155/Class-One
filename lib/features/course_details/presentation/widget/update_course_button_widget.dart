@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/cubit/radio_cubit/radio_cubit.dart';
@@ -6,6 +7,7 @@ import 'package:sinna/core/widgets/custom_buton.dart';
 import 'package:sinna/features/explore/data/models/course_info_model.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
 import 'package:sinna/features/explore/presentation/manager/create_course_cubit/create_course_cubit.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class UpdateCourseButtonWidget extends StatelessWidget {
   const UpdateCourseButtonWidget({
@@ -30,7 +32,7 @@ class UpdateCourseButtonWidget extends StatelessWidget {
           if (state is EditCourseSuccessState) {
             CustomAnimatedDialog.show(
               context: context,
-              message: "Course updated successfully ✅🎉",
+              message: "${LocaleKeys.course_updated_successfully.tr()} ✅🎉",
               animationType: DialogAnimationType.success,
             );
           }
@@ -41,7 +43,7 @@ class UpdateCourseButtonWidget extends StatelessWidget {
           }
           if (state is EditCourseSuccessState || state is CreateCourseInitial) {
             return CustomButton(
-              text: "Update",
+              text:   LocaleKeys.update.tr(),
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   final courseInfo = CourseInfoModel(

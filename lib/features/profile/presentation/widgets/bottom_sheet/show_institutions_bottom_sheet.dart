@@ -9,6 +9,7 @@ import 'package:sinna/core/widgets/institutions_radio_widget.dart';
 import 'package:sinna/features/admin_tools/data/models/institution_model.dart';
 import 'package:sinna/features/profile/presentation/manager/institutions_radio_cubit.dart';
 import 'package:sinna/features/profile/presentation/manager/preferences_cubit/preferences_cubit.dart';
+import 'package:sinna/features/profile/presentation/manager/theme_cubit/theme_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/title_in_buttom_sheet_widget.dart';
 import 'package:sinna/features/profile/presentation/widgets/custom_bottom_sheet.dart';
 import 'package:sinna/generated/locale_keys.g.dart';
@@ -37,6 +38,21 @@ void showInstitutionsBottomSheet(
                     return const Center(child: CircularProgressIndicator());
                   }
                   if (state is InstitutionsSuccessState) {
+                    if (state.institutions.isEmpty) {
+                      return Center(
+                        child: CustomEmptyScreen(
+                          image: context.read<ThemeCubit>().isDark
+                              ? AppImages.emptyFieldDark
+                              : AppImages.emptyFieldLight,
+                          title: LocaleKeys
+                              .no_institutions_found_in_this_specialty
+                              .tr(),
+                          subTitle: LocaleKeys
+                              .please_select_a_different_specialty
+                              .tr(),
+                        ),
+                      );
+                    }
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
@@ -53,9 +69,11 @@ void showInstitutionsBottomSheet(
                   }
                   return Center(
                     child: CustomEmptyScreen(
-                      image: AppImages.emptyDashbordLight,
-                      title: "No Institutions Found",
-                      subTitle: "Please select a specialty first",
+                      image: context.read<ThemeCubit>().isDark
+                          ? AppImages.emptyFieldDark
+                          : AppImages.emptyFieldLight,
+                      title: LocaleKeys.no_institutions_found.tr(),
+                      subTitle: LocaleKeys.please_select_a_specialty_first.tr(),
                     ),
                   );
                 },

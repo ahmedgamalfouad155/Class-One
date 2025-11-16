@@ -1,13 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart'; 
+import 'package:go_router/go_router.dart';
 import 'package:sinna/core/helper/open_whatsapp.dart';
 import 'package:sinna/core/router/app_router.dart';
 import 'package:sinna/core/widgets/custom_option_widget.dart';
-import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/appearance_content_bottom_sheet.dart';
 import 'package:sinna/features/profile/presentation/widgets/dialog_and_bottom_sheet_fun/language_content_bottom_sheet.dart';
+import 'package:sinna/features/profile/presentation/widgets/logout_option_widget.dart';
 import 'package:sinna/generated/locale_keys.g.dart';
 
 class YouScreenBody extends StatelessWidget {
@@ -41,16 +40,10 @@ class YouScreenBody extends StatelessWidget {
               onTap: () => appearanceContentBottomSheet(context),
             ),
             CustomOptionWidget(
-              title: LocaleKeys.help_center.tr(),
+              title: LocaleKeys.help.tr(),
               onTap: openWhatsApp,
             ),
-            CustomOptionWidget(
-              title: LocaleKeys.logout.tr(),
-              onTap: () {
-                BlocProvider.of<AuthCubit>(context).logout();
-                (context).go(AppRouter.klandingScreen);
-              },
-            ),
+            LogoutOptionWidget(),
           ],
         ),
       ),

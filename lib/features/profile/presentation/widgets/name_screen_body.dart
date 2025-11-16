@@ -39,7 +39,7 @@ class _NameScreenBodyState extends State<NameScreenBody> {
             } else if (state is UserInfoUpdateSuccessState) {
               CustomAnimatedDialog.show(
                 context: context,
-                message: "Name updated successfully ✅🎉",
+                message: "${LocaleKeys.name_updated_successfully.tr()} ✅🎉",
                 animationType: DialogAnimationType.success,
               );
             }
@@ -54,7 +54,10 @@ class _NameScreenBodyState extends State<NameScreenBody> {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Name", style: AppStyles.textStyle16w400Grey(context)),
+                  Text(
+                    LocaleKeys.name.tr(),
+                    style: AppStyles.textStyle16w400Grey(context),
+                  ),
                   const SizedBox(height: 10),
                   CustomTextFieldWidget(
                     hintText: "Ahmed Gamal",

@@ -11,7 +11,7 @@ class ThemeCubit extends Cubit<ThemeMode> {
 
   ThemeCubit() : super(ThemeMode.light);
 
-  /// فتح Hive Box وتحميل الثيم المحفوظ
+  
   Future<void> loadTheme() async {
     final box = await Hive.openBox(_boxName);
     final savedTheme = box.get(_themeKey, defaultValue: 'light');

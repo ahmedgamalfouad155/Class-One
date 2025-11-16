@@ -9,6 +9,7 @@ import 'package:sinna/core/widgets/custom_empty_screen.dart';
 import 'package:sinna/features/my_courses/presentation/manager/cubit/my_courses_cubit.dart';
 import 'package:sinna/features/my_courses/presentation/manager/cubit/my_courses_state.dart';
 import 'package:sinna/features/my_courses/presentation/widgets/subject_item_widget.dart';
+import 'package:sinna/features/profile/presentation/manager/theme_cubit/theme_cubit.dart';
 import 'package:sinna/generated/locale_keys.g.dart';
 
 class ListOfMyCoursesWidget extends StatelessWidget {
@@ -26,15 +27,12 @@ class ListOfMyCoursesWidget extends StatelessWidget {
         } else if (state is MyCoursesSuccessState) {
           return state.courses.isNotEmpty
               ? GridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
                   itemCount: state.courses.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2, // 👈 صفين في كل سطر
-                    crossAxisSpacing: 16, // 👈 المسافة الأفقية
-                    mainAxisSpacing: 20, // 👈 المسافة الرأسية
-                    childAspectRatio:
-                        0.85, // 👈 للتحكم في شكل العنصر (اختياري حسب التصميم)
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 16,
+                    mainAxisSpacing: 20,
+                    childAspectRatio: 0.7,
                   ),
                   itemBuilder: (context, index) {
                     final course = state.courses[index];
@@ -49,7 +47,7 @@ class ListOfMyCoursesWidget extends StatelessWidget {
                           CustomAnimatedDialog.show(
                             context: context,
                             message:
-                                "Please contact support to unlock this course",
+                                  LocaleKeys.please_contact_support_to_unlock_this_course.tr(),
                             animationType: DialogAnimationType.warning,
                           );
                         }
@@ -60,7 +58,9 @@ class ListOfMyCoursesWidget extends StatelessWidget {
                   },
                 )
               : CustomEmptyScreen(
-                  image: AppImages.emptyAttachmentDark,
+                  image: context.read<ThemeCubit>().isDark
+                      ? AppImages.emptyDashbordDark
+                      : AppImages.emptyDashbordLight,
                   title: LocaleKeys.empty_dashboard.tr(),
                   subTitle: LocaleKeys.explore_courses.tr(),
                 );

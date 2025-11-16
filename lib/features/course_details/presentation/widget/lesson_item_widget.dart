@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,6 +12,7 @@ import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.d
 import 'package:sinna/features/course_details/data/models/course_video_args_model.dart';
 import 'package:sinna/features/explore/data/models/course_model.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class LessonItemWidget extends StatelessWidget {
   const LessonItemWidget({
@@ -38,7 +40,7 @@ class LessonItemWidget extends StatelessWidget {
                 ).push(AppRouter.kCourseVideoScreen, extra: args)
               : CustomAnimatedDialog.show(
                   context: context,
-                  message: "Contact with support to pay this course",
+                  message:  LocaleKeys.contact_with_support_to_pay_this_course.tr(),
                   animationType: DialogAnimationType.warning,
                 );
         }
@@ -48,7 +50,12 @@ class LessonItemWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(course.tittle, style: AppStyles.textStyle14W600(context)),
+              Expanded(
+                child: Text(
+                  course.tittle,
+                  style: AppStyles.textStyle17W400(context),
+                ),
+              ),
               CircleAvatar(
                 radius: 20.r,
                 backgroundColor: context.appColors.greyMoonlight,

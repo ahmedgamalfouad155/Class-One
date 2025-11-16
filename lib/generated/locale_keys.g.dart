@@ -2,10 +2,9 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class LocaleKeys {
+abstract class  LocaleKeys {
   static const ready_when_you_are = 'ready_when_you_are';
-  static const explore_academic_and_professional_courses =
-      'explore_academic_and_professional_courses';
+  static const explore_academic_and_professional_courses = 'explore_academic_and_professional_courses';
   static const sign_in_with_email = 'sign_in_with_email';
   static const sign_up_free = 'sign_up_free';
   static const continue_with_email = 'continue_with_email';
@@ -45,12 +44,10 @@ abstract class LocaleKeys {
   static const theme = 'theme';
   static const dark = 'dark';
   static const light = 'light';
-  static const help_center = 'help_center';
   static const addmin_tools = 'addmin_tools';
   static const control_panel = 'control_panel';
   static const delete_account = 'delete_account';
-  static const are_you_sure_you_want_to_delete_your_account =
-      'are_you_sure_you_want_to_delete_your_account';
+  static const are_you_sure_you_want_to_delete_your_account = 'are_you_sure_you_want_to_delete_your_account';
   static const this_action_cannot_be_undone = 'this_action_cannot_be_undone';
   static const logout = 'logout';
   static const empty_dashboard = 'empty_dashboard';
@@ -62,8 +59,7 @@ abstract class LocaleKeys {
   static const the_instructor = 'the_instructor';
   static const attachment = 'attachment';
   static const supporting_materials = 'supporting_materials';
-  static const download_the_notes_before_watching_the_video =
-      'download_the_notes_before_watching_the_video';
+  static const download_the_notes_before_watching_the_video = 'download_the_notes_before_watching_the_video';
   static const addvanced_settings = 'addvanced_settings';
   static const specialization = 'specialization';
   static const dentistry = 'dentistry';
@@ -92,20 +88,87 @@ abstract class LocaleKeys {
   static const lesson_placement = 'lesson_placement';
   static const instructors = 'instructors';
   static const create_instructor = 'create_instructor';
-  static const add_new_instructor_profile_to_assign_courses =
-      'add_new_instructor_profile_to_assign_courses';
+  static const add_new_instructor_profile_to_assign_courses = 'add_new_instructor_profile_to_assign_courses';
   static const instructor_name = 'instructor_name';
   static const institutions = 'institutions';
   static const create_institution = 'create_institution';
-  static const add_new_institution_to_associate_with_courses_and_instructors =
-      'add_new_institution_to_associate_with_courses_and_instructors';
+  static const add_new_institution_to_associate_with_courses_and_instructors = 'add_new_institution_to_associate_with_courses_and_instructors';
   static const institution_name = 'institution_name';
   static const user_managment = 'user_managment';
   static const users = 'users';
   static const admins = 'admins';
   static const help = 'help';
   static const account = 'account';
-  static const you = 'you'; 
+  static const you = 'you';
   static const specialty = 'specialty';
   static const select_specialty = 'select_specialty';
+  static const no_institutions_found = 'no_institutions_found';
+  static const please_add_a_new_institution = 'please_add_a_new_institution';
+  static const this_lesson_has_no_attachments = 'this_lesson_has_no_attachments';
+  static const no_lessons_yet = 'no_lessons_yet';
+  static const you_can_add_one_to_get_started = 'you_can_add_one_to_get_started';
+  static const your_lessons_will_be_here_soon = 'your_lessons_will_be_here_soon';
+  static const this_course_doesnt_have_any_enrolled_users = 'this_course_doesnt_have_any_enrolled_users';
+  static const please_select_a_different_specialty = 'please_select_a_different_specialty';
+  static const no_institutions_found_in_this_specialty = 'no_institutions_found_in_this_specialty';
+  static const please_select_a_specialty_first = 'please_select_a_specialty_first';
+  static const you_can_sign_back_in_anytime = 'you_can_sign_back_in_anytime';
+  static const you_are_about_to_log_out = 'you_are_about_to_log_out';
+  static const phone = 'phone';
+  static const fields = 'fields';
+  static const participants = 'participants';
+  static const addmins = 'addmins';
+  static const course_title = 'course_title';
+  static const photo_link = 'photo_link';
+  static const educator = 'educator';
+  static const enter_valid_photo_link = 'enter_valid_photo_link';
+  static const enter_valid_course_title = 'enter_valid_course_title';
+  static const create = 'create';
+  static const edit_course = 'edit_course';
+  static const vidio_link = 'vidio_link';
+  static const semester = 'semester';
+  static const when_off_the_lesson_applies_to_the_first_semester_or_the_full_year_if_no_second_semester_is_set = 'when_off_the_lesson_applies_to_the_first_semester_or_the_full_year_if_no_second_semester_is_set';
+  static const enter_valid_lesson_title = 'enter_valid_lesson_title';
+  static const enter_valid_video_link = 'enter_valid_video_link';
+  static const enter_valid_lesson_number = 'enter_valid_lesson_number';
+  static const lesson_number = 'lesson_number';
+  static const delete_lesson = 'delete_lesson';
+  static const this_action_will_permanently_delete_the_lesson_and_cannot_be_undone = 'this_action_will_permanently_delete_the_lesson_and_cannot_be_undone';
+  static const changing_this_number_updates_the_phone_used_for_support_requests = 'changing_this_number_updates_the_phone_used_for_support_requests';
+  static const done = 'done';
+  static const edit_field = 'edit_field';
+  static const continue_c = 'continue_c';
+  static const add_institution = 'add_institution';
+  static const add_lesson = 'add_lesson';
+  static const edit = 'edit';
+  static const update = 'update';
+  static const create_field = 'create_field';
+  static const add_participant = 'add_participant';
+  static const edit_institution = 'edit_institution';
+  static const enter_the_users_email_to_enroll_them_in_this_course = 'enter_the_users_email_to_enroll_them_in_this_course';
+  static const course_added_successfully = 'course_added_successfully';
+  static const field_added_successfully = 'field_added_successfully';
+  static const instiution_added_successfully = 'instiution_added_successfully';
+  static const instructor_updated_successfully = 'instructor_updated_successfully';
+  static const instructor_added_successfully = 'instructor_added_successfully';
+  static const instructor_deleted_successfully = 'instructor_deleted_successfully';
+  static const institution_updated_successfully = 'institution_updated_successfully';
+  static const field_updated_successfully = 'field_updated_successfully';
+  static const this_email_is_registered_on_another_device_please_logout_from_that_device_first_then_try_again = 'this_email_is_registered_on_another_device_please_logout_from_that_device_first_then_try_again';
+  static const attachment_added_successfully = 'attachment_added_successfully';
+  static const lesson_created_successfully = 'lesson_created_successfully';
+  static const contact_with_support_to_pay_this_course = 'contact_with_support_to_pay_this_course';
+  static const course_updated_successfully = 'course_updated_successfully';
+  static const lesson_updated_successfully = 'lesson_updated_successfully';
+  static const update_lesson = 'update_lesson';
+  static const course_created_successfully = 'course_created_successfully';
+  static const please_contact_support_to_unlock_this_course = 'please_contact_support_to_unlock_this_course';
+  static const name_updated_successfully = 'name_updated_successfully';
+  static const select = 'select';
+  static const delete_course = 'delete_course';
+  static const this_action_will_permanently_delete_the_course_and_cannot_be_undone = 'this_action_will_permanently_delete_the_course_and_cannot_be_undone';
+  static const enter_valid_instructor_name = 'enter_valid_instructor_name';
+  static const edit_instructor = 'edit_instructor';
+  static const change_the_instructor_s_name_below = 'change_the_instructor_s_name_below';
+
 }
