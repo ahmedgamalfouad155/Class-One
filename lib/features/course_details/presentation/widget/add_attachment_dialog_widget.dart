@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/theme/colors.dart';
@@ -8,6 +9,7 @@ import 'package:sinna/features/course_details/presentation/manager/lesson_manage
 import 'package:sinna/features/course_details/presentation/widget/add_attachment_button_widget.dart';
 import 'package:sinna/features/explore/data/models/course_model.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class AddingAttachmentDialogWidget extends StatefulWidget {
   const AddingAttachmentDialogWidget({
@@ -44,28 +46,28 @@ class _AddingAttachmentDialogWidgetState
         backgroundColor: context.appColors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: Text(
-          "Add Attachment",
+          LocaleKeys.new_attachment.tr(),
           style: AppStyles.textStyle20W600(context),
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              "Enter the user’s email to enroll them in this course.",
-              style: AppStyles.textStyle16W600Grey(context),
+            CustomTextFieldWidget(
+              hintText: "e.g., Assignment Instructions.docx",
+              controller: pdfTitle,
+              vlaidationMessage: LocaleKeys.enter_valid_pdf_title.tr(),
             ),
-            const SizedBox(height: 10),
-            CustomTextFieldWidget(hintText: "File Name", controller: pdfTitle),
             const SizedBox(height: 10),
             CustomTextFieldWidget(
               hintText: "https://example.com/file.pdf",
               controller: pdfUrl,
+              vlaidationMessage: LocaleKeys.enter_valid_pdf_link.tr(),
             ),
           ],
         ),
         actions: [
           Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               CustomCancelTextWidget(),
               const SizedBox(width: 10),

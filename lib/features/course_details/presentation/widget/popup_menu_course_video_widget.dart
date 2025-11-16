@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/features/course_details/presentation/widget/attachments_bottom_sheet.dart';
 import 'package:sinna/features/course_details/presentation/widget/create_lesson_bottom_sheet.dart';
 import 'package:sinna/features/explore/data/models/course_model.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class PopupMenuCourseVideoWidget extends StatelessWidget {
   const PopupMenuCourseVideoWidget({
@@ -40,13 +42,19 @@ class PopupMenuCourseVideoWidget extends StatelessWidget {
           value: 'edit_lesson',
           child: SizedBox(
             width: MediaQuery.of(context).size.width / 4,
-            child: const Text('Edit Lesson', style: TextStyle(fontSize: 14)),
+            child: Text(
+              LocaleKeys.update_lesson.tr(),
+              style: TextStyle(fontSize: 14),
+            ),
           ),
         ),
         const PopupMenuDivider(height: 1),
-        const PopupMenuItem(
+         PopupMenuItem(
           value: 'attachments',
-          child: Text('Attachments', style: TextStyle(fontSize: 14)),
+          child: Text(
+            LocaleKeys.attachments.tr(),
+            style: TextStyle(fontSize: 14),
+          ),
         ),
       ],
     );

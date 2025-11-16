@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:sinna/core/constants/images.dart';
 import 'package:sinna/features/course_details/presentation/manager/lesson_manager/lesson_manager_cubit.dart';
 import 'package:sinna/features/course_details/presentation/widget/delete_lesson_dialog_widget.dart';
 import 'package:sinna/features/explore/data/models/course_model.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
+import 'package:sinna/features/profile/presentation/manager/theme_cubit/theme_cubit.dart';
 
 class DeleteLessonIconWidget extends StatelessWidget {
   const DeleteLessonIconWidget({
@@ -36,7 +39,11 @@ class DeleteLessonIconWidget extends StatelessWidget {
                 ),
               );
             },
-            child: Icon(Icons.delete_outline_outlined),
+            child: SvgPicture.asset(
+              context.read<ThemeCubit>().isDark
+                  ? AppImages.deleteDark
+                  : AppImages.deleteLight,
+            ),
           );
         } else if (state is DeleteLessonFailureState) {
           return Text(state.errMessage);

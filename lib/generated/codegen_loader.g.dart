@@ -181,7 +181,12 @@ class CodegenLoader extends AssetLoader{
   "this_action_will_permanently_delete_the_course_and_cannot_be_undone": "سيؤدي هذا الإجراء إلى حذف الكورس نهائيًا ولا يمكن التراجع عنه.",
   "enter_valid_instructor_name": "يرجى إدخال اسم مدرس صحيح.",
   "edit_instructor": "تعديل المدرس",
-  "change_the_instructor_s_name_below": "يرجى تغيير اسم المدرس أدناه."
+  "change_the_instructor_s_name_below": "يرجى تغيير اسم المدرس أدناه.",
+  "new_attachment": "مرفق جديد",
+  "enter_valid_pdf_title": "من فضلك أدخل عنوان PDF صالح.",
+  "enter_valid_pdf_link": "من فضلك أدخل رابط PDF صالح.",
+  "submit": "إرسال",
+  "attachments": "المرفقات"
 };
 static const Map<String,dynamic> _en = {
   "ready_when_you_are": "Ready When You Are",
@@ -350,7 +355,12 @@ static const Map<String,dynamic> _en = {
   "this_action_will_permanently_delete_the_course_and_cannot_be_undone": "This action will permanently delete the course and cannot be undone.",
   "enter_valid_instructor_name": "Enter a valid instructor name.",
   "edit_instructor": "Edit Instructor",
-  "change_the_instructor_s_name_below": "Change the instructor’s name below."
+  "change_the_instructor_s_name_below": "Change the instructor’s name below.",
+  "new_attachment": "New Attachment",
+  "enter_valid_pdf_title": "Enter a valid pdf title.",
+  "enter_valid_pdf_link": "Enter a valid pdf link.",
+  "submit": "Submit",
+  "attachments": "Attachments"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
 }

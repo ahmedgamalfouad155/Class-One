@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sinna/core/theme/colors.dart';
@@ -8,6 +9,7 @@ import 'package:sinna/features/explore/data/models/course_model.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
 import 'package:sinna/features/profile/presentation/widgets/custom_bottom_sheet.dart';
 import 'package:sinna/features/profile/presentation/widgets/title_in_buttom_sheet_widget.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 void attachmentsBottomSheet(
   BuildContext context,
@@ -25,7 +27,7 @@ void attachmentsBottomSheet(
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              TitleInButtomSheetWidget(title: "Attachments"),
+              TitleInButtomSheetWidget(title: LocaleKeys.attachments.tr()),
               Spacer(),
               InkWell(
                 onTap: () {

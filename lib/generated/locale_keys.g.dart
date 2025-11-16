@@ -170,5 +170,10 @@ abstract class  LocaleKeys {
   static const enter_valid_instructor_name = 'enter_valid_instructor_name';
   static const edit_instructor = 'edit_instructor';
   static const change_the_instructor_s_name_below = 'change_the_instructor_s_name_below';
+  static const new_attachment = 'new_attachment';
+  static const enter_valid_pdf_title = 'enter_valid_pdf_title';
+  static const enter_valid_pdf_link = 'enter_valid_pdf_link';
+  static const submit = 'submit';
+  static const attachments = 'attachments';
 
 }
