@@ -52,8 +52,7 @@ class ListOfMyCoursesWidget extends StatelessWidget {
                           );
                         }
                       },
-                      subjectDoctor: course.instructor.toString(),
-                      subjectName: course.title.toString(),
+                        course: course,
                     );
                   },
                 )

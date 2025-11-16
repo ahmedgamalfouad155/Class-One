@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/customs_box_decoratino.dart';
 import 'package:sinna/core/widgets/custom_option_widget.dart';
 import 'package:sinna/features/course_details/presentation/manager/term_switch_cubit.dart';
+import 'package:sinna/generated/locale_keys.g.dart';
 
 class SecondSemesterSection extends StatelessWidget {
   const SecondSemesterSection({super.key});
@@ -16,7 +18,7 @@ class SecondSemesterSection extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           decoration: CustomsBoxDecoration().profileDecoration(context),
           child: CustomOptionWidget(
-            title: "Second Semester",
+            title: LocaleKeys.second_term.tr(),
             verticalPading: 0,
             onTap: () {},
             switchIcon: Transform.scale(

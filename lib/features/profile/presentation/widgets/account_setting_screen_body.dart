@@ -20,17 +20,20 @@ class ProfileScreenBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Profile", style: AppStyles.textStyle24W600(context)),
+          Text(
+            LocaleKeys.profile.tr(),
+            style: AppStyles.textStyle24W600(context),
+          ),
           SizedBox(height: 20.h),
           CustomOptionWidget(
-            title: "Name",
+            title: LocaleKeys.name.tr(),
             onTap: () {
               GoRouter.of(context).push(AppRouter.kNameScreen);
             },
           ),
           SizedBox(height: 10.h),
           CustomOptionWidget(
-            title: "Password",
+            title: LocaleKeys.password.tr(),
             onTap: () {
               GoRouter.of(context).push(AppRouter.kPasswordScreen);
             },

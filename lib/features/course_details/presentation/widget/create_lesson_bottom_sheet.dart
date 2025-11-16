@@ -55,28 +55,48 @@ void createLessonBottomSheet(
                           ? LocaleKeys.create_lesson.tr()
                           : LocaleKeys.update_lesson.tr(),
                     ),
+                    const SizedBox(height: 10),
+                    Text(
+                      LocaleKeys.lesson_title.tr(),
+                      style: AppStyles.textStyle16W600Grey(context),
+                    ),
                     const SizedBox(height: 6),
                     CustomTextFieldWidget(
-                      hintText: "Impression Techniques for Crowns",
+                      hintText: "e.g., Cleaning and Shaping",
                       controller: lessonTitleController,
                       vlaidationMessage: LocaleKeys.enter_valid_lesson_title
                           .tr(),
                     ),
                     const SizedBox(height: 16),
+                    Text(
+                      LocaleKeys.video_url.tr(),
+                      style: AppStyles.textStyle16W600Grey(context),
+                    ),
+                    const SizedBox(height: 6),
                     CustomTextFieldWidget(
                       hintText: "https://youtu.be/abcd1234",
                       controller: videoUrlController,
                       vlaidationMessage: LocaleKeys.enter_valid_video_link.tr(),
                     ),
                     const SizedBox(height: 16),
+                    Text(
+                      LocaleKeys.lesson_number.tr(),
+                      style: AppStyles.textStyle16W600Grey(context),
+                    ),
+                    const SizedBox(height: 6),
                     CustomTextFieldWidget(
-                      hintText: "Lesson Number",
+                      hintText: LocaleKeys.lesson_number.tr(),
                       controller: lessonNumberController,
                       vlaidationMessage: LocaleKeys.enter_valid_lesson_number
                           .tr(),
                       keyboardType: TextInputType.number,
                     ),
                     const SizedBox(height: 16),
+                    Text(
+                      LocaleKeys.semester.tr(),
+                      style: AppStyles.textStyle16W600Grey(context),
+                    ),
+                    const SizedBox(height: 6),
                     const SecondSemesterSection(),
                     const SizedBox(height: 10),
                     Text(

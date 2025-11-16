@@ -1,7 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sinna/core/constants/images.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart'; 
+import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/features/admin_tools/presentation/widgets/institutions/popup_menu_field_and_institutions_widget.dart';
 import 'package:sinna/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
@@ -27,7 +28,18 @@ class CourseAppBarWidget extends StatelessWidget {
           const SizedBox(width: 10),
           CircleAvatar(
             radius: 18.r,
-            backgroundImage: AssetImage(AppImages.cours),
+            backgroundColor: context.appColors.greyMoonlight,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(18.r),
+              child: CachedNetworkImage(
+                imageUrl: coursePathModel.image.toString(),
+                fit: BoxFit.cover,
+                placeholder: (context, url) => const Center(
+                  child: Icon(Icons.image_not_supported_outlined),
+                ),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              ),
+            ),
           ),
           const SizedBox(width: 10),
           Expanded(

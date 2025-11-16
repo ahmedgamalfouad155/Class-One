@@ -9,8 +9,6 @@ class AppImages {
   static final String you1 = 'assets/images/you1.svg';
   static final String you2 = 'assets/images/you2.svg';
   static final String you3 = 'assets/images/you3.svg';
-  static final String anatomy = 'assets/images/anatomy.jpg';
-  static final String cours = 'assets/images/course.png';
 
   static final String checkInboxDark = 'assets/images/check_inbox_dark.png';
   static final String checkInboxLight = 'assets/images/check_inbox_light.png';

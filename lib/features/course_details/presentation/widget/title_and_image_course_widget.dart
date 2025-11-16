@@ -1,5 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:sinna/core/constants/images.dart';
+import 'package:sinna/core/theme/colors.dart';
 import 'package:sinna/core/theme/styles.dart';
 import 'package:sinna/core/utils/app_media.dart';
 import 'package:sinna/features/explore/data/models/course_path_model.dart';
@@ -13,9 +14,19 @@ class TitleAndImageCourseWidget extends StatelessWidget {
     return Column(
       children: [
         Center(
-          child: SizedBox(
+          child: Container(
             height: context.height / 3,
-            child: Image.asset(AppImages.cours, fit: BoxFit.cover),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              color: context.appColors.greyMoonlight,
+            ),
+            child: CachedNetworkImage(
+              imageUrl: coursePathModel.image.toString(),
+              fit: BoxFit.cover,
+              placeholder: (context, url) =>
+                  const Center(child: Icon(Icons.image_not_supported_outlined)),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+            ),
           ),
         ),
         const SizedBox(height: 10),
